@@ -113,13 +113,14 @@
   ],
   "claimBoundary": "Abstract real-valued mesh approximation only; this is not a real chip mesh, foundry layout, measured transfer matrix, or production inference path.",
   "clementsReckPhysicalLayoutImplemented": false,
-  "complexUnitaryMeshImplemented": false,
+  "complexUnitaryMeshImplemented": true,
+  "complexUnitarySupportReport": "complex-unitary-mesh-support.json",
   "couplerCount": 6,
   "currentDemoScope": [
     "small deterministic matrix",
     "main Stage 2 demo matrix remains square",
-    "real-valued orthogonal approximation",
-    "no complex unitary mesh",
+    "main Stage 2 demo remains a real-valued orthogonal approximation",
+    "complex/unitary support is reported separately as a supplemental simulation artifact",
     "rectangular neural layer support is reported separately as a supplemental simulation artifact",
     "no Clements or Reck physical interferometer layout"
   ],

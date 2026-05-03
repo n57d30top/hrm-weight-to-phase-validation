@@ -1,0 +1,301 @@
+{
+  "abstractPhaseQuantizationImplemented": true,
+  "amplitudeErrorMax": 0.012297069511069,
+  "amplitudeWorstCaseId": "complex_4x4",
+  "blockers": [
+    "no_complex_svd_pipeline",
+    "no_physical_phase_synthesis",
+    "no_foundry_calibrated_mesh_model",
+    "no_measured_transfer_matrix"
+  ],
+  "caseCount": 3,
+  "cases": [
+    {
+      "amplitudeError": 0.0,
+      "approximatedMatrixSample": [
+        [
+          {
+            "imag": 0.0,
+            "real": 0.707106781187
+          },
+          {
+            "imag": 0.707106781187,
+            "real": 0.0
+          }
+        ],
+        [
+          {
+            "imag": 0.706886999672,
+            "real": -0.017628661188
+          },
+          {
+            "imag": 0.017628661188,
+            "real": 0.706886999672
+          }
+        ]
+      ],
+      "approximatedUnitaryFactorDeviation": 0.0,
+      "caseId": "unitary_like_2x2",
+      "complexValuedSupportImplemented": true,
+      "errorDelta": 0.017630031173646,
+      "exactUnitaryFactorDeviation": 0.0,
+      "foundryCalibrated": false,
+      "foundryLayoutSynthesisImplemented": false,
+      "hardwareValidated": false,
+      "idealReconstructionError": 0.0,
+      "matrixShape": [
+        2,
+        2
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.017630031173646,
+      "phaseAwareError": 0.017630487849835,
+      "phaseDominantInput": false,
+      "phaseLevels": 64,
+      "physicalCouplerSynthesisImplemented": false,
+      "physicalPhaseSynthesisImplemented": false,
+      "productionInferenceReady": false,
+      "reconstructionMode": "complex_qr_unitary_factor_times_residual",
+      "residualFactorShape": [
+        2,
+        2
+      ],
+      "targetMatrixSample": [
+        [
+          {
+            "imag": 0.0,
+            "real": 0.707106781187
+          },
+          {
+            "imag": 0.707106781187,
+            "real": 0.0
+          }
+        ],
+        [
+          {
+            "imag": 0.707106781187,
+            "real": 0.0
+          },
+          {
+            "imag": 0.0,
+            "real": 0.707106781187
+          }
+        ]
+      ],
+      "unitaryFactorShape": [
+        2,
+        2
+      ],
+      "unitaryFactorSupportImplemented": true,
+      "unitaryLikeInput": true
+    },
+    {
+      "amplitudeError": 0.012297069511069,
+      "approximatedMatrixSample": [
+        [
+          {
+            "imag": 0.085547747216,
+            "real": 0.423180319659
+          },
+          {
+            "imag": 0.226096287613,
+            "real": -0.182279415223
+          }
+        ],
+        [
+          {
+            "imag": -0.326867936479,
+            "real": 0.128286211659
+          },
+          {
+            "imag": -0.001140733626,
+            "real": 0.546922004802
+          }
+        ]
+      ],
+      "approximatedUnitaryFactorDeviation": 0.0,
+      "caseId": "complex_4x4",
+      "complexValuedSupportImplemented": true,
+      "errorDelta": 0.023637815436193,
+      "exactUnitaryFactorDeviation": 0.0,
+      "foundryCalibrated": false,
+      "foundryLayoutSynthesisImplemented": false,
+      "hardwareValidated": false,
+      "idealReconstructionError": 0.0,
+      "matrixShape": [
+        4,
+        4
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.023637815436193,
+      "phaseAwareError": 0.021020525022447,
+      "phaseDominantInput": false,
+      "phaseLevels": 64,
+      "physicalCouplerSynthesisImplemented": false,
+      "physicalPhaseSynthesisImplemented": false,
+      "productionInferenceReady": false,
+      "reconstructionMode": "complex_qr_unitary_factor_times_residual",
+      "residualFactorShape": [
+        4,
+        4
+      ],
+      "targetMatrixSample": [
+        [
+          {
+            "imag": 0.1,
+            "real": 0.42
+          },
+          {
+            "imag": 0.22,
+            "real": -0.18
+          }
+        ],
+        [
+          {
+            "imag": -0.33,
+            "real": 0.12
+          },
+          {
+            "imag": 0.0,
+            "real": 0.55
+          }
+        ]
+      ],
+      "unitaryFactorShape": [
+        4,
+        4
+      ],
+      "unitaryFactorSupportImplemented": true,
+      "unitaryLikeInput": false
+    },
+    {
+      "amplitudeError": 0.004561943703387,
+      "approximatedMatrixSample": [
+        [
+          {
+            "imag": 0.061732064889,
+            "real": 0.616919080727
+          },
+          {
+            "imag": 0.173626962005,
+            "real": 0.047468405507
+          }
+        ],
+        [
+          {
+            "imag": -0.088987180881,
+            "real": 0.045621065735
+          },
+          {
+            "imag": 0.557135979855,
+            "real": -0.161325738665
+          }
+        ]
+      ],
+      "approximatedUnitaryFactorDeviation": 0.0,
+      "caseId": "phase_dominant_4x4",
+      "complexValuedSupportImplemented": true,
+      "errorDelta": 0.011421471667843,
+      "exactUnitaryFactorDeviation": 0.0,
+      "foundryCalibrated": false,
+      "foundryLayoutSynthesisImplemented": false,
+      "hardwareValidated": false,
+      "idealReconstructionError": 0.0,
+      "matrixShape": [
+        4,
+        4
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.011421471667843,
+      "phaseAwareError": 0.015748231526569,
+      "phaseDominantInput": true,
+      "phaseLevels": 64,
+      "physicalCouplerSynthesisImplemented": false,
+      "physicalPhaseSynthesisImplemented": false,
+      "productionInferenceReady": false,
+      "reconstructionMode": "complex_qr_unitary_factor_times_residual",
+      "residualFactorShape": [
+        4,
+        4
+      ],
+      "targetMatrixSample": [
+        [
+          {
+            "imag": 0.061896718321,
+            "real": 0.616902582472
+          },
+          {
+            "imag": 0.173440473375,
+            "real": 0.048149789152
+          }
+        ],
+        [
+          {
+            "imag": -0.089120736006,
+            "real": 0.045359612143
+          },
+          {
+            "imag": 0.557539617726,
+            "real": -0.159842343158
+          }
+        ]
+      ],
+      "unitaryFactorShape": [
+        4,
+        4
+      ],
+      "unitaryFactorSupportImplemented": true,
+      "unitaryLikeInput": false
+    }
+  ],
+  "claimBoundary": "Simulation-only complex/unitary factor handling; no hardware validation, foundry calibration, measured transfer matrix, physical phase synthesis, or production inference readiness is claimed.",
+  "complexSvdImplemented": false,
+  "complexValueEncoding": "reported_complex_samples_use_real_imag_pairs",
+  "complexValuedSupportImplemented": true,
+  "evidenceLevel": "abstract_complex_unitary_mesh_simulation",
+  "foundryCalibrated": false,
+  "foundryLayoutSynthesisImplemented": false,
+  "hardwareValidated": false,
+  "id": "complex-unitary-mesh-support",
+  "limitations": [
+    "simulation-only complex-valued unitary-factor handling",
+    "complex QR factorization, not a full complex SVD pipeline",
+    "phase quantization is abstract and not a physical phase-shifter synthesis model",
+    "no Clements or Reck physical interferometer layout",
+    "no foundry layout synthesis",
+    "no measured transfer matrix"
+  ],
+  "matrixShapes": [
+    [
+      2,
+      2
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      4,
+      4
+    ]
+  ],
+  "measuredTransferMatrixAvailable": false,
+  "meshConstrainedReconstructionErrorMax": 0.023637815436193,
+  "nextValidationGates": [
+    "complex_svd_pipeline",
+    "complex_rectangular_matrix_family_sweeps",
+    "foundry_calibrated_device_model_gate"
+  ],
+  "phaseAwareErrorMax": 0.021020525022447,
+  "phaseLevels": 64,
+  "phaseWorstCaseId": "complex_4x4",
+  "physicalCouplerSynthesisImplemented": false,
+  "physicalPhaseSynthesisImplemented": false,
+  "productionInferenceReady": false,
+  "stage": 2,
+  "stageStatus": "complete",
+  "title": "Complex/unitary mesh support for abstract HRM simulation",
+  "unitaryFactorSupportImplemented": true,
+  "unitaryFactorization": "complex_qr_unitary_factor",
+  "worstCaseId": "complex_4x4"
+}

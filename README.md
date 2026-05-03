@@ -28,6 +28,7 @@ The current pipeline covers:
 - abstract real-valued mesh approximation
 - rectangular neural layer simulation via orthogonal completion and rectangular
   singular-value transfer cores
+- complex-valued unitary-factor simulation with phase-aware error metrics
 - abstract phase/coupler parameter records
 - deterministic perturbation simulation
 - synthetic/oracle calibration simulation
@@ -59,7 +60,7 @@ The current evidence is limited to simulation and synthetic calibration.
 | --- | --- | --- | --- |
 | 0 | complete | theoretical_extension | Future-work specification and claim boundaries exist. |
 | 1 | complete | numerical_simulation | A deterministic SVD mapping demo reconstructs the normalized target. |
-| 2 | complete | abstract_mesh_simulation | Abstract phase/coupler parameterization exists for the square demo case, with supplemental rectangular matrix support. |
+| 2 | complete | abstract_mesh_simulation | Abstract phase/coupler parameterization exists for the square demo case, with supplemental rectangular and complex/unitary support. |
 | 3 | complete | uncalibrated_perturbation_simulation | Deterministic perturbation models report error deltas. |
 | 4 | complete | synthetic_calibration_simulation | Simulation-only calibration uses a synthetic/oracle target. |
 | 5 | blocked | foundry_calibration_gate | Requires foundry-calibrated device models or S-parameters. |
@@ -135,6 +136,7 @@ Key files:
 - `stage-0-specification.json`
 - `stage-1-svd-demo.json`
 - `stage-2-mesh-constrained.json`
+- `complex-unitary-mesh-support.json`
 - `rectangular-matrix-support.json`
 - `stage-3-perturbation-model.json`
 - `stage-3-perturbation-sweep.json`
@@ -165,17 +167,18 @@ Schema documentation for future hardware evidence gates:
 Stage 2 is complete only as an abstract mesh simulation.
 
 It implements deterministic quantized Givens rotations and abstract
-phase/coupler setting records for the current small square demo matrix and a
-supplemental rectangular-matrix simulation report. It does not implement a real
-HRM layout, a foundry-calibrated photonic mesh, a measured transfer matrix, or a
-production phase synthesis pipeline.
+phase/coupler setting records for the current small square demo matrix,
+supplemental rectangular-matrix simulation, and supplemental complex/unitary
+factor simulation. It does not implement a real HRM layout, a foundry-calibrated
+photonic mesh, a measured transfer matrix, or a production phase synthesis
+pipeline.
 
 Current Stage 2 scope:
 
 - small deterministic square main demo matrix
 - rectangular supplemental cases for 6x4, 4x6, and rank-deficient 5x3 matrices
-- real-valued orthogonal approximation
-- no complex unitary mesh
+- complex/unitary supplemental cases for 2x2 and 4x4 complex matrices
+- main demo remains a real-valued orthogonal approximation
 - no Clements or Reck physical interferometer layout
 - no foundry layout synthesis
 - no physical phase synthesis
@@ -192,6 +195,30 @@ foundryLayoutSynthesisImplemented=false
 realChipMesh=false
 hardwareValidated=false
 ```
+
+## Complex/Unitary Mesh Support
+
+The supplemental report `complex-unitary-mesh-support.json` extends the
+simulation-only mapping path to complex-valued matrices and unitary-factor
+handling.
+
+The representation is:
+
+```text
+complex W
+-> complex QR unitary factorization
+-> abstract phase-quantized unitary factor
+-> residual factor reconstruction
+-> relative, phase-aware, and amplitude-aware error metrics
+```
+
+This is not a full complex SVD pipeline and not a physical phase-synthesis
+implementation. It does not define a Clements/Reck physical interferometer
+layout, a foundry layout, a measured transfer matrix, or a production inference
+path.
+
+The report includes a 2x2 unitary-like case, a deterministic 4x4 complex case,
+and a phase-dominant 4x4 case. All hardware evidence flags remain false.
 
 ## Rectangular Matrix Support
 
@@ -216,9 +243,9 @@ completion and a zero-padded rectangular singular-value core. It is not a
 physical HRM layout, not a Clements/Reck interferometer layout, not a measured
 transfer matrix, and not a production phase synthesis pipeline.
 
-There is still no complex/unitary mesh, still no Clements/Reck physical
-interferometer layout, still no foundry layout synthesis, and still no hardware
-validation.
+There is still no physical complex/unitary mesh layout, still no Clements/Reck
+physical interferometer layout, still no foundry layout synthesis, and still no
+hardware validation.
 
 The report includes tall, wide, and rank-deficient deterministic cases and
 keeps all hardware evidence flags false.
@@ -312,10 +339,14 @@ Completed post-alpha.4 main work:
 
 - rectangular matrix support added as a supplemental simulation report for tall, wide, and rank-deficient neural layer shapes.
 
+Completed post-alpha.5 main work:
+
+- complex/unitary support added as a supplemental simulation report for unitary-like, general complex, and phase-dominant cases.
+
 Near-term:
 
 - keep CI green for report generation, JSON validation, hashes, and tests
-- complex/unitary mesh mode
+- complex SVD pipeline
 - matrix-family sweeps over rectangular layer shapes
 
 Later, only when evidence exists:

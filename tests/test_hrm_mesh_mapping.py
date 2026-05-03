@@ -41,14 +41,18 @@ class HrmMeshMappingTest(unittest.TestCase):
         self.assertFalse(report["physicalPhaseSynthesisImplemented"])
         self.assertFalse(report["physicalCouplerSynthesisImplemented"])
         self.assertFalse(report["foundryLayoutSynthesisImplemented"])
-        self.assertFalse(report["complexUnitaryMeshImplemented"])
+        self.assertTrue(report["complexUnitaryMeshImplemented"])
+        self.assertEqual(report["complexUnitarySupportReport"], "complex-unitary-mesh-support.json")
         self.assertTrue(report["rectangularLayerSupportImplemented"])
         self.assertEqual(report["rectangularSupportReport"], "rectangular-matrix-support.json")
         self.assertFalse(report["clementsReckPhysicalLayoutImplemented"])
         self.assertFalse(report["squareMatrixOnly"])
         self.assertTrue(report["mainDemoMatrixIsSquare"])
         self.assertTrue(report["realValuedOrthogonalApproximation"])
-        self.assertIn("no complex unitary mesh", report["currentDemoScope"])
+        self.assertIn(
+            "complex/unitary support is reported separately as a supplemental simulation artifact",
+            report["currentDemoScope"],
+        )
         self.assertIn(
             "rectangular neural layer support is reported separately as a supplemental simulation artifact",
             report["currentDemoScope"],

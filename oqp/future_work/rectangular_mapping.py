@@ -154,18 +154,19 @@ def run_rectangular_matrix_support_report(phase_levels: int = 64) -> dict:
         "limitations": [
             "simulation-only real-valued rectangular transfer representation",
             "rectangular support uses orthogonal completion and zero-padded rectangular sigma core",
-            "no complex unitary mesh mode",
+            "complex/unitary support is supplemental and does not define a physical mesh layout",
+            "no combined complex rectangular matrix-family sweep mode",
             "no Clements or Reck physical interferometer layout",
             "no foundry layout synthesis",
             "no measured transfer matrix",
         ],
         "blockers": [
-            "no_complex_unitary_mesh",
+            "no_combined_complex_rectangular_matrix_family_sweeps",
             "no_foundry_calibrated_mesh_model",
             "no_measured_transfer_matrix",
         ],
         "nextValidationGates": [
-            "complex_unitary_mesh_mode",
+            "complex_rectangular_matrix_family_sweeps",
             "matrix_family_sweeps",
             "foundry_calibrated_device_model_gate",
         ],

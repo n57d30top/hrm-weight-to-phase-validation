@@ -39,7 +39,9 @@ compiler. It covers a small square deterministic main demo, real-valued
 orthogonal mesh approximation, quantized Givens rotations, abstract
 phase/coupler parameter records, and supplemental rectangular simulation cases
 using orthogonal completion around a rectangular singular-value transfer core.
-It does not cover complex unitary meshes, Clements/Reck physical interferometer
+It also covers supplemental complex/unitary simulation cases using complex QR
+unitary-factor handling and abstract phase quantization. It does not cover
+physical complex unitary mesh layouts, Clements/Reck physical interferometer
 layouts, foundry layout synthesis, or calibrated control settings for a
 fabricated HRM chip.
 
@@ -68,10 +70,10 @@ reports/future-work/hrm-neural-mapping/validation-ladder-summary.json
 The current ladder demonstrates compact SVD reconstruction, passive
 singular-value normalization, deterministic abstract mesh phase/coupler
 parameterization, supplemental rectangular matrix support, perturbation stress
-testing, and synthetic calibration. It does not implement physical phase
-synthesis, physical coupler synthesis, a real chip mesh, a foundry-calibrated
-model, measured transfer matrix, hardware calibration, or production inference
-path.
+testing, supplemental complex/unitary factor handling, and synthetic
+calibration. It does not implement physical phase synthesis, physical coupler
+synthesis, a real chip mesh, a foundry-calibrated model, measured transfer
+matrix, hardware calibration, or production inference path.
 
 ## 1. Hybrid Electro-Optical Inference Paradigm
 

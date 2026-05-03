@@ -36,6 +36,27 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertTrue(report["keyMetrics"]["rectangularLayerSupportImplemented"])
         self.assertEqual(report["keyMetrics"]["rectangularMode"], "orthogonal_completion_rectangular_sigma")
 
+    def test_validation_summary_includes_complex_unitary_support(self):
+        summary = json.loads((REPORT_DIR / "validation-ladder-summary.json").read_text(encoding="utf-8"))
+        reports = {
+            report["id"]: report
+            for report in summary["supplementalReports"]
+        }
+        self.assertIn("complex-unitary-mesh-support", reports)
+        report = reports["complex-unitary-mesh-support"]
+        self.assertEqual(report["stage"], 2)
+        self.assertEqual(report["stageStatus"], "complete")
+        self.assertEqual(report["evidenceLevel"], "abstract_complex_unitary_mesh_simulation")
+        self.assertFalse(report["hardwareValidated"])
+        self.assertFalse(report["foundryCalibrated"])
+        self.assertFalse(report["measuredTransferMatrixAvailable"])
+        self.assertFalse(report["productionInferenceReady"])
+        self.assertTrue(report["keyMetrics"]["complexValuedSupportImplemented"])
+        self.assertTrue(report["keyMetrics"]["unitaryFactorSupportImplemented"])
+        self.assertFalse(report["keyMetrics"]["complexSvdImplemented"])
+        self.assertIn("phaseAwareErrorMax", report["keyMetrics"])
+        self.assertIn("amplitudeErrorMax", report["keyMetrics"])
+
     def test_evidence_ledger_includes_rectangular_support(self):
         ledger = json.loads((ROOT / "docs" / "future-work" / "evidence-ledger.json").read_text(encoding="utf-8"))
         reports = {
@@ -51,6 +72,15 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertFalse(report["foundryCalibrated"])
         self.assertFalse(report["measuredTransferMatrixAvailable"])
         self.assertFalse(report["productionInferenceReady"])
+        self.assertIn("complex-unitary-mesh-support", reports)
+        complex_report = reports["complex-unitary-mesh-support"]
+        self.assertEqual(complex_report["stage"], 2)
+        self.assertEqual(complex_report["stageStatus"], "complete")
+        self.assertEqual(complex_report["evidenceLevel"], "abstract_complex_unitary_mesh_simulation")
+        self.assertFalse(complex_report["hardwareValidated"])
+        self.assertFalse(complex_report["foundryCalibrated"])
+        self.assertFalse(complex_report["measuredTransferMatrixAvailable"])
+        self.assertFalse(complex_report["productionInferenceReady"])
 
     def test_artifacts_sha256_covers_all_generated_json_reports(self):
         json_reports = {
@@ -65,13 +95,15 @@ class HrmReportIndexingTest(unittest.TestCase):
                 hashed_reports.add(parts[1])
         self.assertEqual(json_reports - hashed_reports, set())
         self.assertIn("reports/future-work/hrm-neural-mapping/rectangular-matrix-support.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/complex-unitary-mesh-support.json", hashed_reports)
 
     def test_readme_rectangular_support_is_current(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         normalized = " ".join(readme.split())
         self.assertIn("rectangular-matrix-support.json", normalized)
+        self.assertIn("complex-unitary-mesh-support.json", normalized)
         self.assertIn("supplemental rectangular support exists", normalized)
-        self.assertIn("still no complex/unitary mesh", normalized)
+        self.assertIn("physical complex/unitary mesh layout", normalized)
         self.assertIn("still no hardware validation", normalized)
         self.assertNotIn("no rectangular neural layer support", normalized)
         self.assertNotIn("square matrix only", normalized)

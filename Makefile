@@ -14,6 +14,7 @@ json:
 	jq empty reports/future-work/hrm-neural-mapping/stage-0-specification.json
 	jq empty reports/future-work/hrm-neural-mapping/stage-1-svd-demo.json
 	jq empty reports/future-work/hrm-neural-mapping/stage-2-mesh-constrained.json
+	jq empty reports/future-work/hrm-neural-mapping/complex-unitary-mesh-support.json
 	jq empty reports/future-work/hrm-neural-mapping/rectangular-matrix-support.json
 	jq empty reports/future-work/hrm-neural-mapping/stage-3-perturbation-model.json
 	jq empty reports/future-work/hrm-neural-mapping/stage-3-perturbation-sweep.json

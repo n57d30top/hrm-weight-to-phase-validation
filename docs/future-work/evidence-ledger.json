@@ -148,7 +148,29 @@
     },
     {
       "blockers": [
-        "no_complex_unitary_mesh",
+        "no_complex_svd_pipeline",
+        "no_physical_phase_synthesis",
+        "no_foundry_calibrated_mesh_model",
+        "no_measured_transfer_matrix"
+      ],
+      "evidenceLevel": "abstract_complex_unitary_mesh_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "complex-unitary-mesh-support",
+      "measuredTransferMatrixAvailable": false,
+      "nextValidationGates": [
+        "complex_svd_pipeline",
+        "complex_rectangular_matrix_family_sweeps",
+        "foundry_calibrated_device_model_gate"
+      ],
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Complex/unitary mesh support for abstract HRM simulation"
+    },
+    {
+      "blockers": [
+        "no_combined_complex_rectangular_matrix_family_sweeps",
         "no_foundry_calibrated_mesh_model",
         "no_measured_transfer_matrix"
       ],
@@ -158,7 +180,7 @@
       "id": "rectangular-matrix-support",
       "measuredTransferMatrixAvailable": false,
       "nextValidationGates": [
-        "complex_unitary_mesh_mode",
+        "complex_rectangular_matrix_family_sweeps",
         "matrix_family_sweeps",
         "foundry_calibrated_device_model_gate"
       ],

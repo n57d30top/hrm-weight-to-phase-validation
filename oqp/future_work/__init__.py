@@ -17,6 +17,10 @@ from .rectangular_mapping import (
     build_rectangular_mesh_transfer_model,
     run_rectangular_matrix_support_report,
 )
+from .complex_unitary_mapping import (
+    build_complex_unitary_model,
+    run_complex_unitary_mesh_support_report,
+)
 
 __all__ = [
     "SVDResult",
@@ -26,6 +30,8 @@ __all__ = [
     "relative_frobenius_error",
     "run_svd_mapping_demo",
     "build_rectangular_mesh_transfer_model",
+    "build_complex_unitary_model",
     "run_rectangular_matrix_support_report",
+    "run_complex_unitary_mesh_support_report",
     "svd_decompose",
 ]
