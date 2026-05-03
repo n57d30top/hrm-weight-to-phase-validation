@@ -23,14 +23,24 @@ FOUNDATION_FALSE_FLAGS = {
 }
 
 FOUNDRY_REQUIRED_FIELDS = [
+    "artifactId",
     "evidenceClass",
-    "foundrySParameters",
-    "calibratedCompactModel",
-    "foundryPdkReference",
-    "calibratedLossModel",
-    "calibratedCrosstalkModel",
-    "calibratedPhaseShifterModel",
-    "artifactHash",
+    "foundryOrPdkSource",
+    "sourceVersion",
+    "sourceDate",
+    "deviceScope",
+    "sParameterArtifacts",
+    "calibratedCompactModelArtifacts",
+    "calibratedLossModelArtifact",
+    "calibratedCrosstalkModelArtifact",
+    "calibratedPhaseShifterModelArtifact",
+    "wavelengthRange",
+    "temperatureOrOperatingCondition",
+    "calibrationProcedure",
+    "provenance",
+    "uncertaintyOrErrorEstimate",
+    "operatorOrSource",
+    "claimBoundary",
 ]
 
 MEASURED_TRANSFER_MATRIX_REQUIRED_FIELDS = [
@@ -76,8 +86,14 @@ HARDWARE_BENCHMARK_REQUIRED_FIELDS = [
 
 def foundry_calibration_gate(manifest_path: str | Path | None = None) -> Dict[str, Any]:
     manifest = _read_manifest(manifest_path)
+    base_dir = _manifest_base_dir(manifest_path)
     missing = validate_required_fields(manifest, FOUNDRY_REQUIRED_FIELDS)
-    calibrated = bool(manifest) and not missing and manifest.get("evidenceClass") == "foundry_calibrated_device_model"
+    invalid: List[Dict[str, Any]] = []
+    hash_mismatches: List[Dict[str, Any]] = []
+    missing_artifacts: List[Dict[str, Any]] = []
+    if manifest:
+        _validate_stage_5_manifest(manifest, base_dir, missing_artifacts, hash_mismatches, invalid)
+    calibrated = bool(manifest) and not missing and not invalid and not hash_mismatches and not missing_artifacts
     return {
         "id": "stage-5-foundry-calibration-gate",
         "title": "Foundry-calibrated device-model validation gate",
@@ -92,6 +108,10 @@ def foundry_calibration_gate(manifest_path: str | Path | None = None) -> Dict[st
         "acceptanceCriteria": FOUNDRY_REQUIRED_FIELDS,
         "manifestPath": _manifest_path_report(manifest_path),
         "missingEvidence": missing,
+        "invalidEvidence": invalid,
+        "hashMismatches": hash_mismatches,
+        "missingArtifactReferences": missing_artifacts,
+        "blockedByDependency": None,
         "blockerReason": None if calibrated else "no_foundry_calibrated_device_model",
         "blockers": [] if calibrated else ["no_foundry_calibrated_device_model"],
         "nextValidationGates": [
@@ -294,6 +314,76 @@ def validate_nonempty_string(value: Any) -> bool:
     return isinstance(value, str) and bool(value.strip())
 
 
+def _validate_stage_5_manifest(
+    manifest: Dict[str, Any],
+    base_dir: Path,
+    missing_artifacts: List[Dict[str, Any]],
+    hash_mismatches: List[Dict[str, Any]],
+    invalid: List[Dict[str, Any]],
+) -> None:
+    _validate_nonempty_fields(manifest, [
+        "artifactId",
+        "foundryOrPdkSource",
+        "sourceVersion",
+        "deviceScope",
+        "wavelengthRange",
+        "temperatureOrOperatingCondition",
+        "calibrationProcedure",
+        "provenance",
+        "uncertaintyOrErrorEstimate",
+        "operatorOrSource",
+        "claimBoundary",
+    ], invalid)
+    if manifest.get("evidenceClass") != "foundry_calibrated_device_model":
+        invalid.append({
+            "field": "evidenceClass",
+            "reason": "must_be_foundry_calibrated_device_model",
+        })
+    if not validate_iso_date(manifest.get("sourceDate")):
+        invalid.append({"field": "sourceDate", "reason": "invalid_iso_date"})
+
+    _validate_hash_reference_list(
+        "sParameterArtifacts",
+        manifest.get("sParameterArtifacts"),
+        base_dir,
+        missing_artifacts,
+        hash_mismatches,
+        invalid,
+    )
+    _validate_hash_reference_list(
+        "calibratedCompactModelArtifacts",
+        manifest.get("calibratedCompactModelArtifacts"),
+        base_dir,
+        missing_artifacts,
+        hash_mismatches,
+        invalid,
+    )
+    _validate_hash_reference(
+        "calibratedLossModelArtifact",
+        manifest.get("calibratedLossModelArtifact"),
+        base_dir,
+        missing_artifacts,
+        hash_mismatches,
+        invalid,
+    )
+    _validate_hash_reference(
+        "calibratedCrosstalkModelArtifact",
+        manifest.get("calibratedCrosstalkModelArtifact"),
+        base_dir,
+        missing_artifacts,
+        hash_mismatches,
+        invalid,
+    )
+    _validate_hash_reference(
+        "calibratedPhaseShifterModelArtifact",
+        manifest.get("calibratedPhaseShifterModelArtifact"),
+        base_dir,
+        missing_artifacts,
+        hash_mismatches,
+        invalid,
+    )
+
+
 def _validate_stage_6_manifest(
     manifest: Dict[str, Any],
     base_dir: Path,
@@ -389,6 +479,28 @@ def _validate_stage_7_manifest(
         hash_mismatches,
         invalid,
     )
+
+
+def _validate_hash_reference_list(
+    field: str,
+    values: Any,
+    base_dir: Path,
+    missing_artifacts: List[Dict[str, Any]],
+    hash_mismatches: List[Dict[str, Any]],
+    invalid: List[Dict[str, Any]],
+) -> None:
+    if not isinstance(values, list) or not values:
+        invalid.append({"field": field, "reason": "expected_nonempty_hash_reference_list"})
+        return
+    for index, value in enumerate(values):
+        _validate_hash_reference(
+            f"{field}[{index}]",
+            value,
+            base_dir,
+            missing_artifacts,
+            hash_mismatches,
+            invalid,
+        )
 
 
 def _validate_hash_reference(

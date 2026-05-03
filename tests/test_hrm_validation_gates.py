@@ -5,6 +5,7 @@ import unittest
 from pathlib import Path
 
 from oqp.future_work.validation_gates import (
+    FOUNDRY_REQUIRED_FIELDS,
     HARDWARE_BENCHMARK_REQUIRED_FIELDS,
     MEASURED_TRANSFER_MATRIX_REQUIRED_FIELDS,
     foundry_calibration_gate,
@@ -12,6 +13,8 @@ from oqp.future_work.validation_gates import (
     measured_transfer_matrix_gate,
     stage_0_specification_gate,
 )
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def _sha256(path: Path) -> str:
@@ -24,6 +27,71 @@ class HrmValidationGatesTest(unittest.TestCase):
         self.assertEqual(report["stageStatus"], "blocked")
         self.assertFalse(report["foundryCalibrated"])
         self.assertEqual(report["blockerReason"], "no_foundry_calibrated_device_model")
+        self.assertIn("artifactId", report["missingEvidence"])
+        self.assertIn("claimBoundary", report["missingEvidence"])
+        self.assertEqual(report["invalidEvidence"], [])
+        self.assertEqual(report["hashMismatches"], [])
+        self.assertEqual(report["missingArtifactReferences"], [])
+
+    def test_foundry_schema_matches_acceptance_doc_fields(self):
+        expected = {
+            "artifactId",
+            "evidenceClass",
+            "foundryOrPdkSource",
+            "sourceVersion",
+            "sourceDate",
+            "deviceScope",
+            "sParameterArtifacts",
+            "calibratedCompactModelArtifacts",
+            "calibratedLossModelArtifact",
+            "calibratedCrosstalkModelArtifact",
+            "calibratedPhaseShifterModelArtifact",
+            "wavelengthRange",
+            "temperatureOrOperatingCondition",
+            "calibrationProcedure",
+            "provenance",
+            "uncertaintyOrErrorEstimate",
+            "operatorOrSource",
+            "claimBoundary",
+        }
+        self.assertEqual(set(FOUNDRY_REQUIRED_FIELDS), expected)
+
+    def test_foundry_manifest_with_missing_artifacts_blocks(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            manifest_path = Path(tmpdir) / "stage5-manifest.json"
+            manifest_path.write_text(json.dumps(self._stage_5_manifest()), encoding="utf-8")
+            report = foundry_calibration_gate(manifest_path)
+        self.assertEqual(report["stageStatus"], "blocked")
+        self.assertFalse(report["foundryCalibrated"])
+        self.assertEqual(report["missingEvidence"], [])
+        self.assertGreaterEqual(len(report["missingArtifactReferences"]), 5)
+
+    def test_foundry_manifest_with_wrong_hash_blocks(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            manifest_path = self._write_valid_stage_5_fixture(root)
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest["calibratedLossModelArtifact"]["sha256"] = "0" * 64
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+            report = foundry_calibration_gate(manifest_path)
+        self.assertEqual(report["stageStatus"], "blocked")
+        self.assertFalse(report["foundryCalibrated"])
+        self.assertEqual(report["missingArtifactReferences"], [])
+        self.assertEqual(report["hashMismatches"][0]["field"], "calibratedLossModelArtifact")
+
+    def test_foundry_valid_fixture_can_pass_in_temp_directory(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            manifest_path = self._write_valid_stage_5_fixture(Path(tmpdir))
+            report = foundry_calibration_gate(manifest_path)
+        self.assertEqual(report["stageStatus"], "complete")
+        self.assertTrue(report["foundryCalibrated"])
+        self.assertFalse(report["hardwareValidated"])
+        self.assertFalse(report["measuredTransferMatrixAvailable"])
+        self.assertFalse(report["productionInferenceReady"])
+        self.assertEqual(report["missingEvidence"], [])
+        self.assertEqual(report["invalidEvidence"], [])
+        self.assertEqual(report["hashMismatches"], [])
+        self.assertEqual(report["missingArtifactReferences"], [])
 
     def test_measured_transfer_matrix_gate_blocks_without_measured_data(self):
         report = measured_transfer_matrix_gate(None)
@@ -161,6 +229,28 @@ class HrmValidationGatesTest(unittest.TestCase):
         self.assertEqual(report["hashMismatches"], [])
         self.assertEqual(report["missingArtifactReferences"], [])
 
+    def test_public_default_reports_keep_hardware_gates_blocked(self):
+        report_dir = ROOT / "reports" / "future-work" / "hrm-neural-mapping"
+        reports = [
+            json.loads((report_dir / "stage-5-foundry-calibration-gate.json").read_text(encoding="utf-8")),
+            json.loads((report_dir / "stage-6-measured-transfer-matrix-gate.json").read_text(encoding="utf-8")),
+            json.loads((report_dir / "stage-7-hardware-benchmark-gate.json").read_text(encoding="utf-8")),
+        ]
+        self.assertEqual([report["stageStatus"] for report in reports], ["blocked", "blocked", "blocked"])
+        self.assertEqual(
+            [report["blockerReason"] for report in reports],
+            [
+                "no_foundry_calibrated_device_model",
+                "no_measured_hrm_transfer_matrix",
+                "no_end_to_end_hardware_benchmark",
+            ],
+        )
+        for report in reports:
+            self.assertFalse(report["hardwareValidated"])
+            self.assertFalse(report["foundryCalibrated"])
+            self.assertFalse(report["measuredTransferMatrixAvailable"])
+            self.assertFalse(report["productionInferenceReady"])
+
     def test_stage_0_gate_requires_claim_boundaries_and_forbidden_phrase_absence(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             path = Path(tmpdir) / "spec.md"
@@ -183,6 +273,41 @@ class HrmValidationGatesTest(unittest.TestCase):
         self.assertEqual(report["stageStatus"], "complete")
         self.assertFalse(report["forbiddenHardwareCompilationPhrasePresent"])
         self.assertFalse(report["hardwareValidated"])
+
+    def _stage_5_manifest(self) -> dict:
+        return {
+            "artifactId": "stage5-test-fixture",
+            "evidenceClass": "foundry_calibrated_device_model",
+            "foundryOrPdkSource": "test foundry source",
+            "sourceVersion": "test version",
+            "sourceDate": "2026-05-03",
+            "deviceScope": "test device scope",
+            "sParameterArtifacts": [
+                {"artifactReference": "sparams.s2p", "sha256": "f" * 64},
+            ],
+            "calibratedCompactModelArtifacts": [
+                {"artifactReference": "compact-model.json", "sha256": "f" * 64},
+            ],
+            "calibratedLossModelArtifact": {
+                "artifactReference": "loss-model.json",
+                "sha256": "f" * 64,
+            },
+            "calibratedCrosstalkModelArtifact": {
+                "artifactReference": "crosstalk-model.json",
+                "sha256": "f" * 64,
+            },
+            "calibratedPhaseShifterModelArtifact": {
+                "artifactReference": "phase-shifter-model.json",
+                "sha256": "f" * 64,
+            },
+            "wavelengthRange": "test wavelength range",
+            "temperatureOrOperatingCondition": "295 K",
+            "calibrationProcedure": "test calibration procedure",
+            "provenance": "test provenance",
+            "uncertaintyOrErrorEstimate": "test uncertainty",
+            "operatorOrSource": "test operator",
+            "claimBoundary": "test fixture only",
+        }
 
     def _stage_6_manifest(self, sha256_hash: str = "f" * 64) -> dict:
         return {
@@ -225,6 +350,40 @@ class HrmValidationGatesTest(unittest.TestCase):
             "provenance": "test provenance",
             "claimBoundary": "test fixture only",
         }
+
+    def _write_valid_stage_5_fixture(self, root: Path) -> Path:
+        sparams = root / "sparams.s2p"
+        compact = root / "compact-model.json"
+        loss = root / "loss-model.json"
+        crosstalk = root / "crosstalk-model.json"
+        phase_shifter = root / "phase-shifter-model.json"
+        sparams.write_text("# test s-parameters\n", encoding="utf-8")
+        compact.write_text('{"compactModel": true}\n', encoding="utf-8")
+        loss.write_text('{"lossModel": true}\n', encoding="utf-8")
+        crosstalk.write_text('{"crosstalkModel": true}\n', encoding="utf-8")
+        phase_shifter.write_text('{"phaseShifterModel": true}\n', encoding="utf-8")
+        manifest = self._stage_5_manifest()
+        manifest["sParameterArtifacts"] = [
+            {"artifactReference": sparams.name, "sha256": _sha256(sparams)},
+        ]
+        manifest["calibratedCompactModelArtifacts"] = [
+            {"artifactReference": compact.name, "sha256": _sha256(compact)},
+        ]
+        manifest["calibratedLossModelArtifact"] = {
+            "artifactReference": loss.name,
+            "sha256": _sha256(loss),
+        }
+        manifest["calibratedCrosstalkModelArtifact"] = {
+            "artifactReference": crosstalk.name,
+            "sha256": _sha256(crosstalk),
+        }
+        manifest["calibratedPhaseShifterModelArtifact"] = {
+            "artifactReference": phase_shifter.name,
+            "sha256": _sha256(phase_shifter),
+        }
+        manifest_path = root / "stage5-manifest.json"
+        manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+        return manifest_path
 
     def _write_valid_stage_6_fixture(self, root: Path) -> Path:
         (root / "raw.json").write_text('{"raw": true}\n', encoding="utf-8")

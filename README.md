@@ -153,6 +153,7 @@ docs/future-work/evidence-ledger.json
 
 Schema documentation for future hardware evidence gates:
 
+- `docs/future-work/foundry-calibrated-device-model-schema.md`
 - `docs/future-work/measured-transfer-matrix-fixture-schema.md`
 - `docs/future-work/hardware-benchmark-acceptance-schema.md`
 
@@ -237,13 +238,17 @@ The blocked stages are the boundary between simulation and hardware evidence.
 
 These blockers should remain until the required external artifacts exist.
 
-Stage 6 and Stage 7 schema docs define required fields for future evidence
-packages. They are not evidence, do not contain measured data, and do not
-unblock either gate.
+Stage 5, Stage 6, and Stage 7 schema docs define required fields for future
+evidence packages. They are not evidence, do not contain foundry or measured
+data, and do not unblock any hardware gate.
 
-Stage 6 and Stage 7 gates also validate artifact references, hashes, date
-format, allowed matrix conventions, non-empty provenance fields, and the Stage
-7 dependency on a completed Stage 6 measured-transfer-matrix gate.
+Stage 5 gates validate foundry evidence class, relative artifact references,
+hashes, source date format, non-empty provenance, uncertainty, source, and
+claim-boundary fields.
+
+Stage 6 and Stage 7 gates validate artifact references, hashes, date format,
+allowed matrix conventions, non-empty provenance fields, and the Stage 7
+dependency on a completed Stage 6 measured-transfer-matrix gate.
 
 ## Claim Boundary
 
@@ -263,6 +268,8 @@ Completed alpha milestones:
 
 Completed post-alpha.3 main work:
 
+- foundry-calibrated device-model schema documented and enforced by Stage 5 gate acceptance criteria.
+- foundry-calibrated manifest validation hardened with artifact, hash, source-date, evidence-class, provenance, uncertainty, and claim-boundary checks.
 - measured-transfer-matrix fixture schema documented and enforced by Stage 6 gate acceptance criteria.
 - hardware benchmark acceptance schema documented and enforced by Stage 7 gate acceptance criteria.
 - measured-transfer-matrix manifest validation hardened with artifact, hash, date, convention, and provenance checks.
@@ -276,7 +283,7 @@ Near-term:
 
 Later, only when evidence exists:
 
-- connect Stage 5 to foundry-calibrated model artifacts
+- supply real Stage 5 foundry-calibrated model artifacts
 - connect Stage 6 to measured transfer-matrix artifacts
 - connect Stage 7 to an end-to-end measured hardware benchmark
 
