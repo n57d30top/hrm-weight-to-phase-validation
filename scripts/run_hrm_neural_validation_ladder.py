@@ -18,6 +18,10 @@ from oqp.future_work.calibration_loop import (  # noqa: E402
     run_calibration_sweep_report,
 )
 from oqp.future_work.complex_unitary_mapping import run_complex_unitary_mesh_support_report  # noqa: E402
+from oqp.future_work.matrix_family_benchmark import (  # noqa: E402
+    run_matrix_family_analysis_report,
+    run_matrix_family_benchmark_report,
+)
 from oqp.future_work.mesh_mapping import run_mesh_constrained_demo  # noqa: E402
 from oqp.future_work.neural_mapping import run_svd_mapping_demo  # noqa: E402
 from oqp.future_work.perturbation_model import (  # noqa: E402
@@ -52,6 +56,8 @@ STAGE_FILES = {
 
 SUPPLEMENTAL_REPORT_FILES = {
     "complex-unitary-mesh-support": "complex-unitary-mesh-support.json",
+    "matrix-family-analysis": "matrix-family-analysis.json",
+    "matrix-family-benchmark": "matrix-family-benchmark.json",
     "rectangular-matrix-support": "rectangular-matrix-support.json",
     "stage-3-perturbation-sweep": "stage-3-perturbation-sweep.json",
     "stage-3-sweep-analysis": "stage-3-sweep-analysis.json",
@@ -84,6 +90,8 @@ def main() -> None:
 
     supplemental_reports = [
         run_complex_unitary_mesh_support_report(),
+        run_matrix_family_benchmark_report(),
+        run_matrix_family_analysis_report(),
         run_rectangular_matrix_support_report(),
         run_perturbation_sweep_report(),
         run_perturbation_sweep_analysis_report(),
@@ -179,11 +187,18 @@ def _key_metrics(report: Dict[str, Any]) -> Dict[str, Any]:
         "rectangularLayerSupportImplemented",
         "rectangularMode",
         "meshConstrainedReconstructionErrorMax",
+        "averageMeshConstrainedError",
         "errorDeltaMax",
+        "maxErrorDelta",
         "caseCount",
+        "matrixFamilies",
         "matrixShapes",
         "inputShapes",
         "outputShapes",
+        "realCaseCount",
+        "complexCaseCount",
+        "bestCase",
+        "worstCase",
         "complexValuedSupportImplemented",
         "unitaryFactorSupportImplemented",
         "complexSvdImplemented",

@@ -205,6 +205,133 @@
     },
     {
       "blockers": [
+        "no_large_model_weight_distribution",
+        "no_physical_mesh_layout",
+        "no_foundry_calibrated_mesh_model",
+        "no_measured_transfer_matrix"
+      ],
+      "evidenceLevel": "abstract_matrix_family_benchmark_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "matrix-family-benchmark",
+      "keyMetrics": {
+        "caseCount": 11,
+        "complexCaseCount": 2,
+        "errorDeltaMax": 0.099951757092972,
+        "matrixFamilies": [
+          "identity",
+          "diagonal_dynamic_range",
+          "low_rank",
+          "rank_deficient",
+          "ill_conditioned",
+          "sparse_like",
+          "dense_seeded",
+          "rectangular_tall",
+          "rectangular_wide",
+          "complex_phase_dominant",
+          "unitary_like"
+        ],
+        "matrixShapes": [
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            6,
+            4
+          ],
+          [
+            5,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            6,
+            6
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            8,
+            4
+          ],
+          [
+            4,
+            8
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ]
+        ],
+        "meshConstrainedReconstructionErrorMax": 0.099951757092972,
+        "realCaseCount": 9
+      },
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Matrix-family benchmark for abstract HRM mapping simulation"
+    },
+    {
+      "blockers": [
+        "no_large_model_weight_distribution",
+        "no_physical_mesh_layout",
+        "no_foundry_calibrated_mesh_model",
+        "no_measured_transfer_matrix"
+      ],
+      "evidenceLevel": "abstract_matrix_family_analysis",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "matrix-family-analysis",
+      "keyMetrics": {
+        "averageMeshConstrainedError": 0.045353461797016,
+        "bestCase": {
+          "caseId": "identity_4x4",
+          "errorDelta": 0.0,
+          "matrixFamily": "identity",
+          "meshConstrainedReconstructionError": 0.0,
+          "realOrComplex": "real",
+          "shape": [
+            4,
+            4
+          ]
+        },
+        "caseCount": 11,
+        "maxErrorDelta": 0.099951757092972,
+        "worstCase": {
+          "caseId": "rectangular_tall_8x4",
+          "errorDelta": 0.099951757092972,
+          "matrixFamily": "rectangular_tall",
+          "meshConstrainedReconstructionError": 0.099951757092972,
+          "realOrComplex": "real",
+          "shape": [
+            8,
+            4
+          ]
+        }
+      },
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Matrix-family benchmark analysis"
+    },
+    {
+      "blockers": [
         "no_combined_complex_rectangular_matrix_family_sweeps",
         "no_foundry_calibrated_mesh_model",
         "no_measured_transfer_matrix"

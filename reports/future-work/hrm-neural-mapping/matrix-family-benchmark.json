@@ -1,0 +1,422 @@
+{
+  "blockers": [
+    "no_large_model_weight_distribution",
+    "no_physical_mesh_layout",
+    "no_foundry_calibrated_mesh_model",
+    "no_measured_transfer_matrix"
+  ],
+  "caseCount": 11,
+  "cases": [
+    {
+      "amplitudeError": null,
+      "caseId": "identity_4x4",
+      "conditionNumber": 1.0,
+      "errorDelta": 0.0,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "idealReconstructionError": 0.0,
+      "limitations": [
+        "identity control case; not representative of trained dense neural weights"
+      ],
+      "mappingMode": "abstract_square_real_mesh",
+      "matrixFamily": "identity",
+      "matrixShape": [
+        4,
+        4
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.0,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 4,
+      "realOrComplex": "real",
+      "shape": [
+        4,
+        4
+      ]
+    },
+    {
+      "amplitudeError": null,
+      "caseId": "diagonal_dynamic_range_4x4",
+      "conditionNumber": 50.0,
+      "errorDelta": 0.0,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "idealReconstructionError": 0.0,
+      "limitations": [
+        "diagonal dynamic-range case; ignores dense mixing structure"
+      ],
+      "mappingMode": "abstract_square_real_mesh",
+      "matrixFamily": "diagonal_dynamic_range",
+      "matrixShape": [
+        4,
+        4
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.0,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 4,
+      "realOrComplex": "real",
+      "shape": [
+        4,
+        4
+      ]
+    },
+    {
+      "amplitudeError": null,
+      "caseId": "low_rank_6x4",
+      "conditionNumber": null,
+      "errorDelta": 0.067412713487605,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "idealReconstructionError": 2.723494e-09,
+      "limitations": [
+        "rank-deficient rectangular case; condition number is undefined"
+      ],
+      "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+      "matrixFamily": "low_rank",
+      "matrixShape": [
+        6,
+        4
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.067412716211098,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 2,
+      "realOrComplex": "real",
+      "shape": [
+        6,
+        4
+      ]
+    },
+    {
+      "amplitudeError": null,
+      "caseId": "rank_deficient_5x3",
+      "conditionNumber": null,
+      "errorDelta": 0.053423682715676,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "idealReconstructionError": 0.0,
+      "limitations": [
+        "rank-deficient rectangular case; condition number is undefined"
+      ],
+      "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+      "matrixFamily": "rank_deficient",
+      "matrixShape": [
+        5,
+        3
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.053423682715676,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 2,
+      "realOrComplex": "real",
+      "shape": [
+        5,
+        3
+      ]
+    },
+    {
+      "amplitudeError": null,
+      "caseId": "ill_conditioned_4x4",
+      "conditionNumber": 1049.0872103750953,
+      "errorDelta": 0.019715442028197,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "idealReconstructionError": 0.0,
+      "limitations": [
+        "small deterministic ill-conditioned matrix; no training distribution is represented"
+      ],
+      "mappingMode": "abstract_square_real_mesh",
+      "matrixFamily": "ill_conditioned",
+      "matrixShape": [
+        4,
+        4
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.019715442028197,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 4,
+      "realOrComplex": "real",
+      "shape": [
+        4,
+        4
+      ]
+    },
+    {
+      "amplitudeError": null,
+      "caseId": "sparse_like_6x6",
+      "conditionNumber": 3.024598640798137,
+      "errorDelta": 0.099422423790044,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "idealReconstructionError": 0.0,
+      "limitations": [
+        "sparse-like hand-authored case; no sparse hardware routing model is included"
+      ],
+      "mappingMode": "abstract_square_real_mesh",
+      "matrixFamily": "sparse_like",
+      "matrixShape": [
+        6,
+        6
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.099422423790045,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 6,
+      "realOrComplex": "real",
+      "shape": [
+        6,
+        6
+      ]
+    },
+    {
+      "amplitudeError": null,
+      "caseId": "dense_seeded_4x4",
+      "conditionNumber": 3.808044043707601,
+      "errorDelta": 0.063740132157597,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "idealReconstructionError": 0.0,
+      "limitations": [
+        "single deterministic dense case; not a statistical model benchmark"
+      ],
+      "mappingMode": "abstract_square_real_mesh",
+      "matrixFamily": "dense_seeded",
+      "matrixShape": [
+        4,
+        4
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.063740132157598,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 4,
+      "realOrComplex": "real",
+      "shape": [
+        4,
+        4
+      ]
+    },
+    {
+      "amplitudeError": null,
+      "caseId": "rectangular_tall_8x4",
+      "conditionNumber": 2.349552470411624,
+      "errorDelta": 0.099951757092972,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "idealReconstructionError": 0.0,
+      "limitations": [
+        "rectangular tall simulation; no physical rectangular mesh layout is defined"
+      ],
+      "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+      "matrixFamily": "rectangular_tall",
+      "matrixShape": [
+        8,
+        4
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.099951757092972,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 4,
+      "realOrComplex": "real",
+      "shape": [
+        8,
+        4
+      ]
+    },
+    {
+      "amplitudeError": null,
+      "caseId": "rectangular_wide_4x8",
+      "conditionNumber": 4.513222432615251,
+      "errorDelta": 0.062118652428486,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "idealReconstructionError": 7e-15,
+      "limitations": [
+        "rectangular wide simulation; no physical fan-out or readout model is included"
+      ],
+      "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+      "matrixFamily": "rectangular_wide",
+      "matrixShape": [
+        4,
+        8
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.062118652428493,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 4,
+      "realOrComplex": "real",
+      "shape": [
+        4,
+        8
+      ]
+    },
+    {
+      "amplitudeError": 0.004561943703387,
+      "caseId": "complex_phase_dominant_4x4",
+      "conditionNumber": null,
+      "errorDelta": 0.011421471667843,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "idealReconstructionError": 0.0,
+      "limitations": [
+        "complex QR unitary-factor handling only; no full complex SVD pipeline"
+      ],
+      "mappingMode": "complex_qr_unitary_factor",
+      "matrixFamily": "complex_phase_dominant",
+      "matrixShape": [
+        4,
+        4
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.011421471667843,
+      "phaseAwareError": 0.015748231526569,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 4,
+      "realOrComplex": "complex",
+      "shape": [
+        4,
+        4
+      ],
+      "unitaryFactorDeviation": 0.0
+    },
+    {
+      "amplitudeError": 0.008812377653085,
+      "caseId": "unitary_like_4x4",
+      "conditionNumber": null,
+      "errorDelta": 0.021681801675254,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "idealReconstructionError": 0.0,
+      "limitations": [
+        "unitary-like deterministic control; no physical interferometer layout is generated"
+      ],
+      "mappingMode": "complex_qr_unitary_factor",
+      "matrixFamily": "unitary_like",
+      "matrixShape": [
+        4,
+        4
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.021681801675254,
+      "phaseAwareError": 0.019837379085227,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 4,
+      "realOrComplex": "complex",
+      "shape": [
+        4,
+        4
+      ],
+      "unitaryFactorDeviation": 0.0
+    }
+  ],
+  "claimBoundary": "Simulation-only matrix-family benchmark; no hardware validation, foundry calibration, measured transfer matrix, or production inference readiness is claimed.",
+  "complexCaseCount": 2,
+  "errorDeltaMax": 0.099951757092972,
+  "evidenceLevel": "abstract_matrix_family_benchmark_simulation",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "matrix-family-benchmark",
+  "limitations": [
+    "simulation-only benchmark over small deterministic matrix families",
+    "real square cases use the abstract real-valued mesh approximation",
+    "rectangular cases use orthogonal completion and rectangular sigma cores",
+    "complex cases use complex QR unitary-factor handling, not a full complex SVD pipeline",
+    "no physical Clements/Reck layout",
+    "no foundry layout synthesis",
+    "no measured transfer matrix"
+  ],
+  "matrixFamilies": [
+    "identity",
+    "diagonal_dynamic_range",
+    "low_rank",
+    "rank_deficient",
+    "ill_conditioned",
+    "sparse_like",
+    "dense_seeded",
+    "rectangular_tall",
+    "rectangular_wide",
+    "complex_phase_dominant",
+    "unitary_like"
+  ],
+  "matrixShapes": [
+    [
+      4,
+      4
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      6,
+      4
+    ],
+    [
+      5,
+      3
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      6,
+      6
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      8,
+      4
+    ],
+    [
+      4,
+      8
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      4,
+      4
+    ]
+  ],
+  "maxErrorDeltaCaseId": "rectangular_tall_8x4",
+  "measuredTransferMatrixAvailable": false,
+  "meshConstrainedReconstructionErrorMax": 0.099951757092972,
+  "nextValidationGates": [
+    "multi_layer_toy_inference_pipeline",
+    "model_weight_manifest_import",
+    "foundry_calibrated_device_model_gate"
+  ],
+  "phaseLevels": 64,
+  "productionInferenceReady": false,
+  "realCaseCount": 9,
+  "stage": 2,
+  "stageStatus": "complete",
+  "title": "Matrix-family benchmark for abstract HRM mapping simulation",
+  "worstCaseId": "rectangular_tall_8x4"
+}

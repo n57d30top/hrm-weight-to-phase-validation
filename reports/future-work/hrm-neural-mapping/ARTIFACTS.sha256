@@ -7,9 +7,11 @@ d471d623f8a72a758beef64998a4e4f438b52e9dda7fa2b8dd1aae3716558738  reports/future
 9e5b187bba9f9c7b0eff90ca17d8b4def9e132c6fecfadf03dec582b4731c803  reports/future-work/hrm-neural-mapping/stage-6-measured-transfer-matrix-gate.json
 6cd5d908deb421777f50426a9ddca4f0c2b1203454672502afaf5dec0b9ae40a  reports/future-work/hrm-neural-mapping/stage-7-hardware-benchmark-gate.json
 d6f2ec923e118609079919a350bd1adeb0f2a387c1b73c8f96248e59e9163111  reports/future-work/hrm-neural-mapping/complex-unitary-mesh-support.json
+55e70a81708163764b626529c8be9b936f37087b8115203b2739b13e771efb56  reports/future-work/hrm-neural-mapping/matrix-family-analysis.json
+714866601f596ca78398b858bd8a193be448759c78311e7fe4fc486c2da1628c  reports/future-work/hrm-neural-mapping/matrix-family-benchmark.json
 65e1823bb59c6c76b843b1572f4c102796fc5ecb94fbe2b61025a41fb9d6dda3  reports/future-work/hrm-neural-mapping/rectangular-matrix-support.json
 d4face109973ab34514a6175a9b807a9a9b4c04146c01eb199d37219428b9530  reports/future-work/hrm-neural-mapping/stage-3-perturbation-sweep.json
 5cf6a2c9e1c3a2a66462109ec81498c162760e0286eba7378f1cc3005da26fd3  reports/future-work/hrm-neural-mapping/stage-3-sweep-analysis.json
 94e57d64c6086c0babc827e42d0c210d6c61b383eddbf78255ce8fee6fba7ab1  reports/future-work/hrm-neural-mapping/stage-4-calibration-analysis.json
 db8c933ce203ccfbf7a10ad454498e04021b8172e8e412d1da0a2336cadd4fdd  reports/future-work/hrm-neural-mapping/stage-4-calibration-sweep.json
-db689e8ff3b5629667ea213d64ba11756a0f571e2d470cd5e282e8a8f30c222c  reports/future-work/hrm-neural-mapping/validation-ladder-summary.json
+247fa6c94e2042385932aea554c01cabb3b4ccc3bcf60fce7779dbdc9d31a724  reports/future-work/hrm-neural-mapping/validation-ladder-summary.json

@@ -1,0 +1,251 @@
+{
+  "averageMeshConstrainedError": 0.045353461797016,
+  "benchmarkReport": "matrix-family-benchmark.json",
+  "bestCase": {
+    "caseId": "identity_4x4",
+    "errorDelta": 0.0,
+    "matrixFamily": "identity",
+    "meshConstrainedReconstructionError": 0.0,
+    "realOrComplex": "real",
+    "shape": [
+      4,
+      4
+    ]
+  },
+  "blockers": [
+    "no_large_model_weight_distribution",
+    "no_physical_mesh_layout",
+    "no_foundry_calibrated_mesh_model",
+    "no_measured_transfer_matrix"
+  ],
+  "caseCount": 11,
+  "claimBoundary": "Simulation-only matrix-family analysis; no hardware validation, foundry calibration, measured transfer matrix, or production inference readiness is claimed.",
+  "evidenceLevel": "abstract_matrix_family_analysis",
+  "familyRankingByConditionSensitivity": [
+    {
+      "caseId": "ill_conditioned_4x4",
+      "conditionNumber": 1049.0872103750953,
+      "conditionSensitivityProxy": 0.059556635829906,
+      "matrixFamily": "ill_conditioned",
+      "meshConstrainedReconstructionError": 0.019715442028197
+    },
+    {
+      "caseId": "sparse_like_6x6",
+      "conditionNumber": 3.024598640798137,
+      "conditionSensitivityProxy": 0.04778915300692,
+      "matrixFamily": "sparse_like",
+      "meshConstrainedReconstructionError": 0.099422423790045
+    },
+    {
+      "caseId": "rectangular_wide_4x8",
+      "conditionNumber": 4.513222432615251,
+      "conditionSensitivityProxy": 0.040655834203202,
+      "matrixFamily": "rectangular_wide",
+      "meshConstrainedReconstructionError": 0.062118652428493
+    },
+    {
+      "caseId": "rectangular_tall_8x4",
+      "conditionNumber": 2.349552470411624,
+      "conditionSensitivityProxy": 0.037080617414957,
+      "matrixFamily": "rectangular_tall",
+      "meshConstrainedReconstructionError": 0.099951757092972
+    },
+    {
+      "caseId": "dense_seeded_4x4",
+      "conditionNumber": 3.808044043707601,
+      "conditionSensitivityProxy": 0.037014019851561,
+      "matrixFamily": "dense_seeded",
+      "meshConstrainedReconstructionError": 0.063740132157598
+    },
+    {
+      "caseId": "diagonal_dynamic_range_4x4",
+      "conditionNumber": 50.0,
+      "conditionSensitivityProxy": 0.0,
+      "matrixFamily": "diagonal_dynamic_range",
+      "meshConstrainedReconstructionError": 0.0
+    },
+    {
+      "caseId": "identity_4x4",
+      "conditionNumber": 1.0,
+      "conditionSensitivityProxy": 0.0,
+      "matrixFamily": "identity",
+      "meshConstrainedReconstructionError": 0.0
+    }
+  ],
+  "familyRankingByError": [
+    {
+      "caseId": "rectangular_tall_8x4",
+      "errorDelta": 0.099951757092972,
+      "matrixFamily": "rectangular_tall",
+      "meshConstrainedReconstructionError": 0.099951757092972,
+      "realOrComplex": "real",
+      "shape": [
+        8,
+        4
+      ]
+    },
+    {
+      "caseId": "sparse_like_6x6",
+      "errorDelta": 0.099422423790044,
+      "matrixFamily": "sparse_like",
+      "meshConstrainedReconstructionError": 0.099422423790045,
+      "realOrComplex": "real",
+      "shape": [
+        6,
+        6
+      ]
+    },
+    {
+      "caseId": "low_rank_6x4",
+      "errorDelta": 0.067412713487605,
+      "matrixFamily": "low_rank",
+      "meshConstrainedReconstructionError": 0.067412716211098,
+      "realOrComplex": "real",
+      "shape": [
+        6,
+        4
+      ]
+    },
+    {
+      "caseId": "dense_seeded_4x4",
+      "errorDelta": 0.063740132157597,
+      "matrixFamily": "dense_seeded",
+      "meshConstrainedReconstructionError": 0.063740132157598,
+      "realOrComplex": "real",
+      "shape": [
+        4,
+        4
+      ]
+    },
+    {
+      "caseId": "rectangular_wide_4x8",
+      "errorDelta": 0.062118652428486,
+      "matrixFamily": "rectangular_wide",
+      "meshConstrainedReconstructionError": 0.062118652428493,
+      "realOrComplex": "real",
+      "shape": [
+        4,
+        8
+      ]
+    },
+    {
+      "caseId": "rank_deficient_5x3",
+      "errorDelta": 0.053423682715676,
+      "matrixFamily": "rank_deficient",
+      "meshConstrainedReconstructionError": 0.053423682715676,
+      "realOrComplex": "real",
+      "shape": [
+        5,
+        3
+      ]
+    },
+    {
+      "caseId": "unitary_like_4x4",
+      "errorDelta": 0.021681801675254,
+      "matrixFamily": "unitary_like",
+      "meshConstrainedReconstructionError": 0.021681801675254,
+      "realOrComplex": "complex",
+      "shape": [
+        4,
+        4
+      ]
+    },
+    {
+      "caseId": "ill_conditioned_4x4",
+      "errorDelta": 0.019715442028197,
+      "matrixFamily": "ill_conditioned",
+      "meshConstrainedReconstructionError": 0.019715442028197,
+      "realOrComplex": "real",
+      "shape": [
+        4,
+        4
+      ]
+    },
+    {
+      "caseId": "complex_phase_dominant_4x4",
+      "errorDelta": 0.011421471667843,
+      "matrixFamily": "complex_phase_dominant",
+      "meshConstrainedReconstructionError": 0.011421471667843,
+      "realOrComplex": "complex",
+      "shape": [
+        4,
+        4
+      ]
+    },
+    {
+      "caseId": "identity_4x4",
+      "errorDelta": 0.0,
+      "matrixFamily": "identity",
+      "meshConstrainedReconstructionError": 0.0,
+      "realOrComplex": "real",
+      "shape": [
+        4,
+        4
+      ]
+    },
+    {
+      "caseId": "diagonal_dynamic_range_4x4",
+      "errorDelta": 0.0,
+      "matrixFamily": "diagonal_dynamic_range",
+      "meshConstrainedReconstructionError": 0.0,
+      "realOrComplex": "real",
+      "shape": [
+        4,
+        4
+      ]
+    }
+  ],
+  "foundryCalibrated": false,
+  "hardestFamilyNotes": [
+    "rectangular_tall_8x4 has the largest mesh-constrained reconstruction error in this deterministic suite.",
+    "rectangular_tall_8x4 has the largest error delta relative to its ideal reconstruction.",
+    "Rank-deficient and complex cases are interpreted only within their current abstract simulation paths."
+  ],
+  "hardwareValidated": false,
+  "id": "matrix-family-analysis",
+  "limitations": [
+    "small deterministic matrix families only",
+    "no sampled training distribution",
+    "no large model layer statistics",
+    "complex cases use complex QR unitary-factor handling, not full complex SVD",
+    "no physical layout, foundry calibration, measured transfer matrix, timing, or energy evidence"
+  ],
+  "maxErrorDelta": 0.099951757092972,
+  "maxErrorDeltaCase": {
+    "caseId": "rectangular_tall_8x4",
+    "errorDelta": 0.099951757092972,
+    "matrixFamily": "rectangular_tall",
+    "meshConstrainedReconstructionError": 0.099951757092972,
+    "realOrComplex": "real",
+    "shape": [
+      8,
+      4
+    ]
+  },
+  "measuredTransferMatrixAvailable": false,
+  "monotonicityNotes": [
+    "No monotonicity is expected across unrelated matrix families.",
+    "Condition number is reported only when the real-valued compact SVD provides a full-rank spectrum.",
+    "Complex/unitary cases are ranked by error but excluded from condition-number sensitivity ranking."
+  ],
+  "nextValidationGates": [
+    "multi_layer_toy_inference_pipeline",
+    "model_weight_manifest_import",
+    "foundry_calibrated_device_model_gate"
+  ],
+  "productionInferenceReady": false,
+  "stage": 2,
+  "stageStatus": "complete",
+  "title": "Matrix-family benchmark analysis",
+  "worstCase": {
+    "caseId": "rectangular_tall_8x4",
+    "errorDelta": 0.099951757092972,
+    "matrixFamily": "rectangular_tall",
+    "meshConstrainedReconstructionError": 0.099951757092972,
+    "realOrComplex": "real",
+    "shape": [
+      8,
+      4
+    ]
+  }
+}

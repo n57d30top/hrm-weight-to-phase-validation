@@ -57,6 +57,38 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("phaseAwareErrorMax", report["keyMetrics"])
         self.assertIn("amplitudeErrorMax", report["keyMetrics"])
 
+    def test_validation_summary_includes_matrix_family_reports(self):
+        summary = json.loads((REPORT_DIR / "validation-ladder-summary.json").read_text(encoding="utf-8"))
+        reports = {
+            report["id"]: report
+            for report in summary["supplementalReports"]
+        }
+        self.assertIn("matrix-family-benchmark", reports)
+        self.assertIn("matrix-family-analysis", reports)
+        benchmark = reports["matrix-family-benchmark"]
+        analysis = reports["matrix-family-analysis"]
+        self.assertEqual(benchmark["stage"], 2)
+        self.assertEqual(benchmark["stageStatus"], "complete")
+        self.assertEqual(benchmark["evidenceLevel"], "abstract_matrix_family_benchmark_simulation")
+        self.assertEqual(benchmark["keyMetrics"]["caseCount"], 11)
+        self.assertIn("matrixFamilies", benchmark["keyMetrics"])
+        self.assertEqual(benchmark["keyMetrics"]["realCaseCount"], 9)
+        self.assertEqual(benchmark["keyMetrics"]["complexCaseCount"], 2)
+        self.assertFalse(benchmark["hardwareValidated"])
+        self.assertFalse(benchmark["foundryCalibrated"])
+        self.assertFalse(benchmark["measuredTransferMatrixAvailable"])
+        self.assertFalse(benchmark["productionInferenceReady"])
+        self.assertEqual(analysis["stage"], 2)
+        self.assertEqual(analysis["stageStatus"], "complete")
+        self.assertEqual(analysis["evidenceLevel"], "abstract_matrix_family_analysis")
+        self.assertEqual(analysis["keyMetrics"]["caseCount"], 11)
+        self.assertIn("averageMeshConstrainedError", analysis["keyMetrics"])
+        self.assertIn("maxErrorDelta", analysis["keyMetrics"])
+        self.assertFalse(analysis["hardwareValidated"])
+        self.assertFalse(analysis["foundryCalibrated"])
+        self.assertFalse(analysis["measuredTransferMatrixAvailable"])
+        self.assertFalse(analysis["productionInferenceReady"])
+
     def test_evidence_ledger_includes_rectangular_support(self):
         ledger = json.loads((ROOT / "docs" / "future-work" / "evidence-ledger.json").read_text(encoding="utf-8"))
         reports = {
@@ -81,6 +113,24 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertFalse(complex_report["foundryCalibrated"])
         self.assertFalse(complex_report["measuredTransferMatrixAvailable"])
         self.assertFalse(complex_report["productionInferenceReady"])
+        self.assertIn("matrix-family-benchmark", reports)
+        benchmark_report = reports["matrix-family-benchmark"]
+        self.assertEqual(benchmark_report["stage"], 2)
+        self.assertEqual(benchmark_report["stageStatus"], "complete")
+        self.assertEqual(benchmark_report["evidenceLevel"], "abstract_matrix_family_benchmark_simulation")
+        self.assertFalse(benchmark_report["hardwareValidated"])
+        self.assertFalse(benchmark_report["foundryCalibrated"])
+        self.assertFalse(benchmark_report["measuredTransferMatrixAvailable"])
+        self.assertFalse(benchmark_report["productionInferenceReady"])
+        self.assertIn("matrix-family-analysis", reports)
+        analysis_report = reports["matrix-family-analysis"]
+        self.assertEqual(analysis_report["stage"], 2)
+        self.assertEqual(analysis_report["stageStatus"], "complete")
+        self.assertEqual(analysis_report["evidenceLevel"], "abstract_matrix_family_analysis")
+        self.assertFalse(analysis_report["hardwareValidated"])
+        self.assertFalse(analysis_report["foundryCalibrated"])
+        self.assertFalse(analysis_report["measuredTransferMatrixAvailable"])
+        self.assertFalse(analysis_report["productionInferenceReady"])
 
     def test_artifacts_sha256_covers_all_generated_json_reports(self):
         json_reports = {
@@ -96,12 +146,16 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertEqual(json_reports - hashed_reports, set())
         self.assertIn("reports/future-work/hrm-neural-mapping/rectangular-matrix-support.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/complex-unitary-mesh-support.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/matrix-family-benchmark.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/matrix-family-analysis.json", hashed_reports)
 
     def test_readme_rectangular_support_is_current(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         normalized = " ".join(readme.split())
         self.assertIn("rectangular-matrix-support.json", normalized)
         self.assertIn("complex-unitary-mesh-support.json", normalized)
+        self.assertIn("matrix-family-benchmark.json", normalized)
+        self.assertIn("matrix-family-analysis.json", normalized)
         self.assertIn("supplemental rectangular support exists", normalized)
         self.assertIn("physical complex/unitary mesh layout", normalized)
         self.assertIn("still no hardware validation", normalized)

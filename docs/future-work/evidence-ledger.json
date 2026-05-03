@@ -170,6 +170,50 @@
     },
     {
       "blockers": [
+        "no_large_model_weight_distribution",
+        "no_physical_mesh_layout",
+        "no_foundry_calibrated_mesh_model",
+        "no_measured_transfer_matrix"
+      ],
+      "evidenceLevel": "abstract_matrix_family_benchmark_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "matrix-family-benchmark",
+      "measuredTransferMatrixAvailable": false,
+      "nextValidationGates": [
+        "multi_layer_toy_inference_pipeline",
+        "model_weight_manifest_import",
+        "foundry_calibrated_device_model_gate"
+      ],
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Matrix-family benchmark for abstract HRM mapping simulation"
+    },
+    {
+      "blockers": [
+        "no_large_model_weight_distribution",
+        "no_physical_mesh_layout",
+        "no_foundry_calibrated_mesh_model",
+        "no_measured_transfer_matrix"
+      ],
+      "evidenceLevel": "abstract_matrix_family_analysis",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "matrix-family-analysis",
+      "measuredTransferMatrixAvailable": false,
+      "nextValidationGates": [
+        "multi_layer_toy_inference_pipeline",
+        "model_weight_manifest_import",
+        "foundry_calibrated_device_model_gate"
+      ],
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Matrix-family benchmark analysis"
+    },
+    {
+      "blockers": [
         "no_combined_complex_rectangular_matrix_family_sweeps",
         "no_foundry_calibrated_mesh_model",
         "no_measured_transfer_matrix"

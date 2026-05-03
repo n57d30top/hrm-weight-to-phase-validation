@@ -137,6 +137,8 @@ Key files:
 - `stage-1-svd-demo.json`
 - `stage-2-mesh-constrained.json`
 - `complex-unitary-mesh-support.json`
+- `matrix-family-benchmark.json`
+- `matrix-family-analysis.json`
 - `rectangular-matrix-support.json`
 - `stage-3-perturbation-model.json`
 - `stage-3-perturbation-sweep.json`
@@ -219,6 +221,36 @@ path.
 
 The report includes a 2x2 unitary-like case, a deterministic 4x4 complex case,
 and a phase-dominant 4x4 case. All hardware evidence flags remain false.
+
+## Matrix-Family Benchmark
+
+The supplemental reports `matrix-family-benchmark.json` and
+`matrix-family-analysis.json` compare the current abstract mapping paths across
+small deterministic matrix families.
+
+The benchmark covers:
+
+- identity 4x4
+- diagonal dynamic-range 4x4
+- low-rank 6x4
+- rank-deficient 5x3
+- ill-conditioned 4x4
+- sparse-like 6x6
+- dense seeded 4x4
+- rectangular tall 8x4
+- rectangular wide 4x8
+- complex phase-dominant 4x4
+- unitary-like 4x4
+
+Square real cases use the abstract real-valued mesh path, rectangular cases use
+orthogonal completion and rectangular singular-value transfer cores, and complex
+cases use complex QR unitary-factor handling. The analysis report summarizes
+best/worst cases, maximum error delta, average mesh-constrained error, and
+rankings by reconstruction error and condition-sensitivity proxy.
+
+This remains a small deterministic simulation benchmark. It is not a sampled
+training distribution, not a large-model benchmark, not a physical layout, not
+a measured transfer matrix, and not a hardware benchmark.
 
 ## Rectangular Matrix Support
 
@@ -343,11 +375,16 @@ Completed post-alpha.5 main work:
 
 - complex/unitary support added as a supplemental simulation report for unitary-like, general complex, and phase-dominant cases.
 
+Completed post-alpha.6 main work:
+
+- matrix-family benchmark and analysis reports added for identity, dynamic-range, low-rank, rank-deficient, ill-conditioned, sparse-like, dense, rectangular, complex phase-dominant, and unitary-like deterministic cases.
+
 Near-term:
 
 - keep CI green for report generation, JSON validation, hashes, and tests
 - complex SVD pipeline
-- matrix-family sweeps over rectangular layer shapes
+- multi-layer toy inference pipeline
+- model weight manifest import layer
 
 Later, only when evidence exists:
 
