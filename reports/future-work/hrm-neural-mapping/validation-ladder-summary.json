@@ -54,7 +54,8 @@
         "meshConstrainedRelativeError": 0.019640136609986,
         "meshErrorDelta": 0.019640136609985,
         "physicalCouplerSynthesisImplemented": false,
-        "physicalPhaseSynthesisImplemented": false
+        "physicalPhaseSynthesisImplemented": false,
+        "rectangularLayerSupportImplemented": true
       },
       "measuredTransferMatrixAvailable": false,
       "productionInferenceReady": false,
@@ -158,6 +159,65 @@
     }
   ],
   "supplementalReports": [
+    {
+      "blockers": [
+        "no_complex_unitary_mesh",
+        "no_foundry_calibrated_mesh_model",
+        "no_measured_transfer_matrix"
+      ],
+      "evidenceLevel": "abstract_rectangular_mesh_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "rectangular-matrix-support",
+      "keyMetrics": {
+        "caseCount": 3,
+        "errorDeltaMax": 0.091134277782103,
+        "inputShapes": [
+          [
+            4
+          ],
+          [
+            6
+          ],
+          [
+            3
+          ]
+        ],
+        "matrixShapes": [
+          [
+            6,
+            4
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            3
+          ]
+        ],
+        "meshConstrainedReconstructionErrorMax": 0.091134277782103,
+        "outputShapes": [
+          [
+            6
+          ],
+          [
+            4
+          ],
+          [
+            5
+          ]
+        ],
+        "rectangularLayerSupportImplemented": true,
+        "rectangularMode": "orthogonal_completion_rectangular_sigma"
+      },
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Rectangular matrix support for abstract HRM mesh simulation"
+    },
     {
       "blockers": [
         "no_foundry_calibrated_loss_phase_noise_model",

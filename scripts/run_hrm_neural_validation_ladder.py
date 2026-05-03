@@ -24,6 +24,7 @@ from oqp.future_work.perturbation_model import (  # noqa: E402
     run_perturbation_sweep_analysis_report,
     run_perturbation_sweep_report,
 )
+from oqp.future_work.rectangular_mapping import run_rectangular_matrix_support_report  # noqa: E402
 from oqp.future_work.validation_gates import (  # noqa: E402
     foundry_calibration_gate,
     hardware_benchmark_gate,
@@ -49,6 +50,7 @@ STAGE_FILES = {
 }
 
 SUPPLEMENTAL_REPORT_FILES = {
+    "rectangular-matrix-support": "rectangular-matrix-support.json",
     "stage-3-perturbation-sweep": "stage-3-perturbation-sweep.json",
     "stage-3-sweep-analysis": "stage-3-sweep-analysis.json",
     "stage-4-calibration-analysis": "stage-4-calibration-analysis.json",
@@ -79,6 +81,7 @@ def main() -> None:
     ]
 
     supplemental_reports = [
+        run_rectangular_matrix_support_report(),
         run_perturbation_sweep_report(),
         run_perturbation_sweep_analysis_report(),
         run_calibration_sweep_report(),
@@ -170,6 +173,14 @@ def _key_metrics(report: Dict[str, Any]) -> Dict[str, Any]:
         "idealSvdRelativeError",
         "meshConstrainedRelativeError",
         "meshErrorDelta",
+        "rectangularLayerSupportImplemented",
+        "rectangularMode",
+        "meshConstrainedReconstructionErrorMax",
+        "errorDeltaMax",
+        "caseCount",
+        "matrixShapes",
+        "inputShapes",
+        "outputShapes",
         "abstractPhaseParameterizationImplemented",
         "abstractCouplerParameterizationImplemented",
         "physicalPhaseSynthesisImplemented",

@@ -117,10 +117,10 @@
   "couplerCount": 6,
   "currentDemoScope": [
     "small deterministic matrix",
-    "square matrix only",
+    "main Stage 2 demo matrix remains square",
     "real-valued orthogonal approximation",
     "no complex unitary mesh",
-    "no rectangular neural layer support",
+    "rectangular neural layer support is reported separately as a supplemental simulation artifact",
     "no Clements or Reck physical interferometer layout"
   ],
   "evidenceLevel": "abstract_mesh_simulation",
@@ -138,6 +138,7 @@
     "not a real fabricated chip mesh or foundry-calibrated HRM layout",
     "real-valued orthogonal rotation mesh only"
   ],
+  "mainDemoMatrixIsSquare": true,
   "matrixShape": [
     3,
     3
@@ -165,7 +166,8 @@
   "productionInferenceReady": false,
   "realChipMesh": false,
   "realValuedOrthogonalApproximation": true,
-  "rectangularLayerSupportImplemented": false,
+  "rectangularLayerSupportImplemented": true,
+  "rectangularSupportReport": "rectangular-matrix-support.json",
   "rightMeshCouplerCount": 3,
   "rightMeshPhaseCount": 4,
   "rightMeshRotationCount": 3,
@@ -174,7 +176,7 @@
     0.754934750499,
     0.411810282449
   ],
-  "squareMatrixOnly": true,
+  "squareMatrixOnly": false,
   "stage": 2,
   "stageStatus": "complete",
   "title": "Mesh-constrained HRM transfer-matrix approximation"

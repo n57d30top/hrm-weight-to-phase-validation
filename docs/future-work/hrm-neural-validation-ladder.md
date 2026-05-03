@@ -7,7 +7,7 @@ mapping future-work track. It is intentionally separate from hardware readiness.
 | --- | --- | --- | --- |
 | 0 | complete | theoretical_extension | Specification exists and includes explicit claim boundaries. |
 | 1 | complete | numerical_simulation | Deterministic SVD reconstruction passes tests with passive singular-value normalization. |
-| 2 | complete | abstract_mesh_simulation | Deterministic abstract phase/coupler parameterization is implemented and tested without claiming physical phase synthesis, a foundry layout, or a real chip mesh. |
+| 2 | complete | abstract_mesh_simulation | Deterministic abstract phase/coupler parameterization is implemented and tested for square and supplemental rectangular simulation cases without claiming physical phase synthesis, a foundry layout, or a real chip mesh. |
 | 3 | complete | uncalibrated_perturbation_simulation | Deterministic perturbation models run and report deltas without physical-accuracy claims. |
 | 4 | complete | synthetic_calibration_simulation | Simulation-only calibration improves or does not worsen a synthetic transfer estimate using an oracle target available only in simulation. |
 | 5 | blocked | foundry_calibration_gate | Requires foundry-calibrated S-parameters or equivalent calibrated device models. |
@@ -19,12 +19,18 @@ They identify the missing evidence needed before any stronger claim can be made.
 
 The generated summary is `reports/future-work/hrm-neural-mapping/validation-ladder-summary.json`.
 
-Stage 2 is complete only as an abstract mesh simulation. It is currently scoped
-to a small square matrix, real-valued orthogonal approximation, deterministic
-quantized Givens rotations, and abstract phase/coupler parameter records. It
-does not implement a complex unitary mesh, rectangular neural layer support,
+Stage 2 is complete only as an abstract mesh simulation. The main Stage 2 demo
+remains scoped to a small square matrix, real-valued orthogonal approximation,
+deterministic quantized Givens rotations, and abstract phase/coupler parameter
+records. A supplemental rectangular support report covers tall, wide, and
+rank-deficient matrix cases using orthogonal completion and a rectangular
+singular-value transfer core. This does not implement a complex unitary mesh,
 Clements/Reck physical interferometer layout, foundry layout synthesis, physical
 phase synthesis, or physical coupler synthesis.
+
+The supplemental rectangular report is
+`reports/future-work/hrm-neural-mapping/rectangular-matrix-support.json`.
+It keeps all hardware-readiness flags false.
 
 Stage 4 is synthetic/oracle calibration. It does not use measured transfer
 matrices and does not claim hardware calibration.

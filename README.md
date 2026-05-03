@@ -26,6 +26,8 @@ The current pipeline covers:
 - compact SVD reconstruction
 - passive singular-value normalization
 - abstract real-valued mesh approximation
+- rectangular neural layer simulation via orthogonal completion and rectangular
+  singular-value transfer cores
 - abstract phase/coupler parameter records
 - deterministic perturbation simulation
 - synthetic/oracle calibration simulation
@@ -57,7 +59,7 @@ The current evidence is limited to simulation and synthetic calibration.
 | --- | --- | --- | --- |
 | 0 | complete | theoretical_extension | Future-work specification and claim boundaries exist. |
 | 1 | complete | numerical_simulation | A deterministic SVD mapping demo reconstructs the normalized target. |
-| 2 | complete | abstract_mesh_simulation | Abstract phase/coupler parameterization exists for the small square demo case. |
+| 2 | complete | abstract_mesh_simulation | Abstract phase/coupler parameterization exists for the square demo case, with supplemental rectangular matrix support. |
 | 3 | complete | uncalibrated_perturbation_simulation | Deterministic perturbation models report error deltas. |
 | 4 | complete | synthetic_calibration_simulation | Simulation-only calibration uses a synthetic/oracle target. |
 | 5 | blocked | foundry_calibration_gate | Requires foundry-calibrated device models or S-parameters. |
@@ -133,6 +135,7 @@ Key files:
 - `stage-0-specification.json`
 - `stage-1-svd-demo.json`
 - `stage-2-mesh-constrained.json`
+- `rectangular-matrix-support.json`
 - `stage-3-perturbation-model.json`
 - `stage-3-perturbation-sweep.json`
 - `stage-3-sweep-analysis.json`
@@ -162,17 +165,17 @@ Schema documentation for future hardware evidence gates:
 Stage 2 is complete only as an abstract mesh simulation.
 
 It implements deterministic quantized Givens rotations and abstract
-phase/coupler setting records for the current small square demo matrix. It does
-not implement a real HRM layout, a foundry-calibrated photonic mesh, a measured
-transfer matrix, or a production phase synthesis pipeline.
+phase/coupler setting records for the current small square demo matrix and a
+supplemental rectangular-matrix simulation report. It does not implement a real
+HRM layout, a foundry-calibrated photonic mesh, a measured transfer matrix, or a
+production phase synthesis pipeline.
 
 Current Stage 2 scope:
 
-- small deterministic matrix
-- square matrix only
+- small deterministic square main demo matrix
+- rectangular supplemental cases for 6x4, 4x6, and rank-deficient 5x3 matrices
 - real-valued orthogonal approximation
 - no complex unitary mesh
-- no rectangular neural layer support
 - no Clements or Reck physical interferometer layout
 - no foundry layout synthesis
 - no physical phase synthesis
@@ -189,6 +192,30 @@ foundryLayoutSynthesisImplemented=false
 realChipMesh=false
 hardwareValidated=false
 ```
+
+## Rectangular Matrix Support
+
+The supplemental report `rectangular-matrix-support.json` extends the
+simulation-only mapping path from square toy matrices to rectangular neural
+layer shapes.
+
+The representation is:
+
+```text
+W in R^(m x n)
+-> compact SVD
+-> full left/right orthogonal completion
+-> rectangular Sigma transfer core
+-> abstract square left/right mesh approximations
+```
+
+This is a numerical simulation convention. It uses padding through orthogonal
+completion and a zero-padded rectangular singular-value core. It is not a
+physical HRM layout, not a Clements/Reck interferometer layout, not a measured
+transfer matrix, and not a production phase synthesis pipeline.
+
+The report includes tall, wide, and rank-deficient deterministic cases and
+keeps all hardware evidence flags false.
 
 ## Stage 4 Interpretation
 
@@ -275,11 +302,15 @@ Completed post-alpha.3 main work:
 - measured-transfer-matrix manifest validation hardened with artifact, hash, date, convention, and provenance checks.
 - hardware benchmark manifest validation hardened with artifact, hash, dependency, metric, characterization, and provenance checks.
 
+Completed post-alpha.4 main work:
+
+- rectangular matrix support added as a supplemental simulation report for tall, wide, and rank-deficient neural layer shapes.
+
 Near-term:
 
 - keep CI green for report generation, JSON validation, hashes, and tests
-- rectangular matrix support
 - complex/unitary mesh mode
+- matrix-family sweeps over rectangular layer shapes
 
 Later, only when evidence exists:
 

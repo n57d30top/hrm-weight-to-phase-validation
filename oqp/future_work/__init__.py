@@ -13,6 +13,10 @@ from .neural_mapping import (
     run_svd_mapping_demo,
     svd_decompose,
 )
+from .rectangular_mapping import (
+    build_rectangular_mesh_transfer_model,
+    run_rectangular_matrix_support_report,
+)
 
 __all__ = [
     "SVDResult",
@@ -21,5 +25,7 @@ __all__ = [
     "reconstruct_from_svd",
     "relative_frobenius_error",
     "run_svd_mapping_demo",
+    "build_rectangular_mesh_transfer_model",
+    "run_rectangular_matrix_support_report",
     "svd_decompose",
 ]

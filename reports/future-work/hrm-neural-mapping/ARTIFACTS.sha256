@@ -1,13 +1,14 @@
 b855a535e31fc32365873f87a15c8107868f1a8caff12cfce452bda9bc3228d0  reports/future-work/hrm-neural-mapping/stage-0-specification.json
 8ddeb5c546be52930f68d105d9dbdc0035bbd9ef16b772470d8e7fcfa9e6092e  reports/future-work/hrm-neural-mapping/stage-1-svd-demo.json
-e895b013178422733792a004c6bf1251c647f6adf828b11dfb8669f9b9a183be  reports/future-work/hrm-neural-mapping/stage-2-mesh-constrained.json
+6cc240fbcd8755f46c9b83d3d896d8cdda158faaef0338b12663583d8d1a2554  reports/future-work/hrm-neural-mapping/stage-2-mesh-constrained.json
 89adc4e8e48e240864a237f0164e0d312007f7b539993663d5037d3775961b04  reports/future-work/hrm-neural-mapping/stage-3-perturbation-model.json
 4c04e8f590e6f71cb8d532b973a5c973492d98164010d8d2dfd33acad96d8781  reports/future-work/hrm-neural-mapping/stage-4-simulated-calibration.json
 37708a6bf9a615f654ff9d121cc0a0fcbb783c605758f0cedb8094ac00638888  reports/future-work/hrm-neural-mapping/stage-5-foundry-calibration-gate.json
 9e5b187bba9f9c7b0eff90ca17d8b4def9e132c6fecfadf03dec582b4731c803  reports/future-work/hrm-neural-mapping/stage-6-measured-transfer-matrix-gate.json
 6cd5d908deb421777f50426a9ddca4f0c2b1203454672502afaf5dec0b9ae40a  reports/future-work/hrm-neural-mapping/stage-7-hardware-benchmark-gate.json
+809000fce32ab17c32bdc3627f68f60a8d50e63b05961478438d4c846bd798f6  reports/future-work/hrm-neural-mapping/rectangular-matrix-support.json
 d4face109973ab34514a6175a9b807a9a9b4c04146c01eb199d37219428b9530  reports/future-work/hrm-neural-mapping/stage-3-perturbation-sweep.json
 5cf6a2c9e1c3a2a66462109ec81498c162760e0286eba7378f1cc3005da26fd3  reports/future-work/hrm-neural-mapping/stage-3-sweep-analysis.json
 94e57d64c6086c0babc827e42d0c210d6c61b383eddbf78255ce8fee6fba7ab1  reports/future-work/hrm-neural-mapping/stage-4-calibration-analysis.json
 db8c933ce203ccfbf7a10ad454498e04021b8172e8e412d1da0a2336cadd4fdd  reports/future-work/hrm-neural-mapping/stage-4-calibration-sweep.json
-166a6bf66db110fdf910c501e0a4d9f6716db6a6443b06ff08537284c15e82ac  reports/future-work/hrm-neural-mapping/validation-ladder-summary.json
+a8bba09840466ad3f27ac00f82fb1a22d86f37eb3344af508c069fe3be84fd1a  reports/future-work/hrm-neural-mapping/validation-ladder-summary.json

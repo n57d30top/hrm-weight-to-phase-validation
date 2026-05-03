@@ -35,11 +35,13 @@ calibrated device models, packaging constraints, and end-to-end hardware
 benchmarks.
 
 The current Stage 2 implementation is narrower than a physical photonic
-compiler. It covers a small square deterministic matrix, real-valued orthogonal
-mesh approximation, quantized Givens rotations, and abstract phase/coupler
-parameter records. It does not cover rectangular neural layers, complex unitary
-meshes, Clements/Reck physical interferometer layouts, foundry layout synthesis,
-or calibrated control settings for a fabricated HRM chip.
+compiler. It covers a small square deterministic main demo, real-valued
+orthogonal mesh approximation, quantized Givens rotations, abstract
+phase/coupler parameter records, and supplemental rectangular simulation cases
+using orthogonal completion around a rectangular singular-value transfer core.
+It does not cover complex unitary meshes, Clements/Reck physical interferometer
+layouts, foundry layout synthesis, or calibrated control settings for a
+fabricated HRM chip.
 
 ## Evidence Level
 
@@ -65,10 +67,11 @@ reports/future-work/hrm-neural-mapping/validation-ladder-summary.json
 
 The current ladder demonstrates compact SVD reconstruction, passive
 singular-value normalization, deterministic abstract mesh phase/coupler
-parameterization, perturbation stress testing, and synthetic calibration. It
-does not implement physical phase synthesis, physical coupler synthesis, a real
-chip mesh, a foundry-calibrated model, measured transfer matrix, hardware
-calibration, or production inference path.
+parameterization, supplemental rectangular matrix support, perturbation stress
+testing, and synthetic calibration. It does not implement physical phase
+synthesis, physical coupler synthesis, a real chip mesh, a foundry-calibrated
+model, measured transfer matrix, hardware calibration, or production inference
+path.
 
 ## 1. Hybrid Electro-Optical Inference Paradigm
 

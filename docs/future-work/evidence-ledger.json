@@ -148,6 +148,27 @@
     },
     {
       "blockers": [
+        "no_complex_unitary_mesh",
+        "no_foundry_calibrated_mesh_model",
+        "no_measured_transfer_matrix"
+      ],
+      "evidenceLevel": "abstract_rectangular_mesh_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "rectangular-matrix-support",
+      "measuredTransferMatrixAvailable": false,
+      "nextValidationGates": [
+        "complex_unitary_mesh_mode",
+        "matrix_family_sweeps",
+        "foundry_calibrated_device_model_gate"
+      ],
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Rectangular matrix support for abstract HRM mesh simulation"
+    },
+    {
+      "blockers": [
         "no_foundry_calibrated_loss_phase_noise_model",
         "no_measured_drift_or_detector_noise_data"
       ],

@@ -1,0 +1,217 @@
+{
+  "blockers": [
+    "no_complex_unitary_mesh",
+    "no_foundry_calibrated_mesh_model",
+    "no_measured_transfer_matrix"
+  ],
+  "caseCount": 3,
+  "cases": [
+    {
+      "caseId": "tall_6x4",
+      "effectiveRank": 4,
+      "errorDelta": 0.091134277782103,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "idealReconstructionError": 0.0,
+      "inputShape": [
+        4
+      ],
+      "leftMeshCouplerCount": 15,
+      "leftMeshPhaseCount": 15,
+      "leftMeshRotationCount": 15,
+      "leftMeshSize": 6,
+      "leftOrthogonalCompletionApplied": true,
+      "matrixRank": 4,
+      "matrixShape": [
+        6,
+        4
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.091134277782103,
+      "outputShape": [
+        6
+      ],
+      "paddingApplied": true,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rankWidth": 4,
+      "rectangularMode": "orthogonal_completion_rectangular_sigma",
+      "rightMeshCouplerCount": 6,
+      "rightMeshPhaseCount": 6,
+      "rightMeshRotationCount": 6,
+      "rightMeshSize": 4,
+      "rightOrthogonalCompletionApplied": false,
+      "sigmaShape": [
+        6,
+        4
+      ],
+      "singularValuesPassiveRange": [
+        1.0,
+        0.765354742896,
+        0.706615338813,
+        0.450519419524
+      ],
+      "truncationApplied": false
+    },
+    {
+      "caseId": "wide_4x6",
+      "effectiveRank": 4,
+      "errorDelta": 0.065646603848617,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "idealReconstructionError": 6e-15,
+      "inputShape": [
+        6
+      ],
+      "leftMeshCouplerCount": 6,
+      "leftMeshPhaseCount": 7,
+      "leftMeshRotationCount": 6,
+      "leftMeshSize": 4,
+      "leftOrthogonalCompletionApplied": false,
+      "matrixRank": 4,
+      "matrixShape": [
+        4,
+        6
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.065646603848622,
+      "outputShape": [
+        4
+      ],
+      "paddingApplied": true,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rankWidth": 4,
+      "rectangularMode": "orthogonal_completion_rectangular_sigma",
+      "rightMeshCouplerCount": 15,
+      "rightMeshPhaseCount": 15,
+      "rightMeshRotationCount": 15,
+      "rightMeshSize": 6,
+      "rightOrthogonalCompletionApplied": true,
+      "sigmaShape": [
+        4,
+        6
+      ],
+      "singularValuesPassiveRange": [
+        1.0,
+        0.792957449627,
+        0.447535403629,
+        0.113893506174
+      ],
+      "truncationApplied": false
+    },
+    {
+      "caseId": "rank_deficient_5x3",
+      "effectiveRank": 2,
+      "errorDelta": 0.053423682715676,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "idealReconstructionError": 0.0,
+      "inputShape": [
+        3
+      ],
+      "leftMeshCouplerCount": 10,
+      "leftMeshPhaseCount": 10,
+      "leftMeshRotationCount": 10,
+      "leftMeshSize": 5,
+      "leftOrthogonalCompletionApplied": true,
+      "matrixRank": 2,
+      "matrixShape": [
+        5,
+        3
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.053423682715676,
+      "outputShape": [
+        5
+      ],
+      "paddingApplied": true,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rankWidth": 3,
+      "rectangularMode": "orthogonal_completion_rectangular_sigma",
+      "rightMeshCouplerCount": 3,
+      "rightMeshPhaseCount": 4,
+      "rightMeshRotationCount": 3,
+      "rightMeshSize": 3,
+      "rightOrthogonalCompletionApplied": true,
+      "sigmaShape": [
+        5,
+        3
+      ],
+      "singularValuesPassiveRange": [
+        1.0,
+        0.372243606539,
+        0.0
+      ],
+      "truncationApplied": false
+    }
+  ],
+  "claimBoundary": "Simulation-only rectangular SVD and abstract mesh approximation; no hardware validation, foundry calibration, measured transfer matrix, or production inference readiness is claimed.",
+  "errorDeltaMax": 0.091134277782103,
+  "evidenceLevel": "abstract_rectangular_mesh_simulation",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "rectangular-matrix-support",
+  "inputShapes": [
+    [
+      4
+    ],
+    [
+      6
+    ],
+    [
+      3
+    ]
+  ],
+  "limitations": [
+    "simulation-only real-valued rectangular transfer representation",
+    "rectangular support uses orthogonal completion and zero-padded rectangular sigma core",
+    "no complex unitary mesh mode",
+    "no Clements or Reck physical interferometer layout",
+    "no foundry layout synthesis",
+    "no measured transfer matrix"
+  ],
+  "matrixShapes": [
+    [
+      6,
+      4
+    ],
+    [
+      4,
+      6
+    ],
+    [
+      5,
+      3
+    ]
+  ],
+  "maxErrorDeltaCaseId": "tall_6x4",
+  "measuredTransferMatrixAvailable": false,
+  "meshConstrainedReconstructionErrorMax": 0.091134277782103,
+  "nextValidationGates": [
+    "complex_unitary_mesh_mode",
+    "matrix_family_sweeps",
+    "foundry_calibrated_device_model_gate"
+  ],
+  "outputShapes": [
+    [
+      6
+    ],
+    [
+      4
+    ],
+    [
+      5
+    ]
+  ],
+  "phaseLevels": 64,
+  "productionInferenceReady": false,
+  "rectangularLayerSupportImplemented": true,
+  "rectangularMode": "orthogonal_completion_rectangular_sigma",
+  "representation": "full_square_left_right_orthogonal_meshes_with_rectangular_sigma_core",
+  "stage": 2,
+  "stageStatus": "complete",
+  "title": "Rectangular matrix support for abstract HRM mesh simulation",
+  "worstCaseId": "tall_6x4"
+}
