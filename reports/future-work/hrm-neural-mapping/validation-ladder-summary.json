@@ -47,9 +47,14 @@
       "hardwareValidated": false,
       "id": "stage-2-mesh-constrained",
       "keyMetrics": {
+        "abstractCouplerParameterizationImplemented": true,
+        "abstractPhaseParameterizationImplemented": true,
+        "foundryLayoutSynthesisImplemented": false,
         "idealSvdRelativeError": 1e-15,
         "meshConstrainedRelativeError": 0.019640136609986,
-        "meshErrorDelta": 0.019640136609985
+        "meshErrorDelta": 0.019640136609985,
+        "physicalCouplerSynthesisImplemented": false,
+        "physicalPhaseSynthesisImplemented": false
       },
       "measuredTransferMatrixAvailable": false,
       "productionInferenceReady": false,
@@ -87,6 +92,10 @@
       "hardwareValidated": false,
       "id": "stage-4-simulated-calibration",
       "keyMetrics": {
+        "calibrationUsesMeasuredData": false,
+        "calibrationUsesSyntheticTarget": true,
+        "hardwareCalibrationClaimed": false,
+        "oracleTargetAvailableInSimulation": true,
         "postCalibrationRelativeError": 0.000112458773944,
         "preCalibrationRelativeError": 0.066879533355693
       },

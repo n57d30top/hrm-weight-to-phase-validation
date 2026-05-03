@@ -1,0 +1,28 @@
+.PHONY: demo ladder test json hash check
+
+demo:
+	python3 scripts/run_hrm_neural_mapping_demo.py
+
+ladder:
+	python3 scripts/run_hrm_neural_validation_ladder.py
+
+test:
+	python3 -m unittest discover -s tests -v
+
+json:
+	jq empty docs/future-work/evidence-ledger.json
+	jq empty reports/future-work/hrm-neural-mapping/stage-0-specification.json
+	jq empty reports/future-work/hrm-neural-mapping/stage-1-svd-demo.json
+	jq empty reports/future-work/hrm-neural-mapping/stage-2-mesh-constrained.json
+	jq empty reports/future-work/hrm-neural-mapping/stage-3-perturbation-model.json
+	jq empty reports/future-work/hrm-neural-mapping/stage-4-simulated-calibration.json
+	jq empty reports/future-work/hrm-neural-mapping/stage-5-foundry-calibration-gate.json
+	jq empty reports/future-work/hrm-neural-mapping/stage-6-measured-transfer-matrix-gate.json
+	jq empty reports/future-work/hrm-neural-mapping/stage-7-hardware-benchmark-gate.json
+	jq empty reports/future-work/hrm-neural-mapping/validation-ladder-summary.json
+
+hash:
+	sha256sum -c reports/future-work/hrm-neural-mapping/ARTIFACTS.sha256
+
+check: demo ladder test json hash
+	git diff --check

@@ -1,0 +1,51 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Generate reports
+        run: |
+          python3 scripts/run_hrm_neural_mapping_demo.py
+          python3 scripts/run_hrm_neural_validation_ladder.py
+
+      - name: Run tests
+        run: |
+          python3 -m unittest discover -s tests -v
+
+      - name: Validate JSON
+        run: |
+          jq empty docs/future-work/evidence-ledger.json
+          jq empty reports/future-work/hrm-neural-mapping/stage-0-specification.json
+          jq empty reports/future-work/hrm-neural-mapping/stage-1-svd-demo.json
+          jq empty reports/future-work/hrm-neural-mapping/stage-2-mesh-constrained.json
+          jq empty reports/future-work/hrm-neural-mapping/stage-3-perturbation-model.json
+          jq empty reports/future-work/hrm-neural-mapping/stage-4-simulated-calibration.json
+          jq empty reports/future-work/hrm-neural-mapping/stage-5-foundry-calibration-gate.json
+          jq empty reports/future-work/hrm-neural-mapping/stage-6-measured-transfer-matrix-gate.json
+          jq empty reports/future-work/hrm-neural-mapping/stage-7-hardware-benchmark-gate.json
+          jq empty reports/future-work/hrm-neural-mapping/validation-ladder-summary.json
+
+      - name: Validate artifact hashes
+        run: |
+          sha256sum -c reports/future-work/hrm-neural-mapping/ARTIFACTS.sha256
+
+      - name: Whitespace check
+        run: |
+          git diff --check

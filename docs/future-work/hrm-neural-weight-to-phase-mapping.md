@@ -29,9 +29,17 @@ This document describes a proposed, validation-gated compilation protocol for
 mapping trained neural-network weight matrices to programmable photonic phase,
 coupling, attenuation, and scaling settings in an HRM-style photonic mesh.
 
-The proposed mapping should be interpreted as a theoretical and simulation-level
-extension until supported by measured transfer matrices, calibrated device
-models, packaging constraints, and end-to-end hardware benchmarks.
+The proposed mapping should be interpreted as a theoretical and
+simulation-level extension until supported by measured transfer matrices,
+calibrated device models, packaging constraints, and end-to-end hardware
+benchmarks.
+
+The current Stage 2 implementation is narrower than a physical photonic
+compiler. It covers a small square deterministic matrix, real-valued orthogonal
+mesh approximation, quantized Givens rotations, and abstract phase/coupler
+parameter records. It does not cover rectangular neural layers, complex unitary
+meshes, Clements/Reck physical interferometer layouts, foundry layout synthesis,
+or calibrated control settings for a fabricated HRM chip.
 
 ## Evidence Level
 
@@ -58,8 +66,9 @@ reports/future-work/hrm-neural-mapping/validation-ladder-summary.json
 The current ladder demonstrates compact SVD reconstruction, passive
 singular-value normalization, deterministic abstract mesh phase/coupler
 parameterization, perturbation stress testing, and synthetic calibration. It
-does not implement a real chip mesh, foundry-calibrated model, measured transfer
-matrix, hardware calibration, or production inference path.
+does not implement physical phase synthesis, physical coupler synthesis, a real
+chip mesh, a foundry-calibrated model, measured transfer matrix, hardware
+calibration, or production inference path.
 
 ## 1. Hybrid Electro-Optical Inference Paradigm
 

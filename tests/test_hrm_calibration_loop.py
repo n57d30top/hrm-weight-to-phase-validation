@@ -21,6 +21,10 @@ class HrmCalibrationLoopTest(unittest.TestCase):
         self.assertFalse(report["foundryCalibrated"])
         self.assertFalse(report["measuredTransferMatrixAvailable"])
         self.assertFalse(report["productionInferenceReady"])
+        self.assertFalse(report["calibrationUsesMeasuredData"])
+        self.assertTrue(report["calibrationUsesSyntheticTarget"])
+        self.assertTrue(report["oracleTargetAvailableInSimulation"])
+        self.assertFalse(report["hardwareCalibrationClaimed"])
         self.assertLessEqual(report["postCalibrationRelativeError"], report["preCalibrationRelativeError"])
 
 

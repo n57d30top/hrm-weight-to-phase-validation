@@ -4,9 +4,12 @@
     "no_hardware_calibration_run"
   ],
   "calibrationMode": "synthetic_simulation",
+  "calibrationUsesMeasuredData": false,
+  "calibrationUsesSyntheticTarget": true,
   "claimBoundary": "Synthetic simulation-only calibration loop; this is not hardware calibration and does not use measured transfer matrices.",
   "evidenceLevel": "synthetic_calibration_simulation",
   "foundryCalibrated": false,
+  "hardwareCalibrationClaimed": false,
   "hardwareValidated": false,
   "history": [
     0.066879533355693,
@@ -26,6 +29,7 @@
     "foundry_calibrated_device_model_gate",
     "measured_transfer_matrix_gate"
   ],
+  "oracleTargetAvailableInSimulation": true,
   "postCalibrationRelativeError": 0.000112458773944,
   "preCalibrationRelativeError": 0.066879533355693,
   "productionInferenceReady": false,

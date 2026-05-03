@@ -1,4 +1,5 @@
 {
+  "abstractCouplerParameterizationImplemented": true,
   "abstractMeshParameterization": {
     "left": {
       "couplerCount": 3,
@@ -103,6 +104,7 @@
       "rotationCount": 3
     }
   },
+  "abstractPhaseParameterizationImplemented": true,
   "abstractRotationParameterizationImplemented": true,
   "activeGainImplemented": false,
   "blockers": [
@@ -110,10 +112,20 @@
     "no_measured_transfer_matrix"
   ],
   "claimBoundary": "Abstract real-valued mesh approximation only; this is not a real chip mesh, foundry layout, measured transfer matrix, or production inference path.",
+  "clementsReckPhysicalLayoutImplemented": false,
+  "complexUnitaryMeshImplemented": false,
   "couplerCount": 6,
-  "couplerSynthesisImplemented": true,
+  "currentDemoScope": [
+    "small deterministic matrix",
+    "square matrix only",
+    "real-valued orthogonal approximation",
+    "no complex unitary mesh",
+    "no rectangular neural layer support",
+    "no Clements or Reck physical interferometer layout"
+  ],
   "evidenceLevel": "abstract_mesh_simulation",
   "foundryCalibrated": false,
+  "foundryLayoutSynthesisImplemented": false,
   "hardwareValidated": false,
   "id": "stage-2-mesh-constrained",
   "idealSvdRelativeError": 1e-15,
@@ -125,6 +137,10 @@
     "no routing constraints, thermal crosstalk model, wavelength model, splitter excess-loss model, or measured transfer matrix",
     "not a real fabricated chip mesh or foundry-calibrated HRM layout",
     "real-valued orthogonal rotation mesh only"
+  ],
+  "matrixShape": [
+    3,
+    3
   ],
   "measuredTransferMatrixAvailable": false,
   "meshConstrainedRelativeError": 0.019640136609986,
@@ -144,9 +160,12 @@
   ],
   "phaseCount": 8,
   "phaseLevels": 64,
-  "phaseSynthesisImplemented": true,
+  "physicalCouplerSynthesisImplemented": false,
+  "physicalPhaseSynthesisImplemented": false,
   "productionInferenceReady": false,
   "realChipMesh": false,
+  "realValuedOrthogonalApproximation": true,
+  "rectangularLayerSupportImplemented": false,
   "rightMeshCouplerCount": 3,
   "rightMeshPhaseCount": 4,
   "rightMeshRotationCount": 3,
@@ -155,6 +174,7 @@
     0.754934750499,
     0.411810282449
   ],
+  "squareMatrixOnly": true,
   "stage": 2,
   "stageStatus": "complete",
   "title": "Mesh-constrained HRM transfer-matrix approximation"
