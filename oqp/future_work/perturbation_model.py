@@ -6,7 +6,7 @@ calibrated. It provides a reproducible stress test for the abstract mesh model.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 import math
 import random
 from typing import List
@@ -41,6 +41,17 @@ class PerturbedTransferModel:
     perturbed_error: float
     error_delta: float
     physical_accuracy_claimed: bool
+
+
+SWEEP_SEED = 17
+SWEEP_DEFINITIONS = {
+    "phase_quantization_bits": [3, 4, 5, 6, 7],
+    "phase_noise_sigma_rad": [0.0, 0.001, 0.002, 0.005, 0.01],
+    "insertion_loss_db": [0.0, 0.05, 0.15, 0.3, 0.6],
+    "coupler_imbalance": [0.0, 0.005, 0.01, 0.02, 0.05],
+    "thermal_drift_proxy_rad_per_stage": [0.0, 0.0005, 0.001, 0.002, 0.005],
+    "detector_noise_placeholder_std": [0.0, 0.00025, 0.0005, 0.001, 0.002],
+}
 
 
 def apply_perturbations(model: MeshTransferModel, config: PerturbationConfig) -> PerturbedTransferModel:
@@ -103,6 +114,54 @@ def run_perturbation_demo() -> dict:
     }
 
 
+def run_perturbation_sweep_report() -> dict:
+    model = build_mesh_transfer_model()
+    rows = []
+    for parameter, values in SWEEP_DEFINITIONS.items():
+        for value in values:
+            config = _config_for_sweep(parameter, value)
+            perturbed = apply_perturbations(model, config)
+            rows.append({
+                "sweepParameter": parameter,
+                "sweepValue": value,
+                "seed": config.seed,
+                "phaseQuantizationLevels": config.phase_quantization_levels,
+                "baselineMeshRelativeError": round(perturbed.baseline_error, 15),
+                "perturbedRelativeError": round(perturbed.perturbed_error, 15),
+                "errorDelta": round(perturbed.error_delta, 15),
+                "evidenceLevel": "uncalibrated_perturbation_simulation",
+                "hardwareValidated": False,
+                "foundryCalibrated": False,
+                "measuredTransferMatrixAvailable": False,
+                "productionInferenceReady": False,
+            })
+    return {
+        "id": "stage-3-perturbation-sweep",
+        "title": "Stage 3 deterministic perturbation sensitivity sweep",
+        "stage": 3,
+        "evidenceLevel": "uncalibrated_perturbation_simulation",
+        "stageStatus": "complete",
+        "hardwareValidated": False,
+        "foundryCalibrated": False,
+        "measuredTransferMatrixAvailable": False,
+        "productionInferenceReady": False,
+        "physicalAccuracyClaimed": False,
+        "claimBoundary": "Deterministic uncalibrated perturbation sweep only; no physical accuracy, hardware validation, foundry calibration, measured transfer matrix, or production inference readiness is claimed.",
+        "baselineMeshRelativeError": round(model.mesh_error, 15),
+        "rowCount": len(rows),
+        "sweepParameters": list(SWEEP_DEFINITIONS.keys()),
+        "rows": rows,
+        "blockers": [
+            "no_foundry_calibrated_loss_phase_noise_model",
+            "no_measured_drift_or_detector_noise_data",
+        ],
+        "nextValidationGates": [
+            "synthetic_transfer_matrix_calibration",
+            "foundry_calibrated_device_model_gate",
+        ],
+    }
+
+
 def _perturb_mesh(mesh: MeshApproximation, config: PerturbationConfig, rng: random.Random) -> MeshApproximation:
     rotations: List[GivensRotation] = []
     for index, rotation in enumerate(mesh.rotations):
@@ -137,6 +196,23 @@ def _apply_detector_noise(matrix: Matrix, config: PerturbationConfig, rng: rando
     if config.detector_noise_std <= 0.0:
         return [row[:] for row in matrix]
     return [[value + rng.gauss(0.0, config.detector_noise_std) for value in row] for row in matrix]
+
+
+def _config_for_sweep(parameter: str, value: float | int) -> PerturbationConfig:
+    config = PerturbationConfig(seed=SWEEP_SEED)
+    if parameter == "phase_quantization_bits":
+        return replace(config, phase_quantization_levels=2 ** int(value))
+    if parameter == "phase_noise_sigma_rad":
+        return replace(config, phase_noise_std_rad=float(value))
+    if parameter == "insertion_loss_db":
+        return replace(config, insertion_loss_db=float(value))
+    if parameter == "coupler_imbalance":
+        return replace(config, coupler_imbalance=float(value))
+    if parameter == "thermal_drift_proxy_rad_per_stage":
+        return replace(config, thermal_drift_rad_per_stage=float(value))
+    if parameter == "detector_noise_placeholder_std":
+        return replace(config, detector_noise_std=float(value))
+    raise ValueError(f"unknown sweep parameter: {parameter}")
 
 
 def _quantize(value: float, levels: int) -> float:

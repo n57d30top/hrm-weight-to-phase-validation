@@ -1,7 +1,20 @@
+import json
+import math
 import unittest
 
 from oqp.future_work.mesh_mapping import build_mesh_transfer_model
-from oqp.future_work.perturbation_model import PerturbationConfig, apply_perturbations, run_perturbation_demo
+from oqp.future_work.perturbation_model import (
+    SWEEP_DEFINITIONS,
+    PerturbationConfig,
+    apply_perturbations,
+    run_perturbation_demo,
+    run_perturbation_sweep_report,
+)
+from oqp.future_work.validation_gates import (
+    foundry_calibration_gate,
+    hardware_benchmark_gate,
+    measured_transfer_matrix_gate,
+)
 
 
 class HrmPerturbationModelTest(unittest.TestCase):
@@ -42,6 +55,46 @@ class HrmPerturbationModelTest(unittest.TestCase):
         self.assertFalse(report["measuredTransferMatrixAvailable"])
         self.assertFalse(report["productionInferenceReady"])
         self.assertFalse(report["physicalAccuracyClaimed"])
+
+    def test_stage_3_sweep_output_is_deterministic_and_serializable(self):
+        first = run_perturbation_sweep_report()
+        second = run_perturbation_sweep_report()
+        self.assertEqual(first, second)
+        json.dumps(first, sort_keys=True)
+
+    def test_stage_3_sweep_rows_have_required_fields_and_finite_errors(self):
+        report = run_perturbation_sweep_report()
+        required_fields = {
+            "baselineMeshRelativeError",
+            "perturbedRelativeError",
+            "errorDelta",
+            "sweepParameter",
+            "sweepValue",
+            "seed",
+            "evidenceLevel",
+            "hardwareValidated",
+            "foundryCalibrated",
+            "measuredTransferMatrixAvailable",
+            "productionInferenceReady",
+        }
+        expected_rows = sum(len(values) for values in SWEEP_DEFINITIONS.values())
+        self.assertEqual(report["rowCount"], expected_rows)
+        self.assertEqual(len(report["rows"]), expected_rows)
+        for row in report["rows"]:
+            self.assertTrue(required_fields.issubset(row))
+            self.assertTrue(math.isfinite(row["baselineMeshRelativeError"]))
+            self.assertTrue(math.isfinite(row["perturbedRelativeError"]))
+            self.assertTrue(math.isfinite(row["errorDelta"]))
+            self.assertEqual(row["evidenceLevel"], "uncalibrated_perturbation_simulation")
+            self.assertFalse(row["hardwareValidated"])
+            self.assertFalse(row["foundryCalibrated"])
+            self.assertFalse(row["measuredTransferMatrixAvailable"])
+            self.assertFalse(row["productionInferenceReady"])
+
+    def test_stage_3_sweep_keeps_hardware_gates_blocked(self):
+        self.assertEqual(foundry_calibration_gate(None)["stageStatus"], "blocked")
+        self.assertEqual(measured_transfer_matrix_gate(None)["stageStatus"], "blocked")
+        self.assertEqual(hardware_benchmark_gate(None)["stageStatus"], "blocked")
 
 
 if __name__ == "__main__":

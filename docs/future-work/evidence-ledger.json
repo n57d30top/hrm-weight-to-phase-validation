@@ -145,6 +145,25 @@
       "stage": 7,
       "stageStatus": "blocked",
       "title": "End-to-end hardware inference benchmark gate"
+    },
+    {
+      "blockers": [
+        "no_foundry_calibrated_loss_phase_noise_model",
+        "no_measured_drift_or_detector_noise_data"
+      ],
+      "evidenceLevel": "uncalibrated_perturbation_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "stage-3-perturbation-sweep",
+      "measuredTransferMatrixAvailable": false,
+      "nextValidationGates": [
+        "synthetic_transfer_matrix_calibration",
+        "foundry_calibrated_device_model_gate"
+      ],
+      "productionInferenceReady": false,
+      "stage": 3,
+      "stageStatus": "complete",
+      "title": "Stage 3 deterministic perturbation sensitivity sweep"
     }
   ],
   "schemaVersion": "hrm-neural.future-work-ledger.v1"

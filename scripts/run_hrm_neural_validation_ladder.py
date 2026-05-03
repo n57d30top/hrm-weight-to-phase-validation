@@ -15,7 +15,7 @@ sys.path.insert(0, str(ROOT))
 from oqp.future_work.calibration_loop import run_calibration_demo  # noqa: E402
 from oqp.future_work.mesh_mapping import run_mesh_constrained_demo  # noqa: E402
 from oqp.future_work.neural_mapping import run_svd_mapping_demo  # noqa: E402
-from oqp.future_work.perturbation_model import run_perturbation_demo  # noqa: E402
+from oqp.future_work.perturbation_model import run_perturbation_demo, run_perturbation_sweep_report  # noqa: E402
 from oqp.future_work.validation_gates import (  # noqa: E402
     foundry_calibration_gate,
     hardware_benchmark_gate,
@@ -40,6 +40,10 @@ STAGE_FILES = {
     7: "stage-7-hardware-benchmark-gate.json",
 }
 
+SUPPLEMENTAL_REPORT_FILES = {
+    "stage-3-perturbation-sweep": "stage-3-perturbation-sweep.json",
+}
+
 
 def main() -> None:
     DOC_DIR.mkdir(parents=True, exist_ok=True)
@@ -56,17 +60,30 @@ def main() -> None:
         hardware_benchmark_gate(DOC_DIR / "evidence-inputs" / "hardware-benchmark.json"),
     ]
 
+    supplemental_reports = [
+        run_perturbation_sweep_report(),
+    ]
+
     for report in reports:
         _write_json(REPORT_DIR / STAGE_FILES[int(report["stage"])], report)
+    for report in supplemental_reports:
+        _write_json(REPORT_DIR / SUPPLEMENTAL_REPORT_FILES[report["id"]], report)
 
-    summary = _build_summary(reports)
+    summary = _build_summary(reports, supplemental_reports)
     summary_path = REPORT_DIR / "validation-ladder-summary.json"
     _write_json(summary_path, summary)
 
-    ledger = {"schemaVersion": "hrm-neural.future-work-ledger.v1", "entries": [_ledger_entry(report) for report in reports]}
+    ledger = {
+        "schemaVersion": "hrm-neural.future-work-ledger.v1",
+        "entries": [_ledger_entry(report) for report in reports + supplemental_reports],
+    }
     _write_json(LEDGER_PATH, ledger)
 
-    artifact_paths = [REPORT_DIR / STAGE_FILES[stage] for stage in sorted(STAGE_FILES)] + [summary_path]
+    artifact_paths = (
+        [REPORT_DIR / STAGE_FILES[stage] for stage in sorted(STAGE_FILES)]
+        + [REPORT_DIR / SUPPLEMENTAL_REPORT_FILES[key] for key in sorted(SUPPLEMENTAL_REPORT_FILES)]
+        + [summary_path]
+    )
     _write_artifact_hashes(artifact_paths, REPORT_DIR / "ARTIFACTS.sha256")
 
     print(json.dumps({
@@ -78,7 +95,7 @@ def main() -> None:
     }, sort_keys=True))
 
 
-def _build_summary(reports: List[Dict[str, Any]]) -> Dict[str, Any]:
+def _build_summary(reports: List[Dict[str, Any]], supplemental_reports: List[Dict[str, Any]]) -> Dict[str, Any]:
     return {
         "id": "validation-ladder-summary",
         "title": "HRM neural weight-to-phase mapping validation ladder summary",
@@ -106,6 +123,22 @@ def _build_summary(reports: List[Dict[str, Any]]) -> Dict[str, Any]:
             }
             for report in reports
         ],
+        "supplementalReports": [
+            {
+                "stage": report["stage"],
+                "id": report["id"],
+                "title": report["title"],
+                "stageStatus": report["stageStatus"],
+                "evidenceLevel": report["evidenceLevel"],
+                "hardwareValidated": report["hardwareValidated"],
+                "foundryCalibrated": report["foundryCalibrated"],
+                "measuredTransferMatrixAvailable": report["measuredTransferMatrixAvailable"],
+                "productionInferenceReady": report["productionInferenceReady"],
+                "keyMetrics": _key_metrics(report),
+                "blockers": report.get("blockers", []),
+            }
+            for report in supplemental_reports
+        ],
     }
 
 
@@ -130,6 +163,7 @@ def _key_metrics(report: Dict[str, Any]) -> Dict[str, Any]:
         "calibrationUsesSyntheticTarget",
         "oracleTargetAvailableInSimulation",
         "hardwareCalibrationClaimed",
+        "rowCount",
         "blockerReason",
     ]
     return {key: report[key] for key in keys if key in report}

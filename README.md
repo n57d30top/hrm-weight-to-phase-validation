@@ -1,5 +1,10 @@
 # HRM Weight-to-Phase Validation
 
+[![CI](https://github.com/n57d30top/hrm-weight-to-phase-validation/actions/workflows/ci.yml/badge.svg)](https://github.com/n57d30top/hrm-weight-to-phase-validation/actions/workflows/ci.yml)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Status](https://img.shields.io/badge/status-future--work--only-blue)
+![Hardware validated](https://img.shields.io/badge/hardware_validated-false-red)
+
 Simulation-gated validation ladder for HRM neural weight-to-phase mapping.
 
 This repository explores whether selected neural-network weight matrices can be
@@ -129,6 +134,7 @@ Key files:
 - `stage-1-svd-demo.json`
 - `stage-2-mesh-constrained.json`
 - `stage-3-perturbation-model.json`
+- `stage-3-perturbation-sweep.json`
 - `stage-4-simulated-calibration.json`
 - `stage-5-foundry-calibration-gate.json`
 - `stage-6-measured-transfer-matrix-gate.json`
@@ -189,6 +195,16 @@ oracleTargetAvailableInSimulation=true
 hardwareCalibrationClaimed=false
 measuredTransferMatrixAvailable=false
 ```
+
+## Stage 3 Sweep Report
+
+The supplemental Stage 3 sweep report evaluates one perturbation parameter at a
+time using fixed seeds. It covers phase quantization bits, phase-noise sigma,
+insertion loss, coupler imbalance, thermal drift proxy, and detector-noise
+placeholder values.
+
+The sweep is still uncalibrated simulation. It does not change any hardware
+evidence flags and does not claim physical accuracy.
 
 ## Blocked Hardware Gates
 

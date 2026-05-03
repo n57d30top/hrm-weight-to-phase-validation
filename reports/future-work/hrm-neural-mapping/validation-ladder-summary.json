@@ -157,6 +157,27 @@
       "title": "End-to-end hardware inference benchmark gate"
     }
   ],
+  "supplementalReports": [
+    {
+      "blockers": [
+        "no_foundry_calibrated_loss_phase_noise_model",
+        "no_measured_drift_or_detector_noise_data"
+      ],
+      "evidenceLevel": "uncalibrated_perturbation_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "stage-3-perturbation-sweep",
+      "keyMetrics": {
+        "baselineMeshRelativeError": 0.019640136609986,
+        "rowCount": 30
+      },
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 3,
+      "stageStatus": "complete",
+      "title": "Stage 3 deterministic perturbation sensitivity sweep"
+    }
+  ],
   "title": "HRM neural weight-to-phase mapping validation ladder summary",
   "trackStatus": "future_work_only"
 }
