@@ -237,7 +237,7 @@ completed hardware benchmark.
 Near-term:
 
 - keep CI green for report generation, JSON validation, hashes, and tests
-- add broader deterministic Stage 3 perturbation sweeps
+- maintain and extend deterministic Stage 3 perturbation sweeps and analysis
 - add Stage 4 calibration sensitivity sweeps
 - document accepted manifest schemas for Stage 5-7 evidence inputs
 
