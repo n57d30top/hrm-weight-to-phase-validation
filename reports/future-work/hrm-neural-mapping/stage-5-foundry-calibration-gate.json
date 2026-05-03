@@ -18,7 +18,10 @@
   "foundryCalibrated": false,
   "hardwareValidated": false,
   "id": "stage-5-foundry-calibration-gate",
-  "manifestPath": "/Users/sovryn/Desktop/hrm-weight-to-phase-validation/docs/future-work/evidence-inputs/foundry-device-model.json",
+  "manifestPath": {
+    "configured": "docs/future-work/evidence-inputs/foundry-device-model.json",
+    "exists": false
+  },
   "measuredTransferMatrixAvailable": false,
   "missingEvidence": [
     "evidenceClass",

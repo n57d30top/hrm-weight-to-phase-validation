@@ -25,8 +25,8 @@ hardware benchmark package with provenance is supplied.
 | `energyMetric` | End-to-end energy metric, including optical, electronic, control, conversion, and thermal components. |
 | `driftRecalibrationMetric` | Drift, stability, and recalibration cadence or cost. |
 | `environment` | Operating environment, including temperature, wavelength, packaging, and relevant conditions. |
-| `rawResultsHash` | SHA-256 hash for immutable raw benchmark results. |
-| `processedResultsHash` | SHA-256 hash for processed benchmark summaries. |
+| `rawResultsHash` | Hash reference for immutable raw benchmark results, containing both a relative artifact reference and SHA-256 digest. |
+| `processedResultsHash` | Hash reference for processed benchmark summaries, containing both a relative artifact reference and SHA-256 digest. |
 | `provenance` | Provenance chain for benchmark execution, processing, and storage. |
 | `claimBoundary` | Statement that the benchmark package is measured evidence and does not imply broader production readiness beyond its measured scope. |
 
@@ -36,5 +36,7 @@ The Stage 7 gate must remain blocked unless all required fields are present and
 the referenced artifacts are a real end-to-end measured hardware inference
 benchmark package with provenance.
 
-The presence of this schema file is not evidence of a hardware benchmark.
+Hash references may be represented as objects with `artifactReference` and
+`sha256` fields, or as a single `sha256 relative/path` line.
 
+The presence of this schema file is not evidence of a hardware benchmark.

@@ -19,6 +19,7 @@
     "provenance",
     "claimBoundary"
   ],
+  "blockedByDependency": "stage_6_measured_transfer_matrix_gate_not_complete",
   "blockerReason": "no_end_to_end_hardware_benchmark",
   "blockers": [
     "no_end_to_end_hardware_benchmark"
@@ -27,9 +28,15 @@
   "evidenceLevel": "hardware_benchmark_gate",
   "foundryCalibrated": false,
   "hardwareValidated": false,
+  "hashMismatches": [],
   "id": "stage-7-hardware-benchmark-gate",
-  "manifestPath": "/Users/sovryn/Desktop/hrm-weight-to-phase-validation/docs/future-work/evidence-inputs/hardware-benchmark.json",
+  "invalidEvidence": [],
+  "manifestPath": {
+    "configured": "docs/future-work/evidence-inputs/hardware-benchmark.json",
+    "exists": false
+  },
   "measuredTransferMatrixAvailable": false,
+  "missingArtifactReferences": [],
   "missingEvidence": [
     "benchmarkId",
     "deviceId",

@@ -60,15 +60,22 @@ def main() -> None:
     DOC_DIR.mkdir(parents=True, exist_ok=True)
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
+    stage_5 = foundry_calibration_gate(DOC_DIR / "evidence-inputs" / "foundry-device-model.json")
+    stage_6 = measured_transfer_matrix_gate(DOC_DIR / "evidence-inputs" / "measured-transfer-matrix.json")
+    stage_7 = hardware_benchmark_gate(
+        DOC_DIR / "evidence-inputs" / "hardware-benchmark.json",
+        measured_transfer_matrix_report=stage_6,
+    )
+
     reports = [
         stage_0_specification_gate(SPEC_DOC),
         run_svd_mapping_demo(),
         run_mesh_constrained_demo(),
         run_perturbation_demo(),
         run_calibration_demo(),
-        foundry_calibration_gate(DOC_DIR / "evidence-inputs" / "foundry-device-model.json"),
-        measured_transfer_matrix_gate(DOC_DIR / "evidence-inputs" / "measured-transfer-matrix.json"),
-        hardware_benchmark_gate(DOC_DIR / "evidence-inputs" / "hardware-benchmark.json"),
+        stage_5,
+        stage_6,
+        stage_7,
     ]
 
     supplemental_reports = [

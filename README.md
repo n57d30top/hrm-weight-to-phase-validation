@@ -241,6 +241,10 @@ Stage 6 and Stage 7 schema docs define required fields for future evidence
 packages. They are not evidence, do not contain measured data, and do not
 unblock either gate.
 
+Stage 6 and Stage 7 gates also validate artifact references, hashes, date
+format, allowed matrix conventions, non-empty provenance fields, and the Stage
+7 dependency on a completed Stage 6 measured-transfer-matrix gate.
+
 ## Claim Boundary
 
 This future-work track does not improve hardware readiness and does not claim
@@ -261,12 +265,12 @@ Completed post-alpha.3 main work:
 
 - measured-transfer-matrix fixture schema documented and enforced by Stage 6 gate acceptance criteria.
 - hardware benchmark acceptance schema documented and enforced by Stage 7 gate acceptance criteria.
+- measured-transfer-matrix manifest validation hardened with artifact, hash, date, convention, and provenance checks.
+- hardware benchmark manifest validation hardened with artifact, hash, dependency, metric, characterization, and provenance checks.
 
 Near-term:
 
 - keep CI green for report generation, JSON validation, hashes, and tests
-- measured-transfer-matrix manifest validation hardening
-- hardware benchmark manifest validation hardening
 - rectangular matrix support
 - complex/unitary mesh mode
 

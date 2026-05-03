@@ -17,6 +17,7 @@
     "operatorOrSource",
     "claimBoundary"
   ],
+  "blockedByDependency": null,
   "blockerReason": "no_measured_hrm_transfer_matrix",
   "blockers": [
     "no_measured_hrm_transfer_matrix"
@@ -25,9 +26,15 @@
   "evidenceLevel": "measured_transfer_matrix_gate",
   "foundryCalibrated": false,
   "hardwareValidated": false,
+  "hashMismatches": [],
   "id": "stage-6-measured-transfer-matrix-gate",
-  "manifestPath": "/Users/sovryn/Desktop/hrm-weight-to-phase-validation/docs/future-work/evidence-inputs/measured-transfer-matrix.json",
+  "invalidEvidence": [],
+  "manifestPath": {
+    "configured": "docs/future-work/evidence-inputs/measured-transfer-matrix.json",
+    "exists": false
+  },
   "measuredTransferMatrixAvailable": false,
+  "missingArtifactReferences": [],
   "missingEvidence": [
     "artifactId",
     "measurementDate",
