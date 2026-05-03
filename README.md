@@ -135,6 +135,7 @@ Key files:
 - `stage-2-mesh-constrained.json`
 - `stage-3-perturbation-model.json`
 - `stage-3-perturbation-sweep.json`
+- `stage-3-sweep-analysis.json`
 - `stage-4-simulated-calibration.json`
 - `stage-5-foundry-calibration-gate.json`
 - `stage-6-measured-transfer-matrix-gate.json`
@@ -205,6 +206,13 @@ placeholder values.
 
 The sweep is still uncalibrated simulation. It does not change any hardware
 evidence flags and does not claim physical accuracy.
+
+The companion Stage 3 sweep analysis report summarizes the sweep rows with
+per-parameter min/max error, max error delta, best/worst rows, sensitivity
+ranking, monotonicity notes, explicit limitations, and an all-perturbations-off
+control summary. The one-parameter sweeps keep the fixed baseline perturbation
+configuration enabled unless the swept parameter overrides one dimension, so
+zero-valued rows are not global no-perturbation controls.
 
 ## Blocked Hardware Gates
 

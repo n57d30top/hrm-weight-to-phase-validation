@@ -1,0 +1,183 @@
+{
+  "baselineMeshRelativeError": 0.019640136609986,
+  "bestCasePerturbedRelativeError": 0.023766934031044,
+  "bestCaseRow": {
+    "baselineMeshRelativeError": 0.019640136609986,
+    "errorDelta": 0.004126797421058,
+    "evidenceLevel": "uncalibrated_perturbation_simulation",
+    "foundryCalibrated": false,
+    "hardwareValidated": false,
+    "measuredTransferMatrixAvailable": false,
+    "perturbedRelativeError": 0.023766934031044,
+    "phaseQuantizationLevels": 64,
+    "productionInferenceReady": false,
+    "seed": 17,
+    "sweepParameter": "phase_quantization_bits",
+    "sweepValue": 6
+  },
+  "blockers": [
+    "no_foundry_calibrated_loss_phase_noise_model",
+    "no_measured_drift_or_detector_noise_data"
+  ],
+  "claimBoundary": "Deterministic analysis of uncalibrated perturbation sweeps only; no physical accuracy, hardware validation, foundry calibration, measured transfer matrix, or production inference readiness is claimed.",
+  "controlSummary": {
+    "baselineMeshRelativeError": 0.019640136609986,
+    "controlErrorDelta": 0.0,
+    "controlMatchesBaselineWithinTolerance": true,
+    "controlRelativeError": 0.019640136609986,
+    "description": "All Stage 3 perturbations disabled; expected to match or remain close to the Stage 2 baseline mesh error.",
+    "foundryCalibrated": false,
+    "hardwareValidated": false,
+    "id": "control_all_perturbations_disabled",
+    "measuredTransferMatrixAvailable": false,
+    "productionInferenceReady": false,
+    "seed": 17,
+    "tolerance": 1e-12
+  },
+  "evidenceLevel": "uncalibrated_perturbation_simulation",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "stage-3-sweep-analysis",
+  "limitations": [
+    "uncalibrated simulation only",
+    "small square deterministic matrix only",
+    "real-valued orthogonal mesh approximation only",
+    "one-parameter-at-a-time sweep with other perturbation defaults left enabled",
+    "deterministic seeds support reproducibility but do not represent measured noise statistics",
+    "no foundry-calibrated loss, phase-noise, drift, crosstalk, or detector model",
+    "no measured transfer matrix or hardware calibration loop"
+  ],
+  "measuredTransferMatrixAvailable": false,
+  "monotonicityNotes": [
+    "Monotonicity is not expected as a physical law in this report.",
+    "Each one-parameter sweep is evaluated under the fixed baseline perturbation configuration unless that parameter is explicitly overridden.",
+    "Deterministic noise samples, quantization, loss scaling, and mesh approximation error can interact nonlinearly."
+  ],
+  "nextValidationGates": [
+    "synthetic_transfer_matrix_calibration",
+    "foundry_calibrated_device_model_gate"
+  ],
+  "parameterSummaries": [
+    {
+      "maxErrorDelta": 0.370308698767234,
+      "maxPerturbedRelativeError": 0.38994883537722,
+      "minPerturbedRelativeError": 0.023766934031044,
+      "monotonicityExpected": false,
+      "monotonicityNote": "Not expected from this uncalibrated one-parameter sweep because other default perturbations remain enabled unless explicitly overridden.",
+      "observedMonotonicNondecreasing": false,
+      "rowCount": 5,
+      "sweepParameter": "phase_quantization_bits"
+    },
+    {
+      "maxErrorDelta": 0.140960338693571,
+      "maxPerturbedRelativeError": 0.160600475303558,
+      "minPerturbedRelativeError": 0.160091811380902,
+      "monotonicityExpected": false,
+      "monotonicityNote": "Not expected from this uncalibrated one-parameter sweep because other default perturbations remain enabled unless explicitly overridden.",
+      "observedMonotonicNondecreasing": false,
+      "rowCount": 5,
+      "sweepParameter": "phase_noise_sigma_rad"
+    },
+    {
+      "maxErrorDelta": 0.148426037909343,
+      "maxPerturbedRelativeError": 0.168066174519329,
+      "minPerturbedRelativeError": 0.160473860767138,
+      "monotonicityExpected": false,
+      "monotonicityNote": "Not expected from this uncalibrated one-parameter sweep because other default perturbations remain enabled unless explicitly overridden.",
+      "observedMonotonicNondecreasing": false,
+      "rowCount": 5,
+      "sweepParameter": "insertion_loss_db"
+    },
+    {
+      "maxErrorDelta": 0.143609339251764,
+      "maxPerturbedRelativeError": 0.163249475861751,
+      "minPerturbedRelativeError": 0.160374177811221,
+      "monotonicityExpected": false,
+      "monotonicityNote": "Not expected from this uncalibrated one-parameter sweep because other default perturbations remain enabled unless explicitly overridden.",
+      "observedMonotonicNondecreasing": false,
+      "rowCount": 5,
+      "sweepParameter": "coupler_imbalance"
+    },
+    {
+      "maxErrorDelta": 0.146662409719307,
+      "maxPerturbedRelativeError": 0.166302546329293,
+      "minPerturbedRelativeError": 0.159129052239065,
+      "monotonicityExpected": false,
+      "monotonicityNote": "Not expected from this uncalibrated one-parameter sweep because other default perturbations remain enabled unless explicitly overridden.",
+      "observedMonotonicNondecreasing": true,
+      "rowCount": 5,
+      "sweepParameter": "thermal_drift_proxy_rad_per_stage"
+    },
+    {
+      "maxErrorDelta": 0.141105883987351,
+      "maxPerturbedRelativeError": 0.160746020597337,
+      "minPerturbedRelativeError": 0.159678515487976,
+      "monotonicityExpected": false,
+      "monotonicityNote": "Not expected from this uncalibrated one-parameter sweep because other default perturbations remain enabled unless explicitly overridden.",
+      "observedMonotonicNondecreasing": false,
+      "rowCount": 5,
+      "sweepParameter": "detector_noise_placeholder_std"
+    }
+  ],
+  "physicalAccuracyClaimed": false,
+  "productionInferenceReady": false,
+  "rowCount": 30,
+  "sensitivityRanking": [
+    {
+      "maxErrorDelta": 0.370308698767234,
+      "maxPerturbedRelativeError": 0.38994883537722,
+      "sweepParameter": "phase_quantization_bits"
+    },
+    {
+      "maxErrorDelta": 0.148426037909343,
+      "maxPerturbedRelativeError": 0.168066174519329,
+      "sweepParameter": "insertion_loss_db"
+    },
+    {
+      "maxErrorDelta": 0.146662409719307,
+      "maxPerturbedRelativeError": 0.166302546329293,
+      "sweepParameter": "thermal_drift_proxy_rad_per_stage"
+    },
+    {
+      "maxErrorDelta": 0.143609339251764,
+      "maxPerturbedRelativeError": 0.163249475861751,
+      "sweepParameter": "coupler_imbalance"
+    },
+    {
+      "maxErrorDelta": 0.141105883987351,
+      "maxPerturbedRelativeError": 0.160746020597337,
+      "sweepParameter": "detector_noise_placeholder_std"
+    },
+    {
+      "maxErrorDelta": 0.140960338693571,
+      "maxPerturbedRelativeError": 0.160600475303558,
+      "sweepParameter": "phase_noise_sigma_rad"
+    }
+  ],
+  "stage": 3,
+  "stageStatus": "complete",
+  "sweepParameters": [
+    "phase_quantization_bits",
+    "phase_noise_sigma_rad",
+    "insertion_loss_db",
+    "coupler_imbalance",
+    "thermal_drift_proxy_rad_per_stage",
+    "detector_noise_placeholder_std"
+  ],
+  "title": "Stage 3 perturbation sweep sensitivity analysis",
+  "worstCaseErrorDelta": 0.370308698767234,
+  "worstCaseRow": {
+    "baselineMeshRelativeError": 0.019640136609986,
+    "errorDelta": 0.370308698767234,
+    "evidenceLevel": "uncalibrated_perturbation_simulation",
+    "foundryCalibrated": false,
+    "hardwareValidated": false,
+    "measuredTransferMatrixAvailable": false,
+    "perturbedRelativeError": 0.38994883537722,
+    "phaseQuantizationLevels": 8,
+    "productionInferenceReady": false,
+    "seed": 17,
+    "sweepParameter": "phase_quantization_bits",
+    "sweepValue": 3
+  }
+}

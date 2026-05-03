@@ -8,6 +8,7 @@ from oqp.future_work.perturbation_model import (
     PerturbationConfig,
     apply_perturbations,
     run_perturbation_demo,
+    run_perturbation_sweep_analysis_report,
     run_perturbation_sweep_report,
 )
 from oqp.future_work.validation_gates import (
@@ -95,6 +96,41 @@ class HrmPerturbationModelTest(unittest.TestCase):
         self.assertEqual(foundry_calibration_gate(None)["stageStatus"], "blocked")
         self.assertEqual(measured_transfer_matrix_gate(None)["stageStatus"], "blocked")
         self.assertEqual(hardware_benchmark_gate(None)["stageStatus"], "blocked")
+
+    def test_stage_3_sweep_analysis_is_deterministic_and_serializable(self):
+        first = run_perturbation_sweep_analysis_report()
+        second = run_perturbation_sweep_analysis_report()
+        self.assertEqual(first, second)
+        json.dumps(first, sort_keys=True)
+
+    def test_stage_3_sweep_analysis_ranking_and_extremes(self):
+        analysis = run_perturbation_sweep_analysis_report()
+        sweep = run_perturbation_sweep_report()
+        worst = max(sweep["rows"], key=lambda row: (row["errorDelta"], row["sweepParameter"], row["sweepValue"]))
+        best = min(sweep["rows"], key=lambda row: (row["perturbedRelativeError"], row["sweepParameter"], row["sweepValue"]))
+        ranking = analysis["sensitivityRanking"]
+        self.assertEqual(analysis["worstCaseRow"], worst)
+        self.assertEqual(analysis["bestCaseRow"], best)
+        self.assertEqual(analysis["worstCaseErrorDelta"], worst["errorDelta"])
+        self.assertEqual(analysis["bestCasePerturbedRelativeError"], best["perturbedRelativeError"])
+        self.assertEqual(ranking, sorted(ranking, key=lambda item: (-item["maxErrorDelta"], item["sweepParameter"])))
+        self.assertEqual(len(ranking), len(SWEEP_DEFINITIONS))
+
+    def test_stage_3_sweep_analysis_control_and_claim_flags(self):
+        analysis = run_perturbation_sweep_analysis_report()
+        control = analysis["controlSummary"]
+        self.assertEqual(control["id"], "control_all_perturbations_disabled")
+        self.assertTrue(control["controlMatchesBaselineWithinTolerance"])
+        self.assertAlmostEqual(control["baselineMeshRelativeError"], control["controlRelativeError"], places=12)
+        self.assertFalse(analysis["hardwareValidated"])
+        self.assertFalse(analysis["foundryCalibrated"])
+        self.assertFalse(analysis["measuredTransferMatrixAvailable"])
+        self.assertFalse(analysis["productionInferenceReady"])
+        self.assertFalse(analysis["physicalAccuracyClaimed"])
+        self.assertFalse(control["hardwareValidated"])
+        self.assertFalse(control["foundryCalibrated"])
+        self.assertFalse(control["measuredTransferMatrixAvailable"])
+        self.assertFalse(control["productionInferenceReady"])
 
 
 if __name__ == "__main__":

@@ -33,3 +33,10 @@ Stage 3 also emits a supplemental deterministic sweep report:
 `reports/future-work/hrm-neural-mapping/stage-3-perturbation-sweep.json`.
 The sweep varies one uncalibrated perturbation parameter at a time and keeps all
 hardware-readiness flags false.
+
+The companion analysis report
+`reports/future-work/hrm-neural-mapping/stage-3-sweep-analysis.json` summarizes
+per-parameter sensitivity and includes an all-perturbations-disabled control.
+The one-parameter sweeps keep the fixed baseline perturbation configuration
+enabled unless the swept parameter overrides one dimension, so monotonicity is
+not treated as a physical expectation.

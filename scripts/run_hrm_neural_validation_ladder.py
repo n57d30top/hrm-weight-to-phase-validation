@@ -15,7 +15,11 @@ sys.path.insert(0, str(ROOT))
 from oqp.future_work.calibration_loop import run_calibration_demo  # noqa: E402
 from oqp.future_work.mesh_mapping import run_mesh_constrained_demo  # noqa: E402
 from oqp.future_work.neural_mapping import run_svd_mapping_demo  # noqa: E402
-from oqp.future_work.perturbation_model import run_perturbation_demo, run_perturbation_sweep_report  # noqa: E402
+from oqp.future_work.perturbation_model import (  # noqa: E402
+    run_perturbation_demo,
+    run_perturbation_sweep_analysis_report,
+    run_perturbation_sweep_report,
+)
 from oqp.future_work.validation_gates import (  # noqa: E402
     foundry_calibration_gate,
     hardware_benchmark_gate,
@@ -42,6 +46,7 @@ STAGE_FILES = {
 
 SUPPLEMENTAL_REPORT_FILES = {
     "stage-3-perturbation-sweep": "stage-3-perturbation-sweep.json",
+    "stage-3-sweep-analysis": "stage-3-sweep-analysis.json",
 }
 
 
@@ -62,6 +67,7 @@ def main() -> None:
 
     supplemental_reports = [
         run_perturbation_sweep_report(),
+        run_perturbation_sweep_analysis_report(),
     ]
 
     for report in reports:
@@ -164,6 +170,8 @@ def _key_metrics(report: Dict[str, Any]) -> Dict[str, Any]:
         "oracleTargetAvailableInSimulation",
         "hardwareCalibrationClaimed",
         "rowCount",
+        "worstCaseErrorDelta",
+        "bestCasePerturbedRelativeError",
         "blockerReason",
     ]
     return {key: report[key] for key in keys if key in report}

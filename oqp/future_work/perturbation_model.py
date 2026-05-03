@@ -162,6 +162,71 @@ def run_perturbation_sweep_report() -> dict:
     }
 
 
+def run_perturbation_sweep_analysis_report() -> dict:
+    sweep = run_perturbation_sweep_report()
+    rows = sweep["rows"]
+    parameter_summaries = [_parameter_summary(parameter, rows) for parameter in sweep["sweepParameters"]]
+    sensitivity_ranking = sorted(
+        [
+            {
+                "sweepParameter": summary["sweepParameter"],
+                "maxErrorDelta": summary["maxErrorDelta"],
+                "maxPerturbedRelativeError": summary["maxPerturbedRelativeError"],
+            }
+            for summary in parameter_summaries
+        ],
+        key=lambda item: (-item["maxErrorDelta"], item["sweepParameter"]),
+    )
+    worst_case = max(rows, key=lambda row: (row["errorDelta"], row["sweepParameter"], row["sweepValue"]))
+    best_case = min(rows, key=lambda row: (row["perturbedRelativeError"], row["sweepParameter"], row["sweepValue"]))
+    control = _control_all_perturbations_disabled()
+    return {
+        "id": "stage-3-sweep-analysis",
+        "title": "Stage 3 perturbation sweep sensitivity analysis",
+        "stage": 3,
+        "evidenceLevel": "uncalibrated_perturbation_simulation",
+        "stageStatus": "complete",
+        "hardwareValidated": False,
+        "foundryCalibrated": False,
+        "measuredTransferMatrixAvailable": False,
+        "productionInferenceReady": False,
+        "physicalAccuracyClaimed": False,
+        "claimBoundary": "Deterministic analysis of uncalibrated perturbation sweeps only; no physical accuracy, hardware validation, foundry calibration, measured transfer matrix, or production inference readiness is claimed.",
+        "baselineMeshRelativeError": sweep["baselineMeshRelativeError"],
+        "rowCount": sweep["rowCount"],
+        "sweepParameters": sweep["sweepParameters"],
+        "parameterSummaries": parameter_summaries,
+        "worstCaseRow": worst_case,
+        "bestCaseRow": best_case,
+        "worstCaseErrorDelta": worst_case["errorDelta"],
+        "bestCasePerturbedRelativeError": best_case["perturbedRelativeError"],
+        "sensitivityRanking": sensitivity_ranking,
+        "controlSummary": control,
+        "monotonicityNotes": [
+            "Monotonicity is not expected as a physical law in this report.",
+            "Each one-parameter sweep is evaluated under the fixed baseline perturbation configuration unless that parameter is explicitly overridden.",
+            "Deterministic noise samples, quantization, loss scaling, and mesh approximation error can interact nonlinearly.",
+        ],
+        "limitations": [
+            "uncalibrated simulation only",
+            "small square deterministic matrix only",
+            "real-valued orthogonal mesh approximation only",
+            "one-parameter-at-a-time sweep with other perturbation defaults left enabled",
+            "deterministic seeds support reproducibility but do not represent measured noise statistics",
+            "no foundry-calibrated loss, phase-noise, drift, crosstalk, or detector model",
+            "no measured transfer matrix or hardware calibration loop",
+        ],
+        "blockers": [
+            "no_foundry_calibrated_loss_phase_noise_model",
+            "no_measured_drift_or_detector_noise_data",
+        ],
+        "nextValidationGates": [
+            "synthetic_transfer_matrix_calibration",
+            "foundry_calibrated_device_model_gate",
+        ],
+    }
+
+
 def _perturb_mesh(mesh: MeshApproximation, config: PerturbationConfig, rng: random.Random) -> MeshApproximation:
     rotations: List[GivensRotation] = []
     for index, rotation in enumerate(mesh.rotations):
@@ -213,6 +278,57 @@ def _config_for_sweep(parameter: str, value: float | int) -> PerturbationConfig:
     if parameter == "detector_noise_placeholder_std":
         return replace(config, detector_noise_std=float(value))
     raise ValueError(f"unknown sweep parameter: {parameter}")
+
+
+def _parameter_summary(parameter: str, rows: List[dict]) -> dict:
+    parameter_rows = [row for row in rows if row["sweepParameter"] == parameter]
+    min_error = min(row["perturbedRelativeError"] for row in parameter_rows)
+    max_error = max(row["perturbedRelativeError"] for row in parameter_rows)
+    max_delta = max(row["errorDelta"] for row in parameter_rows)
+    return {
+        "sweepParameter": parameter,
+        "rowCount": len(parameter_rows),
+        "minPerturbedRelativeError": min_error,
+        "maxPerturbedRelativeError": max_error,
+        "maxErrorDelta": max_delta,
+        "observedMonotonicNondecreasing": _is_monotonic_nondecreasing(
+            [row["perturbedRelativeError"] for row in parameter_rows]
+        ),
+        "monotonicityExpected": False,
+        "monotonicityNote": "Not expected from this uncalibrated one-parameter sweep because other default perturbations remain enabled unless explicitly overridden.",
+    }
+
+
+def _control_all_perturbations_disabled() -> dict:
+    model = build_mesh_transfer_model()
+    result = apply_perturbations(model, PerturbationConfig(
+        seed=SWEEP_SEED,
+        phase_quantization_levels=64,
+        phase_noise_std_rad=0.0,
+        insertion_loss_db=0.0,
+        coupler_imbalance=0.0,
+        thermal_drift_rad_per_stage=0.0,
+        detector_noise_std=0.0,
+    ))
+    delta = result.perturbed_error - model.mesh_error
+    return {
+        "id": "control_all_perturbations_disabled",
+        "description": "All Stage 3 perturbations disabled; expected to match or remain close to the Stage 2 baseline mesh error.",
+        "seed": SWEEP_SEED,
+        "baselineMeshRelativeError": round(model.mesh_error, 15),
+        "controlRelativeError": round(result.perturbed_error, 15),
+        "controlErrorDelta": round(delta, 15),
+        "controlMatchesBaselineWithinTolerance": abs(delta) <= 1e-12,
+        "tolerance": 1e-12,
+        "hardwareValidated": False,
+        "foundryCalibrated": False,
+        "measuredTransferMatrixAvailable": False,
+        "productionInferenceReady": False,
+    }
+
+
+def _is_monotonic_nondecreasing(values: List[float]) -> bool:
+    return all(current <= following for current, following in zip(values, values[1:]))
 
 
 def _quantize(value: float, levels: int) -> float:
