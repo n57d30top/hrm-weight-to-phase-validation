@@ -1,13 +1,21 @@
 {
   "acceptanceCriteria": [
+    "artifactId",
     "measurementDate",
-    "instrumentOrSetupDescription",
+    "deviceId",
+    "setupDescription",
+    "wavelength",
+    "temperatureOrOperatingCondition",
     "matrixShape",
-    "wavelengthNm",
-    "operatingCondition",
+    "matrixConvention",
     "calibrationProcedure",
-    "matrixArtifactRef",
-    "artifactHash"
+    "rawArtifactReference",
+    "processedArtifactReference",
+    "sha256Hash",
+    "provenance",
+    "uncertaintyOrErrorEstimate",
+    "operatorOrSource",
+    "claimBoundary"
   ],
   "blockerReason": "no_measured_hrm_transfer_matrix",
   "blockers": [
@@ -21,14 +29,22 @@
   "manifestPath": "/Users/sovryn/Desktop/hrm-weight-to-phase-validation/docs/future-work/evidence-inputs/measured-transfer-matrix.json",
   "measuredTransferMatrixAvailable": false,
   "missingEvidence": [
+    "artifactId",
     "measurementDate",
-    "instrumentOrSetupDescription",
+    "deviceId",
+    "setupDescription",
+    "wavelength",
+    "temperatureOrOperatingCondition",
     "matrixShape",
-    "wavelengthNm",
-    "operatingCondition",
+    "matrixConvention",
     "calibrationProcedure",
-    "matrixArtifactRef",
-    "artifactHash"
+    "rawArtifactReference",
+    "processedArtifactReference",
+    "sha256Hash",
+    "provenance",
+    "uncertaintyOrErrorEstimate",
+    "operatorOrSource",
+    "claimBoundary"
   ],
   "nextValidationGates": [
     "provide_measured_hrm_transfer_matrix_with_provenance",

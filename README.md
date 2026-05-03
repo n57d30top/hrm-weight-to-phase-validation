@@ -151,6 +151,11 @@ The evidence ledger is written to:
 docs/future-work/evidence-ledger.json
 ```
 
+Schema documentation for future hardware evidence gates:
+
+- `docs/future-work/measured-transfer-matrix-fixture-schema.md`
+- `docs/future-work/hardware-benchmark-acceptance-schema.md`
+
 ## Stage 2 Interpretation
 
 Stage 2 is complete only as an abstract mesh simulation.
@@ -232,6 +237,10 @@ The blocked stages are the boundary between simulation and hardware evidence.
 
 These blockers should remain until the required external artifacts exist.
 
+Stage 6 and Stage 7 schema docs define required fields for future evidence
+packages. They are not evidence, do not contain measured data, and do not
+unblock either gate.
+
 ## Claim Boundary
 
 This future-work track does not improve hardware readiness and does not claim
@@ -242,12 +251,24 @@ completed hardware benchmark.
 
 ## Roadmap
 
+Completed alpha milestones:
+
+- `v0.1.0-alpha.1`: public simulation-gated baseline.
+- `v0.1.0-alpha.2`: deterministic Stage 3 perturbation sweeps and sensitivity analysis.
+- `v0.1.0-alpha.3`: deterministic Stage 4 synthetic calibration sweeps and analysis.
+
+Completed post-alpha.3 main work:
+
+- measured-transfer-matrix fixture schema documented and enforced by Stage 6 gate acceptance criteria.
+- hardware benchmark acceptance schema documented and enforced by Stage 7 gate acceptance criteria.
+
 Near-term:
 
 - keep CI green for report generation, JSON validation, hashes, and tests
-- maintain and extend deterministic Stage 3 perturbation sweeps and analysis
-- maintain and extend Stage 4 calibration sensitivity sweeps
-- document accepted manifest schemas for Stage 5-7 evidence inputs
+- measured-transfer-matrix manifest validation hardening
+- hardware benchmark manifest validation hardening
+- rectangular matrix support
+- complex/unitary mesh mode
 
 Later, only when evidence exists:
 
