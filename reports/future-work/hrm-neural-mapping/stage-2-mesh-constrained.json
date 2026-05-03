@@ -1,0 +1,161 @@
+{
+  "abstractMeshParameterization": {
+    "left": {
+      "couplerCount": 3,
+      "couplerSettings": [
+        {
+          "crossPower": 0.364579765928,
+          "rowA": 1,
+          "rowB": 2,
+          "theta": 2.493327502849,
+          "throughPower": 0.635420234072
+        },
+        {
+          "crossPower": 0.866525935915,
+          "rowA": 0,
+          "rowB": 1,
+          "theta": 1.196797201368,
+          "throughPower": 0.133474064085
+        },
+        {
+          "crossPower": 0.611260466978,
+          "rowA": 1,
+          "rowB": 2,
+          "theta": -0.897597901026,
+          "throughPower": 0.388739533022
+        }
+      ],
+      "phaseCount": 4,
+      "phaseLevels": 64,
+      "phaseSettings": [
+        {
+          "radians": 2.493327502849,
+          "role": "rotation_phase",
+          "target": "rotation_0_rows_1_2"
+        },
+        {
+          "radians": 1.196797201368,
+          "role": "rotation_phase",
+          "target": "rotation_1_rows_0_1"
+        },
+        {
+          "radians": 5.385587406154,
+          "role": "rotation_phase",
+          "target": "rotation_2_rows_1_2"
+        },
+        {
+          "radians": 3.14159265359,
+          "role": "output_sign_phase",
+          "target": "output_2"
+        }
+      ],
+      "rotationCount": 3
+    },
+    "right": {
+      "couplerCount": 3,
+      "couplerSettings": [
+        {
+          "crossPower": 0.462634953207,
+          "rowA": 1,
+          "rowB": 2,
+          "theta": 2.393594402735,
+          "throughPower": 0.537365046793
+        },
+        {
+          "crossPower": 0.984538643115,
+          "rowA": 0,
+          "rowB": 1,
+          "theta": 1.695462701937,
+          "throughPower": 0.015461356885
+        },
+        {
+          "crossPower": 0.791871836117,
+          "rowA": 1,
+          "rowB": 2,
+          "theta": -1.097064101254,
+          "throughPower": 0.208128163883
+        }
+      ],
+      "phaseCount": 4,
+      "phaseLevels": 64,
+      "phaseSettings": [
+        {
+          "radians": 2.393594402735,
+          "role": "rotation_phase",
+          "target": "rotation_0_rows_1_2"
+        },
+        {
+          "radians": 1.695462701937,
+          "role": "rotation_phase",
+          "target": "rotation_1_rows_0_1"
+        },
+        {
+          "radians": 5.186121205926,
+          "role": "rotation_phase",
+          "target": "rotation_2_rows_1_2"
+        },
+        {
+          "radians": 3.14159265359,
+          "role": "output_sign_phase",
+          "target": "output_2"
+        }
+      ],
+      "rotationCount": 3
+    }
+  },
+  "abstractRotationParameterizationImplemented": true,
+  "activeGainImplemented": false,
+  "blockers": [
+    "no_foundry_calibrated_mesh_model",
+    "no_measured_transfer_matrix"
+  ],
+  "claimBoundary": "Abstract real-valued mesh approximation only; this is not a real chip mesh, foundry layout, measured transfer matrix, or production inference path.",
+  "couplerCount": 6,
+  "couplerSynthesisImplemented": true,
+  "evidenceLevel": "abstract_mesh_simulation",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "stage-2-mesh-constrained",
+  "idealSvdRelativeError": 1e-15,
+  "leftMeshCouplerCount": 3,
+  "leftMeshPhaseCount": 4,
+  "leftMeshRotationCount": 3,
+  "limitations": [
+    "deterministic abstract phase and coupler settings only",
+    "no routing constraints, thermal crosstalk model, wavelength model, splitter excess-loss model, or measured transfer matrix",
+    "not a real fabricated chip mesh or foundry-calibrated HRM layout",
+    "real-valued orthogonal rotation mesh only"
+  ],
+  "measuredTransferMatrixAvailable": false,
+  "meshConstrainedRelativeError": 0.019640136609986,
+  "meshErrorDelta": 0.019640136609985,
+  "meshLimitations": [
+    "deterministic abstract phase and coupler settings only",
+    "no routing constraints, thermal crosstalk model, wavelength model, splitter excess-loss model, or measured transfer matrix",
+    "not a real fabricated chip mesh or foundry-calibrated HRM layout",
+    "real-valued orthogonal rotation mesh only"
+  ],
+  "meshModel": "abstract_hrm_mesh_simulation",
+  "meshParameterizationStatus": "deterministic_abstract_phase_coupler_parameterization",
+  "nextValidationGates": [
+    "quantization_drift_loss_noise_perturbation",
+    "synthetic_transfer_matrix_calibration",
+    "foundry_calibrated_device_model_gate"
+  ],
+  "phaseCount": 8,
+  "phaseLevels": 64,
+  "phaseSynthesisImplemented": true,
+  "productionInferenceReady": false,
+  "realChipMesh": false,
+  "rightMeshCouplerCount": 3,
+  "rightMeshPhaseCount": 4,
+  "rightMeshRotationCount": 3,
+  "singularValuesPassiveRange": [
+    1.0,
+    0.754934750499,
+    0.411810282449
+  ],
+  "stage": 2,
+  "stageStatus": "complete",
+  "title": "Mesh-constrained HRM transfer-matrix approximation"
+}

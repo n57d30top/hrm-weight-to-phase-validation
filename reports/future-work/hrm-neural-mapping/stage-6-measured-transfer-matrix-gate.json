@@ -1,0 +1,41 @@
+{
+  "acceptanceCriteria": [
+    "measurementDate",
+    "instrumentOrSetupDescription",
+    "matrixShape",
+    "wavelengthNm",
+    "operatingCondition",
+    "calibrationProcedure",
+    "matrixArtifactRef",
+    "artifactHash"
+  ],
+  "blockerReason": "no_measured_hrm_transfer_matrix",
+  "blockers": [
+    "no_measured_hrm_transfer_matrix"
+  ],
+  "claimBoundary": "Gate only; no measured transfer matrix is claimed unless provenance-bearing measured artifacts are supplied.",
+  "evidenceLevel": "measured_transfer_matrix_gate",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "stage-6-measured-transfer-matrix-gate",
+  "manifestPath": "/Users/sovryn/Desktop/hrm-weight-to-phase-validation/docs/future-work/evidence-inputs/measured-transfer-matrix.json",
+  "measuredTransferMatrixAvailable": false,
+  "missingEvidence": [
+    "measurementDate",
+    "instrumentOrSetupDescription",
+    "matrixShape",
+    "wavelengthNm",
+    "operatingCondition",
+    "calibrationProcedure",
+    "matrixArtifactRef",
+    "artifactHash"
+  ],
+  "nextValidationGates": [
+    "provide_measured_hrm_transfer_matrix_with_provenance",
+    "run_end_to_end_hardware_benchmark_gate"
+  ],
+  "productionInferenceReady": false,
+  "stage": 6,
+  "stageStatus": "blocked",
+  "title": "Measured HRM transfer-matrix validation gate"
+}

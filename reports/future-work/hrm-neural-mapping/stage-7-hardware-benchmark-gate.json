@@ -1,0 +1,46 @@
+{
+  "acceptanceCriteria": [
+    "measuredTransferMatrix",
+    "calibratedInputOutputEncoding",
+    "detectorReadoutModelOrMeasurement",
+    "dacAdcOrControlPathCharacterization",
+    "taskDataset",
+    "softwareBaseline",
+    "accuracyMetric",
+    "latencyMetric",
+    "energyMetric",
+    "driftRecalibrationMetric"
+  ],
+  "blockerReason": "no_end_to_end_hardware_benchmark",
+  "blockers": [
+    "no_end_to_end_hardware_benchmark"
+  ],
+  "claimBoundary": "Gate only; no production inference readiness is claimed unless end-to-end measured benchmark evidence is supplied.",
+  "evidenceLevel": "hardware_benchmark_gate",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "stage-7-hardware-benchmark-gate",
+  "manifestPath": "/Users/sovryn/Desktop/hrm-weight-to-phase-validation/docs/future-work/evidence-inputs/hardware-benchmark.json",
+  "measuredTransferMatrixAvailable": false,
+  "missingEvidence": [
+    "measuredTransferMatrix",
+    "calibratedInputOutputEncoding",
+    "detectorReadoutModelOrMeasurement",
+    "dacAdcOrControlPathCharacterization",
+    "taskDataset",
+    "softwareBaseline",
+    "accuracyMetric",
+    "latencyMetric",
+    "energyMetric",
+    "driftRecalibrationMetric"
+  ],
+  "nextValidationGates": [
+    "provide_measured_transfer_matrix",
+    "provide_calibrated_io_and_control_characterization",
+    "provide_dataset_baseline_metrics_latency_energy_and_drift_results"
+  ],
+  "productionInferenceReady": false,
+  "stage": 7,
+  "stageStatus": "blocked",
+  "title": "End-to-end hardware inference benchmark gate"
+}

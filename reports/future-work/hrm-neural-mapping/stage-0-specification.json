@@ -1,0 +1,20 @@
+{
+  "blockers": [],
+  "claimBoundariesPresent": true,
+  "docPath": "/Users/sovryn/Desktop/hrm-weight-to-phase-validation/docs/future-work/hrm-neural-weight-to-phase-mapping.md",
+  "evidenceLevel": "theoretical_extension",
+  "forbiddenHardwareCompilationPhrasePresent": false,
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "stage-0-specification",
+  "measuredTransferMatrixAvailable": false,
+  "missingClaimBoundaries": [],
+  "nextValidationGates": [
+    "numerical_svd_mapping_demo",
+    "abstract_mesh_constrained_mapping"
+  ],
+  "productionInferenceReady": false,
+  "stage": 0,
+  "stageStatus": "complete",
+  "title": "Future-work specification"
+}

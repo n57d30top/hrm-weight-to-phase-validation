@@ -1,0 +1,50 @@
+{
+  "activeGainImplemented": false,
+  "blockers": [],
+  "claimBoundary": "Numerical SVD demonstration only; no phase/coupler synthesis, active gain, hardware validation, or production inference readiness is claimed.",
+  "evidenceLevel": "numerical_simulation",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "stage-1-svd-demo",
+  "matrixScaleRepresentedOutsidePassiveOpticalCore": 0.8943914067418325,
+  "measuredTransferMatrixAvailable": false,
+  "nextValidationGates": [
+    "abstract_mesh_constrained_mapping",
+    "phase_quantization_and_drift_model",
+    "synthetic_transfer_matrix_calibration"
+  ],
+  "passiveNormalizedSingularValues": [
+    1.0,
+    0.754934750499,
+    0.411810282449
+  ],
+  "passiveRelativeFrobeniusReconstructionError": 1e-15,
+  "phaseSynthesisImplemented": false,
+  "productionInferenceReady": false,
+  "relativeFrobeniusReconstructionError": 1e-15,
+  "singularValues": [
+    0.894391406742,
+    0.675207153497,
+    0.36831957783
+  ],
+  "stage": 1,
+  "stageStatus": "complete",
+  "title": "Numerical SVD mapping demo",
+  "weightMatrix": [
+    [
+      0.42,
+      -0.25,
+      0.31
+    ],
+    [
+      0.1,
+      0.56,
+      -0.44
+    ],
+    [
+      -0.35,
+      0.18,
+      0.62
+    ]
+  ]
+}

@@ -1,0 +1,11 @@
+[project]
+name = "hrm-weight-to-phase-validation"
+version = "0.1.0"
+description = "Simulation-gated HRM neural weight-to-phase mapping validation ladder."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[tool.setuptools.packages.find]
+include = ["oqp*"]
+

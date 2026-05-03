@@ -1,0 +1,41 @@
+{
+  "acceptanceCriteria": [
+    "evidenceClass",
+    "foundrySParameters",
+    "calibratedCompactModel",
+    "foundryPdkReference",
+    "calibratedLossModel",
+    "calibratedCrosstalkModel",
+    "calibratedPhaseShifterModel",
+    "artifactHash"
+  ],
+  "blockerReason": "no_foundry_calibrated_device_model",
+  "blockers": [
+    "no_foundry_calibrated_device_model"
+  ],
+  "claimBoundary": "Gate only; no foundry calibration is claimed unless explicit foundry-calibrated S-parameters or equivalent models are supplied.",
+  "evidenceLevel": "foundry_calibration_gate",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "stage-5-foundry-calibration-gate",
+  "manifestPath": "/Users/sovryn/Desktop/hrm-weight-to-phase-validation/docs/future-work/evidence-inputs/foundry-device-model.json",
+  "measuredTransferMatrixAvailable": false,
+  "missingEvidence": [
+    "evidenceClass",
+    "foundrySParameters",
+    "calibratedCompactModel",
+    "foundryPdkReference",
+    "calibratedLossModel",
+    "calibratedCrosstalkModel",
+    "calibratedPhaseShifterModel",
+    "artifactHash"
+  ],
+  "nextValidationGates": [
+    "provide_foundry_sparameters_or_calibrated_compact_model",
+    "run_measured_transfer_matrix_gate"
+  ],
+  "productionInferenceReady": false,
+  "stage": 5,
+  "stageStatus": "blocked",
+  "title": "Foundry-calibrated device-model validation gate"
+}
