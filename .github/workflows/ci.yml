@@ -39,6 +39,8 @@ jobs:
           jq empty reports/future-work/hrm-neural-mapping/stage-3-perturbation-sweep.json
           jq empty reports/future-work/hrm-neural-mapping/stage-3-sweep-analysis.json
           jq empty reports/future-work/hrm-neural-mapping/stage-4-simulated-calibration.json
+          jq empty reports/future-work/hrm-neural-mapping/stage-4-calibration-sweep.json
+          jq empty reports/future-work/hrm-neural-mapping/stage-4-calibration-analysis.json
           jq empty reports/future-work/hrm-neural-mapping/stage-5-foundry-calibration-gate.json
           jq empty reports/future-work/hrm-neural-mapping/stage-6-measured-transfer-matrix-gate.json
           jq empty reports/future-work/hrm-neural-mapping/stage-7-hardware-benchmark-gate.json

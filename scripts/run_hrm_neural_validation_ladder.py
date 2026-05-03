@@ -12,7 +12,11 @@ from typing import Any, Dict, Iterable, List
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from oqp.future_work.calibration_loop import run_calibration_demo  # noqa: E402
+from oqp.future_work.calibration_loop import (  # noqa: E402
+    run_calibration_demo,
+    run_calibration_sweep_analysis_report,
+    run_calibration_sweep_report,
+)
 from oqp.future_work.mesh_mapping import run_mesh_constrained_demo  # noqa: E402
 from oqp.future_work.neural_mapping import run_svd_mapping_demo  # noqa: E402
 from oqp.future_work.perturbation_model import (  # noqa: E402
@@ -47,6 +51,8 @@ STAGE_FILES = {
 SUPPLEMENTAL_REPORT_FILES = {
     "stage-3-perturbation-sweep": "stage-3-perturbation-sweep.json",
     "stage-3-sweep-analysis": "stage-3-sweep-analysis.json",
+    "stage-4-calibration-analysis": "stage-4-calibration-analysis.json",
+    "stage-4-calibration-sweep": "stage-4-calibration-sweep.json",
 }
 
 
@@ -68,6 +74,8 @@ def main() -> None:
     supplemental_reports = [
         run_perturbation_sweep_report(),
         run_perturbation_sweep_analysis_report(),
+        run_calibration_sweep_report(),
+        run_calibration_sweep_analysis_report(),
     ]
 
     for report in reports:
@@ -172,6 +180,9 @@ def _key_metrics(report: Dict[str, Any]) -> Dict[str, Any]:
         "rowCount",
         "worstCaseErrorDelta",
         "bestCasePerturbedRelativeError",
+        "bestCasePostCalibrationRelativeError",
+        "worstCasePostCalibrationRelativeError",
+        "failureCaseCount",
         "blockerReason",
     ]
     return {key: report[key] for key in keys if key in report}

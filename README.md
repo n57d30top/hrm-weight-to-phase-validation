@@ -137,6 +137,8 @@ Key files:
 - `stage-3-perturbation-sweep.json`
 - `stage-3-sweep-analysis.json`
 - `stage-4-simulated-calibration.json`
+- `stage-4-calibration-sweep.json`
+- `stage-4-calibration-analysis.json`
 - `stage-5-foundry-calibration-gate.json`
 - `stage-6-measured-transfer-matrix-gate.json`
 - `stage-7-hardware-benchmark-gate.json`
@@ -197,6 +199,12 @@ hardwareCalibrationClaimed=false
 measuredTransferMatrixAvailable=false
 ```
 
+The supplemental Stage 4 calibration sweep report varies synthetic calibration
+parameters one at a time, including initial noise, learning rate, calibration
+iterations, and mesh phase levels. The companion analysis report summarizes
+best/worst cases, improvement ratios, convergence status, and failure cases.
+Both reports remain simulation-only and do not claim hardware calibration.
+
 ## Stage 3 Sweep Report
 
 The supplemental Stage 3 sweep report evaluates one perturbation parameter at a
@@ -238,7 +246,7 @@ Near-term:
 
 - keep CI green for report generation, JSON validation, hashes, and tests
 - maintain and extend deterministic Stage 3 perturbation sweeps and analysis
-- add Stage 4 calibration sensitivity sweeps
+- maintain and extend Stage 4 calibration sensitivity sweeps
 - document accepted manifest schemas for Stage 5-7 evidence inputs
 
 Later, only when evidence exists:

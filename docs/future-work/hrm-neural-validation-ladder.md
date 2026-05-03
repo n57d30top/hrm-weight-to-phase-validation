@@ -29,6 +29,12 @@ phase synthesis, or physical coupler synthesis.
 Stage 4 is synthetic/oracle calibration. It does not use measured transfer
 matrices and does not claim hardware calibration.
 
+Stage 4 also emits supplemental calibration sensitivity reports:
+`reports/future-work/hrm-neural-mapping/stage-4-calibration-sweep.json` and
+`reports/future-work/hrm-neural-mapping/stage-4-calibration-analysis.json`.
+These reports vary synthetic calibration parameters only and keep all hardware
+readiness flags false.
+
 Stage 3 also emits a supplemental deterministic sweep report:
 `reports/future-work/hrm-neural-mapping/stage-3-perturbation-sweep.json`.
 The sweep varies one uncalibrated perturbation parameter at a time and keeps all
