@@ -51,6 +51,10 @@ jobs:
         run: |
           sha256sum -c reports/future-work/hrm-neural-mapping/ARTIFACTS.sha256
 
+      - name: Validate artifact hash coverage
+        run: |
+          make hash-coverage-check
+
       - name: Local path hygiene
         run: |
           make local-path-check

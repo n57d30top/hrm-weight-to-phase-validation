@@ -199,6 +199,8 @@ The supplemental report `rectangular-matrix-support.json` extends the
 simulation-only mapping path from square toy matrices to rectangular neural
 layer shapes.
 
+The main Stage 2 demo remains small square, and supplemental rectangular support exists for 6x4, 4x6, and rank-deficient 5x3 cases.
+
 The representation is:
 
 ```text
@@ -213,6 +215,10 @@ This is a numerical simulation convention. It uses padding through orthogonal
 completion and a zero-padded rectangular singular-value core. It is not a
 physical HRM layout, not a Clements/Reck interferometer layout, not a measured
 transfer matrix, and not a production phase synthesis pipeline.
+
+There is still no complex/unitary mesh, still no Clements/Reck physical
+interferometer layout, still no foundry layout synthesis, and still no hardware
+validation.
 
 The report includes tall, wide, and rank-deficient deterministic cases and
 keeps all hardware evidence flags false.
