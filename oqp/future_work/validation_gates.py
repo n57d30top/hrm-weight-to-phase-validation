@@ -233,7 +233,7 @@ def stage_0_specification_gate(doc_path: str | Path) -> Dict[str, Any]:
         "evidenceLevel": "theoretical_extension",
         "stageStatus": "complete" if complete else "blocked",
         **FOUNDATION_FALSE_FLAGS,
-        "docPath": str(path),
+        "docPath": _display_path(path),
         "claimBoundariesPresent": not missing,
         "missingClaimBoundaries": missing,
         "forbiddenHardwareCompilationPhrasePresent": forbidden_phrase_present,

@@ -251,6 +251,39 @@ class HrmValidationGatesTest(unittest.TestCase):
             self.assertFalse(report["measuredTransferMatrixAvailable"])
             self.assertFalse(report["productionInferenceReady"])
 
+    def test_public_gate_manifest_paths_are_repo_relative_objects(self):
+        report_dir = ROOT / "reports" / "future-work" / "hrm-neural-mapping"
+        expected = {
+            "stage-5-foundry-calibration-gate.json": "docs/future-work/evidence-inputs/foundry-device-model.json",
+            "stage-6-measured-transfer-matrix-gate.json": "docs/future-work/evidence-inputs/measured-transfer-matrix.json",
+            "stage-7-hardware-benchmark-gate.json": "docs/future-work/evidence-inputs/hardware-benchmark.json",
+        }
+        for filename, configured_path in expected.items():
+            report = json.loads((report_dir / filename).read_text(encoding="utf-8"))
+            manifest_path = report["manifestPath"]
+            self.assertIsInstance(manifest_path, dict)
+            self.assertEqual(manifest_path["configured"], configured_path)
+            self.assertFalse(Path(manifest_path["configured"]).is_absolute())
+            self.assertFalse(manifest_path["exists"])
+            self.assertNotIn("..", Path(manifest_path["configured"]).parts)
+
+    def test_public_reports_do_not_contain_local_absolute_paths(self):
+        public_files = [
+            ROOT / "docs" / "future-work" / "evidence-ledger.json",
+            *sorted((ROOT / "reports" / "future-work" / "hrm-neural-mapping").glob("*.json")),
+        ]
+        forbidden = [
+            "/" + "Users" + "/",
+            "/" + "home" + "/",
+            "Desktop" + "/",
+            "C:" + "\\",
+            "file:" + "//",
+        ]
+        for path in public_files:
+            text = path.read_text(encoding="utf-8")
+            for fragment in forbidden:
+                self.assertNotIn(fragment, text, msg=str(path))
+
     def test_stage_0_gate_requires_claim_boundaries_and_forbidden_phrase_absence(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             path = Path(tmpdir) / "spec.md"

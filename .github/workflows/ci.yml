@@ -50,6 +50,10 @@ jobs:
         run: |
           sha256sum -c reports/future-work/hrm-neural-mapping/ARTIFACTS.sha256
 
+      - name: Local path hygiene
+        run: |
+          make local-path-check
+
       - name: Whitespace check
         run: |
           git diff --check

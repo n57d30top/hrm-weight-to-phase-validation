@@ -1,4 +1,4 @@
-.PHONY: demo ladder test json hash check
+.PHONY: demo ladder test json hash local-path-check check
 
 demo:
 	python3 scripts/run_hrm_neural_mapping_demo.py
@@ -28,5 +28,8 @@ json:
 hash:
 	sha256sum -c reports/future-work/hrm-neural-mapping/ARTIFACTS.sha256
 
-check: demo ladder test json hash
+local-path-check:
+	python3 scripts/check_no_local_paths.py
+
+check: demo ladder test json hash local-path-check
 	git diff --check

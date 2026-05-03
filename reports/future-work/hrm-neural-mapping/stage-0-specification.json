@@ -1,7 +1,7 @@
 {
   "blockers": [],
   "claimBoundariesPresent": true,
-  "docPath": "/Users/sovryn/Desktop/hrm-weight-to-phase-validation/docs/future-work/hrm-neural-weight-to-phase-mapping.md",
+  "docPath": "docs/future-work/hrm-neural-weight-to-phase-mapping.md",
   "evidenceLevel": "theoretical_extension",
   "forbiddenHardwareCompilationPhrasePresent": false,
   "foundryCalibrated": false,
