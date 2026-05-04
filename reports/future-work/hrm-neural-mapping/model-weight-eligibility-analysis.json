@@ -1,0 +1,92 @@
+{
+  "blockers": [
+    "no_external_model_export_adapter",
+    "no_full_model_execution",
+    "no_measured_transfer_matrix",
+    "no_hardware_benchmark"
+  ],
+  "claimBoundary": "Simulation-only model-weight eligibility analysis; no hardware validation, foundry calibration, measured transfer matrix, production inference readiness, optical nonlinearity, full model acceleration, transformer acceleration, or PyTorch execution is claimed.",
+  "classicalOnlyLayerCount": 0,
+  "eligibilityByLayer": [
+    {
+      "activationAfterLayer": "relu",
+      "activationClassicalOutsideOpticalMesh": true,
+      "biasClassicalOutsideOpticalMesh": true,
+      "classification": "eligible",
+      "classificationReason": "rectangular linear layer is eligible for abstract rectangular simulation mapping",
+      "dtype": "float64",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "layerId": "linear_1",
+      "layerType": "rectangular_linear",
+      "loadedArtifactCount": 2,
+      "manifestMappingEligible": true,
+      "mappingEligible": true,
+      "mappingLimitations": [
+        "rectangular linear weight can be mapped only through abstract simulation",
+        "bias remains classical outside the optical mesh",
+        "relu remains classical outside the optical mesh"
+      ],
+      "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "shape": [
+        6,
+        4
+      ]
+    },
+    {
+      "activationAfterLayer": "none",
+      "activationClassicalOutsideOpticalMesh": false,
+      "biasClassicalOutsideOpticalMesh": true,
+      "classification": "eligible",
+      "classificationReason": "rectangular linear layer is eligible for abstract rectangular simulation mapping",
+      "dtype": "float64",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "layerId": "linear_2",
+      "layerType": "rectangular_linear",
+      "loadedArtifactCount": 2,
+      "manifestMappingEligible": true,
+      "mappingEligible": true,
+      "mappingLimitations": [
+        "rectangular linear weight can be mapped only through abstract simulation",
+        "bias remains classical outside the optical mesh"
+      ],
+      "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "shape": [
+        3,
+        6
+      ]
+    }
+  ],
+  "eligibleComplexLayerCount": 0,
+  "eligibleLinearLayerCount": 0,
+  "eligibleRectangularLayerCount": 2,
+  "evidenceLevel": "model_weight_manifest_eligibility_analysis",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "model-weight-eligibility-analysis",
+  "ineligibleLayerCount": 0,
+  "mappingLimitations": [
+    "bias remains classical outside the optical mesh",
+    "rectangular linear weight can be mapped only through abstract simulation",
+    "relu remains classical outside the optical mesh",
+    "PyTorch export can generate this manifest format externally in future work",
+    "PyTorch is not a required dependency"
+  ],
+  "measuredTransferMatrixAvailable": false,
+  "modelId": "tiny_mlp_manifest_4_6_3",
+  "nextValidationGates": [
+    "scaling_and_larger_layer_benchmarks",
+    "review_pack",
+    "foundry_calibrated_device_model_gate"
+  ],
+  "productionInferenceReady": false,
+  "stage": 2,
+  "stageStatus": "complete",
+  "title": "Model weight mapping eligibility analysis",
+  "unsupportedLayerTypes": []
+}

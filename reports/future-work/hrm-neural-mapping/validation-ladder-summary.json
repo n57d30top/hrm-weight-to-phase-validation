@@ -394,6 +394,59 @@
     },
     {
       "blockers": [
+        "no_external_model_export_adapter",
+        "no_full_model_execution",
+        "no_measured_transfer_matrix",
+        "no_hardware_benchmark"
+      ],
+      "evidenceLevel": "model_weight_manifest_import_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-weight-import-demo",
+      "keyMetrics": {
+        "classicalLayerCount": 3,
+        "eligibleLayerCount": 2,
+        "hashValidationPassed": true,
+        "ineligibleLayerCount": 0,
+        "layerCount": 2,
+        "modelId": "tiny_mlp_manifest_4_6_3",
+        "pathValidationPassed": true,
+        "unsupportedLayerTypes": []
+      },
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model weight manifest import demo"
+    },
+    {
+      "blockers": [
+        "no_external_model_export_adapter",
+        "no_full_model_execution",
+        "no_measured_transfer_matrix",
+        "no_hardware_benchmark"
+      ],
+      "evidenceLevel": "model_weight_manifest_eligibility_analysis",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-weight-eligibility-analysis",
+      "keyMetrics": {
+        "classicalOnlyLayerCount": 0,
+        "eligibleComplexLayerCount": 0,
+        "eligibleLinearLayerCount": 0,
+        "eligibleRectangularLayerCount": 2,
+        "ineligibleLayerCount": 0,
+        "modelId": "tiny_mlp_manifest_4_6_3",
+        "unsupportedLayerTypes": []
+      },
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model weight mapping eligibility analysis"
+    },
+    {
+      "blockers": [
         "no_combined_complex_rectangular_matrix_family_sweeps",
         "no_foundry_calibrated_mesh_model",
         "no_measured_transfer_matrix"

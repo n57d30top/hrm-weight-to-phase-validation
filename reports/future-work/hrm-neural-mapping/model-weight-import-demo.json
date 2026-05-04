@@ -1,0 +1,120 @@
+{
+  "blockers": [
+    "no_external_model_export_adapter",
+    "no_full_model_execution",
+    "no_measured_transfer_matrix",
+    "no_hardware_benchmark"
+  ],
+  "claimBoundary": "Simulation-only model-weight manifest import; no hardware validation, foundry calibration, measured transfer matrix, production inference readiness, optical nonlinearity, full model acceleration, transformer acceleration, or PyTorch execution is claimed.",
+  "classicalLayerCount": 3,
+  "eligibleLayerCount": 2,
+  "evidenceLevel": "model_weight_manifest_import_simulation",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "hashValidationPassed": true,
+  "id": "model-weight-import-demo",
+  "ineligibleLayerCount": 0,
+  "layerCount": 2,
+  "limitations": [
+    "deterministic JSON fixture import only",
+    "no PyTorch dependency or PyTorch model execution",
+    "no transformer execution or acceleration claim",
+    "bias additions remain classical outside the optical mesh",
+    "activations remain classical outside the optical mesh",
+    "eligible linear layers are mapped only as abstract simulation candidates",
+    "no hardware validation, foundry calibration, measured transfer matrix, timing, or energy evidence"
+  ],
+  "loadedWeightArtifacts": [
+    {
+      "artifactReference": "fixtures/model-weights/tiny-mlp-w1.json",
+      "dtype": "float64",
+      "layerId": "linear_1",
+      "role": "weight",
+      "shape": [
+        6,
+        4
+      ]
+    },
+    {
+      "artifactReference": "fixtures/model-weights/tiny-mlp-b1.json",
+      "dtype": "float64",
+      "layerId": "linear_1",
+      "role": "bias",
+      "shape": [
+        6
+      ]
+    },
+    {
+      "artifactReference": "fixtures/model-weights/tiny-mlp-w2.json",
+      "dtype": "float64",
+      "layerId": "linear_2",
+      "role": "weight",
+      "shape": [
+        3,
+        6
+      ]
+    },
+    {
+      "artifactReference": "fixtures/model-weights/tiny-mlp-b2.json",
+      "dtype": "float64",
+      "layerId": "linear_2",
+      "role": "bias",
+      "shape": [
+        3
+      ]
+    }
+  ],
+  "manifestPath": {
+    "configured": "fixtures/model-weights/tiny-mlp-manifest.json",
+    "exists": true
+  },
+  "mappingPlan": [
+    {
+      "activationHandling": "classical_outside_optical_mesh",
+      "biasHandling": "classical_outside_optical_mesh",
+      "dtype": "float64",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "layerId": "linear_1",
+      "layerType": "rectangular_linear",
+      "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "shape": [
+        6,
+        4
+      ],
+      "weightArtifactReference": "fixtures/model-weights/tiny-mlp-w1.json"
+    },
+    {
+      "activationHandling": "none",
+      "biasHandling": "classical_outside_optical_mesh",
+      "dtype": "float64",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "layerId": "linear_2",
+      "layerType": "rectangular_linear",
+      "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "shape": [
+        3,
+        6
+      ],
+      "weightArtifactReference": "fixtures/model-weights/tiny-mlp-w2.json"
+    }
+  ],
+  "measuredTransferMatrixAvailable": false,
+  "modelId": "tiny_mlp_manifest_4_6_3",
+  "nextValidationGates": [
+    "scaling_and_larger_layer_benchmarks",
+    "review_pack",
+    "foundry_calibrated_device_model_gate"
+  ],
+  "pathValidationPassed": true,
+  "productionInferenceReady": false,
+  "stage": 2,
+  "stageStatus": "complete",
+  "title": "Model weight manifest import demo",
+  "unsupportedLayerTypes": []
+}

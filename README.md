@@ -141,6 +141,8 @@ Key files:
 - `layer-stack-error-analysis.json`
 - `matrix-family-benchmark.json`
 - `matrix-family-analysis.json`
+- `model-weight-import-demo.json`
+- `model-weight-eligibility-analysis.json`
 - `rectangular-matrix-support.json`
 - `stage-3-perturbation-model.json`
 - `stage-3-perturbation-sweep.json`
@@ -165,6 +167,7 @@ Schema documentation for future hardware evidence gates:
 - `docs/future-work/foundry-calibrated-device-model-schema.md`
 - `docs/future-work/measured-transfer-matrix-fixture-schema.md`
 - `docs/future-work/hardware-benchmark-acceptance-schema.md`
+- `docs/future-work/model-weight-manifest-schema.md`
 
 ## Stage 2 Interpretation
 
@@ -285,6 +288,39 @@ energy, measured transfer matrix, or hardware validation is claimed.
 The analysis report identifies the worst layer by relative error, summarizes
 cumulative error trends, and records activation-boundary notes for the toy
 models.
+
+## Model Weight Manifest Import
+
+The supplemental reports `model-weight-import-demo.json` and
+`model-weight-eligibility-analysis.json` validate a deterministic JSON manifest
+for external model-weight artifacts.
+
+The fixture model is:
+
+```text
+tiny_mlp_manifest_4_6_3
+-> rectangular_linear 6x4 with bias and classical ReLU after the layer
+-> rectangular_linear 3x6 with bias
+```
+
+The importer checks required manifest fields, ISO export date, repository-
+relative artifact references, SHA-256 hashes, dtype metadata, and layer shapes.
+It rejects absolute paths, local path fragments, missing fields, and wrong
+hashes. PyTorch is not a required dependency; a future exporter can generate
+this manifest format externally.
+
+Mapping eligibility is schema-driven:
+
+- `linear`, `rectangular_linear`, and supported `complex_linear` layers are
+  eligible for abstract simulation mapping.
+- `convolution`, `attention_softmax`, and `embedding` are ineligible and not
+  implemented.
+- bias additions, activations, normalization, and other non-linear operations
+  remain classical outside the optical mesh.
+
+This is an import and eligibility layer only. It does not execute a PyTorch
+model, does not accelerate a full model, does not implement optical
+nonlinearities, and does not claim hardware validation.
 
 ## Rectangular Matrix Support
 
@@ -417,11 +453,15 @@ Completed post-alpha.7 main work:
 
 - multi-layer toy inference reports added for a 4-to-6-to-3 tiny MLP and a 4-to-8-to-4 projection chain, with classical ReLU boundaries and layer-wise/cumulative error reporting.
 
+Completed post-alpha.8 main work:
+
+- model-weight manifest import and eligibility analysis added with repo-relative artifact paths, SHA-256 validation, dtype/shape checks, and simulation-only mapping plans.
+
 Near-term:
 
 - keep CI green for report generation, JSON validation, hashes, and tests
 - complex SVD pipeline
-- model weight manifest import layer
+- scaling and larger-layer benchmarks
 
 Later, only when evidence exists:
 

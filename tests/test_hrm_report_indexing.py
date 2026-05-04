@@ -123,6 +123,40 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertFalse(analysis["measuredTransferMatrixAvailable"])
         self.assertFalse(analysis["productionInferenceReady"])
 
+    def test_validation_summary_includes_model_weight_reports(self):
+        summary = json.loads((REPORT_DIR / "validation-ladder-summary.json").read_text(encoding="utf-8"))
+        reports = {
+            report["id"]: report
+            for report in summary["supplementalReports"]
+        }
+        self.assertIn("model-weight-import-demo", reports)
+        self.assertIn("model-weight-eligibility-analysis", reports)
+        imported = reports["model-weight-import-demo"]
+        analysis = reports["model-weight-eligibility-analysis"]
+        self.assertEqual(imported["stage"], 2)
+        self.assertEqual(imported["stageStatus"], "complete")
+        self.assertEqual(imported["evidenceLevel"], "model_weight_manifest_import_simulation")
+        self.assertEqual(imported["keyMetrics"]["modelId"], "tiny_mlp_manifest_4_6_3")
+        self.assertEqual(imported["keyMetrics"]["eligibleLayerCount"], 2)
+        self.assertEqual(imported["keyMetrics"]["classicalLayerCount"], 3)
+        self.assertTrue(imported["keyMetrics"]["hashValidationPassed"])
+        self.assertTrue(imported["keyMetrics"]["pathValidationPassed"])
+        self.assertFalse(imported["hardwareValidated"])
+        self.assertFalse(imported["foundryCalibrated"])
+        self.assertFalse(imported["measuredTransferMatrixAvailable"])
+        self.assertFalse(imported["productionInferenceReady"])
+        self.assertEqual(analysis["stage"], 2)
+        self.assertEqual(analysis["stageStatus"], "complete")
+        self.assertEqual(analysis["evidenceLevel"], "model_weight_manifest_eligibility_analysis")
+        self.assertEqual(analysis["keyMetrics"]["eligibleRectangularLayerCount"], 2)
+        self.assertEqual(analysis["keyMetrics"]["eligibleComplexLayerCount"], 0)
+        self.assertEqual(analysis["keyMetrics"]["ineligibleLayerCount"], 0)
+        self.assertEqual(analysis["keyMetrics"]["unsupportedLayerTypes"], [])
+        self.assertFalse(analysis["hardwareValidated"])
+        self.assertFalse(analysis["foundryCalibrated"])
+        self.assertFalse(analysis["measuredTransferMatrixAvailable"])
+        self.assertFalse(analysis["productionInferenceReady"])
+
     def test_evidence_ledger_includes_rectangular_support(self):
         ledger = json.loads((ROOT / "docs" / "future-work" / "evidence-ledger.json").read_text(encoding="utf-8"))
         reports = {
@@ -183,6 +217,24 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertFalse(layer_stack_analysis["foundryCalibrated"])
         self.assertFalse(layer_stack_analysis["measuredTransferMatrixAvailable"])
         self.assertFalse(layer_stack_analysis["productionInferenceReady"])
+        self.assertIn("model-weight-import-demo", reports)
+        model_weight_report = reports["model-weight-import-demo"]
+        self.assertEqual(model_weight_report["stage"], 2)
+        self.assertEqual(model_weight_report["stageStatus"], "complete")
+        self.assertEqual(model_weight_report["evidenceLevel"], "model_weight_manifest_import_simulation")
+        self.assertFalse(model_weight_report["hardwareValidated"])
+        self.assertFalse(model_weight_report["foundryCalibrated"])
+        self.assertFalse(model_weight_report["measuredTransferMatrixAvailable"])
+        self.assertFalse(model_weight_report["productionInferenceReady"])
+        self.assertIn("model-weight-eligibility-analysis", reports)
+        model_weight_analysis = reports["model-weight-eligibility-analysis"]
+        self.assertEqual(model_weight_analysis["stage"], 2)
+        self.assertEqual(model_weight_analysis["stageStatus"], "complete")
+        self.assertEqual(model_weight_analysis["evidenceLevel"], "model_weight_manifest_eligibility_analysis")
+        self.assertFalse(model_weight_analysis["hardwareValidated"])
+        self.assertFalse(model_weight_analysis["foundryCalibrated"])
+        self.assertFalse(model_weight_analysis["measuredTransferMatrixAvailable"])
+        self.assertFalse(model_weight_analysis["productionInferenceReady"])
 
     def test_artifacts_sha256_covers_all_generated_json_reports(self):
         json_reports = {
@@ -202,6 +254,8 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("reports/future-work/hrm-neural-mapping/matrix-family-analysis.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/layer-stack-inference-demo.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/layer-stack-error-analysis.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/model-weight-import-demo.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/model-weight-eligibility-analysis.json", hashed_reports)
 
     def test_readme_rectangular_support_is_current(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
@@ -212,9 +266,13 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("matrix-family-analysis.json", normalized)
         self.assertIn("layer-stack-inference-demo.json", normalized)
         self.assertIn("layer-stack-error-analysis.json", normalized)
+        self.assertIn("model-weight-import-demo.json", normalized)
+        self.assertIn("model-weight-eligibility-analysis.json", normalized)
+        self.assertIn("model-weight-manifest-schema.md", normalized)
         self.assertIn("supplemental rectangular support exists", normalized)
         self.assertIn("physical complex/unitary mesh layout", normalized)
         self.assertIn("ReLU remains a classical activation outside the optical mesh", normalized)
+        self.assertIn("PyTorch is not a required dependency", readme)
         self.assertIn("still no hardware validation", normalized)
         self.assertNotIn("no rectangular neural layer support", normalized)
         self.assertNotIn("square matrix only", normalized)

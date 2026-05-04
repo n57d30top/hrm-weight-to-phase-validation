@@ -19,6 +19,8 @@ json:
 	jq empty reports/future-work/hrm-neural-mapping/layer-stack-error-analysis.json
 	jq empty reports/future-work/hrm-neural-mapping/matrix-family-benchmark.json
 	jq empty reports/future-work/hrm-neural-mapping/matrix-family-analysis.json
+	jq empty reports/future-work/hrm-neural-mapping/model-weight-import-demo.json
+	jq empty reports/future-work/hrm-neural-mapping/model-weight-eligibility-analysis.json
 	jq empty reports/future-work/hrm-neural-mapping/rectangular-matrix-support.json
 	jq empty reports/future-work/hrm-neural-mapping/stage-3-perturbation-model.json
 	jq empty reports/future-work/hrm-neural-mapping/stage-3-perturbation-sweep.json

@@ -1,0 +1,52 @@
+{
+  "claimBoundary": "Fixture model weights for simulation-only manifest import; no hardware validation, foundry calibration, measured transfer matrix, production inference readiness, optical nonlinearity, full model acceleration, or transformer acceleration is claimed.",
+  "exportDate": "2026-05-04",
+  "exportFormat": "hrm-model-weight-manifest.v1",
+  "layerList": [
+    {
+      "activationAfterLayer": "relu",
+      "biasArtifactReference": "fixtures/model-weights/tiny-mlp-b1.json",
+      "biasArtifactSha256": "a6f5ce4de22b5144e805cdd4dae357ae1b3f2bceb19f50129bd7de32292415fb",
+      "claimBoundary": "Linear layer fixture for simulation-only eligibility analysis; bias and activation remain classical outside the optical mesh.",
+      "dtype": "float64",
+      "layerId": "linear_1",
+      "layerType": "rectangular_linear",
+      "mappingEligible": true,
+      "mappingLimitations": [
+        "rectangular linear weight can be mapped only through abstract simulation",
+        "bias remains classical outside the optical mesh",
+        "relu remains classical outside the optical mesh"
+      ],
+      "shape": [
+        6,
+        4
+      ],
+      "weightArtifactReference": "fixtures/model-weights/tiny-mlp-w1.json",
+      "weightArtifactSha256": "6df99de8e9dd358fee5d63977541a8fa55c0e16ea163c1221dae9ebadfb32c63"
+    },
+    {
+      "activationAfterLayer": "none",
+      "biasArtifactReference": "fixtures/model-weights/tiny-mlp-b2.json",
+      "biasArtifactSha256": "7e56ce358c78937b471522d5850a6f3b50c3e62a938b70d130c31050384980d5",
+      "claimBoundary": "Linear layer fixture for simulation-only eligibility analysis; bias remains classical outside the optical mesh.",
+      "dtype": "float64",
+      "layerId": "linear_2",
+      "layerType": "rectangular_linear",
+      "mappingEligible": true,
+      "mappingLimitations": [
+        "rectangular linear weight can be mapped only through abstract simulation",
+        "bias remains classical outside the optical mesh"
+      ],
+      "shape": [
+        3,
+        6
+      ],
+      "weightArtifactReference": "fixtures/model-weights/tiny-mlp-w2.json",
+      "weightArtifactSha256": "0f6f9ff74f13e4a959d622016b682b30abd07859f9e5a129e8a9e643344a04a8"
+    }
+  ],
+  "modelId": "tiny_mlp_manifest_4_6_3",
+  "modelType": "tiny_mlp",
+  "provenance": "Deterministic repository fixture derived from the alpha.8 toy MLP weights.",
+  "sourceFramework": "none_json_fixture"
+}

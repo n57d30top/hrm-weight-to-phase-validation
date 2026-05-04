@@ -27,6 +27,10 @@ from oqp.future_work.layer_stack_inference import (  # noqa: E402
     run_layer_stack_inference_demo_report,
 )
 from oqp.future_work.mesh_mapping import run_mesh_constrained_demo  # noqa: E402
+from oqp.future_work.model_weight_manifest import (  # noqa: E402
+    run_model_weight_eligibility_analysis_report,
+    run_model_weight_import_demo_report,
+)
 from oqp.future_work.neural_mapping import run_svd_mapping_demo  # noqa: E402
 from oqp.future_work.perturbation_model import (  # noqa: E402
     run_perturbation_demo,
@@ -64,6 +68,8 @@ SUPPLEMENTAL_REPORT_FILES = {
     "layer-stack-inference-demo": "layer-stack-inference-demo.json",
     "matrix-family-analysis": "matrix-family-analysis.json",
     "matrix-family-benchmark": "matrix-family-benchmark.json",
+    "model-weight-eligibility-analysis": "model-weight-eligibility-analysis.json",
+    "model-weight-import-demo": "model-weight-import-demo.json",
     "rectangular-matrix-support": "rectangular-matrix-support.json",
     "stage-3-perturbation-sweep": "stage-3-perturbation-sweep.json",
     "stage-3-sweep-analysis": "stage-3-sweep-analysis.json",
@@ -100,6 +106,8 @@ def main() -> None:
         run_layer_stack_error_analysis_report(),
         run_matrix_family_benchmark_report(),
         run_matrix_family_analysis_report(),
+        run_model_weight_import_demo_report(),
+        run_model_weight_eligibility_analysis_report(),
         run_rectangular_matrix_support_report(),
         run_perturbation_sweep_report(),
         run_perturbation_sweep_analysis_report(),
@@ -220,6 +228,16 @@ def _key_metrics(report: Dict[str, Any]) -> Dict[str, Any]:
         "worstModelByOutputError",
         "worstLayerByError",
         "errorsCompoundAcrossLayers",
+        "eligibleLayerCount",
+        "ineligibleLayerCount",
+        "classicalLayerCount",
+        "eligibleLinearLayerCount",
+        "eligibleRectangularLayerCount",
+        "eligibleComplexLayerCount",
+        "classicalOnlyLayerCount",
+        "hashValidationPassed",
+        "pathValidationPassed",
+        "unsupportedLayerTypes",
         "complexValuedSupportImplemented",
         "unitaryFactorSupportImplemented",
         "complexSvdImplemented",
