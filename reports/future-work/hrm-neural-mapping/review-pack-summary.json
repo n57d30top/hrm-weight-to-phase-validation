@@ -1,0 +1,519 @@
+{
+  "blockedGates": [
+    {
+      "blockerReason": "no_foundry_calibrated_device_model",
+      "blockers": [
+        "no_foundry_calibrated_device_model"
+      ],
+      "id": "stage-5-foundry-calibration-gate",
+      "stage": 5,
+      "stageStatus": "blocked"
+    },
+    {
+      "blockerReason": "no_measured_hrm_transfer_matrix",
+      "blockers": [
+        "no_measured_hrm_transfer_matrix"
+      ],
+      "id": "stage-6-measured-transfer-matrix-gate",
+      "stage": 6,
+      "stageStatus": "blocked"
+    },
+    {
+      "blockerReason": "no_end_to_end_hardware_benchmark",
+      "blockers": [
+        "no_end_to_end_hardware_benchmark"
+      ],
+      "id": "stage-7-hardware-benchmark-gate",
+      "stage": 7,
+      "stageStatus": "blocked"
+    }
+  ],
+  "blockedHardwareGateCount": 3,
+  "blockers": [
+    "no_foundry_calibrated_device_model",
+    "no_measured_hrm_transfer_matrix",
+    "no_end_to_end_hardware_benchmark"
+  ],
+  "claimBoundary": "This is a simulation-only review pack. It is not hardware evidence. It does not claim hardware validation, foundry calibration, measured transfer matrices, production inference readiness, optical nonlinearities, quantum advantage, or a hardware benchmark.",
+  "evidenceLevel": "simulation_review_pack",
+  "foundryCalibrated": false,
+  "generatedAt": "2026-05-04T00:00:00Z",
+  "hardwareValidated": false,
+  "id": "review-pack-summary",
+  "keyMetrics": {
+    "blockedHardwareGateCount": 3,
+    "calibrationBestPostRelativeError": 0.0,
+    "calibrationFailureCaseCount": 0,
+    "calibrationPostRelativeError": 0.000112458773944,
+    "calibrationPreRelativeError": 0.066879533355693,
+    "calibrationWorstPostRelativeError": 0.024641168630069,
+    "layerStackMaxOutputRelativeError": 0.061296868009442,
+    "layerStackPrimaryOutputRelativeError": 0.061296868009442,
+    "matrixFamilyAverageMeshConstrainedError": 0.045353461797016,
+    "matrixFamilyBestCase": {
+      "caseId": "identity_4x4",
+      "errorDelta": 0.0,
+      "matrixFamily": "identity",
+      "meshConstrainedReconstructionError": 0.0,
+      "realOrComplex": "real",
+      "shape": [
+        4,
+        4
+      ]
+    },
+    "matrixFamilyMaxErrorDelta": 0.099951757092972,
+    "matrixFamilyWorstCase": {
+      "caseId": "rectangular_tall_8x4",
+      "errorDelta": 0.099951757092972,
+      "matrixFamily": "rectangular_tall",
+      "meshConstrainedReconstructionError": 0.099951757092972,
+      "realOrComplex": "real",
+      "shape": [
+        8,
+        4
+      ]
+    },
+    "perturbationTopSensitivity": {
+      "maxErrorDelta": 0.370308698767234,
+      "maxPerturbedRelativeError": 0.38994883537722,
+      "sweepParameter": "phase_quantization_bits"
+    },
+    "scalingAverageMeshConstrainedError": 0.098272171267003,
+    "scalingBestCase": {
+      "caseId": "phase_dominant_complex_8x8",
+      "errorDelta": 0.026860550074221,
+      "matrixFamily": "phase_dominant_complex",
+      "meshConstrainedReconstructionError": 0.026860550074221,
+      "parameterCount": 64,
+      "realOrComplex": "complex",
+      "shape": [
+        8,
+        8
+      ]
+    },
+    "scalingMaxMeshConstrainedError": 0.141428486997061,
+    "scalingWorstCase": {
+      "caseId": "dense_seeded_16x16",
+      "errorDelta": 0.14142848699706,
+      "matrixFamily": "dense_seeded",
+      "meshConstrainedReconstructionError": 0.141428486997061,
+      "parameterCount": 256,
+      "realOrComplex": "real",
+      "shape": [
+        16,
+        16
+      ]
+    },
+    "stage2MeshConstrainedRelativeError": 0.019640136609986,
+    "stage2MeshErrorDelta": 0.019640136609985
+  },
+  "limitations": [
+    "review pack summarizes generated simulation reports only",
+    "no foundry-calibrated device model is included",
+    "no measured HRM transfer matrix is included",
+    "no end-to-end hardware benchmark is included",
+    "no hardware timing, throughput, energy, or physical accuracy claim is made",
+    "Stage 5, Stage 6, and Stage 7 remain blocked"
+  ],
+  "measuredTransferMatrixAvailable": false,
+  "metricRows": [
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "abstract_mesh_simulation",
+      "metricName": "stage2MeshConstrainedRelativeError",
+      "metricValue": "0.019640136609986",
+      "reportId": "stage-2-mesh-constrained"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "abstract_mesh_simulation",
+      "metricName": "stage2MeshErrorDelta",
+      "metricValue": "0.019640136609985",
+      "reportId": "stage-2-mesh-constrained"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "abstract_matrix_family_analysis",
+      "metricName": "matrixFamilyBestCase",
+      "metricValue": "{\"caseId\":\"identity_4x4\",\"errorDelta\":0.0,\"matrixFamily\":\"identity\",\"meshConstrainedReconstructionError\":0.0,\"realOrComplex\":\"real\",\"shape\":[4,4]}",
+      "reportId": "matrix-family-analysis"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "abstract_matrix_family_analysis",
+      "metricName": "matrixFamilyWorstCase",
+      "metricValue": "{\"caseId\":\"rectangular_tall_8x4\",\"errorDelta\":0.099951757092972,\"matrixFamily\":\"rectangular_tall\",\"meshConstrainedReconstructionError\":0.099951757092972,\"realOrComplex\":\"real\",\"shape\":[8,4]}",
+      "reportId": "matrix-family-analysis"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "abstract_matrix_family_analysis",
+      "metricName": "matrixFamilyAverageMeshConstrainedError",
+      "metricValue": "0.045353461797016",
+      "reportId": "matrix-family-analysis"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "abstract_matrix_family_analysis",
+      "metricName": "matrixFamilyMaxErrorDelta",
+      "metricValue": "0.099951757092972",
+      "reportId": "matrix-family-analysis"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "abstract_layer_stack_inference_simulation",
+      "metricName": "layerStackPrimaryOutputRelativeError",
+      "metricValue": "0.061296868009442",
+      "reportId": "layer-stack-inference-demo"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "abstract_layer_stack_inference_simulation",
+      "metricName": "layerStackMaxOutputRelativeError",
+      "metricValue": "0.061296868009442",
+      "reportId": "layer-stack-inference-demo"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "abstract_scaling_analysis",
+      "metricName": "scalingAverageMeshConstrainedError",
+      "metricValue": "0.098272171267003",
+      "reportId": "scaling-analysis"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "abstract_scaling_analysis",
+      "metricName": "scalingMaxMeshConstrainedError",
+      "metricValue": "0.141428486997061",
+      "reportId": "scaling-analysis"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "abstract_scaling_analysis",
+      "metricName": "scalingBestCase",
+      "metricValue": "{\"caseId\":\"phase_dominant_complex_8x8\",\"errorDelta\":0.026860550074221,\"matrixFamily\":\"phase_dominant_complex\",\"meshConstrainedReconstructionError\":0.026860550074221,\"parameterCount\":64,\"realOrComplex\":\"complex\",\"shape\":[8,8]}",
+      "reportId": "scaling-analysis"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "abstract_scaling_analysis",
+      "metricName": "scalingWorstCase",
+      "metricValue": "{\"caseId\":\"dense_seeded_16x16\",\"errorDelta\":0.14142848699706,\"matrixFamily\":\"dense_seeded\",\"meshConstrainedReconstructionError\":0.141428486997061,\"parameterCount\":256,\"realOrComplex\":\"real\",\"shape\":[16,16]}",
+      "reportId": "scaling-analysis"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "uncalibrated_perturbation_simulation",
+      "metricName": "perturbationTopSensitivity",
+      "metricValue": "{\"maxErrorDelta\":0.370308698767234,\"maxPerturbedRelativeError\":0.38994883537722,\"sweepParameter\":\"phase_quantization_bits\"}",
+      "reportId": "stage-3-sweep-analysis"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "synthetic_calibration_simulation",
+      "metricName": "calibrationPreRelativeError",
+      "metricValue": "0.066879533355693",
+      "reportId": "stage-4-simulated-calibration"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "synthetic_calibration_simulation",
+      "metricName": "calibrationPostRelativeError",
+      "metricValue": "0.000112458773944",
+      "reportId": "stage-4-simulated-calibration"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "synthetic_calibration_simulation",
+      "metricName": "calibrationBestPostRelativeError",
+      "metricValue": "0.0",
+      "reportId": "stage-4-calibration-analysis"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "synthetic_calibration_simulation",
+      "metricName": "calibrationWorstPostRelativeError",
+      "metricValue": "0.024641168630069",
+      "reportId": "stage-4-calibration-analysis"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "synthetic_calibration_simulation",
+      "metricName": "calibrationFailureCaseCount",
+      "metricValue": "0",
+      "reportId": "stage-4-calibration-analysis"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "simulation_review_pack",
+      "metricName": "blockedHardwareGateCount",
+      "metricValue": "3",
+      "reportId": "review-pack-summary"
+    }
+  ],
+  "nextValidationGates": [
+    "release_candidate_hardening",
+    "foundry_calibrated_device_model_gate",
+    "measured_transfer_matrix_gate",
+    "hardware_benchmark_gate"
+  ],
+  "productionInferenceReady": false,
+  "reportCount": 23,
+  "reviewerChecklist": [
+    "Run make check to reproduce generated reports.",
+    "Inspect reports/future-work/hrm-neural-mapping/ARTIFACTS.sha256.",
+    "Inspect stage reports for Stage 0 through Stage 7.",
+    "Inspect blocked hardware gates for Stage 5, Stage 6, and Stage 7.",
+    "Inspect report limitations before interpreting numeric metrics.",
+    "Confirm Stage 5, Stage 6, and Stage 7 remain blocked."
+  ],
+  "stage": 0,
+  "stageStatus": "complete",
+  "stageStatusTable": [
+    {
+      "evidenceLevel": "theoretical_extension",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "stage-0-specification",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 0,
+      "stageStatus": "complete",
+      "title": "Future-work specification"
+    },
+    {
+      "evidenceLevel": "numerical_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "stage-1-svd-demo",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 1,
+      "stageStatus": "complete",
+      "title": "Numerical SVD mapping demo"
+    },
+    {
+      "evidenceLevel": "abstract_mesh_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "stage-2-mesh-constrained",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Mesh-constrained HRM transfer-matrix approximation"
+    },
+    {
+      "evidenceLevel": "uncalibrated_perturbation_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "stage-3-perturbation-model",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 3,
+      "stageStatus": "complete",
+      "title": "Quantization, drift, loss, and noise perturbation model"
+    },
+    {
+      "evidenceLevel": "synthetic_calibration_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "stage-4-simulated-calibration",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 4,
+      "stageStatus": "complete",
+      "title": "Simulated transfer-matrix calibration loop"
+    },
+    {
+      "evidenceLevel": "foundry_calibration_gate",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "stage-5-foundry-calibration-gate",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 5,
+      "stageStatus": "blocked",
+      "title": "Foundry-calibrated device-model validation gate"
+    },
+    {
+      "evidenceLevel": "measured_transfer_matrix_gate",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "stage-6-measured-transfer-matrix-gate",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 6,
+      "stageStatus": "blocked",
+      "title": "Measured HRM transfer-matrix validation gate"
+    },
+    {
+      "evidenceLevel": "hardware_benchmark_gate",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "stage-7-hardware-benchmark-gate",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 7,
+      "stageStatus": "blocked",
+      "title": "End-to-end hardware inference benchmark gate"
+    }
+  ],
+  "supplementalReportIndex": [
+    {
+      "evidenceLevel": "abstract_complex_unitary_mesh_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "complex-unitary-mesh-support",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Complex/unitary mesh support for abstract HRM simulation"
+    },
+    {
+      "evidenceLevel": "abstract_layer_stack_error_analysis",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "layer-stack-error-analysis",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Multi-layer toy inference error analysis"
+    },
+    {
+      "evidenceLevel": "abstract_layer_stack_inference_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "layer-stack-inference-demo",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Multi-layer toy inference through abstract HRM-mapped linear layers"
+    },
+    {
+      "evidenceLevel": "abstract_matrix_family_analysis",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "matrix-family-analysis",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Matrix-family benchmark analysis"
+    },
+    {
+      "evidenceLevel": "abstract_matrix_family_benchmark_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "matrix-family-benchmark",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Matrix-family benchmark for abstract HRM mapping simulation"
+    },
+    {
+      "evidenceLevel": "model_weight_manifest_eligibility_analysis",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-weight-eligibility-analysis",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model weight mapping eligibility analysis"
+    },
+    {
+      "evidenceLevel": "model_weight_manifest_import_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-weight-import-demo",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model weight manifest import demo"
+    },
+    {
+      "evidenceLevel": "abstract_rectangular_mesh_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "rectangular-matrix-support",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Rectangular matrix support for abstract HRM mesh simulation"
+    },
+    {
+      "evidenceLevel": "abstract_scaling_analysis",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "scaling-analysis",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Scaling benchmark analysis"
+    },
+    {
+      "evidenceLevel": "abstract_scaling_benchmark_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "scaling-benchmark",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Scaling benchmark for larger abstract HRM mapping simulations"
+    },
+    {
+      "evidenceLevel": "uncalibrated_perturbation_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "stage-3-perturbation-sweep",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 3,
+      "stageStatus": "complete",
+      "title": "Stage 3 deterministic perturbation sensitivity sweep"
+    },
+    {
+      "evidenceLevel": "uncalibrated_perturbation_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "stage-3-sweep-analysis",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 3,
+      "stageStatus": "complete",
+      "title": "Stage 3 perturbation sweep sensitivity analysis"
+    },
+    {
+      "evidenceLevel": "synthetic_calibration_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "stage-4-calibration-analysis",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 4,
+      "stageStatus": "complete",
+      "title": "Stage 4 synthetic calibration sweep analysis"
+    },
+    {
+      "evidenceLevel": "synthetic_calibration_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "stage-4-calibration-sweep",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 4,
+      "stageStatus": "complete",
+      "title": "Stage 4 synthetic calibration sensitivity sweep"
+    }
+  ],
+  "title": "Reviewer-facing simulation evidence pack summary"
+}

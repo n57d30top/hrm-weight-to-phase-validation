@@ -190,6 +190,24 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertFalse(analysis["measuredTransferMatrixAvailable"])
         self.assertFalse(analysis["productionInferenceReady"])
 
+    def test_validation_summary_includes_review_pack(self):
+        summary = json.loads((REPORT_DIR / "validation-ladder-summary.json").read_text(encoding="utf-8"))
+        reports = {
+            report["id"]: report
+            for report in summary["supplementalReports"]
+        }
+        self.assertIn("review-pack-summary", reports)
+        report = reports["review-pack-summary"]
+        self.assertEqual(report["stage"], 0)
+        self.assertEqual(report["stageStatus"], "complete")
+        self.assertEqual(report["evidenceLevel"], "simulation_review_pack")
+        self.assertIn("reportCount", report["keyMetrics"])
+        self.assertEqual(report["keyMetrics"]["blockedHardwareGateCount"], 3)
+        self.assertFalse(report["hardwareValidated"])
+        self.assertFalse(report["foundryCalibrated"])
+        self.assertFalse(report["measuredTransferMatrixAvailable"])
+        self.assertFalse(report["productionInferenceReady"])
+
     def test_evidence_ledger_includes_rectangular_support(self):
         ledger = json.loads((ROOT / "docs" / "future-work" / "evidence-ledger.json").read_text(encoding="utf-8"))
         reports = {
@@ -309,6 +327,26 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("reports/future-work/hrm-neural-mapping/model-weight-eligibility-analysis.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/scaling-benchmark.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/scaling-analysis.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/review-pack-summary.json", hashed_reports)
+        artifact_text = (REPORT_DIR / "ARTIFACTS.sha256").read_text(encoding="utf-8")
+        self.assertIn("reports/future-work/hrm-neural-mapping/review-pack.md", artifact_text)
+        self.assertIn("reports/future-work/hrm-neural-mapping/review-pack-metrics.csv", artifact_text)
+
+    def test_evidence_ledger_includes_review_pack(self):
+        ledger = json.loads((ROOT / "docs" / "future-work" / "evidence-ledger.json").read_text(encoding="utf-8"))
+        reports = {
+            report["id"]: report
+            for report in ledger["entries"]
+        }
+        self.assertIn("review-pack-summary", reports)
+        report = reports["review-pack-summary"]
+        self.assertEqual(report["stage"], 0)
+        self.assertEqual(report["stageStatus"], "complete")
+        self.assertEqual(report["evidenceLevel"], "simulation_review_pack")
+        self.assertFalse(report["hardwareValidated"])
+        self.assertFalse(report["foundryCalibrated"])
+        self.assertFalse(report["measuredTransferMatrixAvailable"])
+        self.assertFalse(report["productionInferenceReady"])
 
     def test_readme_rectangular_support_is_current(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
@@ -324,11 +362,15 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("model-weight-manifest-schema.md", normalized)
         self.assertIn("scaling-benchmark.json", normalized)
         self.assertIn("scaling-analysis.json", normalized)
+        self.assertIn("review-pack-summary.json", normalized)
+        self.assertIn("review-pack.md", normalized)
+        self.assertIn("review-pack-metrics.csv", normalized)
         self.assertIn("supplemental rectangular support exists", normalized)
         self.assertIn("physical complex/unitary mesh layout", normalized)
         self.assertIn("ReLU remains a classical activation outside the optical mesh", normalized)
         self.assertIn("PyTorch is not a required dependency", readme)
         self.assertIn("not a hardware performance claim", normalized)
+        self.assertIn("simulation-only review pack", normalized)
         self.assertIn("still no hardware validation", normalized)
         self.assertNotIn("no rectangular neural layer support", normalized)
         self.assertNotIn("square matrix only", normalized)

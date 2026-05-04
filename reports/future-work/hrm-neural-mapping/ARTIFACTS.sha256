@@ -14,10 +14,15 @@ c74355856029428459276ae8db8a68f3390f0fe82138353bb334f3e88db7414c  reports/future
 8ab4f471cfffa3494c1b0c4e2d7519dc91c597e34b001be37c473a80a49be886  reports/future-work/hrm-neural-mapping/model-weight-eligibility-analysis.json
 286d755c59a92b2e90467f076ed4ca605422a0ff98f6ad69e645d52b664095bf  reports/future-work/hrm-neural-mapping/model-weight-import-demo.json
 65e1823bb59c6c76b843b1572f4c102796fc5ecb94fbe2b61025a41fb9d6dda3  reports/future-work/hrm-neural-mapping/rectangular-matrix-support.json
+0bba34ab5e774225f4a910f2b2e60d211b5ab1d8ea4666f2f5e6bdd4a383b80d  reports/future-work/hrm-neural-mapping/review-pack-summary.json
 1f90239f316695aa5a5adf7bf7df272169f9f309edb23c6d6f231780d1cd571c  reports/future-work/hrm-neural-mapping/scaling-analysis.json
 03e201cf7ef275db68a269f7c647021b5cb637b07d7520a07d762ea9d46c35d3  reports/future-work/hrm-neural-mapping/scaling-benchmark.json
 d4face109973ab34514a6175a9b807a9a9b4c04146c01eb199d37219428b9530  reports/future-work/hrm-neural-mapping/stage-3-perturbation-sweep.json
 5cf6a2c9e1c3a2a66462109ec81498c162760e0286eba7378f1cc3005da26fd3  reports/future-work/hrm-neural-mapping/stage-3-sweep-analysis.json
 94e57d64c6086c0babc827e42d0c210d6c61b383eddbf78255ce8fee6fba7ab1  reports/future-work/hrm-neural-mapping/stage-4-calibration-analysis.json
 db8c933ce203ccfbf7a10ad454498e04021b8172e8e412d1da0a2336cadd4fdd  reports/future-work/hrm-neural-mapping/stage-4-calibration-sweep.json
-10e265109e696e63d215c9e0c7da709e34fcdaf4661188db28c2b21de579cd46  reports/future-work/hrm-neural-mapping/validation-ladder-summary.json
+fb59c43c2eea105d83482c263b9f5f131278c28ed02c62ea374447f9e3aefa08  reports/future-work/hrm-neural-mapping/validation-ladder-summary.json
+5afc1ddfb3a8fcac5b9afa8663d07adf500036432fe101a637581b28196c73b9  reports/future-work/hrm-neural-mapping/review-pack.md
+3aea05740c025d36cd77bf9ac31ca535ece3038c5a30b958106f78043691a6d7  reports/future-work/hrm-neural-mapping/review-pack-metrics.csv
+5e1d8b2c2859332ddd4188f75f41453888017180f1688a2ecf6a4f7f81db1b1b  reports/future-work/hrm-neural-mapping/review-pack-stage-table.md
+db001836249185cf782b2473eb4c9282d3b3c3fa7d200bffe51c3f9440a60484  reports/future-work/hrm-neural-mapping/review-pack-limitations.md

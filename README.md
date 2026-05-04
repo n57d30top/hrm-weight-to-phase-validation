@@ -144,6 +144,11 @@ Key files:
 - `model-weight-import-demo.json`
 - `model-weight-eligibility-analysis.json`
 - `rectangular-matrix-support.json`
+- `review-pack-summary.json`
+- `review-pack.md`
+- `review-pack-metrics.csv`
+- `review-pack-stage-table.md`
+- `review-pack-limitations.md`
 - `scaling-benchmark.json`
 - `scaling-analysis.json`
 - `stage-3-perturbation-model.json`
@@ -348,6 +353,26 @@ The scaling reports do not claim hardware latency, hardware throughput, hardware
 energy efficiency, accelerator performance, foundry calibration, measured
 transfer matrices, or production inference readiness.
 
+## Review Pack
+
+The review pack collects the existing simulation-only reports into concise
+review artifacts:
+
+- `review-pack-summary.json`
+- `review-pack.md`
+- `review-pack-metrics.csv`
+- `review-pack-stage-table.md`
+- `review-pack-limitations.md`
+
+The Markdown report states: "This is a simulation-only review pack. It is not
+hardware evidence."
+
+The review pack summarizes stage status, supplemental report coverage, key
+reconstruction and error metrics, perturbation sensitivity, synthetic
+calibration improvement, blocked hardware gates, limitations, and a reviewer
+checklist. It does not add new physics, does not change any report metric, and
+does not unblock Stage 5, Stage 6, or Stage 7.
+
 ## Rectangular Matrix Support
 
 The supplemental report `rectangular-matrix-support.json` extends the
@@ -487,11 +512,15 @@ Completed post-alpha.9 main work:
 
 - scaling and larger-layer benchmark reports added for square, rectangular, low-rank, rank-deficient, dense, and complex phase-dominant deterministic cases up to 16x16 and 8x16/16x8.
 
+Completed post-alpha.10 main work:
+
+- simulation-only review pack added with summary JSON, Markdown, metrics CSV, stage table, limitations, reviewer checklist, and hash-covered artifacts.
+
 Near-term:
 
 - keep CI green for report generation, JSON validation, hashes, and tests
 - complex SVD pipeline
-- review pack / report polish
+- release-candidate hardening
 
 Later, only when evidence exists:
 

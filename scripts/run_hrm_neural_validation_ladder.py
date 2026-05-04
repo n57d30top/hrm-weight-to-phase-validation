@@ -38,6 +38,13 @@ from oqp.future_work.perturbation_model import (  # noqa: E402
     run_perturbation_sweep_report,
 )
 from oqp.future_work.rectangular_mapping import run_rectangular_matrix_support_report  # noqa: E402
+from oqp.future_work.review_pack import (  # noqa: E402
+    render_review_pack_limitations_markdown,
+    render_review_pack_markdown,
+    render_review_pack_metrics_csv,
+    render_review_pack_stage_table_markdown,
+    run_review_pack_summary_report,
+)
 from oqp.future_work.scaling_benchmark import (  # noqa: E402
     run_scaling_analysis_report,
     run_scaling_benchmark_report,
@@ -75,6 +82,7 @@ SUPPLEMENTAL_REPORT_FILES = {
     "model-weight-eligibility-analysis": "model-weight-eligibility-analysis.json",
     "model-weight-import-demo": "model-weight-import-demo.json",
     "rectangular-matrix-support": "rectangular-matrix-support.json",
+    "review-pack-summary": "review-pack-summary.json",
     "scaling-analysis": "scaling-analysis.json",
     "scaling-benchmark": "scaling-benchmark.json",
     "stage-3-perturbation-sweep": "stage-3-perturbation-sweep.json",
@@ -122,6 +130,8 @@ def main() -> None:
         run_calibration_sweep_report(),
         run_calibration_sweep_analysis_report(),
     ]
+    review_pack_summary = run_review_pack_summary_report(reports, supplemental_reports)
+    supplemental_reports.append(review_pack_summary)
 
     for report in reports:
         _write_json(REPORT_DIR / STAGE_FILES[int(report["stage"])], report)
@@ -138,10 +148,22 @@ def main() -> None:
     }
     _write_json(LEDGER_PATH, ledger)
 
+    review_pack_artifact_paths = [
+        REPORT_DIR / "review-pack.md",
+        REPORT_DIR / "review-pack-metrics.csv",
+        REPORT_DIR / "review-pack-stage-table.md",
+        REPORT_DIR / "review-pack-limitations.md",
+    ]
+    _write_text(review_pack_artifact_paths[0], render_review_pack_markdown(review_pack_summary))
+    _write_text(review_pack_artifact_paths[1], render_review_pack_metrics_csv(review_pack_summary))
+    _write_text(review_pack_artifact_paths[2], render_review_pack_stage_table_markdown(review_pack_summary))
+    _write_text(review_pack_artifact_paths[3], render_review_pack_limitations_markdown(review_pack_summary))
+
     artifact_paths = (
         [REPORT_DIR / STAGE_FILES[stage] for stage in sorted(STAGE_FILES)]
         + [REPORT_DIR / SUPPLEMENTAL_REPORT_FILES[key] for key in sorted(SUPPLEMENTAL_REPORT_FILES)]
         + [summary_path]
+        + review_pack_artifact_paths
     )
     _write_artifact_hashes(artifact_paths, REPORT_DIR / "ARTIFACTS.sha256")
 
@@ -250,6 +272,8 @@ def _key_metrics(report: Dict[str, Any]) -> Dict[str, Any]:
         "shapeFamilies",
         "largestCaseId",
         "maxMeshConstrainedError",
+        "reportCount",
+        "blockedHardwareGateCount",
         "noHardwarePerformanceClaim",
         "complexValuedSupportImplemented",
         "unitaryFactorSupportImplemented",
@@ -301,6 +325,11 @@ def _ledger_entry(report: Dict[str, Any]) -> Dict[str, Any]:
 def _write_json(path: Path, data: Dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def _write_text(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text.rstrip() + "\n", encoding="utf-8")
 
 
 def _write_artifact_hashes(paths: Iterable[Path], output_path: Path) -> None:
