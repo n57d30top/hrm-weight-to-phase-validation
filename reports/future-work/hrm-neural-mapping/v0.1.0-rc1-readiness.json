@@ -1,0 +1,121 @@
+{
+  "blockedHardwareGateCount": 3,
+  "blockers": [
+    "no_foundry_calibrated_device_model",
+    "no_measured_hrm_transfer_matrix",
+    "no_end_to_end_hardware_benchmark"
+  ],
+  "claimBoundary": "This v0.1.0-rc.1 readiness report is simulation-only. It does not claim hardware validation, foundry calibration, measured transfer matrices, production inference readiness, real hardware latency, real hardware energy efficiency, quantum advantage, hardware-native intelligence, or power-free computation.",
+  "decisionReportCapabilities": [
+    "model suitability profiling",
+    "parametric hardware scenario estimates",
+    "simulation-derived hardware requirements envelopes",
+    "simulation-only error budget",
+    "calibration and transfer-matrix assimilation planning",
+    "model-to-HRM decision reporting"
+  ],
+  "decisionReportCapabilityCount": 6,
+  "evidenceLevel": "v0.1.0_rc1_readiness_audit",
+  "foundryCalibrated": false,
+  "generatedAt": "2026-05-04T00:00:00Z",
+  "hardwareGatesBlocked": [
+    {
+      "blockerReason": "no_foundry_calibrated_device_model",
+      "blockers": [
+        "no_foundry_calibrated_device_model"
+      ],
+      "evidenceLevel": "foundry_calibration_gate",
+      "id": "stage-5-foundry-calibration-gate",
+      "stage": 5,
+      "stageStatus": "blocked",
+      "title": "Foundry-calibrated device-model validation gate"
+    },
+    {
+      "blockerReason": "no_measured_hrm_transfer_matrix",
+      "blockers": [
+        "no_measured_hrm_transfer_matrix"
+      ],
+      "evidenceLevel": "measured_transfer_matrix_gate",
+      "id": "stage-6-measured-transfer-matrix-gate",
+      "stage": 6,
+      "stageStatus": "blocked",
+      "title": "Measured HRM transfer-matrix validation gate"
+    },
+    {
+      "blockerReason": "no_end_to_end_hardware_benchmark",
+      "blockers": [
+        "no_end_to_end_hardware_benchmark"
+      ],
+      "evidenceLevel": "hardware_benchmark_gate",
+      "id": "stage-7-hardware-benchmark-gate",
+      "stage": 7,
+      "stageStatus": "blocked",
+      "title": "End-to-end hardware inference benchmark gate"
+    }
+  ],
+  "hardwareValidated": false,
+  "id": "v0.1.0-rc1-readiness",
+  "includedCapabilities": [
+    "rectangular matrix support",
+    "complex/unitary factor simulation",
+    "matrix-family benchmark suite",
+    "multi-layer toy inference",
+    "model-weight manifest import",
+    "scaling and larger-layer benchmark",
+    "model suitability profiler",
+    "parametric hardware scenario estimator",
+    "hardware requirements envelope",
+    "simulation-only error budget",
+    "calibration and assimilation planning",
+    "model-to-HRM decision report"
+  ],
+  "includedCapabilityCount": 12,
+  "knownLimitations": [
+    "simulation-only planning framework",
+    "no foundry-calibrated device model",
+    "no measured HRM transfer matrix",
+    "no end-to-end hardware inference benchmark",
+    "no measured hardware latency or energy",
+    "no physical layout synthesis",
+    "decision reports are not hardware evidence"
+  ],
+  "measuredTransferMatrixAvailable": false,
+  "nextValidationGates": [
+    "v0.1.0-rc.1_review",
+    "v0.2_planning",
+    "foundry_calibrated_device_model_gate",
+    "measured_transfer_matrix_gate",
+    "hardware_benchmark_gate"
+  ],
+  "productionInferenceReady": false,
+  "releaseCandidateFor": "v0.1.0",
+  "simulationOnlyScope": [
+    "mapping simulations",
+    "deterministic benchmark reports",
+    "manifest validation and eligibility analysis",
+    "planning estimates labeled as parametric or simulation-derived",
+    "blocked evidence gates for external hardware artifacts"
+  ],
+  "stage": 0,
+  "stageStatus": "complete",
+  "title": "v0.1.0-rc.1 readiness report",
+  "v0.2RecommendedWork": [
+    "optional PyTorch export adapter that writes the existing model-weight manifest format",
+    "larger deterministic model manifest fixtures",
+    "richer model suitability scoring",
+    "transfer-matrix measured-data ingestion once real data exists",
+    "optional visualization dashboard for generated reports",
+    "stronger synthetic calibration models",
+    "foundry or PDK integration only with real external evidence"
+  ],
+  "v02RoadmapItemCount": 7,
+  "verificationCommands": [
+    "make check",
+    "jq empty reports/future-work/hrm-neural-mapping/v0.1.0-rc1-readiness.json",
+    "sha256sum -c reports/future-work/hrm-neural-mapping/ARTIFACTS.sha256",
+    "python3 scripts/check_artifact_hash_coverage.py",
+    "python3 scripts/check_no_local_paths.py",
+    "python3 scripts/check_claim_boundary.py",
+    "git diff --check"
+  ]
+}

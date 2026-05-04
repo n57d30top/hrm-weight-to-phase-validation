@@ -79,9 +79,9 @@ class HrmReleaseReadinessTest(unittest.TestCase):
         self.assertIn("Stage 5, Stage 6, and Stage 7", readme)
         self.assertNotIn("hardware is validated", readme.lower())
 
-    def test_pyproject_version_is_alpha_12(self):
+    def test_pyproject_version_is_rc_1_after_alpha_12_hardening(self):
         pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
-        self.assertIn('version = "0.1.0-alpha.12"', pyproject)
+        self.assertIn('version = "0.1.0-rc.1"', pyproject)
 
     def test_release_readiness_artifacts_are_hash_listed(self):
         artifacts = (REPORT_DIR / "ARTIFACTS.sha256").read_text(encoding="utf-8")

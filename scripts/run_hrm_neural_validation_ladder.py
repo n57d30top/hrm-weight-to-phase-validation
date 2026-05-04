@@ -18,6 +18,27 @@ from oqp.future_work.calibration_loop import (  # noqa: E402
     run_calibration_sweep_report,
 )
 from oqp.future_work.complex_unitary_mapping import run_complex_unitary_mesh_support_report  # noqa: E402
+from oqp.future_work.calibration_planner import (  # noqa: E402
+    render_transfer_matrix_assimilation_protocol,
+    run_calibration_plan_report,
+    run_transfer_matrix_assimilation_plan_report,
+)
+from oqp.future_work.decision_report import (  # noqa: E402
+    render_model_to_hrm_decision_markdown,
+    run_model_to_hrm_decision_report,
+)
+from oqp.future_work.error_budget import (  # noqa: E402
+    render_error_budget_markdown,
+    run_error_budget_report,
+)
+from oqp.future_work.hardware_requirements import (  # noqa: E402
+    run_hardware_requirements_analysis_report,
+    run_hardware_requirements_envelope_report,
+)
+from oqp.future_work.hardware_scenario_estimator import (  # noqa: E402
+    run_hardware_scenario_analysis_report,
+    run_hardware_scenario_estimates_report,
+)
 from oqp.future_work.matrix_family_benchmark import (  # noqa: E402
     run_matrix_family_analysis_report,
     run_matrix_family_benchmark_report,
@@ -42,6 +63,10 @@ from oqp.future_work.perturbation_model import (  # noqa: E402
     run_perturbation_sweep_report,
 )
 from oqp.future_work.rectangular_mapping import run_rectangular_matrix_support_report  # noqa: E402
+from oqp.future_work.rc_readiness import (  # noqa: E402
+    render_rc1_readiness_markdown,
+    run_rc1_readiness_report,
+)
 from oqp.future_work.release_readiness import (  # noqa: E402
     render_release_readiness_markdown,
     run_release_readiness_report,
@@ -82,11 +107,18 @@ STAGE_FILES = {
 }
 
 SUPPLEMENTAL_REPORT_FILES = {
+    "calibration-plan": "calibration-plan.json",
     "complex-unitary-mesh-support": "complex-unitary-mesh-support.json",
+    "error-budget-report": "error-budget-report.json",
+    "hardware-requirements-analysis": "hardware-requirements-analysis.json",
+    "hardware-requirements-envelope": "hardware-requirements-envelope.json",
+    "hardware-scenario-analysis": "hardware-scenario-analysis.json",
+    "hardware-scenario-estimates": "hardware-scenario-estimates.json",
     "layer-stack-error-analysis": "layer-stack-error-analysis.json",
     "layer-stack-inference-demo": "layer-stack-inference-demo.json",
     "matrix-family-analysis": "matrix-family-analysis.json",
     "matrix-family-benchmark": "matrix-family-benchmark.json",
+    "model-to-hrm-decision-report": "model-to-hrm-decision-report.json",
     "model-weight-eligibility-analysis": "model-weight-eligibility-analysis.json",
     "model-weight-import-demo": "model-weight-import-demo.json",
     "model-suitability-analysis": "model-suitability-analysis.json",
@@ -100,6 +132,8 @@ SUPPLEMENTAL_REPORT_FILES = {
     "stage-3-sweep-analysis": "stage-3-sweep-analysis.json",
     "stage-4-calibration-analysis": "stage-4-calibration-analysis.json",
     "stage-4-calibration-sweep": "stage-4-calibration-sweep.json",
+    "transfer-matrix-assimilation-plan": "transfer-matrix-assimilation-plan.json",
+    "v0.1.0-rc1-readiness": "v0.1.0-rc1-readiness.json",
 }
 
 
@@ -138,6 +172,14 @@ def main() -> None:
         run_rectangular_matrix_support_report(),
         run_scaling_benchmark_report(),
         run_scaling_analysis_report(),
+        run_hardware_scenario_estimates_report(),
+        run_hardware_scenario_analysis_report(),
+        run_hardware_requirements_envelope_report(),
+        run_hardware_requirements_analysis_report(),
+        run_error_budget_report(),
+        run_calibration_plan_report(),
+        run_transfer_matrix_assimilation_plan_report(),
+        run_model_to_hrm_decision_report(),
         run_perturbation_sweep_report(),
         run_perturbation_sweep_analysis_report(),
         run_calibration_sweep_report(),
@@ -147,6 +189,8 @@ def main() -> None:
     supplemental_reports.append(review_pack_summary)
     release_readiness = run_release_readiness_report(reports, supplemental_reports)
     supplemental_reports.append(release_readiness)
+    rc1_readiness = run_rc1_readiness_report(reports, supplemental_reports)
+    supplemental_reports.append(rc1_readiness)
 
     for report in reports:
         _write_json(REPORT_DIR / STAGE_FILES[int(report["stage"])], report)
@@ -172,11 +216,26 @@ def main() -> None:
     release_readiness_artifact_paths = [
         REPORT_DIR / "release-readiness-v0.1.0.md",
     ]
+    planning_artifact_paths = [
+        REPORT_DIR / "error-budget-analysis.md",
+        REPORT_DIR / "model-to-hrm-decision-report.md",
+        REPORT_DIR / "v0.1.0-rc1-readiness.md",
+        DOC_DIR / "transfer-matrix-assimilation-protocol.md",
+        ROOT / "docs" / "ROADMAP-v0.2.md",
+    ]
     _write_text(review_pack_artifact_paths[0], render_review_pack_markdown(review_pack_summary))
     _write_text(review_pack_artifact_paths[1], render_review_pack_metrics_csv(review_pack_summary))
     _write_text(review_pack_artifact_paths[2], render_review_pack_stage_table_markdown(review_pack_summary))
     _write_text(review_pack_artifact_paths[3], render_review_pack_limitations_markdown(review_pack_summary))
     _write_text(release_readiness_artifact_paths[0], render_release_readiness_markdown(release_readiness))
+    _write_text(planning_artifact_paths[0], render_error_budget_markdown(_report_by_id(supplemental_reports, "error-budget-report")))
+    _write_text(
+        planning_artifact_paths[1],
+        render_model_to_hrm_decision_markdown(_report_by_id(supplemental_reports, "model-to-hrm-decision-report")),
+    )
+    _write_text(planning_artifact_paths[2], render_rc1_readiness_markdown(rc1_readiness))
+    _write_text(planning_artifact_paths[3], render_transfer_matrix_assimilation_protocol())
+    _write_text(planning_artifact_paths[4], _render_v02_roadmap())
 
     artifact_paths = (
         [REPORT_DIR / STAGE_FILES[stage] for stage in sorted(STAGE_FILES)]
@@ -184,6 +243,7 @@ def main() -> None:
         + [summary_path]
         + review_pack_artifact_paths
         + release_readiness_artifact_paths
+        + planning_artifact_paths
     )
     _write_artifact_hashes(artifact_paths, REPORT_DIR / "ARTIFACTS.sha256")
 
@@ -307,6 +367,33 @@ def _key_metrics(report: Dict[str, Any]) -> Dict[str, Any]:
         "reportCount",
         "blockedHardwareGateCount",
         "noHardwarePerformanceClaim",
+        "scenarioCount",
+        "parametricEstimateOnly",
+        "measuredHardwarePerformance",
+        "bestLatencyScenario",
+        "worstLatencyScenario",
+        "bestEnergyScenario",
+        "worstEnergyScenario",
+        "targetOutputRelativeErrorValues",
+        "simulationDerivedOnly",
+        "metRequirementCount",
+        "unmetRequirementCount",
+        "budgetId",
+        "combinedErrorEnvelope",
+        "dominantErrorContributor",
+        "secondaryErrorContributor",
+        "simulationOnly",
+        "physicalAccuracyClaimed",
+        "calibrationPlanOnly",
+        "assimilationPlanOnly",
+        "measurementVectorCount",
+        "acceptanceCriteriaCount",
+        "decision",
+        "decisionIsNotHardwareValidation",
+        "suitabilityScore",
+        "includedCapabilityCount",
+        "decisionReportCapabilityCount",
+        "v02RoadmapItemCount",
         "complexValuedSupportImplemented",
         "unitaryFactorSupportImplemented",
         "complexSvdImplemented",
@@ -352,6 +439,38 @@ def _ledger_entry(report: Dict[str, Any]) -> Dict[str, Any]:
         "blockers": report.get("blockers", []),
         "nextValidationGates": report.get("nextValidationGates", []),
     }
+
+
+def _report_by_id(reports: Iterable[Dict[str, Any]], report_id: str) -> Dict[str, Any]:
+    for report in reports:
+        if report["id"] == report_id:
+            return report
+    raise KeyError(report_id)
+
+
+def _render_v02_roadmap() -> str:
+    return "\n".join([
+        "# v0.2 Roadmap",
+        "",
+        "This roadmap keeps the project simulation-only unless real external evidence is supplied.",
+        "Stage 5, Stage 6, and Stage 7 remain blocked by default.",
+        "",
+        "## Recommended Work",
+        "",
+        "- optional PyTorch export adapter that emits the existing manifest format without adding a hard runtime dependency",
+        "- larger deterministic model manifest fixtures",
+        "- richer model suitability scoring with unsupported-layer penalties",
+        "- transfer-matrix measured-data ingestion only when real measured artifacts exist",
+        "- optional visualization dashboard for generated reports",
+        "- stronger synthetic calibration models with explicit limitations",
+        "- foundry or PDK integration only with real external evidence",
+        "",
+        "## Claim Boundary",
+        "",
+        "This roadmap does not claim hardware validation, foundry calibration, measured transfer matrices, "
+        "production inference readiness, quantum advantage, hardware-native intelligence, or power-free computation.",
+        "",
+    ])
 
 
 def _write_json(path: Path, data: Dict[str, Any]) -> None:

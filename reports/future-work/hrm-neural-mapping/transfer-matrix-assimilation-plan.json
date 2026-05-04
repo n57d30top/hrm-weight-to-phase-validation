@@ -1,0 +1,55 @@
+{
+  "alignmentNormalizationStep": [
+    "match matrix convention",
+    "normalize global phase or scale according to manifest",
+    "align input and output channel ordering"
+  ],
+  "assimilationPlanOnly": true,
+  "blockers": [
+    "no_measured_hrm_transfer_matrix"
+  ],
+  "calibrationPlanOnly": false,
+  "claimBoundary": "Plan only; no measured transfer matrix is available, no hardware validation is claimed, and Stage 6 remains blocked.",
+  "correctionFittingStep": [
+    "fit diagonal phase/scale corrections first",
+    "fit low-order coupling correction only if justified by measured data",
+    "report residual error after correction"
+  ],
+  "errorMetrics": [
+    "relative Frobenius error",
+    "phase-aware error when complex data exists",
+    "amplitude error",
+    "held-out vector output error"
+  ],
+  "evidenceLevel": "transfer_matrix_assimilation_plan_only",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "transfer-matrix-assimilation-plan",
+  "limitations": [
+    "no measured matrix is included",
+    "assimilation cannot complete until Stage 6 evidence exists",
+    "does not imply production inference readiness"
+  ],
+  "measuredTransferMatrixAvailable": false,
+  "measuredTransferMatrixInput": "required future Stage 6 artifact",
+  "nextValidationGates": [
+    "measured_transfer_matrix_gate",
+    "hardware_benchmark_gate"
+  ],
+  "passFailCriteria": [
+    "all referenced artifacts exist and hash-verify",
+    "declared uncertainty is present",
+    "validation vector residuals are below declared threshold",
+    "claim boundary remains explicit"
+  ],
+  "productionInferenceReady": false,
+  "stage": 6,
+  "stageStatus": "blocked",
+  "targetTransferMatrix": "abstract HRM transfer candidate from simulation report",
+  "title": "Transfer-matrix assimilation plan for future measured artifacts",
+  "validationVectors": [
+    "canonical basis holdout",
+    "seeded dense validation vectors",
+    "model-layer representative vectors"
+  ]
+}

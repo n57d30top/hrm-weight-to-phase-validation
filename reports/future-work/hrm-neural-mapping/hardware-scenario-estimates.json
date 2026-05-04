@@ -1,0 +1,235 @@
+{
+  "blockers": [
+    "no_measured_hardware_latency",
+    "no_measured_hardware_energy",
+    "no_foundry_calibrated_device_model",
+    "no_measured_transfer_matrix"
+  ],
+  "claimBoundary": "Parametric estimate only; no real hardware latency, real hardware energy efficiency, hardware validation, foundry calibration, measured transfer matrices, production inference readiness, quantum advantage, hardware-native intelligence, or power-free computation is claimed.",
+  "evidenceLevel": "parametric_hardware_scenario_estimate",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "hardware-scenario-estimates",
+  "measuredHardwarePerformance": false,
+  "measuredTransferMatrixAvailable": false,
+  "nextValidationGates": [
+    "hardware_requirements_generator",
+    "error_budget_report",
+    "hardware_benchmark_gate"
+  ],
+  "parametricEstimateOnly": true,
+  "productionInferenceReady": false,
+  "scenarioCount": 5,
+  "scenarios": [
+    {
+      "assumptions": [
+        "optical core only",
+        "no readout or control stack included"
+      ],
+      "calibrationAmortizationPj": 0.0,
+      "dominantEnergyContributor": "laser",
+      "dominantLatencyContributor": "optical_core",
+      "estimatedControlLatencyNs": 0.0,
+      "estimatedEndToEndLatencyNs": 0.025,
+      "estimatedEnergyPerInferencePj": 0.128125,
+      "estimatedOpticalCoreLatencyNs": 0.025,
+      "estimatedReadoutLatencyNs": 0.0,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "inputParameters": {
+        "adcLatencyNs": 0.0,
+        "batchSize": 1,
+        "calibrationIntervalInferences": 1000000,
+        "controlLoopLatencyNs": 0.0,
+        "dacAdcEnergyPj": 0.0,
+        "dacLatencyNs": 0.0,
+        "detectorEnergyPj": 0.0,
+        "detectorLatencyNs": 0.0,
+        "insertionLossDb": 0.5,
+        "laserPowerMw": 5.0,
+        "meshSize": 64,
+        "modulatorEnergyPj": 0.0,
+        "modulatorLatencyNs": 0.0,
+        "opticalPropagationDelayPs": 25.0,
+        "thermalTuningPowerMw": 0.0
+      },
+      "limitations": [
+        "not an end-to-end estimate",
+        "not measured hardware performance"
+      ],
+      "measuredHardwarePerformance": false,
+      "measuredTransferMatrixAvailable": false,
+      "parametricEstimateOnly": true,
+      "productionInferenceReady": false,
+      "scenarioId": "ideal_optical_core_only"
+    },
+    {
+      "assumptions": [
+        "detector and ADC readout included",
+        "control stack excluded"
+      ],
+      "calibrationAmortizationPj": 0.003072,
+      "dominantEnergyContributor": "active_io",
+      "dominantLatencyContributor": "readout",
+      "estimatedControlLatencyNs": 0.0,
+      "estimatedEndToEndLatencyNs": 6.025,
+      "estimatedEnergyPerInferencePj": 156.247256,
+      "estimatedOpticalCoreLatencyNs": 0.025,
+      "estimatedReadoutLatencyNs": 6.0,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "inputParameters": {
+        "adcLatencyNs": 4.0,
+        "batchSize": 1,
+        "calibrationIntervalInferences": 250000,
+        "controlLoopLatencyNs": 0.0,
+        "dacAdcEnergyPj": 1.2,
+        "dacLatencyNs": 0.0,
+        "detectorEnergyPj": 0.35,
+        "detectorLatencyNs": 2.0,
+        "insertionLossDb": 1.2,
+        "laserPowerMw": 8.0,
+        "meshSize": 64,
+        "modulatorEnergyPj": 0.0,
+        "modulatorLatencyNs": 0.0,
+        "opticalPropagationDelayPs": 25.0,
+        "thermalTuningPowerMw": 0.0
+      },
+      "limitations": [
+        "readout parameters are assumed",
+        "not measured hardware performance"
+      ],
+      "measuredHardwarePerformance": false,
+      "measuredTransferMatrixAvailable": false,
+      "parametricEstimateOnly": true,
+      "productionInferenceReady": false,
+      "scenarioId": "optical_core_plus_readout"
+    },
+    {
+      "assumptions": [
+        "DAC, modulator, detector, ADC, and control-loop terms included"
+      ],
+      "calibrationAmortizationPj": 0.0128,
+      "dominantEnergyContributor": "laser",
+      "dominantLatencyContributor": "control",
+      "estimatedControlLatencyNs": 26.0,
+      "estimatedEndToEndLatencyNs": 32.025,
+      "estimatedEnergyPerInferencePj": 658.63908,
+      "estimatedOpticalCoreLatencyNs": 0.025,
+      "estimatedReadoutLatencyNs": 6.0,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "inputParameters": {
+        "adcLatencyNs": 4.0,
+        "batchSize": 1,
+        "calibrationIntervalInferences": 100000,
+        "controlLoopLatencyNs": 15.0,
+        "dacAdcEnergyPj": 1.2,
+        "dacLatencyNs": 6.0,
+        "detectorEnergyPj": 0.35,
+        "detectorLatencyNs": 2.0,
+        "insertionLossDb": 2.0,
+        "laserPowerMw": 12.0,
+        "meshSize": 64,
+        "modulatorEnergyPj": 0.8,
+        "modulatorLatencyNs": 5.0,
+        "opticalPropagationDelayPs": 25.0,
+        "thermalTuningPowerMw": 2.0
+      },
+      "limitations": [
+        "control-loop values are assumed",
+        "not a hardware benchmark"
+      ],
+      "measuredHardwarePerformance": false,
+      "measuredTransferMatrixAvailable": false,
+      "parametricEstimateOnly": true,
+      "productionInferenceReady": false,
+      "scenarioId": "full_electro_optical_control_stack"
+    },
+    {
+      "assumptions": [
+        "lossy larger mesh with higher control overhead"
+      ],
+      "calibrationAmortizationPj": 0.0768,
+      "dominantEnergyContributor": "laser",
+      "dominantLatencyContributor": "control",
+      "estimatedControlLatencyNs": 41.0,
+      "estimatedEndToEndLatencyNs": 51.04,
+      "estimatedEnergyPerInferencePj": 2431.62752,
+      "estimatedOpticalCoreLatencyNs": 0.04,
+      "estimatedReadoutLatencyNs": 10.0,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "inputParameters": {
+        "adcLatencyNs": 6.0,
+        "batchSize": 1,
+        "calibrationIntervalInferences": 50000,
+        "controlLoopLatencyNs": 25.0,
+        "dacAdcEnergyPj": 1.8,
+        "dacLatencyNs": 8.0,
+        "detectorEnergyPj": 0.6,
+        "detectorLatencyNs": 4.0,
+        "insertionLossDb": 8.0,
+        "laserPowerMw": 20.0,
+        "meshSize": 128,
+        "modulatorEnergyPj": 1.2,
+        "modulatorLatencyNs": 8.0,
+        "opticalPropagationDelayPs": 40.0,
+        "thermalTuningPowerMw": 5.0
+      },
+      "limitations": [
+        "loss and control assumptions are not calibrated to hardware"
+      ],
+      "measuredHardwarePerformance": false,
+      "measuredTransferMatrixAvailable": false,
+      "parametricEstimateOnly": true,
+      "productionInferenceReady": false,
+      "scenarioId": "pessimistic_lossy_mesh"
+    },
+    {
+      "assumptions": [
+        "frequent calibration amortized over a small inference interval"
+      ],
+      "calibrationAmortizationPj": 2.4,
+      "dominantEnergyContributor": "laser",
+      "dominantLatencyContributor": "control",
+      "estimatedControlLatencyNs": 54.0,
+      "estimatedEndToEndLatencyNs": 62.03,
+      "estimatedEnergyPerInferencePj": 1689.3155,
+      "estimatedOpticalCoreLatencyNs": 0.03,
+      "estimatedReadoutLatencyNs": 8.0,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "inputParameters": {
+        "adcLatencyNs": 5.0,
+        "batchSize": 1,
+        "calibrationIntervalInferences": 1000,
+        "controlLoopLatencyNs": 40.0,
+        "dacAdcEnergyPj": 1.5,
+        "dacLatencyNs": 8.0,
+        "detectorEnergyPj": 0.5,
+        "detectorLatencyNs": 3.0,
+        "insertionLossDb": 3.0,
+        "laserPowerMw": 15.0,
+        "meshSize": 96,
+        "modulatorEnergyPj": 1.0,
+        "modulatorLatencyNs": 6.0,
+        "opticalPropagationDelayPs": 30.0,
+        "thermalTuningPowerMw": 4.0
+      },
+      "limitations": [
+        "calibration cost is a planning proxy only",
+        "not measured hardware performance"
+      ],
+      "measuredHardwarePerformance": false,
+      "measuredTransferMatrixAvailable": false,
+      "parametricEstimateOnly": true,
+      "productionInferenceReady": false,
+      "scenarioId": "calibration_heavy_operation"
+    }
+  ],
+  "stage": 2,
+  "stageStatus": "complete",
+  "title": "Parametric hardware scenario estimates",
+  "warning": "These are parametric estimates, not measured hardware performance."
+}

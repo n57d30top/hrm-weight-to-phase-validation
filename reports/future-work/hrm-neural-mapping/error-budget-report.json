@@ -1,0 +1,130 @@
+{
+  "additiveModelUsed": true,
+  "blockers": [
+    "no_measured_transfer_matrix",
+    "no_foundry_calibrated_device_model",
+    "no_hardware_benchmark"
+  ],
+  "budgetId": "simulation_error_budget_v1",
+  "claimBoundary": "Simulation-only error budget; no physical accuracy, hardware validation, foundry calibration, measured transfer matrices, production inference readiness, real hardware latency, or real hardware energy efficiency is claimed.",
+  "combinedErrorEnvelope": {
+    "additive": 0.729470161818342,
+    "conservativeMax": 0.370308698767234,
+    "rss": 0.413071539277794
+  },
+  "componentErrors": [
+    {
+      "component": "baselineMappingError",
+      "errorValue": 0.019640136609986,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "simulationOnly": true,
+      "sourceReport": "stage-2-mesh-constrained.json"
+    },
+    {
+      "component": "rectangularMappingError",
+      "errorValue": 0.091134277782103,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "simulationOnly": true,
+      "sourceReport": "rectangular-matrix-support.json"
+    },
+    {
+      "component": "complexUnitaryApproximationError",
+      "errorValue": 0.021020525022447,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "simulationOnly": true,
+      "sourceReport": "complex-unitary-mesh-support.json"
+    },
+    {
+      "component": "perturbationError",
+      "errorValue": 0.370308698767234,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "simulationOnly": true,
+      "sourceReport": "stage-3-sweep-analysis.json"
+    },
+    {
+      "component": "calibrationResidualError",
+      "errorValue": 0.024641168630069,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "simulationOnly": true,
+      "sourceReport": "stage-4-calibration-analysis.json"
+    },
+    {
+      "component": "layerStackOutputError",
+      "errorValue": 0.061296868009442,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "simulationOnly": true,
+      "sourceReport": "layer-stack-inference-demo.json"
+    },
+    {
+      "component": "scalingWorstCaseError",
+      "errorValue": 0.141428486997061,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "simulationOnly": true,
+      "sourceReport": "scaling-analysis.json"
+    }
+  ],
+  "conservativeMaxModelUsed": true,
+  "dominantErrorContributor": {
+    "component": "perturbationError",
+    "errorValue": 0.370308698767234,
+    "foundryCalibrated": false,
+    "hardwareValidated": false,
+    "measuredTransferMatrixAvailable": false,
+    "productionInferenceReady": false,
+    "simulationOnly": true,
+    "sourceReport": "stage-3-sweep-analysis.json"
+  },
+  "evidenceLevel": "simulation_error_budget",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "error-budget-report",
+  "measuredTransferMatrixAvailable": false,
+  "nextValidationGates": [
+    "calibration_planner",
+    "model_to_hrm_decision_report",
+    "measured_transfer_matrix_gate"
+  ],
+  "physicalAccuracyClaimed": false,
+  "productionInferenceReady": false,
+  "rssModelUsed": true,
+  "secondaryErrorContributor": {
+    "component": "scalingWorstCaseError",
+    "errorValue": 0.141428486997061,
+    "foundryCalibrated": false,
+    "hardwareValidated": false,
+    "measuredTransferMatrixAvailable": false,
+    "productionInferenceReady": false,
+    "simulationOnly": true,
+    "sourceReport": "scaling-analysis.json"
+  },
+  "simulationOnly": true,
+  "stage": 2,
+  "stageStatus": "complete",
+  "title": "Simulation-only accuracy degradation and error budget",
+  "uncertaintyNotes": [
+    "components come from different deterministic reports and are not statistically independent",
+    "additive and RSS envelopes are planning views only",
+    "measured transfer matrices would be required to reduce hardware uncertainty"
+  ]
+}

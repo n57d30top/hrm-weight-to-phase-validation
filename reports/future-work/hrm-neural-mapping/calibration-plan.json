@@ -1,0 +1,67 @@
+{
+  "acceptanceCriteria": [
+    "all raw and processed artifact hashes verify",
+    "matrix shape and convention match manifest",
+    "held-out validation error is reported",
+    "provenance and operator/source are declared"
+  ],
+  "acceptanceCriteriaCount": 4,
+  "assimilationPlanOnly": false,
+  "blockers": [
+    "no_measured_hrm_transfer_matrix"
+  ],
+  "calibrationPlanOnly": true,
+  "calibrationSequence": [
+    "measure dark/readout baseline",
+    "measure input basis responses",
+    "estimate transfer matrix",
+    "normalize according to declared convention",
+    "validate on held-out vectors",
+    "hash raw and processed artifacts"
+  ],
+  "claimBoundary": "Plan only; no measured transfer matrix is available, no hardware validation is claimed, and Stage 6 remains blocked.",
+  "driftMonitoringPlan": [
+    "repeat sentinel vector measurements",
+    "track transfer-matrix delta over time",
+    "record temperature and control settings"
+  ],
+  "evidenceLevel": "calibration_plan_only",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "calibration-plan",
+  "inputBasis": "canonical_complex_field_basis",
+  "matrixConvention": [
+    "real",
+    "complex"
+  ],
+  "measuredTransferMatrixAvailable": false,
+  "measurementVectorCount": 3,
+  "nextValidationGates": [
+    "measured_transfer_matrix_gate",
+    "hardware_benchmark_gate"
+  ],
+  "outputReadoutConvention": "complex_field_or_real_intensity_with_declared_phase_recovery",
+  "productionInferenceReady": false,
+  "recalibrationTrigger": "sentinel_relative_error_exceeds_declared_threshold",
+  "requiredArtifactHashes": [
+    "raw measurement package",
+    "processed transfer matrix",
+    "validation summary"
+  ],
+  "requiredMeasurementVectors": [
+    "canonical basis inputs",
+    "phase-stepped calibration tones",
+    "held-out validation vectors"
+  ],
+  "requiredProvenance": [
+    "device id",
+    "measurement date",
+    "operator or source",
+    "setup description"
+  ],
+  "stage": 6,
+  "stageStatus": "blocked",
+  "temperatureCondition": "temperature logged for each measured transfer-matrix artifact",
+  "title": "Calibration plan for future measured HRM transfer matrices",
+  "wavelengthCondition": "single wavelength or wavelength sweep declared by measurement package"
+}

@@ -14,11 +14,18 @@ json:
 	jq empty reports/future-work/hrm-neural-mapping/stage-0-specification.json
 	jq empty reports/future-work/hrm-neural-mapping/stage-1-svd-demo.json
 	jq empty reports/future-work/hrm-neural-mapping/stage-2-mesh-constrained.json
+	jq empty reports/future-work/hrm-neural-mapping/calibration-plan.json
 	jq empty reports/future-work/hrm-neural-mapping/complex-unitary-mesh-support.json
+	jq empty reports/future-work/hrm-neural-mapping/error-budget-report.json
+	jq empty reports/future-work/hrm-neural-mapping/hardware-requirements-analysis.json
+	jq empty reports/future-work/hrm-neural-mapping/hardware-requirements-envelope.json
+	jq empty reports/future-work/hrm-neural-mapping/hardware-scenario-analysis.json
+	jq empty reports/future-work/hrm-neural-mapping/hardware-scenario-estimates.json
 	jq empty reports/future-work/hrm-neural-mapping/layer-stack-inference-demo.json
 	jq empty reports/future-work/hrm-neural-mapping/layer-stack-error-analysis.json
 	jq empty reports/future-work/hrm-neural-mapping/matrix-family-benchmark.json
 	jq empty reports/future-work/hrm-neural-mapping/matrix-family-analysis.json
+	jq empty reports/future-work/hrm-neural-mapping/model-to-hrm-decision-report.json
 	jq empty reports/future-work/hrm-neural-mapping/model-weight-import-demo.json
 	jq empty reports/future-work/hrm-neural-mapping/model-weight-eligibility-analysis.json
 	jq empty reports/future-work/hrm-neural-mapping/model-suitability-profile.json
@@ -37,6 +44,8 @@ json:
 	jq empty reports/future-work/hrm-neural-mapping/stage-5-foundry-calibration-gate.json
 	jq empty reports/future-work/hrm-neural-mapping/stage-6-measured-transfer-matrix-gate.json
 	jq empty reports/future-work/hrm-neural-mapping/stage-7-hardware-benchmark-gate.json
+	jq empty reports/future-work/hrm-neural-mapping/transfer-matrix-assimilation-plan.json
+	jq empty reports/future-work/hrm-neural-mapping/v0.1.0-rc1-readiness.json
 	jq empty reports/future-work/hrm-neural-mapping/validation-ladder-summary.json
 
 hash:

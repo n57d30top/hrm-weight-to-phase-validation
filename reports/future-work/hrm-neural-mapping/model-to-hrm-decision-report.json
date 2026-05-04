@@ -1,0 +1,108 @@
+{
+  "blockers": [
+    "no_foundry_calibrated_device_model",
+    "no_measured_hrm_transfer_matrix",
+    "no_end_to_end_hardware_benchmark"
+  ],
+  "claimBoundary": "This is a simulation-only decision report. It is not hardware evidence. It does not claim hardware validation, foundry calibration, measured transfer matrices, production inference readiness, real hardware latency, real hardware energy efficiency, quantum advantage, hardware-native intelligence, or power-free computation.",
+  "classicalLayerSummary": {
+    "classicalComponents": [
+      "linear_1.bias",
+      "linear_1.activation",
+      "linear_2.bias"
+    ],
+    "classicalLayerCount": 3
+  },
+  "decision": "blocked_by_missing_hardware_evidence",
+  "decisionIsNotHardwareValidation": true,
+  "errorBudgetSummary": {
+    "conservativeMax": 0.370308698767234,
+    "dominantErrorContributor": "perturbationError",
+    "rss": 0.413071539277794,
+    "secondaryErrorContributor": "scalingWorstCaseError"
+  },
+  "evidenceLevel": "simulation_only_model_to_hrm_decision",
+  "foundryCalibrated": false,
+  "hardwareScenarioSummary": {
+    "bestEnergyScenario": {
+      "estimatedEndToEndLatencyNs": 0.025,
+      "estimatedEnergyPerInferencePj": 0.128125,
+      "measuredHardwarePerformance": false,
+      "parametricEstimateOnly": true,
+      "scenarioId": "ideal_optical_core_only"
+    },
+    "bestLatencyScenario": {
+      "estimatedEndToEndLatencyNs": 0.025,
+      "estimatedEnergyPerInferencePj": 0.128125,
+      "measuredHardwarePerformance": false,
+      "parametricEstimateOnly": true,
+      "scenarioId": "ideal_optical_core_only"
+    },
+    "warning": "These are parametric estimates, not measured hardware performance."
+  },
+  "hardwareValidated": false,
+  "id": "model-to-hrm-decision-report",
+  "keyMappingErrors": {
+    "combinedErrorEnvelope": {
+      "additive": 0.729470161818342,
+      "conservativeMax": 0.370308698767234,
+      "rss": 0.413071539277794
+    },
+    "dominantErrorContributor": {
+      "component": "perturbationError",
+      "errorValue": 0.370308698767234,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "simulationOnly": true,
+      "sourceReport": "stage-3-sweep-analysis.json"
+    }
+  },
+  "mappableLayerSummary": {
+    "complexLayerShare": 0.0,
+    "mappableLayerCount": 2,
+    "mappableParameterShare": 0.823529411765,
+    "rectangularLayerShare": 1.0
+  },
+  "measuredTransferMatrixAvailable": false,
+  "missingEvidence": [
+    "foundry-calibrated device model",
+    "measured transfer matrix",
+    "hardware benchmark"
+  ],
+  "modelId": "tiny_mlp_manifest_4_6_3",
+  "nextValidationGates": [
+    "v0.1.0_rc1_readiness",
+    "foundry_calibrated_device_model_gate",
+    "measured_transfer_matrix_gate",
+    "hardware_benchmark_gate"
+  ],
+  "productionInferenceReady": false,
+  "recommendedNextActions": [
+    "keep model linear weights in the manifest path for simulation planning",
+    "measure transfer matrices before considering Stage 6 complete",
+    "collect hardware benchmark packages before considering Stage 7 complete",
+    "use the requirements envelope to prioritize phase, drift, and loss measurements"
+  ],
+  "requirementsSummary": {
+    "commonBottlenecks": [
+      {
+        "bottleneck": "baseline_simulation_error_exceeds_target",
+        "count": 5
+      }
+    ],
+    "metRequirementCount": 7,
+    "unmetRequirementCount": 5
+  },
+  "simulationOnly": true,
+  "stage": 2,
+  "stageStatus": "complete",
+  "suitabilityClass": "good_candidate",
+  "suitabilityScore": 87.647,
+  "title": "Model-to-HRM simulation-only decision report",
+  "unsupportedLayerSummary": {
+    "unsupportedLayerCount": 0,
+    "unsupportedReasonCounts": {}
+  }
+}

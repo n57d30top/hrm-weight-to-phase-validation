@@ -133,14 +133,56 @@
   },
   "stage": 0,
   "stageStatus": "complete",
-  "supplementalReportCount": 17,
+  "supplementalReportCount": 25,
   "supplementalReports": [
+    {
+      "evidenceLevel": "calibration_plan_only",
+      "id": "calibration-plan",
+      "stage": 6,
+      "stageStatus": "blocked",
+      "title": "Calibration plan for future measured HRM transfer matrices"
+    },
     {
       "evidenceLevel": "abstract_complex_unitary_mesh_simulation",
       "id": "complex-unitary-mesh-support",
       "stage": 2,
       "stageStatus": "complete",
       "title": "Complex/unitary mesh support for abstract HRM simulation"
+    },
+    {
+      "evidenceLevel": "simulation_error_budget",
+      "id": "error-budget-report",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Simulation-only accuracy degradation and error budget"
+    },
+    {
+      "evidenceLevel": "simulation_derived_hardware_requirements_analysis",
+      "id": "hardware-requirements-analysis",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Simulation-derived hardware requirements analysis"
+    },
+    {
+      "evidenceLevel": "simulation_derived_hardware_requirements",
+      "id": "hardware-requirements-envelope",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Simulation-derived hardware requirement envelope"
+    },
+    {
+      "evidenceLevel": "parametric_hardware_scenario_analysis",
+      "id": "hardware-scenario-analysis",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Parametric hardware scenario bottleneck analysis"
+    },
+    {
+      "evidenceLevel": "parametric_hardware_scenario_estimate",
+      "id": "hardware-scenario-estimates",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Parametric hardware scenario estimates"
     },
     {
       "evidenceLevel": "abstract_layer_stack_error_analysis",
@@ -183,6 +225,13 @@
       "stage": 2,
       "stageStatus": "complete",
       "title": "Model suitability profile for abstract HRM photonic mapping"
+    },
+    {
+      "evidenceLevel": "simulation_only_model_to_hrm_decision",
+      "id": "model-to-hrm-decision-report",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model-to-HRM simulation-only decision report"
     },
     {
       "evidenceLevel": "model_weight_manifest_eligibility_analysis",
@@ -253,6 +302,13 @@
       "stage": 4,
       "stageStatus": "complete",
       "title": "Stage 4 synthetic calibration sensitivity sweep"
+    },
+    {
+      "evidenceLevel": "transfer_matrix_assimilation_plan_only",
+      "id": "transfer-matrix-assimilation-plan",
+      "stage": 6,
+      "stageStatus": "blocked",
+      "title": "Transfer-matrix assimilation plan for future measured artifacts"
     }
   ],
   "title": "v0.1.0 release-candidate readiness audit",

@@ -1,0 +1,199 @@
+{
+  "blockers": [
+    "no_foundry_calibrated_device_model",
+    "no_measured_transfer_matrix",
+    "no_hardware_benchmark"
+  ],
+  "claimBoundary": "Simulation-derived requirement envelope only; these are not real hardware specifications, hardware validation, foundry calibration, measured transfer matrices, production inference readiness, or quantum advantage.",
+  "commonBottlenecks": [
+    {
+      "bottleneck": "baseline_simulation_error_exceeds_target",
+      "count": 5
+    }
+  ],
+  "easiestCaseRequirements": {
+    "caseId": "identity_4x4",
+    "metTargets": [
+      0.1,
+      0.05,
+      0.02
+    ],
+    "rows": [
+      {
+        "baselineSimulationError": 0.0,
+        "calibrationAssumption": "synthetic_oracle_calibration_only",
+        "caseId": "identity_4x4",
+        "foundryCalibrated": false,
+        "hardwareValidated": false,
+        "maxCouplerImbalance": 0.04,
+        "maxDetectorNoiseStd": 0.01,
+        "maxInsertionLossDb": 0.35,
+        "maxPhaseNoiseSigmaRad": 0.025,
+        "maxThermalDriftProxyRad": 0.025,
+        "measuredTransferMatrixAvailable": false,
+        "productionInferenceReady": false,
+        "requiredPhaseResolutionBits": 6,
+        "requirementBottleneck": "phase_resolution_and_drift",
+        "requirementStatus": "met_in_simulated_envelope",
+        "simulationDerivedOnly": true,
+        "targetError": 0.1
+      },
+      {
+        "baselineSimulationError": 0.0,
+        "calibrationAssumption": "synthetic_oracle_calibration_only",
+        "caseId": "identity_4x4",
+        "foundryCalibrated": false,
+        "hardwareValidated": false,
+        "maxCouplerImbalance": 0.015,
+        "maxDetectorNoiseStd": 0.004,
+        "maxInsertionLossDb": 0.15,
+        "maxPhaseNoiseSigmaRad": 0.01,
+        "maxThermalDriftProxyRad": 0.01,
+        "measuredTransferMatrixAvailable": false,
+        "productionInferenceReady": false,
+        "requiredPhaseResolutionBits": 8,
+        "requirementBottleneck": "phase_resolution_and_drift",
+        "requirementStatus": "met_in_simulated_envelope",
+        "simulationDerivedOnly": true,
+        "targetError": 0.05
+      },
+      {
+        "baselineSimulationError": 0.0,
+        "calibrationAssumption": "synthetic_oracle_calibration_only",
+        "caseId": "identity_4x4",
+        "foundryCalibrated": false,
+        "hardwareValidated": false,
+        "maxCouplerImbalance": 0.005,
+        "maxDetectorNoiseStd": 0.001,
+        "maxInsertionLossDb": 0.05,
+        "maxPhaseNoiseSigmaRad": 0.003,
+        "maxThermalDriftProxyRad": 0.003,
+        "measuredTransferMatrixAvailable": false,
+        "productionInferenceReady": false,
+        "requiredPhaseResolutionBits": 10,
+        "requirementBottleneck": "phase_resolution_and_drift",
+        "requirementStatus": "met_in_simulated_envelope",
+        "simulationDerivedOnly": true,
+        "targetError": 0.02
+      }
+    ],
+    "unmetTargets": []
+  },
+  "evidenceLevel": "simulation_derived_hardware_requirements_analysis",
+  "foundryCalibrated": false,
+  "hardestCaseRequirements": {
+    "caseId": "rectangular_tall_8x4",
+    "metTargets": [
+      0.1
+    ],
+    "rows": [
+      {
+        "baselineSimulationError": 0.099951757092972,
+        "calibrationAssumption": "synthetic_oracle_calibration_only",
+        "caseId": "rectangular_tall_8x4",
+        "foundryCalibrated": false,
+        "hardwareValidated": false,
+        "maxCouplerImbalance": 2.4e-05,
+        "maxDetectorNoiseStd": 1e-05,
+        "maxInsertionLossDb": 0.000241,
+        "maxPhaseNoiseSigmaRad": 1.2e-05,
+        "maxThermalDriftProxyRad": 1.7e-05,
+        "measuredTransferMatrixAvailable": false,
+        "productionInferenceReady": false,
+        "requiredPhaseResolutionBits": 6,
+        "requirementBottleneck": "phase_resolution_and_drift",
+        "requirementStatus": "met_in_simulated_envelope",
+        "simulationDerivedOnly": true,
+        "targetError": 0.1
+      },
+      {
+        "baselineSimulationError": 0.099951757092972,
+        "calibrationAssumption": "synthetic_oracle_calibration_only",
+        "caseId": "rectangular_tall_8x4",
+        "foundryCalibrated": false,
+        "hardwareValidated": false,
+        "maxCouplerImbalance": null,
+        "maxDetectorNoiseStd": null,
+        "maxInsertionLossDb": null,
+        "maxPhaseNoiseSigmaRad": null,
+        "maxThermalDriftProxyRad": null,
+        "measuredTransferMatrixAvailable": false,
+        "productionInferenceReady": false,
+        "requiredPhaseResolutionBits": null,
+        "requirementBottleneck": "baseline_simulation_error_exceeds_target",
+        "requirementStatus": "not_met_in_simulated_sweep",
+        "simulationDerivedOnly": true,
+        "targetError": 0.05
+      },
+      {
+        "baselineSimulationError": 0.099951757092972,
+        "calibrationAssumption": "synthetic_oracle_calibration_only",
+        "caseId": "rectangular_tall_8x4",
+        "foundryCalibrated": false,
+        "hardwareValidated": false,
+        "maxCouplerImbalance": null,
+        "maxDetectorNoiseStd": null,
+        "maxInsertionLossDb": null,
+        "maxPhaseNoiseSigmaRad": null,
+        "maxThermalDriftProxyRad": null,
+        "measuredTransferMatrixAvailable": false,
+        "productionInferenceReady": false,
+        "requiredPhaseResolutionBits": null,
+        "requirementBottleneck": "baseline_simulation_error_exceeds_target",
+        "requirementStatus": "not_met_in_simulated_sweep",
+        "simulationDerivedOnly": true,
+        "targetError": 0.02
+      }
+    ],
+    "unmetTargets": [
+      0.05,
+      0.02
+    ]
+  },
+  "hardwareValidated": false,
+  "id": "hardware-requirements-analysis",
+  "limitations": [
+    "requirements are deterministic envelopes derived from simulation cases",
+    "no foundry-calibrated device model is used",
+    "no measured transfer matrix is used",
+    "thresholds below baseline simulation error are reported as not met"
+  ],
+  "measuredTransferMatrixAvailable": false,
+  "metRequirementCount": 7,
+  "nextValidationGates": [
+    "error_budget_report",
+    "calibration_planner",
+    "foundry_calibrated_device_model_gate"
+  ],
+  "productionInferenceReady": false,
+  "recommendationsForLabMeasurement": [
+    "measure phase-setting repeatability before interpreting phase-noise requirements",
+    "measure insertion-loss distributions across the mesh",
+    "measure coupler imbalance and thermal drift under operating conditions",
+    "provide measured transfer matrices before changing Stage 6 status"
+  ],
+  "requirementsByTargetError": {
+    "0.02": {
+      "metCount": 1,
+      "notMetCount": 3
+    },
+    "0.05": {
+      "metCount": 2,
+      "notMetCount": 2
+    },
+    "0.1": {
+      "metCount": 4,
+      "notMetCount": 0
+    }
+  },
+  "simulationDerivedOnly": true,
+  "stage": 2,
+  "stageStatus": "complete",
+  "targetOutputRelativeErrorValues": [
+    0.1,
+    0.05,
+    0.02
+  ],
+  "title": "Simulation-derived hardware requirements analysis",
+  "unmetRequirementCount": 5
+}

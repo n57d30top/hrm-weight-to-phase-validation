@@ -139,11 +139,20 @@ Key files:
 - `stage-0-specification.json`
 - `stage-1-svd-demo.json`
 - `stage-2-mesh-constrained.json`
+- `calibration-plan.json`
 - `complex-unitary-mesh-support.json`
+- `error-budget-report.json`
+- `error-budget-analysis.md`
+- `hardware-requirements-envelope.json`
+- `hardware-requirements-analysis.json`
+- `hardware-scenario-estimates.json`
+- `hardware-scenario-analysis.json`
 - `layer-stack-inference-demo.json`
 - `layer-stack-error-analysis.json`
 - `matrix-family-benchmark.json`
 - `matrix-family-analysis.json`
+- `model-to-hrm-decision-report.json`
+- `model-to-hrm-decision-report.md`
 - `model-weight-import-demo.json`
 - `model-weight-eligibility-analysis.json`
 - `model-suitability-profile.json`
@@ -167,6 +176,9 @@ Key files:
 - `stage-5-foundry-calibration-gate.json`
 - `stage-6-measured-transfer-matrix-gate.json`
 - `stage-7-hardware-benchmark-gate.json`
+- `transfer-matrix-assimilation-plan.json`
+- `v0.1.0-rc1-readiness.json`
+- `v0.1.0-rc1-readiness.md`
 - `validation-ladder-summary.json`
 - `ARTIFACTS.sha256`
 
@@ -182,6 +194,8 @@ Schema documentation for future hardware evidence gates:
 - `docs/future-work/measured-transfer-matrix-fixture-schema.md`
 - `docs/future-work/hardware-benchmark-acceptance-schema.md`
 - `docs/future-work/model-weight-manifest-schema.md`
+- `docs/future-work/transfer-matrix-assimilation-protocol.md`
+- `docs/ROADMAP-v0.2.md`
 
 ## Stage 2 Interpretation
 
@@ -378,6 +392,71 @@ The scaling reports do not claim hardware latency, hardware throughput, hardware
 energy efficiency, accelerator performance, foundry calibration, measured
 transfer matrices, or production inference readiness.
 
+## Planning Reports
+
+Post-alpha.12 planning reports turn the simulation-only framework into a
+decision aid without changing hardware readiness.
+
+The parametric scenario reports are:
+
+- `hardware-scenario-estimates.json`
+- `hardware-scenario-analysis.json`
+
+They compare deterministic assumed scenarios such as optical-core-only,
+readout-inclusive, full electro-optical control stack, lossy mesh, and
+calibration-heavy operation. The latency and energy values are labeled as
+parametric estimates, not measured hardware performance.
+
+The requirements reports are:
+
+- `hardware-requirements-envelope.json`
+- `hardware-requirements-analysis.json`
+
+They derive simulation-derived requirement envelopes for target output-relative
+error thresholds. These envelopes are planning constraints only. They are not
+real hardware specifications and they do not change Stage 5, Stage 6, or Stage
+7.
+
+The error-budget artifacts are:
+
+- `error-budget-report.json`
+- `error-budget-analysis.md`
+
+They combine baseline mapping, rectangular mapping, complex/unitary
+approximation, perturbation, calibration residual, layer-stack, and scaling
+terms into additive, RSS, and conservative-max simulation envelopes. They are
+not hardware accuracy evidence.
+
+The calibration planning artifacts are:
+
+- `calibration-plan.json`
+- `transfer-matrix-assimilation-plan.json`
+- `docs/future-work/transfer-matrix-assimilation-protocol.md`
+
+They define how a future lab package should measure, hash, validate, and
+assimilate a measured HRM transfer matrix. They include no measured matrix and
+keep Stage 6 blocked.
+
+The decision-report artifacts are:
+
+- `model-to-hrm-decision-report.json`
+- `model-to-hrm-decision-report.md`
+
+They combine suitability, mapping error, parametric scenarios, requirements,
+error budget, and missing hardware evidence into one simulation-only decision
+report. The report starts with: "This is a simulation-only decision report. It
+is not hardware evidence."
+
+The RC-readiness artifacts are:
+
+- `v0.1.0-rc1-readiness.json`
+- `v0.1.0-rc1-readiness.md`
+- `docs/ROADMAP-v0.2.md`
+
+They summarize included capabilities, simulation-only scope, decision-report
+capabilities, blocked hardware gates, verification commands, known limitations,
+and recommended v0.2 work.
+
 ## Review Pack
 
 The review pack collects the existing simulation-only reports into concise
@@ -540,13 +619,19 @@ Completed alpha milestones:
 Completed post-alpha.12 main work:
 
 - model suitability profiling added for manifest components, mappable parameter share, classical components, unsupported components, heuristic suitability scoring, and planning recommendations.
+- parametric hardware scenario estimates added with every latency and energy value labeled as a parametric estimate only.
+- simulation-derived hardware requirement envelopes added for target error thresholds.
+- simulation-only error budget added across mapping, perturbation, calibration, layer-stack, and scaling terms.
+- calibration plan and transfer-matrix assimilation protocol added without measured transfer-matrix evidence.
+- model-to-HRM decision report added for suitability, error, scenario, requirement, and missing-evidence review.
+- v0.1.0-rc.1 readiness report and `docs/ROADMAP-v0.2.md` added for release-candidate review.
 
 Near-term:
 
 - keep CI green for report generation, JSON validation, hashes, tests, local-path hygiene, and claim-boundary checks
-- add parametric hardware scenario estimates while labeling every latency and energy value as a parametric estimate only
-- add simulation-derived hardware requirement envelopes for target error thresholds
-- prepare `v0.1.0-rc.1` only after the planning reports are reviewed and the simulation-only boundary remains intact
+- review `v0.1.0-rc.1` readiness artifacts before tagging a release candidate
+- keep Stage 5, Stage 6, and Stage 7 blocked until real external evidence exists
+- use `docs/ROADMAP-v0.2.md` to plan optional exporters, richer fixtures, and measured-data ingestion only when real data exists
 
 Later, only when evidence exists:
 

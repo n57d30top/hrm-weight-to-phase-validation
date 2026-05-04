@@ -1,0 +1,82 @@
+{
+  "bestEnergyScenario": {
+    "estimatedEndToEndLatencyNs": 0.025,
+    "estimatedEnergyPerInferencePj": 0.128125,
+    "measuredHardwarePerformance": false,
+    "parametricEstimateOnly": true,
+    "scenarioId": "ideal_optical_core_only"
+  },
+  "bestLatencyScenario": {
+    "estimatedEndToEndLatencyNs": 0.025,
+    "estimatedEnergyPerInferencePj": 0.128125,
+    "measuredHardwarePerformance": false,
+    "parametricEstimateOnly": true,
+    "scenarioId": "ideal_optical_core_only"
+  },
+  "blockers": [
+    "no_measured_hardware_latency",
+    "no_measured_hardware_energy",
+    "no_foundry_calibrated_device_model",
+    "no_measured_transfer_matrix"
+  ],
+  "claimBoundary": "Parametric estimate only; no real hardware latency, real hardware energy efficiency, hardware validation, foundry calibration, measured transfer matrices, production inference readiness, quantum advantage, hardware-native intelligence, or power-free computation is claimed.",
+  "dominantBottleneckByScenario": [
+    {
+      "dominantEnergyContributor": "laser",
+      "dominantLatencyContributor": "optical_core",
+      "scenarioId": "ideal_optical_core_only"
+    },
+    {
+      "dominantEnergyContributor": "active_io",
+      "dominantLatencyContributor": "readout",
+      "scenarioId": "optical_core_plus_readout"
+    },
+    {
+      "dominantEnergyContributor": "laser",
+      "dominantLatencyContributor": "control",
+      "scenarioId": "full_electro_optical_control_stack"
+    },
+    {
+      "dominantEnergyContributor": "laser",
+      "dominantLatencyContributor": "control",
+      "scenarioId": "pessimistic_lossy_mesh"
+    },
+    {
+      "dominantEnergyContributor": "laser",
+      "dominantLatencyContributor": "control",
+      "scenarioId": "calibration_heavy_operation"
+    }
+  ],
+  "evidenceLevel": "parametric_hardware_scenario_analysis",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "hardware-scenario-analysis",
+  "measuredHardwarePerformance": false,
+  "measuredTransferMatrixAvailable": false,
+  "nextValidationGates": [
+    "hardware_requirements_generator",
+    "error_budget_report",
+    "hardware_benchmark_gate"
+  ],
+  "parametricEstimateOnly": true,
+  "productionInferenceReady": false,
+  "scenarioCount": 5,
+  "stage": 2,
+  "stageStatus": "complete",
+  "title": "Parametric hardware scenario bottleneck analysis",
+  "warning": "These are parametric estimates, not measured hardware performance.",
+  "worstEnergyScenario": {
+    "estimatedEndToEndLatencyNs": 51.04,
+    "estimatedEnergyPerInferencePj": 2431.62752,
+    "measuredHardwarePerformance": false,
+    "parametricEstimateOnly": true,
+    "scenarioId": "pessimistic_lossy_mesh"
+  },
+  "worstLatencyScenario": {
+    "estimatedEndToEndLatencyNs": 62.03,
+    "estimatedEnergyPerInferencePj": 1689.3155,
+    "measuredHardwarePerformance": false,
+    "parametricEstimateOnly": true,
+    "scenarioId": "calibration_heavy_operation"
+  }
+}

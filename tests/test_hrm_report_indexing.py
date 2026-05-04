@@ -220,6 +220,38 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertFalse(analysis["measuredTransferMatrixAvailable"])
         self.assertFalse(analysis["productionInferenceReady"])
 
+    def test_validation_summary_includes_planning_reports(self):
+        summary = json.loads((REPORT_DIR / "validation-ladder-summary.json").read_text(encoding="utf-8"))
+        reports = {
+            report["id"]: report
+            for report in summary["supplementalReports"]
+        }
+        expected = {
+            "hardware-scenario-estimates": "parametric_hardware_scenario_estimate",
+            "hardware-scenario-analysis": "parametric_hardware_scenario_analysis",
+            "hardware-requirements-envelope": "simulation_derived_hardware_requirements",
+            "hardware-requirements-analysis": "simulation_derived_hardware_requirements_analysis",
+            "error-budget-report": "simulation_error_budget",
+            "calibration-plan": "calibration_plan_only",
+            "transfer-matrix-assimilation-plan": "transfer_matrix_assimilation_plan_only",
+            "model-to-hrm-decision-report": "simulation_only_model_to_hrm_decision",
+            "v0.1.0-rc1-readiness": "v0.1.0_rc1_readiness_audit",
+        }
+        for report_id, evidence_level in expected.items():
+            self.assertIn(report_id, reports)
+            report = reports[report_id]
+            self.assertEqual(report["evidenceLevel"], evidence_level)
+            self.assertFalse(report["hardwareValidated"])
+            self.assertFalse(report["foundryCalibrated"])
+            self.assertFalse(report["measuredTransferMatrixAvailable"])
+            self.assertFalse(report["productionInferenceReady"])
+        self.assertTrue(reports["hardware-scenario-estimates"]["keyMetrics"]["parametricEstimateOnly"])
+        self.assertFalse(reports["hardware-scenario-estimates"]["keyMetrics"]["measuredHardwarePerformance"])
+        self.assertTrue(reports["hardware-requirements-envelope"]["keyMetrics"]["simulationDerivedOnly"])
+        self.assertTrue(reports["error-budget-report"]["keyMetrics"]["simulationOnly"])
+        self.assertFalse(reports["error-budget-report"]["keyMetrics"]["physicalAccuracyClaimed"])
+        self.assertTrue(reports["model-to-hrm-decision-report"]["keyMetrics"]["decisionIsNotHardwareValidation"])
+
     def test_validation_summary_includes_review_pack(self):
         summary = json.loads((REPORT_DIR / "validation-ladder-summary.json").read_text(encoding="utf-8"))
         reports = {
@@ -371,6 +403,23 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertFalse(scaling_analysis["foundryCalibrated"])
         self.assertFalse(scaling_analysis["measuredTransferMatrixAvailable"])
         self.assertFalse(scaling_analysis["productionInferenceReady"])
+        for report_id in [
+            "hardware-scenario-estimates",
+            "hardware-scenario-analysis",
+            "hardware-requirements-envelope",
+            "hardware-requirements-analysis",
+            "error-budget-report",
+            "calibration-plan",
+            "transfer-matrix-assimilation-plan",
+            "model-to-hrm-decision-report",
+            "v0.1.0-rc1-readiness",
+        ]:
+            self.assertIn(report_id, reports)
+            report = reports[report_id]
+            self.assertFalse(report["hardwareValidated"])
+            self.assertFalse(report["foundryCalibrated"])
+            self.assertFalse(report["measuredTransferMatrixAvailable"])
+            self.assertFalse(report["productionInferenceReady"])
 
     def test_artifacts_sha256_covers_all_generated_json_reports(self):
         json_reports = {
@@ -396,12 +445,26 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("reports/future-work/hrm-neural-mapping/model-suitability-analysis.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/scaling-benchmark.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/scaling-analysis.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/hardware-scenario-estimates.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/hardware-scenario-analysis.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/hardware-requirements-envelope.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/hardware-requirements-analysis.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/error-budget-report.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/calibration-plan.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/transfer-matrix-assimilation-plan.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/model-to-hrm-decision-report.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/v0.1.0-rc1-readiness.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/review-pack-summary.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/release-readiness-v0.1.0.json", hashed_reports)
         artifact_text = (REPORT_DIR / "ARTIFACTS.sha256").read_text(encoding="utf-8")
         self.assertIn("reports/future-work/hrm-neural-mapping/review-pack.md", artifact_text)
         self.assertIn("reports/future-work/hrm-neural-mapping/review-pack-metrics.csv", artifact_text)
         self.assertIn("reports/future-work/hrm-neural-mapping/release-readiness-v0.1.0.md", artifact_text)
+        self.assertIn("reports/future-work/hrm-neural-mapping/error-budget-analysis.md", artifact_text)
+        self.assertIn("reports/future-work/hrm-neural-mapping/model-to-hrm-decision-report.md", artifact_text)
+        self.assertIn("reports/future-work/hrm-neural-mapping/v0.1.0-rc1-readiness.md", artifact_text)
+        self.assertIn("docs/future-work/transfer-matrix-assimilation-protocol.md", artifact_text)
+        self.assertIn("docs/ROADMAP-v0.2.md", artifact_text)
 
     def test_evidence_ledger_includes_review_pack(self):
         ledger = json.loads((ROOT / "docs" / "future-work" / "evidence-ledger.json").read_text(encoding="utf-8"))
@@ -456,6 +519,20 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("review-pack-metrics.csv", normalized)
         self.assertIn("release-readiness-v0.1.0.json", normalized)
         self.assertIn("release-readiness-v0.1.0.md", normalized)
+        self.assertIn("hardware-scenario-estimates.json", normalized)
+        self.assertIn("hardware-scenario-analysis.json", normalized)
+        self.assertIn("hardware-requirements-envelope.json", normalized)
+        self.assertIn("hardware-requirements-analysis.json", normalized)
+        self.assertIn("error-budget-report.json", normalized)
+        self.assertIn("error-budget-analysis.md", normalized)
+        self.assertIn("calibration-plan.json", normalized)
+        self.assertIn("transfer-matrix-assimilation-plan.json", normalized)
+        self.assertIn("transfer-matrix-assimilation-protocol.md", normalized)
+        self.assertIn("model-to-hrm-decision-report.json", normalized)
+        self.assertIn("model-to-hrm-decision-report.md", normalized)
+        self.assertIn("v0.1.0-rc1-readiness.json", normalized)
+        self.assertIn("v0.1.0-rc1-readiness.md", normalized)
+        self.assertIn("ROADMAP-v0.2.md", normalized)
         self.assertIn("supplemental rectangular support exists", normalized)
         self.assertIn("physical complex/unitary mesh layout", normalized)
         self.assertIn("ReLU remains a classical activation outside the optical mesh", normalized)
@@ -465,6 +542,9 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("simulation-only review pack", normalized)
         self.assertIn("claim-boundary guard", normalized)
         self.assertIn("still no hardware validation", normalized)
+        self.assertIn("parametric estimates, not measured hardware performance", normalized)
+        self.assertIn("simulation-derived requirement envelope", normalized)
+        self.assertIn("simulation-only decision report", normalized)
         self.assertNotIn("no rectangular neural layer support", normalized)
         self.assertNotIn("square matrix only", normalized)
 

@@ -253,6 +253,11 @@ def _collect_key_metrics(stages: List[Dict[str, Any]], supplemental: List[Dict[s
     matrix_family = by_id.get("matrix-family-analysis", {})
     layer_stack = by_id.get("layer-stack-inference-demo", {})
     scaling = by_id.get("scaling-analysis", {})
+    suitability = by_id.get("model-suitability-profile", {})
+    scenario = by_id.get("hardware-scenario-analysis", {})
+    requirements = by_id.get("hardware-requirements-analysis", {})
+    error_budget = by_id.get("error-budget-report", {})
+    decision = by_id.get("model-to-hrm-decision-report", {})
     return {
         "stage2MeshConstrainedRelativeError": stage_2.get("meshConstrainedRelativeError"),
         "stage2MeshErrorDelta": stage_2.get("meshErrorDelta"),
@@ -266,6 +271,15 @@ def _collect_key_metrics(stages: List[Dict[str, Any]], supplemental: List[Dict[s
         "scalingMaxMeshConstrainedError": scaling.get("maxMeshConstrainedError"),
         "scalingBestCase": scaling.get("bestCase"),
         "scalingWorstCase": scaling.get("worstCase"),
+        "modelSuitabilityScore": suitability.get("modelSuitabilityScore"),
+        "modelSuitabilityClass": suitability.get("suitabilityClass"),
+        "bestLatencyScenario": scenario.get("bestLatencyScenario"),
+        "bestEnergyScenario": scenario.get("bestEnergyScenario"),
+        "requirementsMetCount": requirements.get("metRequirementCount"),
+        "requirementsUnmetCount": requirements.get("unmetRequirementCount"),
+        "errorBudgetDominantContributor": error_budget.get("dominantErrorContributor"),
+        "errorBudgetRssEnvelope": error_budget.get("combinedErrorEnvelope", {}).get("rss"),
+        "modelToHrmDecision": decision.get("decision"),
         "perturbationTopSensitivity": _first(stage_3_analysis.get("sensitivityRanking", [])),
         "calibrationPreRelativeError": stage_4.get("preCalibrationRelativeError"),
         "calibrationPostRelativeError": stage_4.get("postCalibrationRelativeError"),
@@ -297,6 +311,15 @@ def _metric_rows(
         "scalingMaxMeshConstrainedError": "scaling-analysis",
         "scalingBestCase": "scaling-analysis",
         "scalingWorstCase": "scaling-analysis",
+        "modelSuitabilityScore": "model-suitability-profile",
+        "modelSuitabilityClass": "model-suitability-profile",
+        "bestLatencyScenario": "hardware-scenario-analysis",
+        "bestEnergyScenario": "hardware-scenario-analysis",
+        "requirementsMetCount": "hardware-requirements-analysis",
+        "requirementsUnmetCount": "hardware-requirements-analysis",
+        "errorBudgetDominantContributor": "error-budget-report",
+        "errorBudgetRssEnvelope": "error-budget-report",
+        "modelToHrmDecision": "model-to-hrm-decision-report",
         "perturbationTopSensitivity": "stage-3-sweep-analysis",
         "calibrationPreRelativeError": "stage-4-simulated-calibration",
         "calibrationPostRelativeError": "stage-4-simulated-calibration",
