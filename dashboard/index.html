@@ -26,6 +26,10 @@
     <p>This static dashboard summarizes simulation-only reports. It is not hardware evidence.</p>
   </header>
   <main>
+    <section class="claim-boundary">
+      <h2>Simulation-Only Notice</h2>
+      <p>This dashboard summarizes simulation-only artifacts. It is not hardware evidence.</p>
+    </section>
     <section>
       <h2>What This Is</h2>
       <p>A reviewer-facing index for deterministic simulation reports, model-planning outputs, and blocked evidence gates.</p>
@@ -39,6 +43,7 @@
 <section class="metric"><h2>Suitability Score</h2><p>87.647</p></section>
 <section class="metric"><h2>Best Portfolio Candidate</h2><p>low_rank_adapter_demo</p></section>
 <section class="metric"><h2>Design Pareto Candidates</h2><p>4</p></section>
+<section class="metric"><h2>External Review Ready</h2><p>True</p></section>
 <section class="metric"><h2>Hardware Gates Blocked</h2><p>3</p></section>
     </div>
     <section>
@@ -48,6 +53,10 @@
 <li><a href="../reports/future-work/hrm-neural-mapping/model-portfolio-ranking.json">Model portfolio ranking</a></li>
 <li><a href="../reports/future-work/hrm-neural-mapping/hardware-design-space-analysis.json">Design-space analysis</a></li>
 <li><a href="../reports/future-work/hrm-neural-mapping/transfer-matrix-ingestion-sandbox.json">Transfer-matrix sandbox</a></li>
+<li><a href="../reports/future-work/hrm-neural-mapping/partner-readiness-report.json">Partner readiness</a></li>
+<li><a href="../reports/future-work/hrm-neural-mapping/external-review-checklist.json">External review checklist</a></li>
+<li><a href="../reports/future-work/hrm-neural-mapping/reproducibility-capsule.json">Reproducibility capsule</a></li>
+<li><a href="../reports/future-work/hrm-neural-mapping/solo-completion-audit.json">Solo completion audit</a></li>
 <li><a href="../reports/future-work/hrm-neural-mapping/review-pack.md">Review pack</a></li>
 <li><a href="../reports/future-work/hrm-neural-mapping/ARTIFACTS.sha256">Artifact hashes</a></li></ul>
     </section>
@@ -70,6 +79,40 @@
       <p>Best simulation candidate: <code>low_rank_adapter_demo</code>.</p>
       <p>Worst simulation candidate: <code>transformer_block_manifest_only</code>.</p>
       <p>These are simulation-only planning labels, not hardware evidence.</p>
+    </section>
+    <section>
+      <h2>Model Cards</h2>
+      <ul><li><a href="../reports/future-work/hrm-neural-mapping/model-cards/low_rank_adapter_demo.md">low_rank_adapter_demo</a></li>
+<li><a href="../reports/future-work/hrm-neural-mapping/model-cards/projection_chain.md">projection_chain</a></li>
+<li><a href="../reports/future-work/hrm-neural-mapping/model-cards/tiny_mlp.md">tiny_mlp</a></li>
+<li><a href="../reports/future-work/hrm-neural-mapping/model-cards/sparse_linear_demo.md">sparse_linear_demo</a></li>
+<li><a href="../reports/future-work/hrm-neural-mapping/model-cards/transformer_block_manifest_only.md">transformer_block_manifest_only</a></li></ul>
+    </section>
+    <section>
+      <h2>Error Budget Summary</h2>
+      <p>Dominant contributor: <code>{&#x27;component&#x27;: &#x27;perturbationError&#x27;, &#x27;errorValue&#x27;: 0.370308698767234, &#x27;sourceReport&#x27;: &#x27;stage-3-sweep-analysis.json&#x27;, &#x27;simulationOnly&#x27;: True, &#x27;hardwareValidated&#x27;: False, &#x27;foundryCalibrated&#x27;: False, &#x27;measuredTransferMatrixAvailable&#x27;: False, &#x27;productionInferenceReady&#x27;: False}</code>.</p>
+      <p>Combined envelope: <code>{&#x27;additive&#x27;: 0.729470161818342, &#x27;rss&#x27;: 0.413071539277794, &#x27;conservativeMax&#x27;: 0.370308698767234}</code>.</p>
+    </section>
+    <section>
+      <h2>Hardware Scenario Summary</h2>
+      <p>Best latency scenario: <code>ideal_optical_core_only</code>.</p>
+      <p>These are parametric estimates only, not measured hardware performance.</p>
+    </section>
+    <section>
+      <h2>Requirements Summary</h2>
+      <p>Met requirement rows: <code>7</code>.</p>
+      <p>Unmet requirement rows: <code>5</code>.</p>
+    </section>
+    <section>
+      <h2>Transfer-Matrix Ingestion Sandbox Status</h2>
+      <p>syntheticFixtureOnly=<code>true</code></p>
+      <p>publicMeasuredEvidence=<code>false</code></p>
+    </section>
+    <section>
+      <h2>Partner Readiness Status</h2>
+      <p>readinessForExternalReview=<code>true</code></p>
+      <p>readinessForHardwareClaim=<code>false</code></p>
+      <p><a href="../reports/future-work/hrm-neural-mapping/external-review-checklist.json">External review checklist</a></p>
     </section>
     <section>
       <h2>Hardware Gate Blockers</h2>

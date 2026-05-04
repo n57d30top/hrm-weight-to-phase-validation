@@ -383,7 +383,7 @@
     "hardware_benchmark_gate"
   ],
   "productionInferenceReady": false,
-  "reportCount": 40,
+  "reportCount": 45,
   "reviewerChecklist": [
     "Run make check to reproduce generated reports.",
     "Inspect reports/future-work/hrm-neural-mapping/ARTIFACTS.sha256.",
@@ -517,6 +517,17 @@
       "stage": 2,
       "stageStatus": "complete",
       "title": "Simulation-only accuracy degradation and error budget"
+    },
+    {
+      "evidenceLevel": "external_review_checklist",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "external-review-checklist",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 0,
+      "stageStatus": "complete",
+      "title": "External review checklist for simulation-only HRM planning toolkit"
     },
     {
       "evidenceLevel": "hardware_design_space_analysis",
@@ -728,6 +739,17 @@
       "title": "Model weight manifest import demo"
     },
     {
+      "evidenceLevel": "partner_readiness_review_package",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "partner-readiness-report",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 0,
+      "stageStatus": "complete",
+      "title": "Partner readiness report for simulation-only HRM photonic AI planning toolkit"
+    },
+    {
       "evidenceLevel": "abstract_rectangular_mesh_simulation",
       "foundryCalibrated": false,
       "hardwareValidated": false,
@@ -737,6 +759,17 @@
       "stage": 2,
       "stageStatus": "complete",
       "title": "Rectangular matrix support for abstract HRM mesh simulation"
+    },
+    {
+      "evidenceLevel": "reproducibility_capsule",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "reproducibility-capsule",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 0,
+      "stageStatus": "complete",
+      "title": "Reproducibility capsule for simulation-only HRM planning toolkit"
     },
     {
       "evidenceLevel": "abstract_scaling_analysis",
@@ -759,6 +792,17 @@
       "stage": 2,
       "stageStatus": "complete",
       "title": "Scaling benchmark for larger abstract HRM mapping simulations"
+    },
+    {
+      "evidenceLevel": "solo_completion_audit",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "solo-completion-audit",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 0,
+      "stageStatus": "complete",
+      "title": "Solo completion audit for HRM photonic AI planning toolkit"
     },
     {
       "evidenceLevel": "uncalibrated_perturbation_simulation",
@@ -825,6 +869,17 @@
       "stage": 6,
       "stageStatus": "blocked",
       "title": "Synthetic transfer-matrix ingestion sandbox"
+    },
+    {
+      "evidenceLevel": "v0.2.0_alpha3_readiness",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "v0.2.0-alpha3-readiness",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 0,
+      "stageStatus": "complete",
+      "title": "v0.2.0-alpha.3 readiness report"
     }
   ],
   "title": "Reviewer-facing simulation evidence pack summary"

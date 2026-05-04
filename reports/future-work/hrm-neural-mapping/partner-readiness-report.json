@@ -1,0 +1,98 @@
+{
+  "blockers": [
+    "no_foundry_calibrated_device_model",
+    "no_measured_hrm_transfer_matrix",
+    "no_end_to_end_hardware_benchmark"
+  ],
+  "claimBoundary": "Simulation-only partner-readiness material; this does not claim hardware validation, foundry calibration, measured transfer matrices, production inference readiness, real hardware latency, real hardware energy efficiency, physical accuracy, quantum advantage, hardware-native intelligence, or power-free computation.",
+  "evidenceLevel": "partner_readiness_review_package",
+  "foundryCalibrated": false,
+  "foundryOrPdkNeeds": [
+    "foundry-calibrated device model package",
+    "PDK or source version",
+    "S-parameter or compact-model artifacts",
+    "calibrated loss, crosstalk, and phase-shifter models",
+    "provenance, operating conditions, and artifact hashes"
+  ],
+  "hardwareValidated": false,
+  "id": "partner-readiness-report",
+  "measuredTransferMatrixAvailable": false,
+  "missingEvidence": [
+    "foundry calibrated device model",
+    "measured HRM transfer matrix",
+    "end-to-end hardware inference benchmark"
+  ],
+  "nextValidationGates": [
+    "foundry_calibrated_device_model_gate",
+    "measured_transfer_matrix_gate",
+    "hardware_benchmark_gate"
+  ],
+  "photonicLabMeasurementNeeds": [
+    "measured transfer matrices under documented wavelength and temperature conditions",
+    "input basis and output readout convention",
+    "drift and recalibration observations",
+    "uncertainty or error estimates",
+    "raw and processed artifacts with SHA-256 hashes"
+  ],
+  "productionInferenceReady": false,
+  "readinessForExternalReview": true,
+  "readinessForFoundryClaim": false,
+  "readinessForHardwareClaim": false,
+  "readinessForMeasuredTransferMatrixClaim": false,
+  "readinessForProductionInferenceClaim": false,
+  "recommendedNextPartnerType": [
+    "integrated photonics reviewer",
+    "foundry/PDK advisor",
+    "photonic test-lab partner",
+    "ML hardware reviewer"
+  ],
+  "simulationOnlyScope": [
+    "abstract matrix mapping",
+    "perturbation sweeps",
+    "synthetic calibration",
+    "model suitability planning",
+    "parametric scenario and requirement estimates",
+    "synthetic transfer-matrix ingestion sandbox"
+  ],
+  "stage": 0,
+  "stageStatus": "complete",
+  "stageUnblockArtifacts": {
+    "stage5": [
+      "foundry-calibrated device model manifest",
+      "relative artifact references",
+      "matching SHA-256 hashes",
+      "source version, provenance, uncertainty, and claim boundary"
+    ],
+    "stage6": [
+      "measured HRM transfer-matrix manifest",
+      "raw and processed measured artifacts",
+      "measurement date, conditions, matrix convention, provenance, uncertainty, and hashes"
+    ],
+    "stage7": [
+      "end-to-end hardware inference benchmark package",
+      "dataset, software baseline, input encoding, output readout, latency/energy/accuracy/drift metrics",
+      "raw and processed benchmark hashes",
+      "completed Stage 6 dependency"
+    ]
+  },
+  "title": "Partner readiness report for simulation-only HRM photonic AI planning toolkit",
+  "whatNotToClaim": [
+    "do not claim hardware validation",
+    "do not claim foundry calibration",
+    "do not claim measured transfer matrices",
+    "do not claim production inference readiness",
+    "do not claim real hardware latency or energy efficiency",
+    "do not claim physical accuracy",
+    "do not claim quantum advantage",
+    "do not claim hardware-native intelligence",
+    "do not claim power-free computation"
+  ],
+  "whatRepoCanDoToday": [
+    "reproduce deterministic simulation reports",
+    "classify model layers for abstract HRM mapping eligibility",
+    "rank deterministic model fixtures for simulation-only suitability",
+    "estimate parametric planning scenarios without measured hardware performance",
+    "derive simulation-only requirement envelopes",
+    "keep hardware evidence gates blocked until real artifacts exist"
+  ]
+}

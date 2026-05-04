@@ -52,7 +52,7 @@ class HrmRcReadinessTest(unittest.TestCase):
 
     def test_pyproject_version_is_v02_alpha_after_rc1(self):
         pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
-        self.assertIn('version = "0.2.0-alpha.2"', pyproject)
+        self.assertIn('version = "0.2.0-alpha.3"', pyproject)
 
     def test_hardware_gates_remain_blocked(self):
         reports = [

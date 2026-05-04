@@ -20,6 +20,7 @@ This is a simulation-only review pack. It is not hardware evidence.
 - `calibration-plan`: Calibration plan for future measured HRM transfer matrices (calibration_plan_only)
 - `complex-unitary-mesh-support`: Complex/unitary mesh support for abstract HRM simulation (abstract_complex_unitary_mesh_simulation)
 - `error-budget-report`: Simulation-only accuracy degradation and error budget (simulation_error_budget)
+- `external-review-checklist`: External review checklist for simulation-only HRM planning toolkit (external_review_checklist)
 - `hardware-design-space-analysis`: Simulation-only hardware design-space analysis (hardware_design_space_analysis)
 - `hardware-design-space-sweep`: Simulation-only hardware design-space sweep (hardware_design_space_sweep_simulation)
 - `hardware-requirements-analysis`: Simulation-derived hardware requirements analysis (simulation_derived_hardware_requirements_analysis)
@@ -39,15 +40,19 @@ This is a simulation-only review pack. It is not hardware evidence.
 - `model-to-hrm-decision-report`: Model-to-HRM simulation-only decision report (simulation_only_model_to_hrm_decision)
 - `model-weight-eligibility-analysis`: Model weight mapping eligibility analysis (model_weight_manifest_eligibility_analysis)
 - `model-weight-import-demo`: Model weight manifest import demo (model_weight_manifest_import_simulation)
+- `partner-readiness-report`: Partner readiness report for simulation-only HRM photonic AI planning toolkit (partner_readiness_review_package)
 - `rectangular-matrix-support`: Rectangular matrix support for abstract HRM mesh simulation (abstract_rectangular_mesh_simulation)
+- `reproducibility-capsule`: Reproducibility capsule for simulation-only HRM planning toolkit (reproducibility_capsule)
 - `scaling-analysis`: Scaling benchmark analysis (abstract_scaling_analysis)
 - `scaling-benchmark`: Scaling benchmark for larger abstract HRM mapping simulations (abstract_scaling_benchmark_simulation)
+- `solo-completion-audit`: Solo completion audit for HRM photonic AI planning toolkit (solo_completion_audit)
 - `stage-3-perturbation-sweep`: Stage 3 deterministic perturbation sensitivity sweep (uncalibrated_perturbation_simulation)
 - `stage-3-sweep-analysis`: Stage 3 perturbation sweep sensitivity analysis (uncalibrated_perturbation_simulation)
 - `stage-4-calibration-analysis`: Stage 4 synthetic calibration sweep analysis (synthetic_calibration_simulation)
 - `stage-4-calibration-sweep`: Stage 4 synthetic calibration sensitivity sweep (synthetic_calibration_simulation)
 - `transfer-matrix-assimilation-plan`: Transfer-matrix assimilation plan for future measured artifacts (transfer_matrix_assimilation_plan_only)
 - `transfer-matrix-ingestion-sandbox`: Synthetic transfer-matrix ingestion sandbox (synthetic_transfer_matrix_ingestion_sandbox)
+- `v0.2.0-alpha3-readiness`: v0.2.0-alpha.3 readiness report (v0.2.0_alpha3_readiness)
 
 ## Key Metrics
 

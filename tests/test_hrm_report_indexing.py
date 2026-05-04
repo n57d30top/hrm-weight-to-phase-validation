@@ -239,6 +239,11 @@ class HrmReportIndexingTest(unittest.TestCase):
             "model-portfolio-ranking": "model_portfolio_ranking_simulation",
             "model-export-adapter-demo": "model_export_adapter_protocol",
             "model-export-adapter-validation": "model_export_adapter_validation",
+            "partner-readiness-report": "partner_readiness_review_package",
+            "external-review-checklist": "external_review_checklist",
+            "reproducibility-capsule": "reproducibility_capsule",
+            "solo-completion-audit": "solo_completion_audit",
+            "v0.2.0-alpha3-readiness": "v0.2.0_alpha3_readiness",
             "hardware-design-space-sweep": "hardware_design_space_sweep_simulation",
             "hardware-design-space-analysis": "hardware_design_space_analysis",
             "transfer-matrix-ingestion-sandbox": "synthetic_transfer_matrix_ingestion_sandbox",
@@ -427,6 +432,11 @@ class HrmReportIndexingTest(unittest.TestCase):
             "model-portfolio-ranking",
             "model-export-adapter-demo",
             "model-export-adapter-validation",
+            "partner-readiness-report",
+            "external-review-checklist",
+            "reproducibility-capsule",
+            "solo-completion-audit",
+            "v0.2.0-alpha3-readiness",
             "hardware-design-space-sweep",
             "hardware-design-space-analysis",
             "transfer-matrix-ingestion-sandbox",
@@ -475,6 +485,11 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("reports/future-work/hrm-neural-mapping/model-portfolio-ranking.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/model-export-adapter-demo.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/model-export-adapter-validation.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/partner-readiness-report.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/external-review-checklist.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/reproducibility-capsule.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/solo-completion-audit.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/v0.2.0-alpha3-readiness.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/hardware-design-space-sweep.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/hardware-design-space-analysis.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/transfer-matrix-ingestion-sandbox.json", hashed_reports)
@@ -488,6 +503,12 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("reports/future-work/hrm-neural-mapping/error-budget-analysis.md", artifact_text)
         self.assertIn("reports/future-work/hrm-neural-mapping/model-to-hrm-decision-report.md", artifact_text)
         self.assertIn("reports/future-work/hrm-neural-mapping/model-portfolio-decision-summary.md", artifact_text)
+        self.assertIn("reports/future-work/hrm-neural-mapping/model-portfolio-explainer.md", artifact_text)
+        self.assertIn("reports/future-work/hrm-neural-mapping/model-cards/low_rank_adapter_demo.md", artifact_text)
+        self.assertIn("reports/future-work/hrm-neural-mapping/partner-readiness-report.md", artifact_text)
+        self.assertIn("reports/future-work/hrm-neural-mapping/reproducibility-capsule.md", artifact_text)
+        self.assertIn("reports/future-work/hrm-neural-mapping/solo-completion-audit.md", artifact_text)
+        self.assertIn("reports/future-work/hrm-neural-mapping/v0.2.0-alpha3-readiness.md", artifact_text)
         self.assertIn("reports/future-work/hrm-neural-mapping/hardware-design-space-pareto.md", artifact_text)
         self.assertIn("reports/future-work/hrm-neural-mapping/v0.1.0-rc1-readiness.md", artifact_text)
         self.assertIn("docs/future-work/transfer-matrix-assimilation-protocol.md", artifact_text)
@@ -495,6 +516,12 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("docs/ROADMAP-v0.2.md", artifact_text)
         self.assertIn("docs/QUICKSTART.md", artifact_text)
         self.assertIn("docs/REVIEWER_GUIDE.md", artifact_text)
+        self.assertIn("docs/PARTNER_READINESS.md", artifact_text)
+        self.assertIn("docs/LAB_DATA_REQUEST.md", artifact_text)
+        self.assertIn("docs/FOUNDRY_DATA_REQUEST.md", artifact_text)
+        self.assertIn("docs/HARDWARE_EVIDENCE_CHECKLIST.md", artifact_text)
+        self.assertIn("docs/EXTERNAL_REVIEW_CHECKLIST.md", artifact_text)
+        self.assertIn("docs/REPRODUCIBILITY.md", artifact_text)
         self.assertIn("dashboard/index.html", artifact_text)
         self.assertIn("fixtures/model-export-adapter/tiny-linear-export-example.json", artifact_text)
         self.assertIn("fixtures/transfer-matrix-sandbox/synthetic-transfer-matrix.json", artifact_text)
@@ -579,7 +606,17 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("ROADMAP-v0.2.md", normalized)
         self.assertIn("QUICKSTART.md", normalized)
         self.assertIn("REVIEWER_GUIDE.md", normalized)
-        self.assertIn("v0.2.0-alpha.2", normalized)
+        self.assertIn("v0.2.0-alpha.3", normalized)
+        self.assertIn("PARTNER_READINESS.md", normalized)
+        self.assertIn("LAB_DATA_REQUEST.md", normalized)
+        self.assertIn("FOUNDRY_DATA_REQUEST.md", normalized)
+        self.assertIn("HARDWARE_EVIDENCE_CHECKLIST.md", normalized)
+        self.assertIn("EXTERNAL_REVIEW_CHECKLIST.md", normalized)
+        self.assertIn("REPRODUCIBILITY.md", normalized)
+        self.assertIn("partner-readiness-report.json", normalized)
+        self.assertIn("external-review-checklist.json", normalized)
+        self.assertIn("solo-completion-audit.json", normalized)
+        self.assertIn("v0.2.0-alpha3-readiness.json", normalized)
         self.assertIn("supplemental rectangular support exists", normalized)
         self.assertIn("physical complex/unitary mesh layout", normalized)
         self.assertIn("ReLU remains a classical activation outside the optical mesh", normalized)

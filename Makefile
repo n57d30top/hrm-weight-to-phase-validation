@@ -31,6 +31,11 @@ json:
 	jq empty reports/future-work/hrm-neural-mapping/model-export-adapter-validation.json
 	jq empty reports/future-work/hrm-neural-mapping/model-portfolio-benchmark.json
 	jq empty reports/future-work/hrm-neural-mapping/model-portfolio-ranking.json
+	jq empty reports/future-work/hrm-neural-mapping/partner-readiness-report.json
+	jq empty reports/future-work/hrm-neural-mapping/external-review-checklist.json
+	jq empty reports/future-work/hrm-neural-mapping/reproducibility-capsule.json
+	jq empty reports/future-work/hrm-neural-mapping/solo-completion-audit.json
+	jq empty reports/future-work/hrm-neural-mapping/v0.2.0-alpha3-readiness.json
 	jq empty reports/future-work/hrm-neural-mapping/model-to-hrm-decision-report.json
 	jq empty reports/future-work/hrm-neural-mapping/model-weight-import-demo.json
 	jq empty reports/future-work/hrm-neural-mapping/model-weight-eligibility-analysis.json

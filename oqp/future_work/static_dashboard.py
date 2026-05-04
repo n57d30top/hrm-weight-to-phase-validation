@@ -12,8 +12,17 @@ def render_static_dashboard(stage_reports: Iterable[Dict[str, Any]], supplementa
     decision = _by_id(supplemental, "model-to-hrm-decision-report")
     portfolio = _by_id(supplemental, "model-portfolio-ranking")
     design = _by_id(supplemental, "hardware-design-space-analysis")
+    error_budget = _by_id(supplemental, "error-budget-report")
+    scenario = _by_id(supplemental, "hardware-scenario-analysis")
+    requirements = _by_id(supplemental, "hardware-requirements-analysis")
+    transfer_sandbox = _by_id(supplemental, "transfer-matrix-ingestion-sandbox")
+    partner = _by_id(supplemental, "partner-readiness-report")
     best_portfolio = portfolio.get("bestSimulationCandidate", {})
     worst_portfolio = portfolio.get("worstSimulationCandidate", {})
+    model_card_links = "\n".join(
+        f"<li><a href=\"../reports/future-work/hrm-neural-mapping/model-cards/{escape(row['modelId'])}.md\">{escape(row['modelId'])}</a></li>"
+        for row in portfolio.get("ranking", [])
+    )
     rows = "\n".join(
         "<tr>"
         f"<td>{escape(str(report['stage']))}</td>"
@@ -37,6 +46,7 @@ def render_static_dashboard(stage_reports: Iterable[Dict[str, Any]], supplementa
         ("Suitability Score", str(decision.get("suitabilityScore", "n/a"))),
         ("Best Portfolio Candidate", best_portfolio.get("modelId", "n/a")),
         ("Design Pareto Candidates", str(design.get("paretoCandidateCount", "n/a"))),
+        ("External Review Ready", str(partner.get("readinessForExternalReview", "n/a"))),
         ("Hardware Gates Blocked", "3"),
     ]
     card_html = "\n".join(
@@ -49,6 +59,10 @@ def render_static_dashboard(stage_reports: Iterable[Dict[str, Any]], supplementa
         ("Model portfolio ranking", "model-portfolio-ranking.json"),
         ("Design-space analysis", "hardware-design-space-analysis.json"),
         ("Transfer-matrix sandbox", "transfer-matrix-ingestion-sandbox.json"),
+        ("Partner readiness", "partner-readiness-report.json"),
+        ("External review checklist", "external-review-checklist.json"),
+        ("Reproducibility capsule", "reproducibility-capsule.json"),
+        ("Solo completion audit", "solo-completion-audit.json"),
         ("Review pack", "review-pack.md"),
         ("Artifact hashes", "ARTIFACTS.sha256"),
     ]
@@ -84,6 +98,10 @@ def render_static_dashboard(stage_reports: Iterable[Dict[str, Any]], supplementa
     <p>This static dashboard summarizes simulation-only reports. It is not hardware evidence.</p>
   </header>
   <main>
+    <section class=\"claim-boundary\">
+      <h2>Simulation-Only Notice</h2>
+      <p>This dashboard summarizes simulation-only artifacts. It is not hardware evidence.</p>
+    </section>
     <section>
       <h2>What This Is</h2>
       <p>A reviewer-facing index for deterministic simulation reports, model-planning outputs, and blocked evidence gates.</p>
@@ -111,6 +129,36 @@ def render_static_dashboard(stage_reports: Iterable[Dict[str, Any]], supplementa
       <p>Best simulation candidate: <code>{escape(str(best_portfolio.get("modelId", "n/a")))}</code>.</p>
       <p>Worst simulation candidate: <code>{escape(str(worst_portfolio.get("modelId", "n/a")))}</code>.</p>
       <p>These are simulation-only planning labels, not hardware evidence.</p>
+    </section>
+    <section>
+      <h2>Model Cards</h2>
+      <ul>{model_card_links}</ul>
+    </section>
+    <section>
+      <h2>Error Budget Summary</h2>
+      <p>Dominant contributor: <code>{escape(str(error_budget.get("dominantErrorContributor", "n/a")))}</code>.</p>
+      <p>Combined envelope: <code>{escape(str(error_budget.get("combinedErrorEnvelope", "n/a")))}</code>.</p>
+    </section>
+    <section>
+      <h2>Hardware Scenario Summary</h2>
+      <p>Best latency scenario: <code>{escape(str(scenario.get("bestLatencyScenario", {}).get("scenarioId", "n/a")))}</code>.</p>
+      <p>These are parametric estimates only, not measured hardware performance.</p>
+    </section>
+    <section>
+      <h2>Requirements Summary</h2>
+      <p>Met requirement rows: <code>{escape(str(requirements.get("metRequirementCount", "n/a")))}</code>.</p>
+      <p>Unmet requirement rows: <code>{escape(str(requirements.get("unmetRequirementCount", "n/a")))}</code>.</p>
+    </section>
+    <section>
+      <h2>Transfer-Matrix Ingestion Sandbox Status</h2>
+      <p>syntheticFixtureOnly=<code>{escape(str(transfer_sandbox.get("syntheticFixtureOnly", "n/a")).lower())}</code></p>
+      <p>publicMeasuredEvidence=<code>{escape(str(transfer_sandbox.get("publicMeasuredEvidence", "n/a")).lower())}</code></p>
+    </section>
+    <section>
+      <h2>Partner Readiness Status</h2>
+      <p>readinessForExternalReview=<code>{escape(str(partner.get("readinessForExternalReview", "n/a")).lower())}</code></p>
+      <p>readinessForHardwareClaim=<code>{escape(str(partner.get("readinessForHardwareClaim", "n/a")).lower())}</code></p>
+      <p><a href=\"../reports/future-work/hrm-neural-mapping/external-review-checklist.json\">External review checklist</a></p>
     </section>
     <section>
       <h2>Hardware Gate Blockers</h2>

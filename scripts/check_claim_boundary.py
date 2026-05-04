@@ -43,6 +43,7 @@ NEGATIVE_CONTEXT_MARKERS = [
     "no ",
     "false",
     "blocked",
+    "missing",
     "unless",
     "without",
     "is not",
@@ -51,6 +52,7 @@ NEGATIVE_CONTEXT_MARKERS = [
     "not evidence",
     "should not",
     "claim boundary",
+    "whatnottoclaim",
     "does not attempt",
 ]
 
@@ -108,7 +110,7 @@ def _iter_public_files(paths: Iterable[Path] | None) -> List[Path]:
             files.append(root)
         elif root.is_dir():
             for path in root.rglob("*"):
-                if path.is_file() and path.suffix in {".md", ".json", ".csv", ".txt"}:
+                if path.is_file() and path.suffix in {".html", ".md", ".json", ".csv", ".txt"}:
                     files.append(path)
     return sorted(files)
 

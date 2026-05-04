@@ -31,6 +31,7 @@ Release line:
 - `v0.1.0` is the stable simulation-only planning framework release.
 - `v0.2.0-alpha.1` added the first planning toolkit snapshot.
 - `v0.2.0-alpha.2` focuses on review and usability hardening.
+- `v0.2.0-alpha.3` prepares the solo-complete partner/reviewer package.
 
 Claim boundary: this repository does not claim hardware validation, foundry
 calibration, measured transfer matrices, production inference readiness, real
@@ -136,7 +137,10 @@ Reviewer-oriented CLI commands:
 python3 scripts/hrmwtp.py --help
 python3 scripts/hrmwtp.py summary
 python3 scripts/hrmwtp.py decision
+python3 scripts/hrmwtp.py portfolio
+python3 scripts/hrmwtp.py model-card low_rank_adapter_demo
 python3 scripts/hrmwtp.py list-reports
+python3 scripts/hrmwtp.py doctor
 ```
 
 Each CLI command prints a short simulation-only disclaimer.
@@ -195,6 +199,17 @@ Key files:
 - `model-portfolio-benchmark.json`
 - `model-portfolio-ranking.json`
 - `model-portfolio-decision-summary.md`
+- `model-portfolio-explainer.md`
+- `model-cards/`
+- `partner-readiness-report.json`
+- `partner-readiness-report.md`
+- `external-review-checklist.json`
+- `reproducibility-capsule.json`
+- `reproducibility-capsule.md`
+- `solo-completion-audit.json`
+- `solo-completion-audit.md`
+- `v0.2.0-alpha3-readiness.json`
+- `v0.2.0-alpha3-readiness.md`
 - `model-to-hrm-decision-report.json`
 - `model-to-hrm-decision-report.md`
 - `model-weight-import-demo.json`
@@ -244,6 +259,12 @@ Schema documentation for future hardware evidence gates:
 - `docs/ROADMAP-v0.2.md`
 - `docs/QUICKSTART.md`
 - `docs/REVIEWER_GUIDE.md`
+- `docs/PARTNER_READINESS.md`
+- `docs/LAB_DATA_REQUEST.md`
+- `docs/FOUNDRY_DATA_REQUEST.md`
+- `docs/HARDWARE_EVIDENCE_CHECKLIST.md`
+- `docs/EXTERNAL_REVIEW_CHECKLIST.md`
+- `docs/REPRODUCIBILITY.md`
 
 The static dashboard is written to:
 
@@ -491,11 +512,32 @@ The CLI and dashboard artifacts are:
 - `hrmwtp regenerate`
 - `hrmwtp summary`
 - `hrmwtp decision`
+- `hrmwtp portfolio`
+- `hrmwtp model-card <model-id>`
 - `hrmwtp list-reports`
+- `hrmwtp doctor`
 - `dashboard/index.html`
 
 The dashboard is static HTML summarizing generated simulation reports. It is not
 hardware evidence.
+
+The partner/reviewer readiness artifacts are:
+
+- `docs/PARTNER_READINESS.md`
+- `docs/LAB_DATA_REQUEST.md`
+- `docs/FOUNDRY_DATA_REQUEST.md`
+- `docs/HARDWARE_EVIDENCE_CHECKLIST.md`
+- `docs/EXTERNAL_REVIEW_CHECKLIST.md`
+- `docs/REPRODUCIBILITY.md`
+- `partner-readiness-report.json`
+- `external-review-checklist.json`
+- `reproducibility-capsule.json`
+- `solo-completion-audit.json`
+- `v0.2.0-alpha3-readiness.json`
+
+These artifacts make the project easier to review and discuss with partners.
+They do not add partner evidence, lab results, foundry data, measured transfer
+matrices, or hardware benchmark results.
 
 ## Planning Reports
 
@@ -747,10 +789,19 @@ Completed v0.2.0-alpha.2 main work:
 - static dashboard expanded with what-this-is/what-this-is-not sections, report links, stage status, model portfolio summary, hardware gate blockers, and a claim-boundary box.
 - `docs/QUICKSTART.md` and `docs/REVIEWER_GUIDE.md` added for reproduction and review.
 
+Completed v0.2.0-alpha.3 main work:
+
+- partner readiness pack added for external review and partner discussion.
+- lab, foundry, hardware-evidence, external-review, and reproducibility docs added.
+- model cards and portfolio explainer added for deterministic model fixtures.
+- CLI expanded with `portfolio`, `model-card`, and `doctor`.
+- dashboard expanded with model cards, error budget, scenario, requirements, transfer sandbox, partner readiness, and review checklist sections.
+- solo completion audit and v0.2.0-alpha.3 readiness reports added.
+
 Near-term:
 
 - keep CI green for report generation, JSON validation, hashes, tests, local-path hygiene, and claim-boundary checks
-- review `v0.2.0-alpha.2` artifacts before broadening model fixtures
+- review `v0.2.0-alpha.3` artifacts before broadening model fixtures
 - keep Stage 5, Stage 6, and Stage 7 blocked until real external evidence exists
 - keep synthetic transfer-matrix sandbox outputs separate from public measured evidence
 

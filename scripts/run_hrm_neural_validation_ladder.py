@@ -63,6 +63,19 @@ from oqp.future_work.model_portfolio import (  # noqa: E402
     run_model_portfolio_benchmark_report,
     run_model_portfolio_ranking_report,
 )
+from oqp.future_work.partner_review import (  # noqa: E402
+    build_model_cards,
+    render_alpha3_readiness_markdown,
+    render_model_portfolio_explainer,
+    render_partner_readiness_markdown,
+    render_reproducibility_capsule_markdown,
+    render_solo_completion_audit_markdown,
+    run_alpha3_readiness_report,
+    run_external_review_checklist_report,
+    run_partner_readiness_report,
+    run_reproducibility_capsule_report,
+    run_solo_completion_audit_report,
+)
 from oqp.future_work.model_weight_manifest import (  # noqa: E402
     run_model_weight_eligibility_analysis_report,
     run_model_weight_import_demo_report,
@@ -141,6 +154,11 @@ SUPPLEMENTAL_REPORT_FILES = {
     "model-export-adapter-validation": "model-export-adapter-validation.json",
     "model-portfolio-benchmark": "model-portfolio-benchmark.json",
     "model-portfolio-ranking": "model-portfolio-ranking.json",
+    "partner-readiness-report": "partner-readiness-report.json",
+    "external-review-checklist": "external-review-checklist.json",
+    "reproducibility-capsule": "reproducibility-capsule.json",
+    "solo-completion-audit": "solo-completion-audit.json",
+    "v0.2.0-alpha3-readiness": "v0.2.0-alpha3-readiness.json",
     "model-to-hrm-decision-report": "model-to-hrm-decision-report.json",
     "model-weight-eligibility-analysis": "model-weight-eligibility-analysis.json",
     "model-weight-import-demo": "model-weight-import-demo.json",
@@ -183,6 +201,9 @@ def main() -> None:
         stage_7,
     ]
 
+    model_portfolio_benchmark = run_model_portfolio_benchmark_report()
+    model_portfolio_ranking = run_model_portfolio_ranking_report()
+
     supplemental_reports = [
         run_complex_unitary_mesh_support_report(),
         run_layer_stack_inference_demo_report(),
@@ -193,8 +214,10 @@ def main() -> None:
         run_model_weight_eligibility_analysis_report(),
         run_model_suitability_profile_report(),
         run_model_suitability_analysis_report(),
-        run_model_portfolio_benchmark_report(),
-        run_model_portfolio_ranking_report(),
+        model_portfolio_benchmark,
+        model_portfolio_ranking,
+        run_partner_readiness_report(),
+        run_external_review_checklist_report(),
         run_model_export_adapter_demo_report(),
         run_model_export_adapter_validation_report(),
         run_rectangular_matrix_support_report(),
@@ -216,6 +239,9 @@ def main() -> None:
         run_calibration_sweep_report(),
         run_calibration_sweep_analysis_report(),
     ]
+    supplemental_reports.append(run_reproducibility_capsule_report(report_count=48, test_count=186))
+    supplemental_reports.append(run_solo_completion_audit_report())
+    supplemental_reports.append(run_alpha3_readiness_report())
     review_pack_summary = run_review_pack_summary_report(reports, supplemental_reports)
     supplemental_reports.append(review_pack_summary)
     release_readiness = run_release_readiness_report(reports, supplemental_reports)
@@ -258,9 +284,27 @@ def main() -> None:
         ROOT / "docs" / "ROADMAP-v0.2.md",
         ROOT / "docs" / "REVIEWER_GUIDE.md",
         ROOT / "docs" / "QUICKSTART.md",
+        ROOT / "docs" / "PARTNER_READINESS.md",
+        ROOT / "docs" / "LAB_DATA_REQUEST.md",
+        ROOT / "docs" / "FOUNDRY_DATA_REQUEST.md",
+        ROOT / "docs" / "HARDWARE_EVIDENCE_CHECKLIST.md",
+        ROOT / "docs" / "EXTERNAL_REVIEW_CHECKLIST.md",
+        ROOT / "docs" / "REPRODUCIBILITY.md",
         ROOT / "dashboard" / "index.html",
         ROOT / "fixtures" / "model-export-adapter" / "tiny-linear-export-example.json",
         ROOT / "fixtures" / "transfer-matrix-sandbox" / "synthetic-transfer-matrix.json",
+    ]
+    partner_artifact_paths = [
+        REPORT_DIR / "partner-readiness-report.md",
+        REPORT_DIR / "model-portfolio-explainer.md",
+        REPORT_DIR / "reproducibility-capsule.md",
+        REPORT_DIR / "solo-completion-audit.md",
+        REPORT_DIR / "v0.2.0-alpha3-readiness.md",
+    ]
+    model_card_dir = REPORT_DIR / "model-cards"
+    model_card_paths = [
+        model_card_dir / f"{model_id}.md"
+        for model_id in sorted(row["modelId"] for row in model_portfolio_benchmark["models"])
     ]
     _write_text(review_pack_artifact_paths[0], render_review_pack_markdown(review_pack_summary))
     _write_text(review_pack_artifact_paths[1], render_review_pack_metrics_csv(review_pack_summary))
@@ -284,7 +328,15 @@ def main() -> None:
     _write_text(planning_artifact_paths[5], render_transfer_matrix_assimilation_protocol())
     _write_text(planning_artifact_paths[6], render_model_export_adapter_protocol())
     _write_text(planning_artifact_paths[7], _render_v02_roadmap())
-    _write_text(planning_artifact_paths[10], render_static_dashboard(reports, supplemental_reports))
+    _write_text(planning_artifact_paths[16], render_static_dashboard(reports, supplemental_reports))
+    _write_text(partner_artifact_paths[0], render_partner_readiness_markdown(_report_by_id(supplemental_reports, "partner-readiness-report")))
+    _write_text(partner_artifact_paths[1], render_model_portfolio_explainer(model_portfolio_ranking))
+    _write_text(partner_artifact_paths[2], render_reproducibility_capsule_markdown(_report_by_id(supplemental_reports, "reproducibility-capsule")))
+    _write_text(partner_artifact_paths[3], render_solo_completion_audit_markdown(_report_by_id(supplemental_reports, "solo-completion-audit")))
+    _write_text(partner_artifact_paths[4], render_alpha3_readiness_markdown(_report_by_id(supplemental_reports, "v0.2.0-alpha3-readiness")))
+    for path in model_card_paths:
+        model_id = path.stem
+        _write_text(path, build_model_cards(model_portfolio_ranking, model_portfolio_benchmark)[model_id])
 
     artifact_paths = (
         [REPORT_DIR / STAGE_FILES[stage] for stage in sorted(STAGE_FILES)]
@@ -293,6 +345,8 @@ def main() -> None:
         + review_pack_artifact_paths
         + release_readiness_artifact_paths
         + planning_artifact_paths
+        + partner_artifact_paths
+        + model_card_paths
     )
     _write_artifact_hashes(artifact_paths, REPORT_DIR / "ARTIFACTS.sha256")
 
@@ -378,6 +432,31 @@ def _key_metrics(report: Dict[str, Any]) -> Dict[str, Any]:
         "portfolioFixtures",
         "bestSimulationCandidate",
         "worstSimulationCandidate",
+        "readinessForExternalReview",
+        "readinessForHardwareClaim",
+        "readinessForFoundryClaim",
+        "readinessForMeasuredTransferMatrixClaim",
+        "readinessForProductionInferenceClaim",
+        "recommendedNextPartnerType",
+        "reviewHasOccurred",
+        "expectedTestCount",
+        "expectedReportCount",
+        "softwareCompletenessEstimate",
+        "planningToolkitCompletenessEstimate",
+        "hardwareValidationCompletenessEstimate",
+        "chipReadinessEstimate",
+        "partnerReadinessEstimate",
+        "readyForExternalReview",
+        "readyForPartnerDiscussion",
+        "readyForHardwareClaims",
+        "partnerReadinessPackStatus",
+        "externalReviewChecklistStatus",
+        "cliStatus",
+        "dashboardStatus",
+        "reproducibilityCapsuleStatus",
+        "soloCompletionAuditStatus",
+        "claimBoundaryStatus",
+        "readyToTagIfVerificationPasses",
         "generatedManifestValid",
         "pyTorchHardDependency",
         "adapterProtocolVersion",
@@ -520,12 +599,14 @@ def _render_v02_roadmap() -> str:
         "",
         "## Recommended Work",
         "",
-        "- expand the model portfolio beyond deterministic fixtures",
+        "- use the partner readiness pack for external review discussions",
+        "- ask integrated photonics reviewers to inspect assumptions before any hardware claim",
+        "- ask foundry/PDK advisors to review Stage 5 artifact expectations",
+        "- ask photonic test-lab partners to review Stage 6 measurement protocol",
+        "- expand the model portfolio beyond deterministic fixtures if it remains simulation-only",
         "- add richer optional PyTorch export adapter examples while keeping framework dependencies optional",
         "- improve design-space objective functions with measured data only when real evidence exists",
         "- keep synthetic transfer-matrix ingestion sandbox separate from Stage 6 public evidence",
-        "- extend the static dashboard with report filtering",
-        "- strengthen synthetic calibration models with explicit limitations",
         "- add foundry or PDK integration only with real external evidence",
         "",
         "## Claim Boundary",

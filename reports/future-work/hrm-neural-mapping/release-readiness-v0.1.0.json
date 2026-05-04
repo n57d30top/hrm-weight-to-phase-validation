@@ -133,7 +133,7 @@
   },
   "stage": 0,
   "stageStatus": "complete",
-  "supplementalReportCount": 32,
+  "supplementalReportCount": 37,
   "supplementalReports": [
     {
       "evidenceLevel": "calibration_plan_only",
@@ -155,6 +155,13 @@
       "stage": 2,
       "stageStatus": "complete",
       "title": "Simulation-only accuracy degradation and error budget"
+    },
+    {
+      "evidenceLevel": "external_review_checklist",
+      "id": "external-review-checklist",
+      "stage": 0,
+      "stageStatus": "complete",
+      "title": "External review checklist for simulation-only HRM planning toolkit"
     },
     {
       "evidenceLevel": "hardware_design_space_analysis",
@@ -290,11 +297,25 @@
       "title": "Model weight manifest import demo"
     },
     {
+      "evidenceLevel": "partner_readiness_review_package",
+      "id": "partner-readiness-report",
+      "stage": 0,
+      "stageStatus": "complete",
+      "title": "Partner readiness report for simulation-only HRM photonic AI planning toolkit"
+    },
+    {
       "evidenceLevel": "abstract_rectangular_mesh_simulation",
       "id": "rectangular-matrix-support",
       "stage": 2,
       "stageStatus": "complete",
       "title": "Rectangular matrix support for abstract HRM mesh simulation"
+    },
+    {
+      "evidenceLevel": "reproducibility_capsule",
+      "id": "reproducibility-capsule",
+      "stage": 0,
+      "stageStatus": "complete",
+      "title": "Reproducibility capsule for simulation-only HRM planning toolkit"
     },
     {
       "evidenceLevel": "simulation_review_pack",
@@ -316,6 +337,13 @@
       "stage": 2,
       "stageStatus": "complete",
       "title": "Scaling benchmark for larger abstract HRM mapping simulations"
+    },
+    {
+      "evidenceLevel": "solo_completion_audit",
+      "id": "solo-completion-audit",
+      "stage": 0,
+      "stageStatus": "complete",
+      "title": "Solo completion audit for HRM photonic AI planning toolkit"
     },
     {
       "evidenceLevel": "uncalibrated_perturbation_simulation",
@@ -358,6 +386,13 @@
       "stage": 6,
       "stageStatus": "blocked",
       "title": "Synthetic transfer-matrix ingestion sandbox"
+    },
+    {
+      "evidenceLevel": "v0.2.0_alpha3_readiness",
+      "id": "v0.2.0-alpha3-readiness",
+      "stage": 0,
+      "stageStatus": "complete",
+      "title": "v0.2.0-alpha.3 readiness report"
     }
   ],
   "title": "v0.1.0 release-candidate readiness audit",

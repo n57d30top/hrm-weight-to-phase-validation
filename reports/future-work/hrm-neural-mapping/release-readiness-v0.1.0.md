@@ -17,6 +17,7 @@ This v0.1.0 readiness report is simulation-only. It does not claim hardware vali
 - `calibration-plan` (calibration_plan_only)
 - `complex-unitary-mesh-support` (abstract_complex_unitary_mesh_simulation)
 - `error-budget-report` (simulation_error_budget)
+- `external-review-checklist` (external_review_checklist)
 - `hardware-design-space-analysis` (hardware_design_space_analysis)
 - `hardware-design-space-sweep` (hardware_design_space_sweep_simulation)
 - `hardware-requirements-analysis` (simulation_derived_hardware_requirements_analysis)
@@ -36,16 +37,20 @@ This v0.1.0 readiness report is simulation-only. It does not claim hardware vali
 - `model-to-hrm-decision-report` (simulation_only_model_to_hrm_decision)
 - `model-weight-eligibility-analysis` (model_weight_manifest_eligibility_analysis)
 - `model-weight-import-demo` (model_weight_manifest_import_simulation)
+- `partner-readiness-report` (partner_readiness_review_package)
 - `rectangular-matrix-support` (abstract_rectangular_mesh_simulation)
+- `reproducibility-capsule` (reproducibility_capsule)
 - `review-pack-summary` (simulation_review_pack)
 - `scaling-analysis` (abstract_scaling_analysis)
 - `scaling-benchmark` (abstract_scaling_benchmark_simulation)
+- `solo-completion-audit` (solo_completion_audit)
 - `stage-3-perturbation-sweep` (uncalibrated_perturbation_simulation)
 - `stage-3-sweep-analysis` (uncalibrated_perturbation_simulation)
 - `stage-4-calibration-analysis` (synthetic_calibration_simulation)
 - `stage-4-calibration-sweep` (synthetic_calibration_simulation)
 - `transfer-matrix-assimilation-plan` (transfer_matrix_assimilation_plan_only)
 - `transfer-matrix-ingestion-sandbox` (synthetic_transfer_matrix_ingestion_sandbox)
+- `v0.2.0-alpha3-readiness` (v0.2.0_alpha3_readiness)
 
 ## Blocked Hardware Gates
 

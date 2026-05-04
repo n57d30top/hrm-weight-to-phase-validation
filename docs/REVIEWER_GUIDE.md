@@ -26,8 +26,11 @@ For CLI-oriented review:
 
 ```bash
 python3 scripts/hrmwtp.py --help
+python3 scripts/hrmwtp.py doctor
 python3 scripts/hrmwtp.py summary
 python3 scripts/hrmwtp.py decision
+python3 scripts/hrmwtp.py portfolio
+python3 scripts/hrmwtp.py model-card low_rank_adapter_demo
 python3 scripts/hrmwtp.py list-reports
 ```
 
@@ -42,6 +45,12 @@ Start with these files:
 - `reports/future-work/hrm-neural-mapping/model-to-hrm-decision-report.json`
 - `reports/future-work/hrm-neural-mapping/review-pack.md`
 - `reports/future-work/hrm-neural-mapping/model-portfolio-ranking.json`
+- `reports/future-work/hrm-neural-mapping/model-portfolio-explainer.md`
+- `reports/future-work/hrm-neural-mapping/model-cards/`
+- `reports/future-work/hrm-neural-mapping/partner-readiness-report.json`
+- `reports/future-work/hrm-neural-mapping/external-review-checklist.json`
+- `reports/future-work/hrm-neural-mapping/reproducibility-capsule.json`
+- `reports/future-work/hrm-neural-mapping/solo-completion-audit.json`
 - `reports/future-work/hrm-neural-mapping/hardware-design-space-analysis.json`
 - `reports/future-work/hrm-neural-mapping/transfer-matrix-ingestion-sandbox.json`
 - `reports/future-work/hrm-neural-mapping/ARTIFACTS.sha256`
@@ -107,3 +116,5 @@ covered by `ARTIFACTS.sha256`.
 - Inspect `dashboard/index.html`.
 - Confirm the transfer-matrix sandbox says `syntheticFixtureOnly=true` and
   `publicMeasuredEvidence=false`.
+- Inspect the partner readiness report and external review checklist.
+- Inspect the solo completion audit and confirm hardware validation remains 0.

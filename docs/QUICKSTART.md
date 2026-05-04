@@ -32,8 +32,11 @@ guard.
 
 ```bash
 python3 scripts/hrmwtp.py --help
+python3 scripts/hrmwtp.py doctor
 python3 scripts/hrmwtp.py summary
 python3 scripts/hrmwtp.py decision
+python3 scripts/hrmwtp.py portfolio
+python3 scripts/hrmwtp.py model-card low_rank_adapter_demo
 python3 scripts/hrmwtp.py list-reports
 ```
 
@@ -57,6 +60,16 @@ dashboard/index.html
 
 It links to key reports, stage status, portfolio summaries, hardware gate
 blockers, and the claim boundary.
+
+## Partner/Reviewer Docs
+
+- `docs/REVIEWER_GUIDE.md`
+- `docs/PARTNER_READINESS.md`
+- `docs/LAB_DATA_REQUEST.md`
+- `docs/FOUNDRY_DATA_REQUEST.md`
+- `docs/HARDWARE_EVIDENCE_CHECKLIST.md`
+- `docs/EXTERNAL_REVIEW_CHECKLIST.md`
+- `docs/REPRODUCIBILITY.md`
 
 ## Verify Artifacts
 

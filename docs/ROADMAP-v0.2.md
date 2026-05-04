@@ -5,12 +5,14 @@ Stage 5, Stage 6, and Stage 7 remain blocked by default.
 
 ## Recommended Work
 
-- expand the model portfolio beyond deterministic fixtures
+- use the partner readiness pack for external review discussions
+- ask integrated photonics reviewers to inspect assumptions before any hardware claim
+- ask foundry/PDK advisors to review Stage 5 artifact expectations
+- ask photonic test-lab partners to review Stage 6 measurement protocol
+- expand the model portfolio beyond deterministic fixtures if it remains simulation-only
 - add richer optional PyTorch export adapter examples while keeping framework dependencies optional
 - improve design-space objective functions with measured data only when real evidence exists
 - keep synthetic transfer-matrix ingestion sandbox separate from Stage 6 public evidence
-- extend the static dashboard with report filtering
-- strengthen synthetic calibration models with explicit limitations
 - add foundry or PDK integration only with real external evidence
 
 ## Claim Boundary
