@@ -12,6 +12,31 @@ mapped into HRM-style photonic transfer-function candidates using deterministic
 simulation, abstract phase/coupler parameterization, perturbation testing, and
 synthetic calibration gates.
 
+## 60-Second Orientation
+
+This is a simulation-only planning toolkit. It helps reviewers inspect which
+model layers are mappable in the abstract HRM simulation path, which layers stay
+classical, which errors dominate, and which hardware evidence is still missing.
+
+Start here:
+
+- Quickstart: [`docs/QUICKSTART.md`](docs/QUICKSTART.md)
+- Reviewer guide: [`docs/REVIEWER_GUIDE.md`](docs/REVIEWER_GUIDE.md)
+- Static dashboard: [`dashboard/index.html`](dashboard/index.html)
+- Decision report: `reports/future-work/hrm-neural-mapping/model-to-hrm-decision-report.json`
+- Artifact hashes: `reports/future-work/hrm-neural-mapping/ARTIFACTS.sha256`
+
+Release line:
+
+- `v0.1.0` is the stable simulation-only planning framework release.
+- `v0.2.0-alpha.1` added the first planning toolkit snapshot.
+- `v0.2.0-alpha.2` focuses on review and usability hardening.
+
+Claim boundary: this repository does not claim hardware validation, foundry
+calibration, measured transfer matrices, production inference readiness, real
+hardware latency, real hardware energy efficiency, physical accuracy, quantum
+advantage, hardware-native intelligence, or power-free computation.
+
 ## What This Is
 
 This is a small, dependency-free research harness for one specific question:
@@ -104,6 +129,17 @@ python3 scripts/check_no_local_paths.py
 python3 scripts/check_claim_boundary.py
 git diff --check
 ```
+
+Reviewer-oriented CLI commands:
+
+```bash
+python3 scripts/hrmwtp.py --help
+python3 scripts/hrmwtp.py summary
+python3 scripts/hrmwtp.py decision
+python3 scripts/hrmwtp.py list-reports
+```
+
+Each CLI command prints a short simulation-only disclaimer.
 
 ## Evidence Ladder
 
@@ -206,6 +242,8 @@ Schema documentation for future hardware evidence gates:
 - `docs/future-work/model-export-adapter-protocol.md`
 - `docs/future-work/transfer-matrix-assimilation-protocol.md`
 - `docs/ROADMAP-v0.2.md`
+- `docs/QUICKSTART.md`
+- `docs/REVIEWER_GUIDE.md`
 
 The static dashboard is written to:
 
@@ -702,10 +740,17 @@ Completed v0.2.0-alpha.1 main work:
 - `hrmwtp` CLI added for check, regenerate, summary, decision, and report-list workflows.
 - static dashboard added at `dashboard/index.html`.
 
+Completed v0.2.0-alpha.2 main work:
+
+- CLI commands now print simulation-only disclaimers while preserving JSON stdout for `summary` and `decision`.
+- `scripts/hrmwtp.py` added as a repository-local CLI wrapper for reviewer smoke checks.
+- static dashboard expanded with what-this-is/what-this-is-not sections, report links, stage status, model portfolio summary, hardware gate blockers, and a claim-boundary box.
+- `docs/QUICKSTART.md` and `docs/REVIEWER_GUIDE.md` added for reproduction and review.
+
 Near-term:
 
 - keep CI green for report generation, JSON validation, hashes, tests, local-path hygiene, and claim-boundary checks
-- review `v0.2.0-alpha.1` artifacts before broadening model fixtures
+- review `v0.2.0-alpha.2` artifacts before broadening model fixtures
 - keep Stage 5, Stage 6, and Stage 7 blocked until real external evidence exists
 - keep synthetic transfer-matrix sandbox outputs separate from public measured evidence
 

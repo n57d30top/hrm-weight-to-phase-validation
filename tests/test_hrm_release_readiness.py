@@ -81,7 +81,7 @@ class HrmReleaseReadinessTest(unittest.TestCase):
 
     def test_pyproject_version_is_v02_alpha_after_v010_release(self):
         pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
-        self.assertIn('version = "0.2.0-alpha.1"', pyproject)
+        self.assertIn('version = "0.2.0-alpha.2"', pyproject)
 
     def test_release_readiness_artifacts_are_hash_listed(self):
         artifacts = (REPORT_DIR / "ARTIFACTS.sha256").read_text(encoding="utf-8")

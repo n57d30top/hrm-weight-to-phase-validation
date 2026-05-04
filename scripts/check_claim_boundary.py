@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_PATHS = [
     ROOT / "README.md",
     ROOT / "docs",
+    ROOT / "dashboard",
     ROOT / "reports" / "future-work" / "hrm-neural-mapping",
 ]
 

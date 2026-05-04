@@ -256,6 +256,8 @@ def main() -> None:
         DOC_DIR / "transfer-matrix-assimilation-protocol.md",
         DOC_DIR / "model-export-adapter-protocol.md",
         ROOT / "docs" / "ROADMAP-v0.2.md",
+        ROOT / "docs" / "REVIEWER_GUIDE.md",
+        ROOT / "docs" / "QUICKSTART.md",
         ROOT / "dashboard" / "index.html",
         ROOT / "fixtures" / "model-export-adapter" / "tiny-linear-export-example.json",
         ROOT / "fixtures" / "transfer-matrix-sandbox" / "synthetic-transfer-matrix.json",
@@ -282,7 +284,7 @@ def main() -> None:
     _write_text(planning_artifact_paths[5], render_transfer_matrix_assimilation_protocol())
     _write_text(planning_artifact_paths[6], render_model_export_adapter_protocol())
     _write_text(planning_artifact_paths[7], _render_v02_roadmap())
-    _write_text(planning_artifact_paths[8], render_static_dashboard(reports, supplemental_reports))
+    _write_text(planning_artifact_paths[10], render_static_dashboard(reports, supplemental_reports))
 
     artifact_paths = (
         [REPORT_DIR / STAGE_FILES[stage] for stage in sorted(STAGE_FILES)]
