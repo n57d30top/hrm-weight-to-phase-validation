@@ -22,6 +22,8 @@ json:
 	jq empty reports/future-work/hrm-neural-mapping/model-weight-import-demo.json
 	jq empty reports/future-work/hrm-neural-mapping/model-weight-eligibility-analysis.json
 	jq empty reports/future-work/hrm-neural-mapping/rectangular-matrix-support.json
+	jq empty reports/future-work/hrm-neural-mapping/scaling-benchmark.json
+	jq empty reports/future-work/hrm-neural-mapping/scaling-analysis.json
 	jq empty reports/future-work/hrm-neural-mapping/stage-3-perturbation-model.json
 	jq empty reports/future-work/hrm-neural-mapping/stage-3-perturbation-sweep.json
 	jq empty reports/future-work/hrm-neural-mapping/stage-3-sweep-analysis.json

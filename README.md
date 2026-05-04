@@ -144,6 +144,8 @@ Key files:
 - `model-weight-import-demo.json`
 - `model-weight-eligibility-analysis.json`
 - `rectangular-matrix-support.json`
+- `scaling-benchmark.json`
+- `scaling-analysis.json`
 - `stage-3-perturbation-model.json`
 - `stage-3-perturbation-sweep.json`
 - `stage-3-sweep-analysis.json`
@@ -322,6 +324,30 @@ This is an import and eligibility layer only. It does not execute a PyTorch
 model, does not accelerate a full model, does not implement optical
 nonlinearities, and does not claim hardware validation.
 
+## Scaling Benchmark
+
+The supplemental reports `scaling-benchmark.json` and `scaling-analysis.json`
+test how the simulation-only mapping behaves as matrix sizes and layer shapes
+grow within a CI-light deterministic suite.
+
+The suite includes:
+
+- square 4x4, 8x8, and 16x16 real matrices
+- rectangular tall 8x4 and 16x8 matrices
+- rectangular wide 4x8 and 8x16 matrices
+- low-rank 16x8 and rank-deficient 12x6 matrices
+- dense seeded 16x16 matrix
+- phase-dominant complex 8x8 matrix
+
+The analysis reports best/worst cases, average and maximum mesh-constrained
+error, error by shape family, and error by matrix size. `estimatedOperationScale`
+is a deterministic size proxy only. It is not a runtime measurement and not a
+hardware performance claim.
+
+The scaling reports do not claim hardware latency, hardware throughput, hardware
+energy efficiency, accelerator performance, foundry calibration, measured
+transfer matrices, or production inference readiness.
+
 ## Rectangular Matrix Support
 
 The supplemental report `rectangular-matrix-support.json` extends the
@@ -457,11 +483,15 @@ Completed post-alpha.8 main work:
 
 - model-weight manifest import and eligibility analysis added with repo-relative artifact paths, SHA-256 validation, dtype/shape checks, and simulation-only mapping plans.
 
+Completed post-alpha.9 main work:
+
+- scaling and larger-layer benchmark reports added for square, rectangular, low-rank, rank-deficient, dense, and complex phase-dominant deterministic cases up to 16x16 and 8x16/16x8.
+
 Near-term:
 
 - keep CI green for report generation, JSON validation, hashes, and tests
 - complex SVD pipeline
-- scaling and larger-layer benchmarks
+- review pack / report polish
 
 Later, only when evidence exists:
 

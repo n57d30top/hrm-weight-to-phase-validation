@@ -1,0 +1,471 @@
+{
+  "blockers": [
+    "no_large_model_distribution",
+    "no_hardware_performance_measurement",
+    "no_foundry_calibrated_mesh_model",
+    "no_measured_transfer_matrix"
+  ],
+  "caseCount": 11,
+  "cases": [
+    {
+      "abstractCouplerCount": 12,
+      "abstractPhaseCount": 13,
+      "amplitudeError": null,
+      "caseId": "square_4x4",
+      "effectiveRank": 4,
+      "errorDelta": 0.085446273120816,
+      "estimatedOperationScale": {
+        "isHardwarePerformanceClaim": false,
+        "matrixShapeProduct": 16,
+        "matrixVectorMultiplyTerms": 16
+      },
+      "foundryCalibrated": false,
+      "hardwareEnergy": null,
+      "hardwareLatency": null,
+      "hardwareThroughput": null,
+      "hardwareValidated": false,
+      "idealReconstructionError": 0.0,
+      "limitations": [
+        "small square baseline case"
+      ],
+      "localSoftwareRuntime": null,
+      "mappingMode": "abstract_square_real_mesh",
+      "matrixFamily": "square",
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.085446273120817,
+      "parameterCount": 16,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 4,
+      "realOrComplex": "real",
+      "shape": [
+        4,
+        4
+      ]
+    },
+    {
+      "abstractCouplerCount": 56,
+      "abstractPhaseCount": 56,
+      "amplitudeError": null,
+      "caseId": "square_8x8",
+      "effectiveRank": 8,
+      "errorDelta": 0.082755834294553,
+      "estimatedOperationScale": {
+        "isHardwarePerformanceClaim": false,
+        "matrixShapeProduct": 64,
+        "matrixVectorMultiplyTerms": 64
+      },
+      "foundryCalibrated": false,
+      "hardwareEnergy": null,
+      "hardwareLatency": null,
+      "hardwareThroughput": null,
+      "hardwareValidated": false,
+      "idealReconstructionError": 1e-15,
+      "limitations": [
+        "medium square simulation case"
+      ],
+      "localSoftwareRuntime": null,
+      "mappingMode": "abstract_square_real_mesh",
+      "matrixFamily": "square",
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.082755834294554,
+      "parameterCount": 64,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 8,
+      "realOrComplex": "real",
+      "shape": [
+        8,
+        8
+      ]
+    },
+    {
+      "abstractCouplerCount": 240,
+      "abstractPhaseCount": 240,
+      "amplitudeError": null,
+      "caseId": "square_16x16",
+      "effectiveRank": 16,
+      "errorDelta": 0.128258559480641,
+      "estimatedOperationScale": {
+        "isHardwarePerformanceClaim": false,
+        "matrixShapeProduct": 256,
+        "matrixVectorMultiplyTerms": 256
+      },
+      "foundryCalibrated": false,
+      "hardwareEnergy": null,
+      "hardwareLatency": null,
+      "hardwareThroughput": null,
+      "hardwareValidated": false,
+      "idealReconstructionError": 1e-15,
+      "limitations": [
+        "largest square case in this CI-light suite"
+      ],
+      "localSoftwareRuntime": null,
+      "mappingMode": "abstract_square_real_mesh",
+      "matrixFamily": "square",
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.128258559480642,
+      "parameterCount": 256,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 16,
+      "realOrComplex": "real",
+      "shape": [
+        16,
+        16
+      ]
+    },
+    {
+      "abstractCouplerCount": 31,
+      "abstractPhaseCount": 32,
+      "amplitudeError": null,
+      "caseId": "rectangular_tall_8x4",
+      "effectiveRank": 4,
+      "errorDelta": 0.084905102389578,
+      "estimatedOperationScale": {
+        "isHardwarePerformanceClaim": false,
+        "matrixShapeProduct": 32,
+        "matrixVectorMultiplyTerms": 32
+      },
+      "foundryCalibrated": false,
+      "hardwareEnergy": null,
+      "hardwareLatency": null,
+      "hardwareThroughput": null,
+      "hardwareValidated": false,
+      "idealReconstructionError": 3e-15,
+      "limitations": [
+        "rectangular tall simulation; no physical fan-in layout is defined"
+      ],
+      "localSoftwareRuntime": null,
+      "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+      "matrixFamily": "rectangular_tall",
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.084905102389581,
+      "parameterCount": 32,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 4,
+      "realOrComplex": "real",
+      "shape": [
+        8,
+        4
+      ]
+    },
+    {
+      "abstractCouplerCount": 127,
+      "abstractPhaseCount": 127,
+      "amplitudeError": null,
+      "caseId": "rectangular_tall_16x8",
+      "effectiveRank": 8,
+      "errorDelta": 0.100960280480313,
+      "estimatedOperationScale": {
+        "isHardwarePerformanceClaim": false,
+        "matrixShapeProduct": 128,
+        "matrixVectorMultiplyTerms": 128
+      },
+      "foundryCalibrated": false,
+      "hardwareEnergy": null,
+      "hardwareLatency": null,
+      "hardwareThroughput": null,
+      "hardwareValidated": false,
+      "idealReconstructionError": 4e-15,
+      "limitations": [
+        "largest tall rectangular case in this CI-light suite"
+      ],
+      "localSoftwareRuntime": null,
+      "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+      "matrixFamily": "rectangular_tall",
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.100960280480317,
+      "parameterCount": 128,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 8,
+      "realOrComplex": "real",
+      "shape": [
+        16,
+        8
+      ]
+    },
+    {
+      "abstractCouplerCount": 31,
+      "abstractPhaseCount": 32,
+      "amplitudeError": null,
+      "caseId": "rectangular_wide_4x8",
+      "effectiveRank": 4,
+      "errorDelta": 0.09603967665355,
+      "estimatedOperationScale": {
+        "isHardwarePerformanceClaim": false,
+        "matrixShapeProduct": 32,
+        "matrixVectorMultiplyTerms": 32
+      },
+      "foundryCalibrated": false,
+      "hardwareEnergy": null,
+      "hardwareLatency": null,
+      "hardwareThroughput": null,
+      "hardwareValidated": false,
+      "idealReconstructionError": 2e-15,
+      "limitations": [
+        "rectangular wide simulation; no physical fan-out layout is defined"
+      ],
+      "localSoftwareRuntime": null,
+      "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+      "matrixFamily": "rectangular_wide",
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.096039676653553,
+      "parameterCount": 32,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 4,
+      "realOrComplex": "real",
+      "shape": [
+        4,
+        8
+      ]
+    },
+    {
+      "abstractCouplerCount": 127,
+      "abstractPhaseCount": 127,
+      "amplitudeError": null,
+      "caseId": "rectangular_wide_8x16",
+      "effectiveRank": 8,
+      "errorDelta": 0.12371586359174,
+      "estimatedOperationScale": {
+        "isHardwarePerformanceClaim": false,
+        "matrixShapeProduct": 128,
+        "matrixVectorMultiplyTerms": 128
+      },
+      "foundryCalibrated": false,
+      "hardwareEnergy": null,
+      "hardwareLatency": null,
+      "hardwareThroughput": null,
+      "hardwareValidated": false,
+      "idealReconstructionError": 1.0797463985e-05,
+      "limitations": [
+        "largest wide rectangular case in this CI-light suite"
+      ],
+      "localSoftwareRuntime": null,
+      "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+      "matrixFamily": "rectangular_wide",
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.123726661055724,
+      "parameterCount": 128,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 8,
+      "realOrComplex": "real",
+      "shape": [
+        8,
+        16
+      ]
+    },
+    {
+      "abstractCouplerCount": 118,
+      "abstractPhaseCount": 119,
+      "amplitudeError": null,
+      "caseId": "low_rank_16x8",
+      "effectiveRank": 2,
+      "errorDelta": 0.106822428698435,
+      "estimatedOperationScale": {
+        "isHardwarePerformanceClaim": false,
+        "matrixShapeProduct": 128,
+        "matrixVectorMultiplyTerms": 128
+      },
+      "foundryCalibrated": false,
+      "hardwareEnergy": null,
+      "hardwareLatency": null,
+      "hardwareThroughput": null,
+      "hardwareValidated": false,
+      "idealReconstructionError": 3.972206e-09,
+      "limitations": [
+        "low-rank rectangular case; condition details are not hardware evidence"
+      ],
+      "localSoftwareRuntime": null,
+      "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+      "matrixFamily": "low_rank",
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.106822432670642,
+      "parameterCount": 128,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 2,
+      "realOrComplex": "real",
+      "shape": [
+        16,
+        8
+      ]
+    },
+    {
+      "abstractCouplerCount": 71,
+      "abstractPhaseCount": 71,
+      "amplitudeError": null,
+      "caseId": "rank_deficient_12x6",
+      "effectiveRank": 5,
+      "errorDelta": 0.10379002003328,
+      "estimatedOperationScale": {
+        "isHardwarePerformanceClaim": false,
+        "matrixShapeProduct": 72,
+        "matrixVectorMultiplyTerms": 72
+      },
+      "foundryCalibrated": false,
+      "hardwareEnergy": null,
+      "hardwareLatency": null,
+      "hardwareThroughput": null,
+      "hardwareValidated": false,
+      "idealReconstructionError": 6.686643e-09,
+      "limitations": [
+        "rank-deficient rectangular case; null-space behavior is simulation-only"
+      ],
+      "localSoftwareRuntime": null,
+      "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+      "matrixFamily": "rank_deficient",
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.103790026719923,
+      "parameterCount": 72,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 5,
+      "realOrComplex": "real",
+      "shape": [
+        12,
+        6
+      ]
+    },
+    {
+      "abstractCouplerCount": 240,
+      "abstractPhaseCount": 241,
+      "amplitudeError": null,
+      "caseId": "dense_seeded_16x16",
+      "effectiveRank": 16,
+      "errorDelta": 0.14142848699706,
+      "estimatedOperationScale": {
+        "isHardwarePerformanceClaim": false,
+        "matrixShapeProduct": 256,
+        "matrixVectorMultiplyTerms": 256
+      },
+      "foundryCalibrated": false,
+      "hardwareEnergy": null,
+      "hardwareLatency": null,
+      "hardwareThroughput": null,
+      "hardwareValidated": false,
+      "idealReconstructionError": 1e-15,
+      "limitations": [
+        "largest dense seeded square case in this CI-light suite"
+      ],
+      "localSoftwareRuntime": null,
+      "mappingMode": "abstract_square_real_mesh",
+      "matrixFamily": "dense_seeded",
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.141428486997061,
+      "parameterCount": 256,
+      "phaseAwareError": null,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 16,
+      "realOrComplex": "real",
+      "shape": [
+        16,
+        16
+      ]
+    },
+    {
+      "abstractCouplerCount": null,
+      "abstractPhaseCount": null,
+      "amplitudeError": 0.008638891098228,
+      "caseId": "phase_dominant_complex_8x8",
+      "effectiveRank": 8,
+      "errorDelta": 0.026860550074221,
+      "estimatedOperationScale": {
+        "isHardwarePerformanceClaim": false,
+        "matrixShapeProduct": 64,
+        "matrixVectorMultiplyTerms": 64
+      },
+      "foundryCalibrated": false,
+      "hardwareEnergy": null,
+      "hardwareLatency": null,
+      "hardwareThroughput": null,
+      "hardwareValidated": false,
+      "idealReconstructionError": 0.0,
+      "limitations": [
+        "complex QR unitary-factor handling only; no full complex SVD pipeline"
+      ],
+      "localSoftwareRuntime": null,
+      "mappingMode": "complex_qr_unitary_factor",
+      "matrixFamily": "phase_dominant_complex",
+      "measuredTransferMatrixAvailable": false,
+      "meshConstrainedReconstructionError": 0.026860550074221,
+      "parameterCount": 64,
+      "phaseAwareError": 0.028231402948073,
+      "phaseLevels": 64,
+      "productionInferenceReady": false,
+      "rank": 8,
+      "realOrComplex": "complex",
+      "shape": [
+        8,
+        8
+      ]
+    }
+  ],
+  "claimBoundary": "Simulation-only scaling benchmark; no hardware validation, foundry calibration, measured transfer matrix, hardware latency, hardware throughput, hardware energy, accelerator performance, or production inference readiness is claimed.",
+  "evidenceLevel": "abstract_scaling_benchmark_simulation",
+  "foundryCalibrated": false,
+  "hardwareEnergy": null,
+  "hardwareLatency": null,
+  "hardwareThroughput": null,
+  "hardwareValidated": false,
+  "id": "scaling-benchmark",
+  "largestCaseId": "square_16x16",
+  "limitations": [
+    "deterministic CI-light matrix suite only",
+    "larger cases are still small compared with production neural layers",
+    "real cases use abstract real-valued mesh simulation",
+    "rectangular cases use orthogonal completion and rectangular sigma cores",
+    "complex case uses complex QR unitary-factor handling, not full complex SVD",
+    "no hardware latency, throughput, or energy measurement",
+    "no foundry calibration or measured transfer matrix"
+  ],
+  "localSoftwareRuntimeMeasured": false,
+  "maxMeshConstrainedError": 0.141428486997061,
+  "measuredTransferMatrixAvailable": false,
+  "nextValidationGates": [
+    "review_pack",
+    "release_candidate_hardening",
+    "foundry_calibrated_device_model_gate"
+  ],
+  "noHardwarePerformanceClaim": true,
+  "phaseLevels": 64,
+  "productionInferenceReady": false,
+  "shapeFamilies": [
+    "dense_seeded",
+    "low_rank",
+    "phase_dominant_complex",
+    "rank_deficient",
+    "rectangular_tall",
+    "rectangular_wide",
+    "square"
+  ],
+  "sizeRange": {
+    "maxParameterCount": 256,
+    "maxShape": [
+      16,
+      16
+    ],
+    "minParameterCount": 16,
+    "minShape": [
+      4,
+      4
+    ]
+  },
+  "stage": 2,
+  "stageStatus": "complete",
+  "title": "Scaling benchmark for larger abstract HRM mapping simulations"
+}

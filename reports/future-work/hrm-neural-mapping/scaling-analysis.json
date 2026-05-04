@@ -1,0 +1,242 @@
+{
+  "averageMeshConstrainedError": 0.098272171267003,
+  "benchmarkReport": "scaling-benchmark.json",
+  "bestCase": {
+    "caseId": "phase_dominant_complex_8x8",
+    "errorDelta": 0.026860550074221,
+    "matrixFamily": "phase_dominant_complex",
+    "meshConstrainedReconstructionError": 0.026860550074221,
+    "parameterCount": 64,
+    "realOrComplex": "complex",
+    "shape": [
+      8,
+      8
+    ]
+  },
+  "blockers": [
+    "no_large_model_distribution",
+    "no_hardware_performance_measurement",
+    "no_foundry_calibrated_mesh_model",
+    "no_measured_transfer_matrix"
+  ],
+  "caseCount": 11,
+  "claimBoundary": "Simulation-only scaling analysis; no hardware validation, foundry calibration, measured transfer matrix, hardware latency, hardware energy efficiency, accelerator performance, or production inference readiness is claimed.",
+  "errorByMatrixSize": [
+    {
+      "caseId": "square_4x4",
+      "meshConstrainedReconstructionError": 0.085446273120817,
+      "parameterCount": 16,
+      "shape": [
+        4,
+        4
+      ]
+    },
+    {
+      "caseId": "rectangular_tall_8x4",
+      "meshConstrainedReconstructionError": 0.084905102389581,
+      "parameterCount": 32,
+      "shape": [
+        8,
+        4
+      ]
+    },
+    {
+      "caseId": "rectangular_wide_4x8",
+      "meshConstrainedReconstructionError": 0.096039676653553,
+      "parameterCount": 32,
+      "shape": [
+        4,
+        8
+      ]
+    },
+    {
+      "caseId": "phase_dominant_complex_8x8",
+      "meshConstrainedReconstructionError": 0.026860550074221,
+      "parameterCount": 64,
+      "shape": [
+        8,
+        8
+      ]
+    },
+    {
+      "caseId": "square_8x8",
+      "meshConstrainedReconstructionError": 0.082755834294554,
+      "parameterCount": 64,
+      "shape": [
+        8,
+        8
+      ]
+    },
+    {
+      "caseId": "rank_deficient_12x6",
+      "meshConstrainedReconstructionError": 0.103790026719923,
+      "parameterCount": 72,
+      "shape": [
+        12,
+        6
+      ]
+    },
+    {
+      "caseId": "low_rank_16x8",
+      "meshConstrainedReconstructionError": 0.106822432670642,
+      "parameterCount": 128,
+      "shape": [
+        16,
+        8
+      ]
+    },
+    {
+      "caseId": "rectangular_tall_16x8",
+      "meshConstrainedReconstructionError": 0.100960280480317,
+      "parameterCount": 128,
+      "shape": [
+        16,
+        8
+      ]
+    },
+    {
+      "caseId": "rectangular_wide_8x16",
+      "meshConstrainedReconstructionError": 0.123726661055724,
+      "parameterCount": 128,
+      "shape": [
+        8,
+        16
+      ]
+    },
+    {
+      "caseId": "dense_seeded_16x16",
+      "meshConstrainedReconstructionError": 0.141428486997061,
+      "parameterCount": 256,
+      "shape": [
+        16,
+        16
+      ]
+    },
+    {
+      "caseId": "square_16x16",
+      "meshConstrainedReconstructionError": 0.128258559480642,
+      "parameterCount": 256,
+      "shape": [
+        16,
+        16
+      ]
+    }
+  ],
+  "errorByShapeFamily": [
+    {
+      "averageMeshConstrainedError": 0.141428486997061,
+      "caseCount": 1,
+      "maxMeshConstrainedError": 0.141428486997061,
+      "shapeFamily": "dense_seeded",
+      "worstCaseId": "dense_seeded_16x16"
+    },
+    {
+      "averageMeshConstrainedError": 0.098820222298671,
+      "caseCount": 3,
+      "maxMeshConstrainedError": 0.128258559480642,
+      "shapeFamily": "square",
+      "worstCaseId": "square_16x16"
+    },
+    {
+      "averageMeshConstrainedError": 0.109883168854639,
+      "caseCount": 2,
+      "maxMeshConstrainedError": 0.123726661055724,
+      "shapeFamily": "rectangular_wide",
+      "worstCaseId": "rectangular_wide_8x16"
+    },
+    {
+      "averageMeshConstrainedError": 0.106822432670642,
+      "caseCount": 1,
+      "maxMeshConstrainedError": 0.106822432670642,
+      "shapeFamily": "low_rank",
+      "worstCaseId": "low_rank_16x8"
+    },
+    {
+      "averageMeshConstrainedError": 0.103790026719923,
+      "caseCount": 1,
+      "maxMeshConstrainedError": 0.103790026719923,
+      "shapeFamily": "rank_deficient",
+      "worstCaseId": "rank_deficient_12x6"
+    },
+    {
+      "averageMeshConstrainedError": 0.092932691434949,
+      "caseCount": 2,
+      "maxMeshConstrainedError": 0.100960280480317,
+      "shapeFamily": "rectangular_tall",
+      "worstCaseId": "rectangular_tall_16x8"
+    },
+    {
+      "averageMeshConstrainedError": 0.026860550074221,
+      "caseCount": 1,
+      "maxMeshConstrainedError": 0.026860550074221,
+      "shapeFamily": "phase_dominant_complex",
+      "worstCaseId": "phase_dominant_complex_8x8"
+    }
+  ],
+  "evidenceLevel": "abstract_scaling_analysis",
+  "foundryCalibrated": false,
+  "hardwareEnergy": null,
+  "hardwareLatency": null,
+  "hardwareValidated": false,
+  "id": "scaling-analysis",
+  "limitations": [
+    "deterministic CI-light matrix suite only",
+    "larger cases are still small compared with production neural layers",
+    "real cases use abstract real-valued mesh simulation",
+    "rectangular cases use orthogonal completion and rectangular sigma cores",
+    "complex case uses complex QR unitary-factor handling, not full complex SVD",
+    "no hardware latency, throughput, or energy measurement",
+    "no foundry calibration or measured transfer matrix"
+  ],
+  "maxMeshConstrainedError": 0.141428486997061,
+  "measuredTransferMatrixAvailable": false,
+  "nextValidationGates": [
+    "review_pack",
+    "release_candidate_hardening",
+    "foundry_calibrated_device_model_gate"
+  ],
+  "noHardwarePerformanceClaim": true,
+  "productionInferenceReady": false,
+  "scalingNotes": [
+    "No monotonic error trend is assumed across unrelated matrix families.",
+    "Operation scale is a deterministic size proxy, not a runtime or hardware performance claim.",
+    "Complex/unitary scaling currently covers one phase-dominant 8x8 case through QR unitary-factor handling.",
+    "The largest real cases in this suite are 16x16, 16x8, and 8x16."
+  ],
+  "shapeFamilies": [
+    "dense_seeded",
+    "low_rank",
+    "phase_dominant_complex",
+    "rank_deficient",
+    "rectangular_tall",
+    "rectangular_wide",
+    "square"
+  ],
+  "sizeRange": {
+    "maxParameterCount": 256,
+    "maxShape": [
+      16,
+      16
+    ],
+    "minParameterCount": 16,
+    "minShape": [
+      4,
+      4
+    ]
+  },
+  "stage": 2,
+  "stageStatus": "complete",
+  "title": "Scaling benchmark analysis",
+  "worstCase": {
+    "caseId": "dense_seeded_16x16",
+    "errorDelta": 0.14142848699706,
+    "matrixFamily": "dense_seeded",
+    "meshConstrainedReconstructionError": 0.141428486997061,
+    "parameterCount": 256,
+    "realOrComplex": "real",
+    "shape": [
+      16,
+      16
+    ]
+  }
+}

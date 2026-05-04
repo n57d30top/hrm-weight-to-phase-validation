@@ -506,6 +506,118 @@
     },
     {
       "blockers": [
+        "no_large_model_distribution",
+        "no_hardware_performance_measurement",
+        "no_foundry_calibrated_mesh_model",
+        "no_measured_transfer_matrix"
+      ],
+      "evidenceLevel": "abstract_scaling_benchmark_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "scaling-benchmark",
+      "keyMetrics": {
+        "caseCount": 11,
+        "largestCaseId": "square_16x16",
+        "maxMeshConstrainedError": 0.141428486997061,
+        "noHardwarePerformanceClaim": true,
+        "shapeFamilies": [
+          "dense_seeded",
+          "low_rank",
+          "phase_dominant_complex",
+          "rank_deficient",
+          "rectangular_tall",
+          "rectangular_wide",
+          "square"
+        ],
+        "sizeRange": {
+          "maxParameterCount": 256,
+          "maxShape": [
+            16,
+            16
+          ],
+          "minParameterCount": 16,
+          "minShape": [
+            4,
+            4
+          ]
+        }
+      },
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Scaling benchmark for larger abstract HRM mapping simulations"
+    },
+    {
+      "blockers": [
+        "no_large_model_distribution",
+        "no_hardware_performance_measurement",
+        "no_foundry_calibrated_mesh_model",
+        "no_measured_transfer_matrix"
+      ],
+      "evidenceLevel": "abstract_scaling_analysis",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "scaling-analysis",
+      "keyMetrics": {
+        "averageMeshConstrainedError": 0.098272171267003,
+        "bestCase": {
+          "caseId": "phase_dominant_complex_8x8",
+          "errorDelta": 0.026860550074221,
+          "matrixFamily": "phase_dominant_complex",
+          "meshConstrainedReconstructionError": 0.026860550074221,
+          "parameterCount": 64,
+          "realOrComplex": "complex",
+          "shape": [
+            8,
+            8
+          ]
+        },
+        "caseCount": 11,
+        "maxMeshConstrainedError": 0.141428486997061,
+        "noHardwarePerformanceClaim": true,
+        "shapeFamilies": [
+          "dense_seeded",
+          "low_rank",
+          "phase_dominant_complex",
+          "rank_deficient",
+          "rectangular_tall",
+          "rectangular_wide",
+          "square"
+        ],
+        "sizeRange": {
+          "maxParameterCount": 256,
+          "maxShape": [
+            16,
+            16
+          ],
+          "minParameterCount": 16,
+          "minShape": [
+            4,
+            4
+          ]
+        },
+        "worstCase": {
+          "caseId": "dense_seeded_16x16",
+          "errorDelta": 0.14142848699706,
+          "matrixFamily": "dense_seeded",
+          "meshConstrainedReconstructionError": 0.141428486997061,
+          "parameterCount": 256,
+          "realOrComplex": "real",
+          "shape": [
+            16,
+            16
+          ]
+        }
+      },
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Scaling benchmark analysis"
+    },
+    {
+      "blockers": [
         "no_foundry_calibrated_loss_phase_noise_model",
         "no_measured_drift_or_detector_noise_data"
       ],

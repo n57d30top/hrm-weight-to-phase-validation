@@ -157,6 +157,39 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertFalse(analysis["measuredTransferMatrixAvailable"])
         self.assertFalse(analysis["productionInferenceReady"])
 
+    def test_validation_summary_includes_scaling_reports(self):
+        summary = json.loads((REPORT_DIR / "validation-ladder-summary.json").read_text(encoding="utf-8"))
+        reports = {
+            report["id"]: report
+            for report in summary["supplementalReports"]
+        }
+        self.assertIn("scaling-benchmark", reports)
+        self.assertIn("scaling-analysis", reports)
+        benchmark = reports["scaling-benchmark"]
+        analysis = reports["scaling-analysis"]
+        self.assertEqual(benchmark["stage"], 2)
+        self.assertEqual(benchmark["stageStatus"], "complete")
+        self.assertEqual(benchmark["evidenceLevel"], "abstract_scaling_benchmark_simulation")
+        self.assertEqual(benchmark["keyMetrics"]["caseCount"], 11)
+        self.assertIn("sizeRange", benchmark["keyMetrics"])
+        self.assertIn("largestCaseId", benchmark["keyMetrics"])
+        self.assertTrue(benchmark["keyMetrics"]["noHardwarePerformanceClaim"])
+        self.assertFalse(benchmark["hardwareValidated"])
+        self.assertFalse(benchmark["foundryCalibrated"])
+        self.assertFalse(benchmark["measuredTransferMatrixAvailable"])
+        self.assertFalse(benchmark["productionInferenceReady"])
+        self.assertEqual(analysis["stage"], 2)
+        self.assertEqual(analysis["stageStatus"], "complete")
+        self.assertEqual(analysis["evidenceLevel"], "abstract_scaling_analysis")
+        self.assertEqual(analysis["keyMetrics"]["caseCount"], 11)
+        self.assertIn("averageMeshConstrainedError", analysis["keyMetrics"])
+        self.assertIn("maxMeshConstrainedError", analysis["keyMetrics"])
+        self.assertTrue(analysis["keyMetrics"]["noHardwarePerformanceClaim"])
+        self.assertFalse(analysis["hardwareValidated"])
+        self.assertFalse(analysis["foundryCalibrated"])
+        self.assertFalse(analysis["measuredTransferMatrixAvailable"])
+        self.assertFalse(analysis["productionInferenceReady"])
+
     def test_evidence_ledger_includes_rectangular_support(self):
         ledger = json.loads((ROOT / "docs" / "future-work" / "evidence-ledger.json").read_text(encoding="utf-8"))
         reports = {
@@ -235,6 +268,24 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertFalse(model_weight_analysis["foundryCalibrated"])
         self.assertFalse(model_weight_analysis["measuredTransferMatrixAvailable"])
         self.assertFalse(model_weight_analysis["productionInferenceReady"])
+        self.assertIn("scaling-benchmark", reports)
+        scaling_report = reports["scaling-benchmark"]
+        self.assertEqual(scaling_report["stage"], 2)
+        self.assertEqual(scaling_report["stageStatus"], "complete")
+        self.assertEqual(scaling_report["evidenceLevel"], "abstract_scaling_benchmark_simulation")
+        self.assertFalse(scaling_report["hardwareValidated"])
+        self.assertFalse(scaling_report["foundryCalibrated"])
+        self.assertFalse(scaling_report["measuredTransferMatrixAvailable"])
+        self.assertFalse(scaling_report["productionInferenceReady"])
+        self.assertIn("scaling-analysis", reports)
+        scaling_analysis = reports["scaling-analysis"]
+        self.assertEqual(scaling_analysis["stage"], 2)
+        self.assertEqual(scaling_analysis["stageStatus"], "complete")
+        self.assertEqual(scaling_analysis["evidenceLevel"], "abstract_scaling_analysis")
+        self.assertFalse(scaling_analysis["hardwareValidated"])
+        self.assertFalse(scaling_analysis["foundryCalibrated"])
+        self.assertFalse(scaling_analysis["measuredTransferMatrixAvailable"])
+        self.assertFalse(scaling_analysis["productionInferenceReady"])
 
     def test_artifacts_sha256_covers_all_generated_json_reports(self):
         json_reports = {
@@ -256,6 +307,8 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("reports/future-work/hrm-neural-mapping/layer-stack-error-analysis.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/model-weight-import-demo.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/model-weight-eligibility-analysis.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/scaling-benchmark.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/scaling-analysis.json", hashed_reports)
 
     def test_readme_rectangular_support_is_current(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
@@ -269,10 +322,13 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("model-weight-import-demo.json", normalized)
         self.assertIn("model-weight-eligibility-analysis.json", normalized)
         self.assertIn("model-weight-manifest-schema.md", normalized)
+        self.assertIn("scaling-benchmark.json", normalized)
+        self.assertIn("scaling-analysis.json", normalized)
         self.assertIn("supplemental rectangular support exists", normalized)
         self.assertIn("physical complex/unitary mesh layout", normalized)
         self.assertIn("ReLU remains a classical activation outside the optical mesh", normalized)
         self.assertIn("PyTorch is not a required dependency", readme)
+        self.assertIn("not a hardware performance claim", normalized)
         self.assertIn("still no hardware validation", normalized)
         self.assertNotIn("no rectangular neural layer support", normalized)
         self.assertNotIn("square matrix only", normalized)

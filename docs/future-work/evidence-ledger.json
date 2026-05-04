@@ -323,6 +323,50 @@
     },
     {
       "blockers": [
+        "no_large_model_distribution",
+        "no_hardware_performance_measurement",
+        "no_foundry_calibrated_mesh_model",
+        "no_measured_transfer_matrix"
+      ],
+      "evidenceLevel": "abstract_scaling_benchmark_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "scaling-benchmark",
+      "measuredTransferMatrixAvailable": false,
+      "nextValidationGates": [
+        "review_pack",
+        "release_candidate_hardening",
+        "foundry_calibrated_device_model_gate"
+      ],
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Scaling benchmark for larger abstract HRM mapping simulations"
+    },
+    {
+      "blockers": [
+        "no_large_model_distribution",
+        "no_hardware_performance_measurement",
+        "no_foundry_calibrated_mesh_model",
+        "no_measured_transfer_matrix"
+      ],
+      "evidenceLevel": "abstract_scaling_analysis",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "scaling-analysis",
+      "measuredTransferMatrixAvailable": false,
+      "nextValidationGates": [
+        "review_pack",
+        "release_candidate_hardening",
+        "foundry_calibrated_device_model_gate"
+      ],
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Scaling benchmark analysis"
+    },
+    {
+      "blockers": [
         "no_foundry_calibrated_loss_phase_noise_model",
         "no_measured_drift_or_detector_noise_data"
       ],

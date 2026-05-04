@@ -38,6 +38,10 @@ from oqp.future_work.perturbation_model import (  # noqa: E402
     run_perturbation_sweep_report,
 )
 from oqp.future_work.rectangular_mapping import run_rectangular_matrix_support_report  # noqa: E402
+from oqp.future_work.scaling_benchmark import (  # noqa: E402
+    run_scaling_analysis_report,
+    run_scaling_benchmark_report,
+)
 from oqp.future_work.validation_gates import (  # noqa: E402
     foundry_calibration_gate,
     hardware_benchmark_gate,
@@ -71,6 +75,8 @@ SUPPLEMENTAL_REPORT_FILES = {
     "model-weight-eligibility-analysis": "model-weight-eligibility-analysis.json",
     "model-weight-import-demo": "model-weight-import-demo.json",
     "rectangular-matrix-support": "rectangular-matrix-support.json",
+    "scaling-analysis": "scaling-analysis.json",
+    "scaling-benchmark": "scaling-benchmark.json",
     "stage-3-perturbation-sweep": "stage-3-perturbation-sweep.json",
     "stage-3-sweep-analysis": "stage-3-sweep-analysis.json",
     "stage-4-calibration-analysis": "stage-4-calibration-analysis.json",
@@ -109,6 +115,8 @@ def main() -> None:
         run_model_weight_import_demo_report(),
         run_model_weight_eligibility_analysis_report(),
         run_rectangular_matrix_support_report(),
+        run_scaling_benchmark_report(),
+        run_scaling_analysis_report(),
         run_perturbation_sweep_report(),
         run_perturbation_sweep_analysis_report(),
         run_calibration_sweep_report(),
@@ -238,6 +246,11 @@ def _key_metrics(report: Dict[str, Any]) -> Dict[str, Any]:
         "hashValidationPassed",
         "pathValidationPassed",
         "unsupportedLayerTypes",
+        "sizeRange",
+        "shapeFamilies",
+        "largestCaseId",
+        "maxMeshConstrainedError",
+        "noHardwarePerformanceClaim",
         "complexValuedSupportImplemented",
         "unitaryFactorSupportImplemented",
         "complexSvdImplemented",
