@@ -137,6 +137,8 @@ Key files:
 - `stage-1-svd-demo.json`
 - `stage-2-mesh-constrained.json`
 - `complex-unitary-mesh-support.json`
+- `layer-stack-inference-demo.json`
+- `layer-stack-error-analysis.json`
 - `matrix-family-benchmark.json`
 - `matrix-family-analysis.json`
 - `rectangular-matrix-support.json`
@@ -251,6 +253,38 @@ rankings by reconstruction error and condition-sensitivity proxy.
 This remains a small deterministic simulation benchmark. It is not a sampled
 training distribution, not a large-model benchmark, not a physical layout, not
 a measured transfer matrix, and not a hardware benchmark.
+
+## Multi-Layer Toy Inference
+
+The supplemental reports `layer-stack-inference-demo.json` and
+`layer-stack-error-analysis.json` compose mapped linear layers into tiny
+deterministic toy inference paths.
+
+The primary model is:
+
+```text
+input dimension 4
+-> Linear 4x6 mapped through the abstract HRM simulation path
+-> classical ReLU outside the optical mesh
+-> Linear 6x3 mapped through the abstract HRM simulation path
+-> output dimension 3
+```
+
+The report also includes a rectangular projection chain:
+
+```text
+4 -> 8 -> classical ReLU -> 4
+```
+
+Only linear layers are mapped through the abstract HRM transfer simulation.
+Bias additions remain classical outside the optical mesh. ReLU remains a
+classical activation outside the optical mesh. No optical nonlinearity,
+full neural-network acceleration, production inference readiness, timing,
+energy, measured transfer matrix, or hardware validation is claimed.
+
+The analysis report identifies the worst layer by relative error, summarizes
+cumulative error trends, and records activation-boundary notes for the toy
+models.
 
 ## Rectangular Matrix Support
 
@@ -379,11 +413,14 @@ Completed post-alpha.6 main work:
 
 - matrix-family benchmark and analysis reports added for identity, dynamic-range, low-rank, rank-deficient, ill-conditioned, sparse-like, dense, rectangular, complex phase-dominant, and unitary-like deterministic cases.
 
+Completed post-alpha.7 main work:
+
+- multi-layer toy inference reports added for a 4-to-6-to-3 tiny MLP and a 4-to-8-to-4 projection chain, with classical ReLU boundaries and layer-wise/cumulative error reporting.
+
 Near-term:
 
 - keep CI green for report generation, JSON validation, hashes, and tests
 - complex SVD pipeline
-- multi-layer toy inference pipeline
 - model weight manifest import layer
 
 Later, only when evidence exists:

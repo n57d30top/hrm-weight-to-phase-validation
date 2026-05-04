@@ -22,6 +22,10 @@ from oqp.future_work.matrix_family_benchmark import (  # noqa: E402
     run_matrix_family_analysis_report,
     run_matrix_family_benchmark_report,
 )
+from oqp.future_work.layer_stack_inference import (  # noqa: E402
+    run_layer_stack_error_analysis_report,
+    run_layer_stack_inference_demo_report,
+)
 from oqp.future_work.mesh_mapping import run_mesh_constrained_demo  # noqa: E402
 from oqp.future_work.neural_mapping import run_svd_mapping_demo  # noqa: E402
 from oqp.future_work.perturbation_model import (  # noqa: E402
@@ -56,6 +60,8 @@ STAGE_FILES = {
 
 SUPPLEMENTAL_REPORT_FILES = {
     "complex-unitary-mesh-support": "complex-unitary-mesh-support.json",
+    "layer-stack-error-analysis": "layer-stack-error-analysis.json",
+    "layer-stack-inference-demo": "layer-stack-inference-demo.json",
     "matrix-family-analysis": "matrix-family-analysis.json",
     "matrix-family-benchmark": "matrix-family-benchmark.json",
     "rectangular-matrix-support": "rectangular-matrix-support.json",
@@ -90,6 +96,8 @@ def main() -> None:
 
     supplemental_reports = [
         run_complex_unitary_mesh_support_report(),
+        run_layer_stack_inference_demo_report(),
+        run_layer_stack_error_analysis_report(),
         run_matrix_family_benchmark_report(),
         run_matrix_family_analysis_report(),
         run_rectangular_matrix_support_report(),
@@ -199,6 +207,19 @@ def _key_metrics(report: Dict[str, Any]) -> Dict[str, Any]:
         "complexCaseCount",
         "bestCase",
         "worstCase",
+        "modelCount",
+        "modelId",
+        "layerCount",
+        "linearLayerCount",
+        "classicalActivationCount",
+        "opticalNonlinearityImplemented",
+        "outputRelativeError",
+        "outputRelativeErrorMax",
+        "cumulativeError",
+        "cumulativeErrorMax",
+        "worstModelByOutputError",
+        "worstLayerByError",
+        "errorsCompoundAcrossLayers",
         "complexValuedSupportImplemented",
         "unitaryFactorSupportImplemented",
         "complexSvdImplemented",

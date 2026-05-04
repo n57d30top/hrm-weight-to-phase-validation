@@ -1,0 +1,398 @@
+{
+  "baselineOutput": [
+    0.28066,
+    -0.28025,
+    0.16878
+  ],
+  "blockers": [
+    "no_real_dataset",
+    "no_optical_nonlinearity_model",
+    "no_measured_transfer_matrix",
+    "no_hardware_timing_or_energy_measurement"
+  ],
+  "claimBoundary": "Simulation-only multi-layer toy inference; no hardware validation, foundry calibration, measured transfer matrix, optical nonlinearity, full neural-network acceleration, or production inference readiness is claimed.",
+  "classicalActivationCount": 1,
+  "cumulativeError": 0.061296868009442,
+  "cumulativeErrorMax": 0.061296868009442,
+  "evidenceLevel": "abstract_layer_stack_inference_simulation",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "layer-stack-inference-demo",
+  "layerCount": 3,
+  "layerWiseErrors": [
+    {
+      "baselineOutput": [
+        0.452,
+        -0.578,
+        0.2575,
+        0.514,
+        0.0845,
+        -0.3275
+      ],
+      "classicalActivation": false,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "hrmMapped": true,
+      "layerId": "linear_1",
+      "layerType": "linear",
+      "mappedOutput": [
+        0.411399445455,
+        -0.556638459807,
+        0.257698720652,
+        0.562602179586,
+        0.103997440308,
+        -0.301773720758
+      ],
+      "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+      "measuredTransferMatrixAvailable": false,
+      "opticalNonlinearityImplemented": false,
+      "productionInferenceReady": false,
+      "relativeError": 0.07485025313144,
+      "weightRelativeError": 0.091134277782103
+    },
+    {
+      "baselineOutput": [
+        0.452,
+        0.0,
+        0.2575,
+        0.514,
+        0.0845,
+        0.0
+      ],
+      "classicalActivation": true,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "hrmMapped": false,
+      "layerId": "relu_1",
+      "layerType": "classical_relu",
+      "mappedOutput": [
+        0.411399445455,
+        0.0,
+        0.257698720652,
+        0.562602179586,
+        0.103997440308,
+        0.0
+      ],
+      "mappingMode": "classical_relu_outside_optical_mesh",
+      "measuredTransferMatrixAvailable": false,
+      "opticalNonlinearityImplemented": false,
+      "productionInferenceReady": false,
+      "relativeError": 0.090010249590483,
+      "weightRelativeError": null
+    },
+    {
+      "baselineOutput": [
+        0.28066,
+        -0.28025,
+        0.16878
+      ],
+      "classicalActivation": false,
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "hrmMapped": true,
+      "layerId": "linear_2",
+      "layerType": "linear",
+      "mappedOutput": [
+        0.255938837528,
+        -0.28953739814,
+        0.169618896705
+      ],
+      "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+      "measuredTransferMatrixAvailable": false,
+      "opticalNonlinearityImplemented": false,
+      "productionInferenceReady": false,
+      "relativeError": 0.061296868009442,
+      "weightRelativeError": 0.083308707974808
+    }
+  ],
+  "limitations": [
+    "tiny deterministic toy models only",
+    "linear layers are mapped through abstract simulation transfer matrices",
+    "bias additions remain classical outside the optical mesh",
+    "ReLU remains a classical activation outside the optical mesh",
+    "no real dataset",
+    "no optical nonlinearities",
+    "no hardware timing",
+    "no energy measurement",
+    "no measured transfer matrix"
+  ],
+  "linearLayerCount": 2,
+  "mappedOutput": [
+    0.255938837528,
+    -0.28953739814,
+    0.169618896705
+  ],
+  "measuredTransferMatrixAvailable": false,
+  "modelCount": 2,
+  "modelId": "tiny_mlp_4_6_3",
+  "models": [
+    {
+      "activationHandling": "classical_relu_outside_optical_mesh",
+      "baselineOutput": [
+        0.28066,
+        -0.28025,
+        0.16878
+      ],
+      "biasHandling": "classical_bias_addition_outside_optical_mesh",
+      "classicalActivationCount": 1,
+      "cumulativeError": 0.061296868009442,
+      "description": "tiny deterministic MLP with 4 input features, 6 hidden units, and 3 outputs",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "hiddenDimension": 6,
+      "inputDimension": 4,
+      "inputVector": [
+        0.6,
+        -0.4,
+        0.25,
+        0.8
+      ],
+      "layerCount": 3,
+      "layerWiseErrors": [
+        {
+          "baselineOutput": [
+            0.452,
+            -0.578,
+            0.2575,
+            0.514,
+            0.0845,
+            -0.3275
+          ],
+          "classicalActivation": false,
+          "foundryCalibrated": false,
+          "hardwareValidated": false,
+          "hrmMapped": true,
+          "layerId": "linear_1",
+          "layerType": "linear",
+          "mappedOutput": [
+            0.411399445455,
+            -0.556638459807,
+            0.257698720652,
+            0.562602179586,
+            0.103997440308,
+            -0.301773720758
+          ],
+          "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+          "measuredTransferMatrixAvailable": false,
+          "opticalNonlinearityImplemented": false,
+          "productionInferenceReady": false,
+          "relativeError": 0.07485025313144,
+          "weightRelativeError": 0.091134277782103
+        },
+        {
+          "baselineOutput": [
+            0.452,
+            0.0,
+            0.2575,
+            0.514,
+            0.0845,
+            0.0
+          ],
+          "classicalActivation": true,
+          "foundryCalibrated": false,
+          "hardwareValidated": false,
+          "hrmMapped": false,
+          "layerId": "relu_1",
+          "layerType": "classical_relu",
+          "mappedOutput": [
+            0.411399445455,
+            0.0,
+            0.257698720652,
+            0.562602179586,
+            0.103997440308,
+            0.0
+          ],
+          "mappingMode": "classical_relu_outside_optical_mesh",
+          "measuredTransferMatrixAvailable": false,
+          "opticalNonlinearityImplemented": false,
+          "productionInferenceReady": false,
+          "relativeError": 0.090010249590483,
+          "weightRelativeError": null
+        },
+        {
+          "baselineOutput": [
+            0.28066,
+            -0.28025,
+            0.16878
+          ],
+          "classicalActivation": false,
+          "foundryCalibrated": false,
+          "hardwareValidated": false,
+          "hrmMapped": true,
+          "layerId": "linear_2",
+          "layerType": "linear",
+          "mappedOutput": [
+            0.255938837528,
+            -0.28953739814,
+            0.169618896705
+          ],
+          "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+          "measuredTransferMatrixAvailable": false,
+          "opticalNonlinearityImplemented": false,
+          "productionInferenceReady": false,
+          "relativeError": 0.061296868009442,
+          "weightRelativeError": 0.083308707974808
+        }
+      ],
+      "linearLayerCount": 2,
+      "mappedOutput": [
+        0.255938837528,
+        -0.28953739814,
+        0.169618896705
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "modelId": "tiny_mlp_4_6_3",
+      "opticalNonlinearityImplemented": false,
+      "outputDimension": 3,
+      "outputRelativeError": 0.061296868009442,
+      "productionInferenceReady": false
+    },
+    {
+      "activationHandling": "classical_relu_outside_optical_mesh",
+      "baselineOutput": [
+        0.13075,
+        -0.358385,
+        0.3197,
+        0.01945
+      ],
+      "biasHandling": "classical_bias_addition_outside_optical_mesh",
+      "classicalActivationCount": 1,
+      "cumulativeError": 0.0372843078061,
+      "description": "rectangular projection chain with 4-to-8 and 8-to-4 linear maps",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "hiddenDimension": 8,
+      "inputDimension": 4,
+      "inputVector": [
+        0.5,
+        -0.25,
+        0.75,
+        -0.1
+      ],
+      "layerCount": 3,
+      "layerWiseErrors": [
+        {
+          "baselineOutput": [
+            0.2955,
+            -0.019,
+            -0.054,
+            0.4895,
+            -0.2215,
+            -0.1335,
+            0.4505,
+            -0.1385
+          ],
+          "classicalActivation": false,
+          "foundryCalibrated": false,
+          "hardwareValidated": false,
+          "hrmMapped": true,
+          "layerId": "linear_1",
+          "layerType": "linear",
+          "mappedOutput": [
+            0.314910270035,
+            -0.021501193666,
+            -0.018328354228,
+            0.469517061363,
+            -0.210245741732,
+            -0.146038593893,
+            0.452810790355,
+            -0.163741410243
+          ],
+          "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+          "measuredTransferMatrixAvailable": false,
+          "opticalNonlinearityImplemented": false,
+          "productionInferenceReady": false,
+          "relativeError": 0.069385266305579,
+          "weightRelativeError": 0.099951757092972
+        },
+        {
+          "baselineOutput": [
+            0.2955,
+            0.0,
+            0.0,
+            0.4895,
+            0.0,
+            0.0,
+            0.4505,
+            0.0
+          ],
+          "classicalActivation": true,
+          "foundryCalibrated": false,
+          "hardwareValidated": false,
+          "hrmMapped": false,
+          "layerId": "relu_1",
+          "layerType": "classical_relu",
+          "mappedOutput": [
+            0.314910270035,
+            0.0,
+            0.0,
+            0.469517061363,
+            0.0,
+            0.0,
+            0.452810790355,
+            0.0
+          ],
+          "mappingMode": "classical_relu_outside_optical_mesh",
+          "measuredTransferMatrixAvailable": false,
+          "opticalNonlinearityImplemented": false,
+          "productionInferenceReady": false,
+          "relativeError": 0.038401848168683,
+          "weightRelativeError": null
+        },
+        {
+          "baselineOutput": [
+            0.13075,
+            -0.358385,
+            0.3197,
+            0.01945
+          ],
+          "classicalActivation": false,
+          "foundryCalibrated": false,
+          "hardwareValidated": false,
+          "hrmMapped": true,
+          "layerId": "linear_2",
+          "layerType": "linear",
+          "mappedOutput": [
+            0.14139055332,
+            -0.366834731915,
+            0.307304925866,
+            0.016868968966
+          ],
+          "mappingMode": "abstract_rectangular_orthogonal_completion_mesh",
+          "measuredTransferMatrixAvailable": false,
+          "opticalNonlinearityImplemented": false,
+          "productionInferenceReady": false,
+          "relativeError": 0.0372843078061,
+          "weightRelativeError": 0.062118652428493
+        }
+      ],
+      "linearLayerCount": 2,
+      "mappedOutput": [
+        0.14139055332,
+        -0.366834731915,
+        0.307304925866,
+        0.016868968966
+      ],
+      "measuredTransferMatrixAvailable": false,
+      "modelId": "projection_chain_4_8_4",
+      "opticalNonlinearityImplemented": false,
+      "outputDimension": 4,
+      "outputRelativeError": 0.0372843078061,
+      "productionInferenceReady": false
+    }
+  ],
+  "nextValidationGates": [
+    "model_weight_manifest_import",
+    "larger_layer_stack_benchmarks",
+    "foundry_calibrated_device_model_gate"
+  ],
+  "opticalNonlinearityImplemented": false,
+  "outputRelativeError": 0.061296868009442,
+  "outputRelativeErrorMax": 0.061296868009442,
+  "phaseLevels": 64,
+  "productionInferenceReady": false,
+  "stage": 2,
+  "stageStatus": "complete",
+  "title": "Multi-layer toy inference through abstract HRM-mapped linear layers",
+  "worstModelId": "tiny_mlp_4_6_3"
+}

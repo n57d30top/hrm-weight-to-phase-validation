@@ -205,6 +205,68 @@
     },
     {
       "blockers": [
+        "no_real_dataset",
+        "no_optical_nonlinearity_model",
+        "no_measured_transfer_matrix",
+        "no_hardware_timing_or_energy_measurement"
+      ],
+      "evidenceLevel": "abstract_layer_stack_inference_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "layer-stack-inference-demo",
+      "keyMetrics": {
+        "classicalActivationCount": 1,
+        "cumulativeError": 0.061296868009442,
+        "cumulativeErrorMax": 0.061296868009442,
+        "layerCount": 3,
+        "linearLayerCount": 2,
+        "modelCount": 2,
+        "modelId": "tiny_mlp_4_6_3",
+        "opticalNonlinearityImplemented": false,
+        "outputRelativeError": 0.061296868009442,
+        "outputRelativeErrorMax": 0.061296868009442
+      },
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Multi-layer toy inference through abstract HRM-mapped linear layers"
+    },
+    {
+      "blockers": [
+        "no_real_dataset",
+        "no_optical_nonlinearity_model",
+        "no_measured_transfer_matrix",
+        "no_hardware_timing_or_energy_measurement"
+      ],
+      "evidenceLevel": "abstract_layer_stack_error_analysis",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "layer-stack-error-analysis",
+      "keyMetrics": {
+        "errorsCompoundAcrossLayers": false,
+        "modelCount": 2,
+        "worstLayerByError": {
+          "layerId": "relu_1",
+          "layerType": "classical_relu",
+          "mappingMode": "classical_relu_outside_optical_mesh",
+          "modelId": "tiny_mlp_4_6_3",
+          "relativeError": 0.090010249590483
+        },
+        "worstModelByOutputError": {
+          "cumulativeError": 0.061296868009442,
+          "modelId": "tiny_mlp_4_6_3",
+          "outputRelativeError": 0.061296868009442
+        }
+      },
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Multi-layer toy inference error analysis"
+    },
+    {
+      "blockers": [
         "no_large_model_weight_distribution",
         "no_physical_mesh_layout",
         "no_foundry_calibrated_mesh_model",

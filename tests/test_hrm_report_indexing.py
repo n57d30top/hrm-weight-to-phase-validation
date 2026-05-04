@@ -89,6 +89,40 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertFalse(analysis["measuredTransferMatrixAvailable"])
         self.assertFalse(analysis["productionInferenceReady"])
 
+    def test_validation_summary_includes_layer_stack_reports(self):
+        summary = json.loads((REPORT_DIR / "validation-ladder-summary.json").read_text(encoding="utf-8"))
+        reports = {
+            report["id"]: report
+            for report in summary["supplementalReports"]
+        }
+        self.assertIn("layer-stack-inference-demo", reports)
+        self.assertIn("layer-stack-error-analysis", reports)
+        demo = reports["layer-stack-inference-demo"]
+        analysis = reports["layer-stack-error-analysis"]
+        self.assertEqual(demo["stage"], 2)
+        self.assertEqual(demo["stageStatus"], "complete")
+        self.assertEqual(demo["evidenceLevel"], "abstract_layer_stack_inference_simulation")
+        self.assertEqual(demo["keyMetrics"]["modelCount"], 2)
+        self.assertEqual(demo["keyMetrics"]["linearLayerCount"], 2)
+        self.assertEqual(demo["keyMetrics"]["classicalActivationCount"], 1)
+        self.assertFalse(demo["keyMetrics"]["opticalNonlinearityImplemented"])
+        self.assertIn("outputRelativeError", demo["keyMetrics"])
+        self.assertIn("cumulativeError", demo["keyMetrics"])
+        self.assertFalse(demo["hardwareValidated"])
+        self.assertFalse(demo["foundryCalibrated"])
+        self.assertFalse(demo["measuredTransferMatrixAvailable"])
+        self.assertFalse(demo["productionInferenceReady"])
+        self.assertEqual(analysis["stage"], 2)
+        self.assertEqual(analysis["stageStatus"], "complete")
+        self.assertEqual(analysis["evidenceLevel"], "abstract_layer_stack_error_analysis")
+        self.assertEqual(analysis["keyMetrics"]["modelCount"], 2)
+        self.assertIn("worstLayerByError", analysis["keyMetrics"])
+        self.assertIn("errorsCompoundAcrossLayers", analysis["keyMetrics"])
+        self.assertFalse(analysis["hardwareValidated"])
+        self.assertFalse(analysis["foundryCalibrated"])
+        self.assertFalse(analysis["measuredTransferMatrixAvailable"])
+        self.assertFalse(analysis["productionInferenceReady"])
+
     def test_evidence_ledger_includes_rectangular_support(self):
         ledger = json.loads((ROOT / "docs" / "future-work" / "evidence-ledger.json").read_text(encoding="utf-8"))
         reports = {
@@ -131,6 +165,24 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertFalse(analysis_report["foundryCalibrated"])
         self.assertFalse(analysis_report["measuredTransferMatrixAvailable"])
         self.assertFalse(analysis_report["productionInferenceReady"])
+        self.assertIn("layer-stack-inference-demo", reports)
+        layer_stack_report = reports["layer-stack-inference-demo"]
+        self.assertEqual(layer_stack_report["stage"], 2)
+        self.assertEqual(layer_stack_report["stageStatus"], "complete")
+        self.assertEqual(layer_stack_report["evidenceLevel"], "abstract_layer_stack_inference_simulation")
+        self.assertFalse(layer_stack_report["hardwareValidated"])
+        self.assertFalse(layer_stack_report["foundryCalibrated"])
+        self.assertFalse(layer_stack_report["measuredTransferMatrixAvailable"])
+        self.assertFalse(layer_stack_report["productionInferenceReady"])
+        self.assertIn("layer-stack-error-analysis", reports)
+        layer_stack_analysis = reports["layer-stack-error-analysis"]
+        self.assertEqual(layer_stack_analysis["stage"], 2)
+        self.assertEqual(layer_stack_analysis["stageStatus"], "complete")
+        self.assertEqual(layer_stack_analysis["evidenceLevel"], "abstract_layer_stack_error_analysis")
+        self.assertFalse(layer_stack_analysis["hardwareValidated"])
+        self.assertFalse(layer_stack_analysis["foundryCalibrated"])
+        self.assertFalse(layer_stack_analysis["measuredTransferMatrixAvailable"])
+        self.assertFalse(layer_stack_analysis["productionInferenceReady"])
 
     def test_artifacts_sha256_covers_all_generated_json_reports(self):
         json_reports = {
@@ -148,6 +200,8 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("reports/future-work/hrm-neural-mapping/complex-unitary-mesh-support.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/matrix-family-benchmark.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/matrix-family-analysis.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/layer-stack-inference-demo.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/layer-stack-error-analysis.json", hashed_reports)
 
     def test_readme_rectangular_support_is_current(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
@@ -156,8 +210,11 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("complex-unitary-mesh-support.json", normalized)
         self.assertIn("matrix-family-benchmark.json", normalized)
         self.assertIn("matrix-family-analysis.json", normalized)
+        self.assertIn("layer-stack-inference-demo.json", normalized)
+        self.assertIn("layer-stack-error-analysis.json", normalized)
         self.assertIn("supplemental rectangular support exists", normalized)
         self.assertIn("physical complex/unitary mesh layout", normalized)
+        self.assertIn("ReLU remains a classical activation outside the optical mesh", normalized)
         self.assertIn("still no hardware validation", normalized)
         self.assertNotIn("no rectangular neural layer support", normalized)
         self.assertNotIn("square matrix only", normalized)

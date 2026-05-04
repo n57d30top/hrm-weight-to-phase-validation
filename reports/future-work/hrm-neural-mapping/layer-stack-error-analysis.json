@@ -1,0 +1,91 @@
+{
+  "activationBoundaryNotes": [
+    "ReLU is evaluated classically after the first mapped linear layer.",
+    "No optical activation or optical nonlinearity is implemented.",
+    "Activation boundaries can clip or propagate mapped linear-layer deviations depending on the sign pattern."
+  ],
+  "blockers": [
+    "no_real_dataset",
+    "no_optical_nonlinearity_model",
+    "no_measured_transfer_matrix",
+    "no_hardware_timing_or_energy_measurement"
+  ],
+  "claimBoundary": "Simulation-only layer-stack error analysis; no hardware validation, foundry calibration, measured transfer matrix, optical nonlinearity, full neural-network acceleration, or production inference readiness is claimed.",
+  "cumulativeErrorTrend": [
+    {
+      "cumulativeError": 0.061296868009442,
+      "layerErrors": [
+        {
+          "layerId": "linear_1",
+          "relativeError": 0.07485025313144
+        },
+        {
+          "layerId": "relu_1",
+          "relativeError": 0.090010249590483
+        },
+        {
+          "layerId": "linear_2",
+          "relativeError": 0.061296868009442
+        }
+      ],
+      "modelId": "tiny_mlp_4_6_3",
+      "outputRelativeError": 0.061296868009442
+    },
+    {
+      "cumulativeError": 0.0372843078061,
+      "layerErrors": [
+        {
+          "layerId": "linear_1",
+          "relativeError": 0.069385266305579
+        },
+        {
+          "layerId": "relu_1",
+          "relativeError": 0.038401848168683
+        },
+        {
+          "layerId": "linear_2",
+          "relativeError": 0.0372843078061
+        }
+      ],
+      "modelId": "projection_chain_4_8_4",
+      "outputRelativeError": 0.0372843078061
+    }
+  ],
+  "demoReport": "layer-stack-inference-demo.json",
+  "errorsCompoundAcrossLayers": false,
+  "evidenceLevel": "abstract_layer_stack_error_analysis",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "layer-stack-error-analysis",
+  "limitations": [
+    "tiny toy model only",
+    "no real dataset",
+    "no optical nonlinearities",
+    "no hardware timing",
+    "no energy measurement",
+    "no measured transfer matrix"
+  ],
+  "measuredTransferMatrixAvailable": false,
+  "modelCount": 2,
+  "nextValidationGates": [
+    "model_weight_manifest_import",
+    "larger_layer_stack_benchmarks",
+    "foundry_calibrated_device_model_gate"
+  ],
+  "productionInferenceReady": false,
+  "stage": 2,
+  "stageStatus": "complete",
+  "title": "Multi-layer toy inference error analysis",
+  "worstLayerByError": {
+    "layerId": "relu_1",
+    "layerType": "classical_relu",
+    "mappingMode": "classical_relu_outside_optical_mesh",
+    "modelId": "tiny_mlp_4_6_3",
+    "relativeError": 0.090010249590483
+  },
+  "worstModelByOutputError": {
+    "cumulativeError": 0.061296868009442,
+    "modelId": "tiny_mlp_4_6_3",
+    "outputRelativeError": 0.061296868009442
+  }
+}
