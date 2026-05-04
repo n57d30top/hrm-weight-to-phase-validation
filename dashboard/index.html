@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HRM Planning Dashboard</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 2rem; color: #172026; background: #f7f8f4; }
+    header { max-width: 920px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 2rem 0; }
+    section { background: #ffffff; border: 1px solid #d5d9ce; border-radius: 8px; padding: 1rem; }
+    h1, h2 { margin: 0 0 0.5rem; }
+    table { border-collapse: collapse; width: 100%; background: #ffffff; }
+    th, td { border: 1px solid #d5d9ce; padding: 0.5rem; text-align: left; }
+    th { background: #e9ece2; }
+    code { background: #ecefe8; padding: 0.1rem 0.25rem; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HRM Simulation Planning Dashboard</h1>
+    <p>This static dashboard summarizes simulation-only reports. It is not hardware evidence.</p>
+  </header>
+  <main>
+    <div class="grid">
+      <section><h2>Decision</h2><p>blocked_by_missing_hardware_evidence</p></section>
+<section><h2>Suitability Score</h2><p>87.647</p></section>
+<section><h2>Best Portfolio Candidate</h2><p>low_rank_adapter_demo</p></section>
+<section><h2>Design Pareto Candidates</h2><p>4</p></section>
+<section><h2>Hardware Gates Blocked</h2><p>3</p></section>
+    </div>
+    <h2>Stage Status</h2>
+    <table>
+      <thead><tr><th>Stage</th><th>Report</th><th>Status</th><th>Evidence Level</th></tr></thead>
+      <tbody><tr><td>0</td><td>stage-0-specification</td><td>complete</td><td>theoretical_extension</td></tr>
+<tr><td>1</td><td>stage-1-svd-demo</td><td>complete</td><td>numerical_simulation</td></tr>
+<tr><td>2</td><td>stage-2-mesh-constrained</td><td>complete</td><td>abstract_mesh_simulation</td></tr>
+<tr><td>3</td><td>stage-3-perturbation-model</td><td>complete</td><td>uncalibrated_perturbation_simulation</td></tr>
+<tr><td>4</td><td>stage-4-simulated-calibration</td><td>complete</td><td>synthetic_calibration_simulation</td></tr>
+<tr><td>5</td><td>stage-5-foundry-calibration-gate</td><td>blocked</td><td>foundry_calibration_gate</td></tr>
+<tr><td>6</td><td>stage-6-measured-transfer-matrix-gate</td><td>blocked</td><td>measured_transfer_matrix_gate</td></tr>
+<tr><td>7</td><td>stage-7-hardware-benchmark-gate</td><td>blocked</td><td>hardware_benchmark_gate</td></tr></tbody>
+    </table>
+    <p>Claim boundary: hardware validation, foundry calibration, measured transfer matrices, and production inference readiness remain false.</p>
+  </main>
+</body>
+</html>

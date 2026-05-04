@@ -27,6 +27,11 @@ from oqp.future_work.decision_report import (  # noqa: E402
     render_model_to_hrm_decision_markdown,
     run_model_to_hrm_decision_report,
 )
+from oqp.future_work.design_space_explorer import (  # noqa: E402
+    render_hardware_design_space_pareto,
+    run_hardware_design_space_analysis_report,
+    run_hardware_design_space_sweep_report,
+)
 from oqp.future_work.error_budget import (  # noqa: E402
     render_error_budget_markdown,
     run_error_budget_report,
@@ -48,6 +53,16 @@ from oqp.future_work.layer_stack_inference import (  # noqa: E402
     run_layer_stack_inference_demo_report,
 )
 from oqp.future_work.mesh_mapping import run_mesh_constrained_demo  # noqa: E402
+from oqp.future_work.model_export_adapter import (  # noqa: E402
+    render_model_export_adapter_protocol,
+    run_model_export_adapter_demo_report,
+    run_model_export_adapter_validation_report,
+)
+from oqp.future_work.model_portfolio import (  # noqa: E402
+    render_model_portfolio_decision_summary,
+    run_model_portfolio_benchmark_report,
+    run_model_portfolio_ranking_report,
+)
 from oqp.future_work.model_weight_manifest import (  # noqa: E402
     run_model_weight_eligibility_analysis_report,
     run_model_weight_import_demo_report,
@@ -82,6 +97,8 @@ from oqp.future_work.scaling_benchmark import (  # noqa: E402
     run_scaling_analysis_report,
     run_scaling_benchmark_report,
 )
+from oqp.future_work.static_dashboard import render_static_dashboard  # noqa: E402
+from oqp.future_work.transfer_matrix_ingestion_sandbox import run_transfer_matrix_ingestion_sandbox_report  # noqa: E402
 from oqp.future_work.validation_gates import (  # noqa: E402
     foundry_calibration_gate,
     hardware_benchmark_gate,
@@ -110,6 +127,8 @@ SUPPLEMENTAL_REPORT_FILES = {
     "calibration-plan": "calibration-plan.json",
     "complex-unitary-mesh-support": "complex-unitary-mesh-support.json",
     "error-budget-report": "error-budget-report.json",
+    "hardware-design-space-analysis": "hardware-design-space-analysis.json",
+    "hardware-design-space-sweep": "hardware-design-space-sweep.json",
     "hardware-requirements-analysis": "hardware-requirements-analysis.json",
     "hardware-requirements-envelope": "hardware-requirements-envelope.json",
     "hardware-scenario-analysis": "hardware-scenario-analysis.json",
@@ -118,6 +137,10 @@ SUPPLEMENTAL_REPORT_FILES = {
     "layer-stack-inference-demo": "layer-stack-inference-demo.json",
     "matrix-family-analysis": "matrix-family-analysis.json",
     "matrix-family-benchmark": "matrix-family-benchmark.json",
+    "model-export-adapter-demo": "model-export-adapter-demo.json",
+    "model-export-adapter-validation": "model-export-adapter-validation.json",
+    "model-portfolio-benchmark": "model-portfolio-benchmark.json",
+    "model-portfolio-ranking": "model-portfolio-ranking.json",
     "model-to-hrm-decision-report": "model-to-hrm-decision-report.json",
     "model-weight-eligibility-analysis": "model-weight-eligibility-analysis.json",
     "model-weight-import-demo": "model-weight-import-demo.json",
@@ -133,6 +156,7 @@ SUPPLEMENTAL_REPORT_FILES = {
     "stage-4-calibration-analysis": "stage-4-calibration-analysis.json",
     "stage-4-calibration-sweep": "stage-4-calibration-sweep.json",
     "transfer-matrix-assimilation-plan": "transfer-matrix-assimilation-plan.json",
+    "transfer-matrix-ingestion-sandbox": "transfer-matrix-ingestion-sandbox.json",
     "v0.1.0-rc1-readiness": "v0.1.0-rc1-readiness.json",
 }
 
@@ -169,9 +193,15 @@ def main() -> None:
         run_model_weight_eligibility_analysis_report(),
         run_model_suitability_profile_report(),
         run_model_suitability_analysis_report(),
+        run_model_portfolio_benchmark_report(),
+        run_model_portfolio_ranking_report(),
+        run_model_export_adapter_demo_report(),
+        run_model_export_adapter_validation_report(),
         run_rectangular_matrix_support_report(),
         run_scaling_benchmark_report(),
         run_scaling_analysis_report(),
+        run_hardware_design_space_sweep_report(),
+        run_hardware_design_space_analysis_report(),
         run_hardware_scenario_estimates_report(),
         run_hardware_scenario_analysis_report(),
         run_hardware_requirements_envelope_report(),
@@ -179,6 +209,7 @@ def main() -> None:
         run_error_budget_report(),
         run_calibration_plan_report(),
         run_transfer_matrix_assimilation_plan_report(),
+        run_transfer_matrix_ingestion_sandbox_report(),
         run_model_to_hrm_decision_report(),
         run_perturbation_sweep_report(),
         run_perturbation_sweep_analysis_report(),
@@ -219,9 +250,15 @@ def main() -> None:
     planning_artifact_paths = [
         REPORT_DIR / "error-budget-analysis.md",
         REPORT_DIR / "model-to-hrm-decision-report.md",
+        REPORT_DIR / "model-portfolio-decision-summary.md",
+        REPORT_DIR / "hardware-design-space-pareto.md",
         REPORT_DIR / "v0.1.0-rc1-readiness.md",
         DOC_DIR / "transfer-matrix-assimilation-protocol.md",
+        DOC_DIR / "model-export-adapter-protocol.md",
         ROOT / "docs" / "ROADMAP-v0.2.md",
+        ROOT / "dashboard" / "index.html",
+        ROOT / "fixtures" / "model-export-adapter" / "tiny-linear-export-example.json",
+        ROOT / "fixtures" / "transfer-matrix-sandbox" / "synthetic-transfer-matrix.json",
     ]
     _write_text(review_pack_artifact_paths[0], render_review_pack_markdown(review_pack_summary))
     _write_text(review_pack_artifact_paths[1], render_review_pack_metrics_csv(review_pack_summary))
@@ -233,9 +270,19 @@ def main() -> None:
         planning_artifact_paths[1],
         render_model_to_hrm_decision_markdown(_report_by_id(supplemental_reports, "model-to-hrm-decision-report")),
     )
-    _write_text(planning_artifact_paths[2], render_rc1_readiness_markdown(rc1_readiness))
-    _write_text(planning_artifact_paths[3], render_transfer_matrix_assimilation_protocol())
-    _write_text(planning_artifact_paths[4], _render_v02_roadmap())
+    _write_text(
+        planning_artifact_paths[2],
+        render_model_portfolio_decision_summary(_report_by_id(supplemental_reports, "model-portfolio-ranking")),
+    )
+    _write_text(
+        planning_artifact_paths[3],
+        render_hardware_design_space_pareto(_report_by_id(supplemental_reports, "hardware-design-space-analysis")),
+    )
+    _write_text(planning_artifact_paths[4], render_rc1_readiness_markdown(rc1_readiness))
+    _write_text(planning_artifact_paths[5], render_transfer_matrix_assimilation_protocol())
+    _write_text(planning_artifact_paths[6], render_model_export_adapter_protocol())
+    _write_text(planning_artifact_paths[7], _render_v02_roadmap())
+    _write_text(planning_artifact_paths[8], render_static_dashboard(reports, supplemental_reports))
 
     artifact_paths = (
         [REPORT_DIR / STAGE_FILES[stage] for stage in sorted(STAGE_FILES)]
@@ -326,6 +373,12 @@ def _key_metrics(report: Dict[str, Any]) -> Dict[str, Any]:
         "bestCase",
         "worstCase",
         "modelCount",
+        "portfolioFixtures",
+        "bestSimulationCandidate",
+        "worstSimulationCandidate",
+        "generatedManifestValid",
+        "pyTorchHardDependency",
+        "adapterProtocolVersion",
         "modelId",
         "layerCount",
         "linearLayerCount",
@@ -367,6 +420,14 @@ def _key_metrics(report: Dict[str, Any]) -> Dict[str, Any]:
         "reportCount",
         "blockedHardwareGateCount",
         "noHardwarePerformanceClaim",
+        "phaseBitsValues",
+        "paretoCandidateCount",
+        "bestErrorCandidate",
+        "worstErrorCandidate",
+        "syntheticFixtureOnly",
+        "publicMeasuredEvidence",
+        "measurementDataClaimed",
+        "validationPassed",
         "scenarioCount",
         "parametricEstimateOnly",
         "measuredHardwarePerformance",
@@ -457,13 +518,13 @@ def _render_v02_roadmap() -> str:
         "",
         "## Recommended Work",
         "",
-        "- optional PyTorch export adapter that emits the existing manifest format without adding a hard runtime dependency",
-        "- larger deterministic model manifest fixtures",
-        "- richer model suitability scoring with unsupported-layer penalties",
-        "- transfer-matrix measured-data ingestion only when real measured artifacts exist",
-        "- optional visualization dashboard for generated reports",
-        "- stronger synthetic calibration models with explicit limitations",
-        "- foundry or PDK integration only with real external evidence",
+        "- expand the model portfolio beyond deterministic fixtures",
+        "- add richer optional PyTorch export adapter examples while keeping framework dependencies optional",
+        "- improve design-space objective functions with measured data only when real evidence exists",
+        "- keep synthetic transfer-matrix ingestion sandbox separate from Stage 6 public evidence",
+        "- extend the static dashboard with report filtering",
+        "- strengthen synthetic calibration models with explicit limitations",
+        "- add foundry or PDK integration only with real external evidence",
         "",
         "## Claim Boundary",
         "",

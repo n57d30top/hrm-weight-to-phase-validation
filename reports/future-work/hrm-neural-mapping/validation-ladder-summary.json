@@ -496,6 +496,138 @@
     },
     {
       "blockers": [
+        "no_foundry_calibrated_device_model",
+        "no_measured_hrm_transfer_matrix",
+        "no_end_to_end_hardware_benchmark"
+      ],
+      "evidenceLevel": "model_portfolio_benchmark_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-portfolio-benchmark",
+      "keyMetrics": {
+        "modelCount": 5,
+        "portfolioFixtures": [
+          "tiny_mlp",
+          "projection_chain",
+          "low_rank_adapter_demo",
+          "sparse_linear_demo",
+          "transformer_block_manifest_only"
+        ]
+      },
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model portfolio benchmark for HRM mapping suitability"
+    },
+    {
+      "blockers": [
+        "no_foundry_calibrated_device_model",
+        "no_measured_hrm_transfer_matrix",
+        "no_end_to_end_hardware_benchmark"
+      ],
+      "evidenceLevel": "model_portfolio_ranking_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-portfolio-ranking",
+      "keyMetrics": {
+        "bestSimulationCandidate": {
+          "classicalLayerCount": 2,
+          "complexLayerShare": 0.0,
+          "fixtureKind": "portfolio_fixture",
+          "foundryCalibrated": false,
+          "hardwareValidated": false,
+          "layerCount": 6,
+          "mappableLayerCount": 4,
+          "mappableParameterShare": 0.941176470588,
+          "measuredTransferMatrixAvailable": false,
+          "modelId": "low_rank_adapter_demo",
+          "modelSuitabilityScore": 95.882,
+          "modelType": "adapter",
+          "notes": [
+            "low-rank adapter-style linear factors"
+          ],
+          "productionInferenceReady": false,
+          "rectangularLayerShare": 1.0,
+          "simulationOnly": true,
+          "suitabilityClass": "good_candidate",
+          "unsupportedLayerCount": 0
+        },
+        "modelCount": 5,
+        "worstSimulationCandidate": {
+          "classicalLayerCount": 4,
+          "complexLayerShare": 0.0,
+          "fixtureKind": "manifest_only",
+          "foundryCalibrated": false,
+          "hardwareValidated": false,
+          "layerCount": 12,
+          "mappableLayerCount": 4,
+          "mappableParameterShare": 0.571428571429,
+          "measuredTransferMatrixAvailable": false,
+          "modelId": "transformer_block_manifest_only",
+          "modelSuitabilityScore": 53.333,
+          "modelType": "transformer_block_manifest_only",
+          "notes": [
+            "attention softmax, embedding, and normalization remain outside optical mesh"
+          ],
+          "productionInferenceReady": false,
+          "rectangularLayerShare": 1.0,
+          "simulationOnly": true,
+          "suitabilityClass": "partial_candidate",
+          "unsupportedLayerCount": 4
+        }
+      },
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model portfolio ranking for simulation-only HRM planning"
+    },
+    {
+      "blockers": [
+        "no_runtime_framework_adapter_dependency",
+        "no_foundry_calibrated_device_model",
+        "no_measured_transfer_matrix"
+      ],
+      "evidenceLevel": "model_export_adapter_protocol",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-export-adapter-demo",
+      "keyMetrics": {
+        "adapterProtocolVersion": "model-export-adapter.v1",
+        "pyTorchHardDependency": false
+      },
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Optional model export adapter protocol demo"
+    },
+    {
+      "blockers": [
+        "no_runtime_framework_adapter_dependency",
+        "no_foundry_calibrated_device_model",
+        "no_measured_transfer_matrix"
+      ],
+      "evidenceLevel": "model_export_adapter_validation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-export-adapter-validation",
+      "keyMetrics": {
+        "eligibleLinearLayerCount": 1,
+        "generatedManifestValid": true,
+        "layerCount": 1,
+        "pyTorchHardDependency": false,
+        "unsupportedLayerTypes": []
+      },
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Generated model manifest validation for optional export adapter"
+    },
+    {
+      "blockers": [
         "no_combined_complex_rectangular_matrix_family_sweeps",
         "no_foundry_calibrated_mesh_model",
         "no_measured_transfer_matrix"
@@ -664,6 +796,91 @@
       "stage": 2,
       "stageStatus": "complete",
       "title": "Scaling benchmark analysis"
+    },
+    {
+      "blockers": [
+        "no_foundry_calibrated_device_model",
+        "no_measured_hrm_transfer_matrix",
+        "no_end_to_end_hardware_benchmark"
+      ],
+      "evidenceLevel": "hardware_design_space_sweep_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "hardware-design-space-sweep",
+      "keyMetrics": {
+        "measuredHardwarePerformance": false,
+        "noHardwarePerformanceClaim": true,
+        "parametricEstimateOnly": true,
+        "phaseBitsValues": [
+          4,
+          6,
+          8,
+          10
+        ],
+        "rowCount": 108
+      },
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Simulation-only hardware design-space sweep"
+    },
+    {
+      "blockers": [
+        "no_foundry_calibrated_device_model",
+        "no_measured_hrm_transfer_matrix",
+        "no_end_to_end_hardware_benchmark"
+      ],
+      "evidenceLevel": "hardware_design_space_analysis",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "hardware-design-space-analysis",
+      "keyMetrics": {
+        "bestErrorCandidate": {
+          "calibrationIntervalInferences": 100000,
+          "candidateId": "bits10_loss0p1_noise0p002_cal100000",
+          "dominantBottleneck": "calibration_interval",
+          "estimatedEnergyProxy": 1.9,
+          "estimatedLatencyProxy": 2.24,
+          "estimatedOutputRelativeError": 0.035010674510407,
+          "foundryCalibrated": false,
+          "hardwareValidated": false,
+          "insertionLossDb": 0.1,
+          "measuredHardwarePerformance": false,
+          "measuredTransferMatrixAvailable": false,
+          "parametricEstimateOnly": true,
+          "phaseNoiseSigmaRad": 0.002,
+          "phaseResolutionBits": 10,
+          "productionInferenceReady": false
+        },
+        "measuredHardwarePerformance": false,
+        "noHardwarePerformanceClaim": true,
+        "parametricEstimateOnly": true,
+        "paretoCandidateCount": 4,
+        "rowCount": 108,
+        "worstErrorCandidate": {
+          "calibrationIntervalInferences": 1000,
+          "candidateId": "bits4_loss1p0_noise0p03_cal1000",
+          "dominantBottleneck": "phase_quantization",
+          "estimatedEnergyProxy": 5.02,
+          "estimatedLatencyProxy": 5.48,
+          "estimatedOutputRelativeError": 0.272447078114195,
+          "foundryCalibrated": false,
+          "hardwareValidated": false,
+          "insertionLossDb": 1.0,
+          "measuredHardwarePerformance": false,
+          "measuredTransferMatrixAvailable": false,
+          "parametricEstimateOnly": true,
+          "phaseNoiseSigmaRad": 0.03,
+          "phaseResolutionBits": 4,
+          "productionInferenceReady": false
+        }
+      },
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Simulation-only hardware design-space analysis"
     },
     {
       "blockers": [
@@ -875,6 +1092,28 @@
     },
     {
       "blockers": [
+        "synthetic_fixture_only",
+        "no_measured_hrm_transfer_matrix",
+        "no_end_to_end_hardware_benchmark"
+      ],
+      "evidenceLevel": "synthetic_transfer_matrix_ingestion_sandbox",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "transfer-matrix-ingestion-sandbox",
+      "keyMetrics": {
+        "measurementDataClaimed": false,
+        "publicMeasuredEvidence": false,
+        "syntheticFixtureOnly": true,
+        "validationPassed": true
+      },
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 6,
+      "stageStatus": "blocked",
+      "title": "Synthetic transfer-matrix ingestion sandbox"
+    },
+    {
+      "blockers": [
         "no_foundry_calibrated_device_model",
         "no_measured_hrm_transfer_matrix",
         "no_end_to_end_hardware_benchmark"
@@ -998,7 +1237,7 @@
       "id": "review-pack-summary",
       "keyMetrics": {
         "blockedHardwareGateCount": 3,
-        "reportCount": 33
+        "reportCount": 40
       },
       "measuredTransferMatrixAvailable": false,
       "productionInferenceReady": false,
@@ -1020,7 +1259,7 @@
         "blockedHardwareGateCount": 3,
         "completedSimulationStageCount": 5,
         "releaseCandidateFor": "v0.1.0",
-        "supplementalReportCount": 25
+        "supplementalReportCount": 32
       },
       "measuredTransferMatrixAvailable": false,
       "productionInferenceReady": false,
@@ -1041,7 +1280,7 @@
       "keyMetrics": {
         "blockedHardwareGateCount": 3,
         "decisionReportCapabilityCount": 6,
-        "includedCapabilityCount": 12,
+        "includedCapabilityCount": 16,
         "releaseCandidateFor": "v0.1.0",
         "v02RoadmapItemCount": 7
       },

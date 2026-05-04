@@ -155,6 +155,10 @@ def _included_capabilities(supplemental: List[Dict[str, Any]]) -> List[str]:
         ("error-budget-report", "simulation-only error budget"),
         ("calibration-plan", "calibration and assimilation planning"),
         ("model-to-hrm-decision-report", "model-to-HRM decision report"),
+        ("model-portfolio-benchmark", "model portfolio benchmark"),
+        ("model-export-adapter-demo", "optional export adapter protocol"),
+        ("hardware-design-space-sweep", "hardware design-space explorer"),
+        ("transfer-matrix-ingestion-sandbox", "synthetic transfer-matrix ingestion sandbox"),
     ]
     return [label for report_id, label in candidates if report_id in by_id]
 

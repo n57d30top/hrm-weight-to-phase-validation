@@ -1,0 +1,25 @@
+{
+  "claimBoundary": "Synthetic test fixture only. This is not measured transfer-matrix evidence.",
+  "fixtureId": "synthetic_transfer_matrix_2x2_v1",
+  "fixtureKind": "synthetic_test_only",
+  "syntheticObservedMatrix": [
+    [
+      0.98,
+      0.21
+    ],
+    [
+      -0.17,
+      0.94
+    ]
+  ],
+  "targetMatrix": [
+    [
+      1.0,
+      0.2
+    ],
+    [
+      -0.15,
+      0.95
+    ]
+  ]
+}

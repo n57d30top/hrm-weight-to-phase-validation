@@ -4,12 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hrm-weight-to-phase-validation"
-version = "0.1.0-rc.1"
+version = "0.2.0-alpha.1"
 description = "Simulation-gated validation ladder for HRM neural weight-to-phase mapping."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 dependencies = []
+
+[project.scripts]
+hrmwtp = "oqp.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["oqp*"]

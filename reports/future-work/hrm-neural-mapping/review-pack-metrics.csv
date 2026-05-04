@@ -20,6 +20,10 @@ hardware-requirements-analysis,requirementsUnmetCount,5,simulation_derived_hardw
 error-budget-report,errorBudgetDominantContributor,"{""component"":""perturbationError"",""errorValue"":0.370308698767234,""foundryCalibrated"":false,""hardwareValidated"":false,""measuredTransferMatrixAvailable"":false,""productionInferenceReady"":false,""simulationOnly"":true,""sourceReport"":""stage-3-sweep-analysis.json""}",simulation_error_budget,simulation-only; not hardware evidence
 error-budget-report,errorBudgetRssEnvelope,0.413071539277794,simulation_error_budget,simulation-only; not hardware evidence
 model-to-hrm-decision-report,modelToHrmDecision,blocked_by_missing_hardware_evidence,simulation_only_model_to_hrm_decision,simulation-only; not hardware evidence
+model-portfolio-ranking,modelPortfolioBestCandidate,low_rank_adapter_demo,model_portfolio_ranking_simulation,simulation-only; not hardware evidence
+model-portfolio-ranking,modelPortfolioWorstCandidate,transformer_block_manifest_only,model_portfolio_ranking_simulation,simulation-only; not hardware evidence
+hardware-design-space-analysis,designSpaceParetoCandidateCount,4,hardware_design_space_analysis,simulation-only; not hardware evidence
+transfer-matrix-ingestion-sandbox,transferMatrixSandboxValidationPassed,True,synthetic_transfer_matrix_ingestion_sandbox,simulation-only; not hardware evidence
 stage-3-sweep-analysis,perturbationTopSensitivity,"{""maxErrorDelta"":0.370308698767234,""maxPerturbedRelativeError"":0.38994883537722,""sweepParameter"":""phase_quantization_bits""}",uncalibrated_perturbation_simulation,simulation-only; not hardware evidence
 stage-4-simulated-calibration,calibrationPreRelativeError,0.066879533355693,synthetic_calibration_simulation,simulation-only; not hardware evidence
 stage-4-simulated-calibration,calibrationPostRelativeError,0.000112458773944,synthetic_calibration_simulation,simulation-only; not hardware evidence

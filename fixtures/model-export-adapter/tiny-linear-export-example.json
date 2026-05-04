@@ -1,0 +1,18 @@
+{
+  "claimBoundary": "Optional exporter example only. This is not framework execution and not hardware evidence.",
+  "exportAdapterVersion": "model-export-adapter.v1",
+  "layers": [
+    {
+      "dtype": "float64",
+      "layerId": "dense_1",
+      "layerType": "rectangular_linear",
+      "shape": [
+        3,
+        4
+      ],
+      "sourceName": "tiny_linear.weight"
+    }
+  ],
+  "modelId": "adapter_tiny_linear_demo",
+  "sourceFramework": "external_manifest_exporter"
+}

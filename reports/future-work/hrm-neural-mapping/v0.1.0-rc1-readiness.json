@@ -67,9 +67,13 @@
     "hardware requirements envelope",
     "simulation-only error budget",
     "calibration and assimilation planning",
-    "model-to-HRM decision report"
+    "model-to-HRM decision report",
+    "model portfolio benchmark",
+    "optional export adapter protocol",
+    "hardware design-space explorer",
+    "synthetic transfer-matrix ingestion sandbox"
   ],
-  "includedCapabilityCount": 12,
+  "includedCapabilityCount": 16,
   "knownLimitations": [
     "simulation-only planning framework",
     "no foundry-calibrated device model",

@@ -42,6 +42,8 @@ jobs:
           jq empty reports/future-work/hrm-neural-mapping/calibration-plan.json
           jq empty reports/future-work/hrm-neural-mapping/complex-unitary-mesh-support.json
           jq empty reports/future-work/hrm-neural-mapping/error-budget-report.json
+          jq empty reports/future-work/hrm-neural-mapping/hardware-design-space-analysis.json
+          jq empty reports/future-work/hrm-neural-mapping/hardware-design-space-sweep.json
           jq empty reports/future-work/hrm-neural-mapping/hardware-requirements-analysis.json
           jq empty reports/future-work/hrm-neural-mapping/hardware-requirements-envelope.json
           jq empty reports/future-work/hrm-neural-mapping/hardware-scenario-analysis.json
@@ -50,6 +52,10 @@ jobs:
           jq empty reports/future-work/hrm-neural-mapping/layer-stack-error-analysis.json
           jq empty reports/future-work/hrm-neural-mapping/matrix-family-benchmark.json
           jq empty reports/future-work/hrm-neural-mapping/matrix-family-analysis.json
+          jq empty reports/future-work/hrm-neural-mapping/model-export-adapter-demo.json
+          jq empty reports/future-work/hrm-neural-mapping/model-export-adapter-validation.json
+          jq empty reports/future-work/hrm-neural-mapping/model-portfolio-benchmark.json
+          jq empty reports/future-work/hrm-neural-mapping/model-portfolio-ranking.json
           jq empty reports/future-work/hrm-neural-mapping/model-to-hrm-decision-report.json
           jq empty reports/future-work/hrm-neural-mapping/model-weight-import-demo.json
           jq empty reports/future-work/hrm-neural-mapping/model-weight-eligibility-analysis.json
@@ -70,6 +76,7 @@ jobs:
           jq empty reports/future-work/hrm-neural-mapping/stage-6-measured-transfer-matrix-gate.json
           jq empty reports/future-work/hrm-neural-mapping/stage-7-hardware-benchmark-gate.json
           jq empty reports/future-work/hrm-neural-mapping/transfer-matrix-assimilation-plan.json
+          jq empty reports/future-work/hrm-neural-mapping/transfer-matrix-ingestion-sandbox.json
           jq empty reports/future-work/hrm-neural-mapping/v0.1.0-rc1-readiness.json
           jq empty reports/future-work/hrm-neural-mapping/validation-ladder-summary.json
 

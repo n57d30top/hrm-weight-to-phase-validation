@@ -235,6 +235,13 @@ class HrmReportIndexingTest(unittest.TestCase):
             "calibration-plan": "calibration_plan_only",
             "transfer-matrix-assimilation-plan": "transfer_matrix_assimilation_plan_only",
             "model-to-hrm-decision-report": "simulation_only_model_to_hrm_decision",
+            "model-portfolio-benchmark": "model_portfolio_benchmark_simulation",
+            "model-portfolio-ranking": "model_portfolio_ranking_simulation",
+            "model-export-adapter-demo": "model_export_adapter_protocol",
+            "model-export-adapter-validation": "model_export_adapter_validation",
+            "hardware-design-space-sweep": "hardware_design_space_sweep_simulation",
+            "hardware-design-space-analysis": "hardware_design_space_analysis",
+            "transfer-matrix-ingestion-sandbox": "synthetic_transfer_matrix_ingestion_sandbox",
             "v0.1.0-rc1-readiness": "v0.1.0_rc1_readiness_audit",
         }
         for report_id, evidence_level in expected.items():
@@ -251,6 +258,10 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertTrue(reports["error-budget-report"]["keyMetrics"]["simulationOnly"])
         self.assertFalse(reports["error-budget-report"]["keyMetrics"]["physicalAccuracyClaimed"])
         self.assertTrue(reports["model-to-hrm-decision-report"]["keyMetrics"]["decisionIsNotHardwareValidation"])
+        self.assertFalse(reports["model-export-adapter-demo"]["keyMetrics"]["pyTorchHardDependency"])
+        self.assertTrue(reports["model-export-adapter-validation"]["keyMetrics"]["generatedManifestValid"])
+        self.assertGreater(reports["hardware-design-space-analysis"]["keyMetrics"]["paretoCandidateCount"], 0)
+        self.assertTrue(reports["transfer-matrix-ingestion-sandbox"]["keyMetrics"]["syntheticFixtureOnly"])
 
     def test_validation_summary_includes_review_pack(self):
         summary = json.loads((REPORT_DIR / "validation-ladder-summary.json").read_text(encoding="utf-8"))
@@ -412,6 +423,13 @@ class HrmReportIndexingTest(unittest.TestCase):
             "calibration-plan",
             "transfer-matrix-assimilation-plan",
             "model-to-hrm-decision-report",
+            "model-portfolio-benchmark",
+            "model-portfolio-ranking",
+            "model-export-adapter-demo",
+            "model-export-adapter-validation",
+            "hardware-design-space-sweep",
+            "hardware-design-space-analysis",
+            "transfer-matrix-ingestion-sandbox",
             "v0.1.0-rc1-readiness",
         ]:
             self.assertIn(report_id, reports)
@@ -453,6 +471,13 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("reports/future-work/hrm-neural-mapping/calibration-plan.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/transfer-matrix-assimilation-plan.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/model-to-hrm-decision-report.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/model-portfolio-benchmark.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/model-portfolio-ranking.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/model-export-adapter-demo.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/model-export-adapter-validation.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/hardware-design-space-sweep.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/hardware-design-space-analysis.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/transfer-matrix-ingestion-sandbox.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/v0.1.0-rc1-readiness.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/review-pack-summary.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/release-readiness-v0.1.0.json", hashed_reports)
@@ -462,9 +487,15 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("reports/future-work/hrm-neural-mapping/release-readiness-v0.1.0.md", artifact_text)
         self.assertIn("reports/future-work/hrm-neural-mapping/error-budget-analysis.md", artifact_text)
         self.assertIn("reports/future-work/hrm-neural-mapping/model-to-hrm-decision-report.md", artifact_text)
+        self.assertIn("reports/future-work/hrm-neural-mapping/model-portfolio-decision-summary.md", artifact_text)
+        self.assertIn("reports/future-work/hrm-neural-mapping/hardware-design-space-pareto.md", artifact_text)
         self.assertIn("reports/future-work/hrm-neural-mapping/v0.1.0-rc1-readiness.md", artifact_text)
         self.assertIn("docs/future-work/transfer-matrix-assimilation-protocol.md", artifact_text)
+        self.assertIn("docs/future-work/model-export-adapter-protocol.md", artifact_text)
         self.assertIn("docs/ROADMAP-v0.2.md", artifact_text)
+        self.assertIn("dashboard/index.html", artifact_text)
+        self.assertIn("fixtures/model-export-adapter/tiny-linear-export-example.json", artifact_text)
+        self.assertIn("fixtures/transfer-matrix-sandbox/synthetic-transfer-matrix.json", artifact_text)
 
     def test_evidence_ledger_includes_review_pack(self):
         ledger = json.loads((ROOT / "docs" / "future-work" / "evidence-ledger.json").read_text(encoding="utf-8"))
@@ -530,6 +561,17 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("transfer-matrix-assimilation-protocol.md", normalized)
         self.assertIn("model-to-hrm-decision-report.json", normalized)
         self.assertIn("model-to-hrm-decision-report.md", normalized)
+        self.assertIn("model-portfolio-benchmark.json", normalized)
+        self.assertIn("model-portfolio-ranking.json", normalized)
+        self.assertIn("model-portfolio-decision-summary.md", normalized)
+        self.assertIn("model-export-adapter-demo.json", normalized)
+        self.assertIn("model-export-adapter-validation.json", normalized)
+        self.assertIn("model-export-adapter-protocol.md", normalized)
+        self.assertIn("hardware-design-space-sweep.json", normalized)
+        self.assertIn("hardware-design-space-analysis.json", normalized)
+        self.assertIn("hardware-design-space-pareto.md", normalized)
+        self.assertIn("transfer-matrix-ingestion-sandbox.json", normalized)
+        self.assertIn("dashboard/index.html", normalized)
         self.assertIn("v0.1.0-rc1-readiness.json", normalized)
         self.assertIn("v0.1.0-rc1-readiness.md", normalized)
         self.assertIn("ROADMAP-v0.2.md", normalized)

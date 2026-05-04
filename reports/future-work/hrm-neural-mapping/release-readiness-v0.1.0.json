@@ -133,7 +133,7 @@
   },
   "stage": 0,
   "stageStatus": "complete",
-  "supplementalReportCount": 25,
+  "supplementalReportCount": 32,
   "supplementalReports": [
     {
       "evidenceLevel": "calibration_plan_only",
@@ -155,6 +155,20 @@
       "stage": 2,
       "stageStatus": "complete",
       "title": "Simulation-only accuracy degradation and error budget"
+    },
+    {
+      "evidenceLevel": "hardware_design_space_analysis",
+      "id": "hardware-design-space-analysis",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Simulation-only hardware design-space analysis"
+    },
+    {
+      "evidenceLevel": "hardware_design_space_sweep_simulation",
+      "id": "hardware-design-space-sweep",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Simulation-only hardware design-space sweep"
     },
     {
       "evidenceLevel": "simulation_derived_hardware_requirements_analysis",
@@ -211,6 +225,34 @@
       "stage": 2,
       "stageStatus": "complete",
       "title": "Matrix-family benchmark for abstract HRM mapping simulation"
+    },
+    {
+      "evidenceLevel": "model_export_adapter_protocol",
+      "id": "model-export-adapter-demo",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Optional model export adapter protocol demo"
+    },
+    {
+      "evidenceLevel": "model_export_adapter_validation",
+      "id": "model-export-adapter-validation",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Generated model manifest validation for optional export adapter"
+    },
+    {
+      "evidenceLevel": "model_portfolio_benchmark_simulation",
+      "id": "model-portfolio-benchmark",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model portfolio benchmark for HRM mapping suitability"
+    },
+    {
+      "evidenceLevel": "model_portfolio_ranking_simulation",
+      "id": "model-portfolio-ranking",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model portfolio ranking for simulation-only HRM planning"
     },
     {
       "evidenceLevel": "model_suitability_analysis",
@@ -309,6 +351,13 @@
       "stage": 6,
       "stageStatus": "blocked",
       "title": "Transfer-matrix assimilation plan for future measured artifacts"
+    },
+    {
+      "evidenceLevel": "synthetic_transfer_matrix_ingestion_sandbox",
+      "id": "transfer-matrix-ingestion-sandbox",
+      "stage": 6,
+      "stageStatus": "blocked",
+      "title": "Synthetic transfer-matrix ingestion sandbox"
     }
   ],
   "title": "v0.1.0 release-candidate readiness audit",

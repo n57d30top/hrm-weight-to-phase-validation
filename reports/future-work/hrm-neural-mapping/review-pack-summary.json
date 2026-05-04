@@ -61,6 +61,7 @@
     "calibrationPostRelativeError": 0.000112458773944,
     "calibrationPreRelativeError": 0.066879533355693,
     "calibrationWorstPostRelativeError": 0.024641168630069,
+    "designSpaceParetoCandidateCount": 4,
     "errorBudgetDominantContributor": {
       "component": "perturbationError",
       "errorValue": 0.370308698767234,
@@ -98,6 +99,8 @@
         4
       ]
     },
+    "modelPortfolioBestCandidate": "low_rank_adapter_demo",
+    "modelPortfolioWorstCandidate": "transformer_block_manifest_only",
     "modelSuitabilityClass": "good_candidate",
     "modelSuitabilityScore": 87.647,
     "modelToHrmDecision": "blocked_by_missing_hardware_evidence",
@@ -135,7 +138,8 @@
       ]
     },
     "stage2MeshConstrainedRelativeError": 0.019640136609986,
-    "stage2MeshErrorDelta": 0.019640136609985
+    "stage2MeshErrorDelta": 0.019640136609985,
+    "transferMatrixSandboxValidationPassed": true
   },
   "limitations": [
     "review pack summarizes generated simulation reports only",
@@ -296,6 +300,34 @@
     },
     {
       "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "model_portfolio_ranking_simulation",
+      "metricName": "modelPortfolioBestCandidate",
+      "metricValue": "low_rank_adapter_demo",
+      "reportId": "model-portfolio-ranking"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "model_portfolio_ranking_simulation",
+      "metricName": "modelPortfolioWorstCandidate",
+      "metricValue": "transformer_block_manifest_only",
+      "reportId": "model-portfolio-ranking"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "hardware_design_space_analysis",
+      "metricName": "designSpaceParetoCandidateCount",
+      "metricValue": "4",
+      "reportId": "hardware-design-space-analysis"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
+      "evidenceLevel": "synthetic_transfer_matrix_ingestion_sandbox",
+      "metricName": "transferMatrixSandboxValidationPassed",
+      "metricValue": "True",
+      "reportId": "transfer-matrix-ingestion-sandbox"
+    },
+    {
+      "claimBoundaryNote": "simulation-only; not hardware evidence",
       "evidenceLevel": "uncalibrated_perturbation_simulation",
       "metricName": "perturbationTopSensitivity",
       "metricValue": "{\"maxErrorDelta\":0.370308698767234,\"maxPerturbedRelativeError\":0.38994883537722,\"sweepParameter\":\"phase_quantization_bits\"}",
@@ -351,7 +383,7 @@
     "hardware_benchmark_gate"
   ],
   "productionInferenceReady": false,
-  "reportCount": 33,
+  "reportCount": 40,
   "reviewerChecklist": [
     "Run make check to reproduce generated reports.",
     "Inspect reports/future-work/hrm-neural-mapping/ARTIFACTS.sha256.",
@@ -487,6 +519,28 @@
       "title": "Simulation-only accuracy degradation and error budget"
     },
     {
+      "evidenceLevel": "hardware_design_space_analysis",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "hardware-design-space-analysis",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Simulation-only hardware design-space analysis"
+    },
+    {
+      "evidenceLevel": "hardware_design_space_sweep_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "hardware-design-space-sweep",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Simulation-only hardware design-space sweep"
+    },
+    {
       "evidenceLevel": "simulation_derived_hardware_requirements_analysis",
       "foundryCalibrated": false,
       "hardwareValidated": false,
@@ -573,6 +627,50 @@
       "stage": 2,
       "stageStatus": "complete",
       "title": "Matrix-family benchmark for abstract HRM mapping simulation"
+    },
+    {
+      "evidenceLevel": "model_export_adapter_protocol",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-export-adapter-demo",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Optional model export adapter protocol demo"
+    },
+    {
+      "evidenceLevel": "model_export_adapter_validation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-export-adapter-validation",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Generated model manifest validation for optional export adapter"
+    },
+    {
+      "evidenceLevel": "model_portfolio_benchmark_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-portfolio-benchmark",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model portfolio benchmark for HRM mapping suitability"
+    },
+    {
+      "evidenceLevel": "model_portfolio_ranking_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-portfolio-ranking",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model portfolio ranking for simulation-only HRM planning"
     },
     {
       "evidenceLevel": "model_suitability_analysis",
@@ -716,6 +814,17 @@
       "stage": 6,
       "stageStatus": "blocked",
       "title": "Transfer-matrix assimilation plan for future measured artifacts"
+    },
+    {
+      "evidenceLevel": "synthetic_transfer_matrix_ingestion_sandbox",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "transfer-matrix-ingestion-sandbox",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 6,
+      "stageStatus": "blocked",
+      "title": "Synthetic transfer-matrix ingestion sandbox"
     }
   ],
   "title": "Reviewer-facing simulation evidence pack summary"

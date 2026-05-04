@@ -5,13 +5,13 @@ Stage 5, Stage 6, and Stage 7 remain blocked by default.
 
 ## Recommended Work
 
-- optional PyTorch export adapter that emits the existing manifest format without adding a hard runtime dependency
-- larger deterministic model manifest fixtures
-- richer model suitability scoring with unsupported-layer penalties
-- transfer-matrix measured-data ingestion only when real measured artifacts exist
-- optional visualization dashboard for generated reports
-- stronger synthetic calibration models with explicit limitations
-- foundry or PDK integration only with real external evidence
+- expand the model portfolio beyond deterministic fixtures
+- add richer optional PyTorch export adapter examples while keeping framework dependencies optional
+- improve design-space objective functions with measured data only when real evidence exists
+- keep synthetic transfer-matrix ingestion sandbox separate from Stage 6 public evidence
+- extend the static dashboard with report filtering
+- strengthen synthetic calibration models with explicit limitations
+- add foundry or PDK integration only with real external evidence
 
 ## Claim Boundary
 

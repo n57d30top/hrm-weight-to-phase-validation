@@ -344,6 +344,90 @@
     },
     {
       "blockers": [
+        "no_foundry_calibrated_device_model",
+        "no_measured_hrm_transfer_matrix",
+        "no_end_to_end_hardware_benchmark"
+      ],
+      "evidenceLevel": "model_portfolio_benchmark_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-portfolio-benchmark",
+      "measuredTransferMatrixAvailable": false,
+      "nextValidationGates": [
+        "model_export_adapter_protocol",
+        "hardware_design_space_explorer",
+        "foundry_calibrated_device_model_gate"
+      ],
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model portfolio benchmark for HRM mapping suitability"
+    },
+    {
+      "blockers": [
+        "no_foundry_calibrated_device_model",
+        "no_measured_hrm_transfer_matrix",
+        "no_end_to_end_hardware_benchmark"
+      ],
+      "evidenceLevel": "model_portfolio_ranking_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-portfolio-ranking",
+      "measuredTransferMatrixAvailable": false,
+      "nextValidationGates": [
+        "model_export_adapter_protocol",
+        "hardware_design_space_explorer",
+        "foundry_calibrated_device_model_gate"
+      ],
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model portfolio ranking for simulation-only HRM planning"
+    },
+    {
+      "blockers": [
+        "no_runtime_framework_adapter_dependency",
+        "no_foundry_calibrated_device_model",
+        "no_measured_transfer_matrix"
+      ],
+      "evidenceLevel": "model_export_adapter_protocol",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-export-adapter-demo",
+      "measuredTransferMatrixAvailable": false,
+      "nextValidationGates": [
+        "generated_manifest_validation",
+        "larger_model_manifest_fixtures",
+        "foundry_calibrated_device_model_gate"
+      ],
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Optional model export adapter protocol demo"
+    },
+    {
+      "blockers": [
+        "no_runtime_framework_adapter_dependency",
+        "no_foundry_calibrated_device_model",
+        "no_measured_transfer_matrix"
+      ],
+      "evidenceLevel": "model_export_adapter_validation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-export-adapter-validation",
+      "measuredTransferMatrixAvailable": false,
+      "nextValidationGates": [
+        "model_portfolio_benchmark",
+        "model_weight_manifest_import",
+        "foundry_calibrated_device_model_gate"
+      ],
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Generated model manifest validation for optional export adapter"
+    },
+    {
+      "blockers": [
         "no_combined_complex_rectangular_matrix_family_sweeps",
         "no_foundry_calibrated_mesh_model",
         "no_measured_transfer_matrix"
@@ -406,6 +490,48 @@
       "stage": 2,
       "stageStatus": "complete",
       "title": "Scaling benchmark analysis"
+    },
+    {
+      "blockers": [
+        "no_foundry_calibrated_device_model",
+        "no_measured_hrm_transfer_matrix",
+        "no_end_to_end_hardware_benchmark"
+      ],
+      "evidenceLevel": "hardware_design_space_sweep_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "hardware-design-space-sweep",
+      "measuredTransferMatrixAvailable": false,
+      "nextValidationGates": [
+        "transfer_matrix_ingestion_sandbox",
+        "measured_transfer_matrix_gate",
+        "hardware_benchmark_gate"
+      ],
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Simulation-only hardware design-space sweep"
+    },
+    {
+      "blockers": [
+        "no_foundry_calibrated_device_model",
+        "no_measured_hrm_transfer_matrix",
+        "no_end_to_end_hardware_benchmark"
+      ],
+      "evidenceLevel": "hardware_design_space_analysis",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "hardware-design-space-analysis",
+      "measuredTransferMatrixAvailable": false,
+      "nextValidationGates": [
+        "transfer_matrix_ingestion_sandbox",
+        "measured_transfer_matrix_gate",
+        "hardware_benchmark_gate"
+      ],
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Simulation-only hardware design-space analysis"
     },
     {
       "blockers": [
@@ -549,6 +675,26 @@
       "stage": 6,
       "stageStatus": "blocked",
       "title": "Transfer-matrix assimilation plan for future measured artifacts"
+    },
+    {
+      "blockers": [
+        "synthetic_fixture_only",
+        "no_measured_hrm_transfer_matrix",
+        "no_end_to_end_hardware_benchmark"
+      ],
+      "evidenceLevel": "synthetic_transfer_matrix_ingestion_sandbox",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "transfer-matrix-ingestion-sandbox",
+      "measuredTransferMatrixAvailable": false,
+      "nextValidationGates": [
+        "measured_transfer_matrix_gate",
+        "hardware_benchmark_gate"
+      ],
+      "productionInferenceReady": false,
+      "stage": 6,
+      "stageStatus": "blocked",
+      "title": "Synthetic transfer-matrix ingestion sandbox"
     },
     {
       "blockers": [

@@ -50,9 +50,9 @@ class HrmRcReadinessTest(unittest.TestCase):
         self.assertIn("reports/future-work/hrm-neural-mapping/v0.1.0-rc1-readiness.md", artifacts)
         self.assertIn("docs/ROADMAP-v0.2.md", artifacts)
 
-    def test_pyproject_version_is_rc1(self):
+    def test_pyproject_version_is_v02_alpha_after_rc1(self):
         pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
-        self.assertIn('version = "0.1.0-rc.1"', pyproject)
+        self.assertIn('version = "0.2.0-alpha.1"', pyproject)
 
     def test_hardware_gates_remain_blocked(self):
         reports = [

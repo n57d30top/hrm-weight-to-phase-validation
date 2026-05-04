@@ -143,6 +143,9 @@ Key files:
 - `complex-unitary-mesh-support.json`
 - `error-budget-report.json`
 - `error-budget-analysis.md`
+- `hardware-design-space-sweep.json`
+- `hardware-design-space-analysis.json`
+- `hardware-design-space-pareto.md`
 - `hardware-requirements-envelope.json`
 - `hardware-requirements-analysis.json`
 - `hardware-scenario-estimates.json`
@@ -151,6 +154,11 @@ Key files:
 - `layer-stack-error-analysis.json`
 - `matrix-family-benchmark.json`
 - `matrix-family-analysis.json`
+- `model-export-adapter-demo.json`
+- `model-export-adapter-validation.json`
+- `model-portfolio-benchmark.json`
+- `model-portfolio-ranking.json`
+- `model-portfolio-decision-summary.md`
 - `model-to-hrm-decision-report.json`
 - `model-to-hrm-decision-report.md`
 - `model-weight-import-demo.json`
@@ -177,6 +185,7 @@ Key files:
 - `stage-6-measured-transfer-matrix-gate.json`
 - `stage-7-hardware-benchmark-gate.json`
 - `transfer-matrix-assimilation-plan.json`
+- `transfer-matrix-ingestion-sandbox.json`
 - `v0.1.0-rc1-readiness.json`
 - `v0.1.0-rc1-readiness.md`
 - `validation-ladder-summary.json`
@@ -194,8 +203,13 @@ Schema documentation for future hardware evidence gates:
 - `docs/future-work/measured-transfer-matrix-fixture-schema.md`
 - `docs/future-work/hardware-benchmark-acceptance-schema.md`
 - `docs/future-work/model-weight-manifest-schema.md`
+- `docs/future-work/model-export-adapter-protocol.md`
 - `docs/future-work/transfer-matrix-assimilation-protocol.md`
 - `docs/ROADMAP-v0.2.md`
+
+The static dashboard is written to:
+
+- `dashboard/index.html`
 
 ## Stage 2 Interpretation
 
@@ -391,6 +405,59 @@ hardware performance claim.
 The scaling reports do not claim hardware latency, hardware throughput, hardware
 energy efficiency, accelerator performance, foundry calibration, measured
 transfer matrices, or production inference readiness.
+
+## v0.2 Planning Toolkit
+
+Post-v0.1.0 work extends the simulation-only framework into a more usable
+planning toolkit without changing hardware evidence status.
+
+The model-portfolio artifacts are:
+
+- `model-portfolio-benchmark.json`
+- `model-portfolio-ranking.json`
+- `model-portfolio-decision-summary.md`
+
+They compare `tiny_mlp`, `projection_chain`, `low_rank_adapter_demo`,
+`sparse_linear_demo`, and `transformer_block_manifest_only` fixtures. The
+ranking is a simulation-only planning label, not hardware evidence.
+
+The optional export-adapter artifacts are:
+
+- `model-export-adapter-demo.json`
+- `model-export-adapter-validation.json`
+- `docs/future-work/model-export-adapter-protocol.md`
+
+They define how an external framework exporter can write the existing manifest
+format. PyTorch remains optional and is not a required dependency.
+
+The design-space explorer artifacts are:
+
+- `hardware-design-space-sweep.json`
+- `hardware-design-space-analysis.json`
+- `hardware-design-space-pareto.md`
+
+They sweep phase bits, insertion loss, phase noise, and calibration interval
+proxies. Latency and energy fields are deterministic planning proxies only.
+
+The transfer-matrix ingestion sandbox artifact is:
+
+- `transfer-matrix-ingestion-sandbox.json`
+
+It uses a synthetic test-only fixture to exercise ingestion, normalization, and
+target-vs-observed comparison logic. It is not measured transfer-matrix
+evidence and it keeps Stage 6 blocked.
+
+The CLI and dashboard artifacts are:
+
+- `hrmwtp check`
+- `hrmwtp regenerate`
+- `hrmwtp summary`
+- `hrmwtp decision`
+- `hrmwtp list-reports`
+- `dashboard/index.html`
+
+The dashboard is static HTML summarizing generated simulation reports. It is not
+hardware evidence.
 
 ## Planning Reports
 
@@ -626,12 +693,21 @@ Completed post-alpha.12 main work:
 - model-to-HRM decision report added for suitability, error, scenario, requirement, and missing-evidence review.
 - v0.1.0-rc.1 readiness report and `docs/ROADMAP-v0.2.md` added for release-candidate review.
 
+Completed v0.2.0-alpha.1 main work:
+
+- model portfolio benchmark and ranking added for five deterministic model fixtures.
+- optional model-export adapter protocol added without a hard PyTorch dependency.
+- design-space explorer added for phase bits, loss, noise, and calibration interval planning proxies.
+- synthetic transfer-matrix ingestion sandbox added while keeping Stage 6 blocked.
+- `hrmwtp` CLI added for check, regenerate, summary, decision, and report-list workflows.
+- static dashboard added at `dashboard/index.html`.
+
 Near-term:
 
 - keep CI green for report generation, JSON validation, hashes, tests, local-path hygiene, and claim-boundary checks
-- review `v0.1.0-rc.1` readiness artifacts before tagging a release candidate
+- review `v0.2.0-alpha.1` artifacts before broadening model fixtures
 - keep Stage 5, Stage 6, and Stage 7 blocked until real external evidence exists
-- use `docs/ROADMAP-v0.2.md` to plan optional exporters, richer fixtures, and measured-data ingestion only when real data exists
+- keep synthetic transfer-matrix sandbox outputs separate from public measured evidence
 
 Later, only when evidence exists:
 

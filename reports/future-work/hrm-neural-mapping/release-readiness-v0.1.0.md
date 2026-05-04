@@ -17,6 +17,8 @@ This v0.1.0 readiness report is simulation-only. It does not claim hardware vali
 - `calibration-plan` (calibration_plan_only)
 - `complex-unitary-mesh-support` (abstract_complex_unitary_mesh_simulation)
 - `error-budget-report` (simulation_error_budget)
+- `hardware-design-space-analysis` (hardware_design_space_analysis)
+- `hardware-design-space-sweep` (hardware_design_space_sweep_simulation)
 - `hardware-requirements-analysis` (simulation_derived_hardware_requirements_analysis)
 - `hardware-requirements-envelope` (simulation_derived_hardware_requirements)
 - `hardware-scenario-analysis` (parametric_hardware_scenario_analysis)
@@ -25,6 +27,10 @@ This v0.1.0 readiness report is simulation-only. It does not claim hardware vali
 - `layer-stack-inference-demo` (abstract_layer_stack_inference_simulation)
 - `matrix-family-analysis` (abstract_matrix_family_analysis)
 - `matrix-family-benchmark` (abstract_matrix_family_benchmark_simulation)
+- `model-export-adapter-demo` (model_export_adapter_protocol)
+- `model-export-adapter-validation` (model_export_adapter_validation)
+- `model-portfolio-benchmark` (model_portfolio_benchmark_simulation)
+- `model-portfolio-ranking` (model_portfolio_ranking_simulation)
 - `model-suitability-analysis` (model_suitability_analysis)
 - `model-suitability-profile` (model_suitability_profile_simulation)
 - `model-to-hrm-decision-report` (simulation_only_model_to_hrm_decision)
@@ -39,6 +45,7 @@ This v0.1.0 readiness report is simulation-only. It does not claim hardware vali
 - `stage-4-calibration-analysis` (synthetic_calibration_simulation)
 - `stage-4-calibration-sweep` (synthetic_calibration_simulation)
 - `transfer-matrix-assimilation-plan` (transfer_matrix_assimilation_plan_only)
+- `transfer-matrix-ingestion-sandbox` (synthetic_transfer_matrix_ingestion_sandbox)
 
 ## Blocked Hardware Gates
 

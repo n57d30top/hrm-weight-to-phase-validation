@@ -1,0 +1,63 @@
+{
+  "adapterProtocolVersion": "model-export-adapter.v1",
+  "blockers": [
+    "no_runtime_framework_adapter_dependency",
+    "no_foundry_calibrated_device_model",
+    "no_measured_transfer_matrix"
+  ],
+  "claimBoundary": "Optional export-adapter protocol only; this does not claim PyTorch model execution, full model acceleration, hardware validation, foundry calibration, measured transfer matrices, production inference readiness, quantum advantage, hardware-native intelligence, or power-free computation.",
+  "evidenceLevel": "model_export_adapter_protocol",
+  "exampleModelId": "adapter_tiny_linear_demo",
+  "foundryCalibrated": false,
+  "generatedManifestPreview": {
+    "claimBoundary": "simulation-only generated manifest preview",
+    "exportDate": "2026-05-04",
+    "exportFormat": "json_manifest",
+    "layerList": [
+      {
+        "activationAfterLayer": "none",
+        "claimBoundary": "simulation-only manifest entry",
+        "dtype": "float64",
+        "layerId": "dense_1",
+        "layerType": "rectangular_linear",
+        "mappingEligible": true,
+        "mappingLimitations": [
+          "abstract rectangular mapping only"
+        ],
+        "shape": [
+          3,
+          4
+        ],
+        "weightArtifactReference": "fixtures/model-weights/tiny-mlp-w2.json",
+        "weightArtifactSha256": "placeholder_hash_supplied_by_external_exporter"
+      }
+    ],
+    "modelId": "adapter_tiny_linear_demo",
+    "modelType": "mlp",
+    "provenance": "deterministic optional exporter example",
+    "sourceFramework": "external_manifest_exporter"
+  },
+  "hardwareValidated": false,
+  "id": "model-export-adapter-demo",
+  "measuredTransferMatrixAvailable": false,
+  "nextValidationGates": [
+    "generated_manifest_validation",
+    "larger_model_manifest_fixtures",
+    "foundry_calibrated_device_model_gate"
+  ],
+  "productionInferenceReady": false,
+  "pyTorchHardDependency": false,
+  "stage": 2,
+  "stageStatus": "complete",
+  "supportedExportSteps": [
+    "external framework exports weights into JSON artifacts",
+    "adapter writes model-weight manifest fields",
+    "existing manifest importer validates paths, hashes, shapes, and dtype metadata"
+  ],
+  "title": "Optional model export adapter protocol demo",
+  "unsupportedExecutionClaims": [
+    "no framework execution is performed",
+    "no transformer acceleration is claimed",
+    "no optical nonlinearities are implemented"
+  ]
+}

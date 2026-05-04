@@ -1,0 +1,28 @@
+{
+  "blockers": [
+    "no_runtime_framework_adapter_dependency",
+    "no_foundry_calibrated_device_model",
+    "no_measured_transfer_matrix"
+  ],
+  "claimBoundary": "Optional export-adapter protocol only; this does not claim PyTorch model execution, full model acceleration, hardware validation, foundry calibration, measured transfer matrices, production inference readiness, quantum advantage, hardware-native intelligence, or power-free computation.",
+  "eligibleLinearLayerCount": 1,
+  "evidenceLevel": "model_export_adapter_validation",
+  "foundryCalibrated": false,
+  "generatedManifestValid": true,
+  "hardwareValidated": false,
+  "id": "model-export-adapter-validation",
+  "layerCount": 1,
+  "measuredTransferMatrixAvailable": false,
+  "nextValidationGates": [
+    "model_portfolio_benchmark",
+    "model_weight_manifest_import",
+    "foundry_calibrated_device_model_gate"
+  ],
+  "productionInferenceReady": false,
+  "pyTorchHardDependency": false,
+  "stage": 2,
+  "stageStatus": "complete",
+  "title": "Generated model manifest validation for optional export adapter",
+  "unsupportedLayerTypes": [],
+  "validationFindings": []
+}

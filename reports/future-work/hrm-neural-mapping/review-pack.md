@@ -20,6 +20,8 @@ This is a simulation-only review pack. It is not hardware evidence.
 - `calibration-plan`: Calibration plan for future measured HRM transfer matrices (calibration_plan_only)
 - `complex-unitary-mesh-support`: Complex/unitary mesh support for abstract HRM simulation (abstract_complex_unitary_mesh_simulation)
 - `error-budget-report`: Simulation-only accuracy degradation and error budget (simulation_error_budget)
+- `hardware-design-space-analysis`: Simulation-only hardware design-space analysis (hardware_design_space_analysis)
+- `hardware-design-space-sweep`: Simulation-only hardware design-space sweep (hardware_design_space_sweep_simulation)
 - `hardware-requirements-analysis`: Simulation-derived hardware requirements analysis (simulation_derived_hardware_requirements_analysis)
 - `hardware-requirements-envelope`: Simulation-derived hardware requirement envelope (simulation_derived_hardware_requirements)
 - `hardware-scenario-analysis`: Parametric hardware scenario bottleneck analysis (parametric_hardware_scenario_analysis)
@@ -28,6 +30,10 @@ This is a simulation-only review pack. It is not hardware evidence.
 - `layer-stack-inference-demo`: Multi-layer toy inference through abstract HRM-mapped linear layers (abstract_layer_stack_inference_simulation)
 - `matrix-family-analysis`: Matrix-family benchmark analysis (abstract_matrix_family_analysis)
 - `matrix-family-benchmark`: Matrix-family benchmark for abstract HRM mapping simulation (abstract_matrix_family_benchmark_simulation)
+- `model-export-adapter-demo`: Optional model export adapter protocol demo (model_export_adapter_protocol)
+- `model-export-adapter-validation`: Generated model manifest validation for optional export adapter (model_export_adapter_validation)
+- `model-portfolio-benchmark`: Model portfolio benchmark for HRM mapping suitability (model_portfolio_benchmark_simulation)
+- `model-portfolio-ranking`: Model portfolio ranking for simulation-only HRM planning (model_portfolio_ranking_simulation)
 - `model-suitability-analysis`: Model suitability analysis for abstract HRM mapping (model_suitability_analysis)
 - `model-suitability-profile`: Model suitability profile for abstract HRM photonic mapping (model_suitability_profile_simulation)
 - `model-to-hrm-decision-report`: Model-to-HRM simulation-only decision report (simulation_only_model_to_hrm_decision)
@@ -41,6 +47,7 @@ This is a simulation-only review pack. It is not hardware evidence.
 - `stage-4-calibration-analysis`: Stage 4 synthetic calibration sweep analysis (synthetic_calibration_simulation)
 - `stage-4-calibration-sweep`: Stage 4 synthetic calibration sensitivity sweep (synthetic_calibration_simulation)
 - `transfer-matrix-assimilation-plan`: Transfer-matrix assimilation plan for future measured artifacts (transfer_matrix_assimilation_plan_only)
+- `transfer-matrix-ingestion-sandbox`: Synthetic transfer-matrix ingestion sandbox (synthetic_transfer_matrix_ingestion_sandbox)
 
 ## Key Metrics
 
@@ -65,6 +72,10 @@ This is a simulation-only review pack. It is not hardware evidence.
 - `error-budget-report` `errorBudgetDominantContributor`: {"component":"perturbationError","errorValue":0.370308698767234,"foundryCalibrated":false,"hardwareValidated":false,"measuredTransferMatrixAvailable":false,"productionInferenceReady":false,"simulationOnly":true,"sourceReport":"stage-3-sweep-analysis.json"}
 - `error-budget-report` `errorBudgetRssEnvelope`: 0.413071539277794
 - `model-to-hrm-decision-report` `modelToHrmDecision`: blocked_by_missing_hardware_evidence
+- `model-portfolio-ranking` `modelPortfolioBestCandidate`: low_rank_adapter_demo
+- `model-portfolio-ranking` `modelPortfolioWorstCandidate`: transformer_block_manifest_only
+- `hardware-design-space-analysis` `designSpaceParetoCandidateCount`: 4
+- `transfer-matrix-ingestion-sandbox` `transferMatrixSandboxValidationPassed`: True
 - `stage-3-sweep-analysis` `perturbationTopSensitivity`: {"maxErrorDelta":0.370308698767234,"maxPerturbedRelativeError":0.38994883537722,"sweepParameter":"phase_quantization_bits"}
 - `stage-4-simulated-calibration` `calibrationPreRelativeError`: 0.066879533355693
 - `stage-4-simulated-calibration` `calibrationPostRelativeError`: 0.000112458773944

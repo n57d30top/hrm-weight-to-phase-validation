@@ -1,0 +1,114 @@
+{
+  "bestSimulationCandidate": {
+    "classicalLayerCount": 2,
+    "complexLayerShare": 0.0,
+    "fixtureKind": "portfolio_fixture",
+    "foundryCalibrated": false,
+    "hardwareValidated": false,
+    "layerCount": 6,
+    "mappableLayerCount": 4,
+    "mappableParameterShare": 0.941176470588,
+    "measuredTransferMatrixAvailable": false,
+    "modelId": "low_rank_adapter_demo",
+    "modelSuitabilityScore": 95.882,
+    "modelType": "adapter",
+    "notes": [
+      "low-rank adapter-style linear factors"
+    ],
+    "productionInferenceReady": false,
+    "rectangularLayerShare": 1.0,
+    "simulationOnly": true,
+    "suitabilityClass": "good_candidate",
+    "unsupportedLayerCount": 0
+  },
+  "blockers": [
+    "no_foundry_calibrated_device_model",
+    "no_measured_hrm_transfer_matrix",
+    "no_end_to_end_hardware_benchmark"
+  ],
+  "claimBoundary": "Simulation-only model portfolio planning; this does not claim hardware validation, foundry calibration, measured transfer matrices, production inference readiness, full model acceleration, quantum advantage, hardware-native intelligence, or power-free computation.",
+  "evidenceLevel": "model_portfolio_ranking_simulation",
+  "foundryCalibrated": false,
+  "hardwareValidated": false,
+  "id": "model-portfolio-ranking",
+  "measuredTransferMatrixAvailable": false,
+  "modelCount": 5,
+  "nextValidationGates": [
+    "model_export_adapter_protocol",
+    "hardware_design_space_explorer",
+    "foundry_calibrated_device_model_gate"
+  ],
+  "portfolioDecisionSummary": [
+    "low_rank_adapter_demo is the best simulation candidate in this deterministic portfolio.",
+    "transformer_block_manifest_only is the weakest simulation candidate because unsupported components dominate.",
+    "All portfolio decisions remain simulation-only planning labels."
+  ],
+  "productionInferenceReady": false,
+  "ranking": [
+    {
+      "mappableParameterShare": 0.941176470588,
+      "modelId": "low_rank_adapter_demo",
+      "modelSuitabilityScore": 95.882,
+      "rank": 1,
+      "suitabilityClass": "good_candidate",
+      "unsupportedLayerCount": 0
+    },
+    {
+      "mappableParameterShare": 0.888888888889,
+      "modelId": "projection_chain",
+      "modelSuitabilityScore": 92.222,
+      "rank": 2,
+      "suitabilityClass": "good_candidate",
+      "unsupportedLayerCount": 0
+    },
+    {
+      "mappableParameterShare": 0.823529411765,
+      "modelId": "tiny_mlp",
+      "modelSuitabilityScore": 87.647,
+      "rank": 3,
+      "suitabilityClass": "good_candidate",
+      "unsupportedLayerCount": 0
+    },
+    {
+      "mappableParameterShare": 0.642857142857,
+      "modelId": "sparse_linear_demo",
+      "modelSuitabilityScore": 61.0,
+      "rank": 4,
+      "suitabilityClass": "partial_candidate",
+      "unsupportedLayerCount": 1
+    },
+    {
+      "mappableParameterShare": 0.571428571429,
+      "modelId": "transformer_block_manifest_only",
+      "modelSuitabilityScore": 53.333,
+      "rank": 5,
+      "suitabilityClass": "partial_candidate",
+      "unsupportedLayerCount": 4
+    }
+  ],
+  "stage": 2,
+  "stageStatus": "complete",
+  "title": "Model portfolio ranking for simulation-only HRM planning",
+  "worstSimulationCandidate": {
+    "classicalLayerCount": 4,
+    "complexLayerShare": 0.0,
+    "fixtureKind": "manifest_only",
+    "foundryCalibrated": false,
+    "hardwareValidated": false,
+    "layerCount": 12,
+    "mappableLayerCount": 4,
+    "mappableParameterShare": 0.571428571429,
+    "measuredTransferMatrixAvailable": false,
+    "modelId": "transformer_block_manifest_only",
+    "modelSuitabilityScore": 53.333,
+    "modelType": "transformer_block_manifest_only",
+    "notes": [
+      "attention softmax, embedding, and normalization remain outside optical mesh"
+    ],
+    "productionInferenceReady": false,
+    "rectangularLayerShare": 1.0,
+    "simulationOnly": true,
+    "suitabilityClass": "partial_candidate",
+    "unsupportedLayerCount": 4
+  }
+}

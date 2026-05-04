@@ -258,6 +258,9 @@ def _collect_key_metrics(stages: List[Dict[str, Any]], supplemental: List[Dict[s
     requirements = by_id.get("hardware-requirements-analysis", {})
     error_budget = by_id.get("error-budget-report", {})
     decision = by_id.get("model-to-hrm-decision-report", {})
+    portfolio = by_id.get("model-portfolio-ranking", {})
+    design = by_id.get("hardware-design-space-analysis", {})
+    sandbox = by_id.get("transfer-matrix-ingestion-sandbox", {})
     return {
         "stage2MeshConstrainedRelativeError": stage_2.get("meshConstrainedRelativeError"),
         "stage2MeshErrorDelta": stage_2.get("meshErrorDelta"),
@@ -280,6 +283,10 @@ def _collect_key_metrics(stages: List[Dict[str, Any]], supplemental: List[Dict[s
         "errorBudgetDominantContributor": error_budget.get("dominantErrorContributor"),
         "errorBudgetRssEnvelope": error_budget.get("combinedErrorEnvelope", {}).get("rss"),
         "modelToHrmDecision": decision.get("decision"),
+        "modelPortfolioBestCandidate": portfolio.get("bestSimulationCandidate", {}).get("modelId"),
+        "modelPortfolioWorstCandidate": portfolio.get("worstSimulationCandidate", {}).get("modelId"),
+        "designSpaceParetoCandidateCount": design.get("paretoCandidateCount"),
+        "transferMatrixSandboxValidationPassed": sandbox.get("validationPassed"),
         "perturbationTopSensitivity": _first(stage_3_analysis.get("sensitivityRanking", [])),
         "calibrationPreRelativeError": stage_4.get("preCalibrationRelativeError"),
         "calibrationPostRelativeError": stage_4.get("postCalibrationRelativeError"),
@@ -320,6 +327,10 @@ def _metric_rows(
         "errorBudgetDominantContributor": "error-budget-report",
         "errorBudgetRssEnvelope": "error-budget-report",
         "modelToHrmDecision": "model-to-hrm-decision-report",
+        "modelPortfolioBestCandidate": "model-portfolio-ranking",
+        "modelPortfolioWorstCandidate": "model-portfolio-ranking",
+        "designSpaceParetoCandidateCount": "hardware-design-space-analysis",
+        "transferMatrixSandboxValidationPassed": "transfer-matrix-ingestion-sandbox",
         "perturbationTopSensitivity": "stage-3-sweep-analysis",
         "calibrationPreRelativeError": "stage-4-simulated-calibration",
         "calibrationPostRelativeError": "stage-4-simulated-calibration",
