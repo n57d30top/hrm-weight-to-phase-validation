@@ -258,7 +258,7 @@
     "hardware_benchmark_gate"
   ],
   "productionInferenceReady": false,
-  "reportCount": 23,
+  "reportCount": 25,
   "reviewerChecklist": [
     "Run make check to reproduce generated reports.",
     "Inspect reports/future-work/hrm-neural-mapping/ARTIFACTS.sha256.",
@@ -414,6 +414,28 @@
       "stage": 2,
       "stageStatus": "complete",
       "title": "Matrix-family benchmark for abstract HRM mapping simulation"
+    },
+    {
+      "evidenceLevel": "model_suitability_analysis",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-suitability-analysis",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model suitability analysis for abstract HRM mapping"
+    },
+    {
+      "evidenceLevel": "model_suitability_profile_simulation",
+      "foundryCalibrated": false,
+      "hardwareValidated": false,
+      "id": "model-suitability-profile",
+      "measuredTransferMatrixAvailable": false,
+      "productionInferenceReady": false,
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model suitability profile for abstract HRM photonic mapping"
     },
     {
       "evidenceLevel": "model_weight_manifest_eligibility_analysis",

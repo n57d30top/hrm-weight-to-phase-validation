@@ -31,6 +31,10 @@ from oqp.future_work.model_weight_manifest import (  # noqa: E402
     run_model_weight_eligibility_analysis_report,
     run_model_weight_import_demo_report,
 )
+from oqp.future_work.model_suitability import (  # noqa: E402
+    run_model_suitability_analysis_report,
+    run_model_suitability_profile_report,
+)
 from oqp.future_work.neural_mapping import run_svd_mapping_demo  # noqa: E402
 from oqp.future_work.perturbation_model import (  # noqa: E402
     run_perturbation_demo,
@@ -85,6 +89,8 @@ SUPPLEMENTAL_REPORT_FILES = {
     "matrix-family-benchmark": "matrix-family-benchmark.json",
     "model-weight-eligibility-analysis": "model-weight-eligibility-analysis.json",
     "model-weight-import-demo": "model-weight-import-demo.json",
+    "model-suitability-analysis": "model-suitability-analysis.json",
+    "model-suitability-profile": "model-suitability-profile.json",
     "rectangular-matrix-support": "rectangular-matrix-support.json",
     "release-readiness-v0.1.0": "release-readiness-v0.1.0.json",
     "review-pack-summary": "review-pack-summary.json",
@@ -127,6 +133,8 @@ def main() -> None:
         run_matrix_family_analysis_report(),
         run_model_weight_import_demo_report(),
         run_model_weight_eligibility_analysis_report(),
+        run_model_suitability_profile_report(),
+        run_model_suitability_analysis_report(),
         run_rectangular_matrix_support_report(),
         run_scaling_benchmark_report(),
         run_scaling_analysis_report(),
@@ -273,6 +281,15 @@ def _key_metrics(report: Dict[str, Any]) -> Dict[str, Any]:
         "eligibleLayerCount",
         "ineligibleLayerCount",
         "classicalLayerCount",
+        "totalLayerCount",
+        "mappableLayerCount",
+        "unsupportedLayerCount",
+        "mappableLinearLayerShare",
+        "mappableParameterShare",
+        "rectangularLayerShare",
+        "complexLayerShare",
+        "modelSuitabilityScore",
+        "suitabilityClass",
         "eligibleLinearLayerCount",
         "eligibleRectangularLayerCount",
         "eligibleComplexLayerCount",

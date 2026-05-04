@@ -133,7 +133,7 @@
   },
   "stage": 0,
   "stageStatus": "complete",
-  "supplementalReportCount": 15,
+  "supplementalReportCount": 17,
   "supplementalReports": [
     {
       "evidenceLevel": "abstract_complex_unitary_mesh_simulation",
@@ -169,6 +169,20 @@
       "stage": 2,
       "stageStatus": "complete",
       "title": "Matrix-family benchmark for abstract HRM mapping simulation"
+    },
+    {
+      "evidenceLevel": "model_suitability_analysis",
+      "id": "model-suitability-analysis",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model suitability analysis for abstract HRM mapping"
+    },
+    {
+      "evidenceLevel": "model_suitability_profile_simulation",
+      "id": "model-suitability-profile",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model suitability profile for abstract HRM photonic mapping"
     },
     {
       "evidenceLevel": "model_weight_manifest_eligibility_analysis",

@@ -21,6 +21,8 @@ json:
 	jq empty reports/future-work/hrm-neural-mapping/matrix-family-analysis.json
 	jq empty reports/future-work/hrm-neural-mapping/model-weight-import-demo.json
 	jq empty reports/future-work/hrm-neural-mapping/model-weight-eligibility-analysis.json
+	jq empty reports/future-work/hrm-neural-mapping/model-suitability-profile.json
+	jq empty reports/future-work/hrm-neural-mapping/model-suitability-analysis.json
 	jq empty reports/future-work/hrm-neural-mapping/rectangular-matrix-support.json
 	jq empty reports/future-work/hrm-neural-mapping/release-readiness-v0.1.0.json
 	jq empty reports/future-work/hrm-neural-mapping/review-pack-summary.json

@@ -19,6 +19,8 @@ This v0.1.0 readiness report is simulation-only. It does not claim hardware vali
 - `layer-stack-inference-demo` (abstract_layer_stack_inference_simulation)
 - `matrix-family-analysis` (abstract_matrix_family_analysis)
 - `matrix-family-benchmark` (abstract_matrix_family_benchmark_simulation)
+- `model-suitability-analysis` (model_suitability_analysis)
+- `model-suitability-profile` (model_suitability_profile_simulation)
 - `model-weight-eligibility-analysis` (model_weight_manifest_eligibility_analysis)
 - `model-weight-import-demo` (model_weight_manifest_import_simulation)
 - `rectangular-matrix-support` (abstract_rectangular_mesh_simulation)

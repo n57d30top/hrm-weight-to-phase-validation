@@ -22,6 +22,8 @@ This is a simulation-only review pack. It is not hardware evidence.
 - `layer-stack-inference-demo`: Multi-layer toy inference through abstract HRM-mapped linear layers (abstract_layer_stack_inference_simulation)
 - `matrix-family-analysis`: Matrix-family benchmark analysis (abstract_matrix_family_analysis)
 - `matrix-family-benchmark`: Matrix-family benchmark for abstract HRM mapping simulation (abstract_matrix_family_benchmark_simulation)
+- `model-suitability-analysis`: Model suitability analysis for abstract HRM mapping (model_suitability_analysis)
+- `model-suitability-profile`: Model suitability profile for abstract HRM photonic mapping (model_suitability_profile_simulation)
 - `model-weight-eligibility-analysis`: Model weight mapping eligibility analysis (model_weight_manifest_eligibility_analysis)
 - `model-weight-import-demo`: Model weight manifest import demo (model_weight_manifest_import_simulation)
 - `rectangular-matrix-support`: Rectangular matrix support for abstract HRM mesh simulation (abstract_rectangular_mesh_simulation)

@@ -157,6 +157,36 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertFalse(analysis["measuredTransferMatrixAvailable"])
         self.assertFalse(analysis["productionInferenceReady"])
 
+    def test_validation_summary_includes_model_suitability_reports(self):
+        summary = json.loads((REPORT_DIR / "validation-ladder-summary.json").read_text(encoding="utf-8"))
+        reports = {
+            report["id"]: report
+            for report in summary["supplementalReports"]
+        }
+        self.assertIn("model-suitability-profile", reports)
+        self.assertIn("model-suitability-analysis", reports)
+        profile = reports["model-suitability-profile"]
+        analysis = reports["model-suitability-analysis"]
+        self.assertEqual(profile["stage"], 2)
+        self.assertEqual(profile["stageStatus"], "complete")
+        self.assertEqual(profile["evidenceLevel"], "model_suitability_profile_simulation")
+        self.assertEqual(profile["keyMetrics"]["modelSuitabilityScore"], 87.647)
+        self.assertEqual(profile["keyMetrics"]["suitabilityClass"], "good_candidate")
+        self.assertEqual(profile["keyMetrics"]["mappableLayerCount"], 2)
+        self.assertEqual(profile["keyMetrics"]["classicalLayerCount"], 3)
+        self.assertEqual(profile["keyMetrics"]["unsupportedLayerCount"], 0)
+        self.assertFalse(profile["hardwareValidated"])
+        self.assertFalse(profile["foundryCalibrated"])
+        self.assertFalse(profile["measuredTransferMatrixAvailable"])
+        self.assertFalse(profile["productionInferenceReady"])
+        self.assertEqual(analysis["stage"], 2)
+        self.assertEqual(analysis["stageStatus"], "complete")
+        self.assertEqual(analysis["evidenceLevel"], "model_suitability_analysis")
+        self.assertFalse(analysis["hardwareValidated"])
+        self.assertFalse(analysis["foundryCalibrated"])
+        self.assertFalse(analysis["measuredTransferMatrixAvailable"])
+        self.assertFalse(analysis["productionInferenceReady"])
+
     def test_validation_summary_includes_scaling_reports(self):
         summary = json.loads((REPORT_DIR / "validation-ladder-summary.json").read_text(encoding="utf-8"))
         reports = {
@@ -305,6 +335,24 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertFalse(model_weight_analysis["foundryCalibrated"])
         self.assertFalse(model_weight_analysis["measuredTransferMatrixAvailable"])
         self.assertFalse(model_weight_analysis["productionInferenceReady"])
+        self.assertIn("model-suitability-profile", reports)
+        suitability_profile = reports["model-suitability-profile"]
+        self.assertEqual(suitability_profile["stage"], 2)
+        self.assertEqual(suitability_profile["stageStatus"], "complete")
+        self.assertEqual(suitability_profile["evidenceLevel"], "model_suitability_profile_simulation")
+        self.assertFalse(suitability_profile["hardwareValidated"])
+        self.assertFalse(suitability_profile["foundryCalibrated"])
+        self.assertFalse(suitability_profile["measuredTransferMatrixAvailable"])
+        self.assertFalse(suitability_profile["productionInferenceReady"])
+        self.assertIn("model-suitability-analysis", reports)
+        suitability_analysis = reports["model-suitability-analysis"]
+        self.assertEqual(suitability_analysis["stage"], 2)
+        self.assertEqual(suitability_analysis["stageStatus"], "complete")
+        self.assertEqual(suitability_analysis["evidenceLevel"], "model_suitability_analysis")
+        self.assertFalse(suitability_analysis["hardwareValidated"])
+        self.assertFalse(suitability_analysis["foundryCalibrated"])
+        self.assertFalse(suitability_analysis["measuredTransferMatrixAvailable"])
+        self.assertFalse(suitability_analysis["productionInferenceReady"])
         self.assertIn("scaling-benchmark", reports)
         scaling_report = reports["scaling-benchmark"]
         self.assertEqual(scaling_report["stage"], 2)
@@ -344,6 +392,8 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("reports/future-work/hrm-neural-mapping/layer-stack-error-analysis.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/model-weight-import-demo.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/model-weight-eligibility-analysis.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/model-suitability-profile.json", hashed_reports)
+        self.assertIn("reports/future-work/hrm-neural-mapping/model-suitability-analysis.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/scaling-benchmark.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/scaling-analysis.json", hashed_reports)
         self.assertIn("reports/future-work/hrm-neural-mapping/review-pack-summary.json", hashed_reports)
@@ -397,6 +447,8 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("model-weight-import-demo.json", normalized)
         self.assertIn("model-weight-eligibility-analysis.json", normalized)
         self.assertIn("model-weight-manifest-schema.md", normalized)
+        self.assertIn("model-suitability-profile.json", normalized)
+        self.assertIn("model-suitability-analysis.json", normalized)
         self.assertIn("scaling-benchmark.json", normalized)
         self.assertIn("scaling-analysis.json", normalized)
         self.assertIn("review-pack-summary.json", normalized)
@@ -408,6 +460,7 @@ class HrmReportIndexingTest(unittest.TestCase):
         self.assertIn("physical complex/unitary mesh layout", normalized)
         self.assertIn("ReLU remains a classical activation outside the optical mesh", normalized)
         self.assertIn("PyTorch is not a required dependency", readme)
+        self.assertIn("heuristic simulation-only planning score", normalized)
         self.assertIn("not a hardware performance claim", normalized)
         self.assertIn("simulation-only review pack", normalized)
         self.assertIn("claim-boundary guard", normalized)

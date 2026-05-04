@@ -146,6 +146,8 @@ Key files:
 - `matrix-family-analysis.json`
 - `model-weight-import-demo.json`
 - `model-weight-eligibility-analysis.json`
+- `model-suitability-profile.json`
+- `model-suitability-analysis.json`
 - `rectangular-matrix-support.json`
 - `release-readiness-v0.1.0.json`
 - `release-readiness-v0.1.0.md`
@@ -334,6 +336,24 @@ This is an import and eligibility layer only. It does not execute a PyTorch
 model, does not accelerate a full model, does not implement optical
 nonlinearities, and does not claim hardware validation.
 
+## Model Suitability Profiler
+
+The supplemental reports `model-suitability-profile.json` and
+`model-suitability-analysis.json` turn the model-weight manifest into a
+simulation-only planning profile.
+
+The profiler classifies manifest components as:
+
+- optically mappable linear, rectangular-linear, or complex-linear candidates
+- classical bias, activation, or normalization components outside the optical mesh
+- unsupported convolution, attention-softmax, embedding, or other components
+
+For the deterministic tiny MLP fixture, the report counts two mappable
+rectangular linear weights, two classical bias components, and one classical
+ReLU boundary. The suitability score is a heuristic simulation-only planning
+score. It is not hardware validated, not a production-readiness metric, and not
+evidence that the model runs on a real photonic device.
+
 ## Scaling Benchmark
 
 The supplemental reports `scaling-benchmark.json` and `scaling-analysis.json`
@@ -517,11 +537,16 @@ Completed alpha milestones:
 - `v0.1.0-alpha.11`: simulation-only review pack and reviewer-facing metrics.
 - `v0.1.0-alpha.12`: release-candidate hardening, report audit, claim-boundary guard, and v0.1.0 readiness reports.
 
+Completed post-alpha.12 main work:
+
+- model suitability profiling added for manifest components, mappable parameter share, classical components, unsupported components, heuristic suitability scoring, and planning recommendations.
+
 Near-term:
 
 - keep CI green for report generation, JSON validation, hashes, tests, local-path hygiene, and claim-boundary checks
-- review `v0.1.0-alpha.12` as the stabilization candidate
-- prepare `v0.1.0-rc.1` only after review confirms the simulation-only boundary remains intact
+- add parametric hardware scenario estimates while labeling every latency and energy value as a parametric estimate only
+- add simulation-derived hardware requirement envelopes for target error thresholds
+- prepare `v0.1.0-rc.1` only after the planning reports are reviewed and the simulation-only boundary remains intact
 
 Later, only when evidence exists:
 
