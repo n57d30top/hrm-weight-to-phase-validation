@@ -38,6 +38,10 @@ from oqp.future_work.perturbation_model import (  # noqa: E402
     run_perturbation_sweep_report,
 )
 from oqp.future_work.rectangular_mapping import run_rectangular_matrix_support_report  # noqa: E402
+from oqp.future_work.release_readiness import (  # noqa: E402
+    render_release_readiness_markdown,
+    run_release_readiness_report,
+)
 from oqp.future_work.review_pack import (  # noqa: E402
     render_review_pack_limitations_markdown,
     render_review_pack_markdown,
@@ -82,6 +86,7 @@ SUPPLEMENTAL_REPORT_FILES = {
     "model-weight-eligibility-analysis": "model-weight-eligibility-analysis.json",
     "model-weight-import-demo": "model-weight-import-demo.json",
     "rectangular-matrix-support": "rectangular-matrix-support.json",
+    "release-readiness-v0.1.0": "release-readiness-v0.1.0.json",
     "review-pack-summary": "review-pack-summary.json",
     "scaling-analysis": "scaling-analysis.json",
     "scaling-benchmark": "scaling-benchmark.json",
@@ -132,6 +137,8 @@ def main() -> None:
     ]
     review_pack_summary = run_review_pack_summary_report(reports, supplemental_reports)
     supplemental_reports.append(review_pack_summary)
+    release_readiness = run_release_readiness_report(reports, supplemental_reports)
+    supplemental_reports.append(release_readiness)
 
     for report in reports:
         _write_json(REPORT_DIR / STAGE_FILES[int(report["stage"])], report)
@@ -154,16 +161,21 @@ def main() -> None:
         REPORT_DIR / "review-pack-stage-table.md",
         REPORT_DIR / "review-pack-limitations.md",
     ]
+    release_readiness_artifact_paths = [
+        REPORT_DIR / "release-readiness-v0.1.0.md",
+    ]
     _write_text(review_pack_artifact_paths[0], render_review_pack_markdown(review_pack_summary))
     _write_text(review_pack_artifact_paths[1], render_review_pack_metrics_csv(review_pack_summary))
     _write_text(review_pack_artifact_paths[2], render_review_pack_stage_table_markdown(review_pack_summary))
     _write_text(review_pack_artifact_paths[3], render_review_pack_limitations_markdown(review_pack_summary))
+    _write_text(release_readiness_artifact_paths[0], render_release_readiness_markdown(release_readiness))
 
     artifact_paths = (
         [REPORT_DIR / STAGE_FILES[stage] for stage in sorted(STAGE_FILES)]
         + [REPORT_DIR / SUPPLEMENTAL_REPORT_FILES[key] for key in sorted(SUPPLEMENTAL_REPORT_FILES)]
         + [summary_path]
         + review_pack_artifact_paths
+        + release_readiness_artifact_paths
     )
     _write_artifact_hashes(artifact_paths, REPORT_DIR / "ARTIFACTS.sha256")
 
@@ -272,6 +284,9 @@ def _key_metrics(report: Dict[str, Any]) -> Dict[str, Any]:
         "shapeFamilies",
         "largestCaseId",
         "maxMeshConstrainedError",
+        "releaseCandidateFor",
+        "completedSimulationStageCount",
+        "supplementalReportCount",
         "reportCount",
         "blockedHardwareGateCount",
         "noHardwarePerformanceClaim",

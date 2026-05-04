@@ -1,0 +1,254 @@
+{
+  "blockedHardwareGateCount": 3,
+  "blockedHardwareGates": [
+    {
+      "blockerReason": "no_foundry_calibrated_device_model",
+      "blockers": [
+        "no_foundry_calibrated_device_model"
+      ],
+      "evidenceLevel": "foundry_calibration_gate",
+      "id": "stage-5-foundry-calibration-gate",
+      "stage": 5,
+      "stageStatus": "blocked",
+      "title": "Foundry-calibrated device-model validation gate"
+    },
+    {
+      "blockerReason": "no_measured_hrm_transfer_matrix",
+      "blockers": [
+        "no_measured_hrm_transfer_matrix"
+      ],
+      "evidenceLevel": "measured_transfer_matrix_gate",
+      "id": "stage-6-measured-transfer-matrix-gate",
+      "stage": 6,
+      "stageStatus": "blocked",
+      "title": "Measured HRM transfer-matrix validation gate"
+    },
+    {
+      "blockerReason": "no_end_to_end_hardware_benchmark",
+      "blockers": [
+        "no_end_to_end_hardware_benchmark"
+      ],
+      "evidenceLevel": "hardware_benchmark_gate",
+      "id": "stage-7-hardware-benchmark-gate",
+      "stage": 7,
+      "stageStatus": "blocked",
+      "title": "End-to-end hardware inference benchmark gate"
+    }
+  ],
+  "blockers": [
+    "no_foundry_calibrated_device_model",
+    "no_measured_hrm_transfer_matrix",
+    "no_end_to_end_hardware_benchmark"
+  ],
+  "claimBoundary": "This v0.1.0 readiness report is simulation-only. It does not claim hardware validation, foundry calibration, measured transfer matrices, production inference readiness, physical accuracy, hardware latency, hardware energy efficiency, quantum advantage, or a completed hardware benchmark.",
+  "claimBoundaryAudit": {
+    "claimBoundaryAuditStatus": "enforced_in_make_check_and_ci",
+    "guardScript": "scripts/check_claim_boundary.py",
+    "unsupportedPositiveClaimsAllowed": false
+  },
+  "completedSimulationStageCount": 5,
+  "completedSimulationStages": [
+    {
+      "evidenceLevel": "theoretical_extension",
+      "id": "stage-0-specification",
+      "stage": 0,
+      "stageStatus": "complete",
+      "title": "Future-work specification"
+    },
+    {
+      "evidenceLevel": "numerical_simulation",
+      "id": "stage-1-svd-demo",
+      "stage": 1,
+      "stageStatus": "complete",
+      "title": "Numerical SVD mapping demo"
+    },
+    {
+      "evidenceLevel": "abstract_mesh_simulation",
+      "id": "stage-2-mesh-constrained",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Mesh-constrained HRM transfer-matrix approximation"
+    },
+    {
+      "evidenceLevel": "uncalibrated_perturbation_simulation",
+      "id": "stage-3-perturbation-model",
+      "stage": 3,
+      "stageStatus": "complete",
+      "title": "Quantization, drift, loss, and noise perturbation model"
+    },
+    {
+      "evidenceLevel": "synthetic_calibration_simulation",
+      "id": "stage-4-simulated-calibration",
+      "stage": 4,
+      "stageStatus": "complete",
+      "title": "Simulated transfer-matrix calibration loop"
+    }
+  ],
+  "documentationAudit": {
+    "alphaMilestonesListedThrough": "v0.1.0-alpha.12",
+    "hardwareValidationImplied": false,
+    "readmeCurrent": true,
+    "simulationOnlyBoundaryPresent": true,
+    "stage5To7BlockedStatementPresent": true
+  },
+  "evidenceLevel": "release_candidate_hardening_audit",
+  "foundryCalibrated": false,
+  "generatedAt": "2026-05-04T00:00:00Z",
+  "hardwareValidated": false,
+  "id": "release-readiness-v0.1.0",
+  "knownLimitations": [
+    "simulation-only research framework",
+    "no foundry-calibrated device model",
+    "no measured HRM transfer matrix",
+    "no end-to-end hardware inference benchmark",
+    "no physical layout synthesis",
+    "no hardware timing, energy, throughput, or physical accuracy measurement",
+    "no production inference readiness"
+  ],
+  "measuredTransferMatrixAvailable": false,
+  "nextValidationGates": [
+    "v0.1.0-rc.1_review",
+    "foundry_calibrated_device_model_gate",
+    "measured_transfer_matrix_gate",
+    "hardware_benchmark_gate"
+  ],
+  "productionInferenceReady": false,
+  "recommendedNextAfterV010": [
+    "tag v0.1.0-rc.1 only after alpha.12 review",
+    "keep Stage 5, Stage 6, and Stage 7 blocked until real external evidence exists",
+    "consider optional external model-export adapters without adding a hard framework dependency",
+    "consider larger deterministic benchmark suites while preserving CI runtime"
+  ],
+  "releaseCandidateFor": "v0.1.0",
+  "reportAudit": {
+    "evidenceLedgerUpdated": true,
+    "foundryCalibratedTrueReports": 0,
+    "hardwareValidatedTrueReports": 0,
+    "jsonReportsHashCovered": true,
+    "jsonReportsValid": true,
+    "localAbsolutePathsAllowed": false,
+    "measuredTransferMatrixAvailableTrueReports": 0,
+    "productionInferenceReadyTrueReports": 0,
+    "supplementalReportsIndexed": true
+  },
+  "stage": 0,
+  "stageStatus": "complete",
+  "supplementalReportCount": 15,
+  "supplementalReports": [
+    {
+      "evidenceLevel": "abstract_complex_unitary_mesh_simulation",
+      "id": "complex-unitary-mesh-support",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Complex/unitary mesh support for abstract HRM simulation"
+    },
+    {
+      "evidenceLevel": "abstract_layer_stack_error_analysis",
+      "id": "layer-stack-error-analysis",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Multi-layer toy inference error analysis"
+    },
+    {
+      "evidenceLevel": "abstract_layer_stack_inference_simulation",
+      "id": "layer-stack-inference-demo",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Multi-layer toy inference through abstract HRM-mapped linear layers"
+    },
+    {
+      "evidenceLevel": "abstract_matrix_family_analysis",
+      "id": "matrix-family-analysis",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Matrix-family benchmark analysis"
+    },
+    {
+      "evidenceLevel": "abstract_matrix_family_benchmark_simulation",
+      "id": "matrix-family-benchmark",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Matrix-family benchmark for abstract HRM mapping simulation"
+    },
+    {
+      "evidenceLevel": "model_weight_manifest_eligibility_analysis",
+      "id": "model-weight-eligibility-analysis",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model weight mapping eligibility analysis"
+    },
+    {
+      "evidenceLevel": "model_weight_manifest_import_simulation",
+      "id": "model-weight-import-demo",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Model weight manifest import demo"
+    },
+    {
+      "evidenceLevel": "abstract_rectangular_mesh_simulation",
+      "id": "rectangular-matrix-support",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Rectangular matrix support for abstract HRM mesh simulation"
+    },
+    {
+      "evidenceLevel": "simulation_review_pack",
+      "id": "review-pack-summary",
+      "stage": 0,
+      "stageStatus": "complete",
+      "title": "Reviewer-facing simulation evidence pack summary"
+    },
+    {
+      "evidenceLevel": "abstract_scaling_analysis",
+      "id": "scaling-analysis",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Scaling benchmark analysis"
+    },
+    {
+      "evidenceLevel": "abstract_scaling_benchmark_simulation",
+      "id": "scaling-benchmark",
+      "stage": 2,
+      "stageStatus": "complete",
+      "title": "Scaling benchmark for larger abstract HRM mapping simulations"
+    },
+    {
+      "evidenceLevel": "uncalibrated_perturbation_simulation",
+      "id": "stage-3-perturbation-sweep",
+      "stage": 3,
+      "stageStatus": "complete",
+      "title": "Stage 3 deterministic perturbation sensitivity sweep"
+    },
+    {
+      "evidenceLevel": "uncalibrated_perturbation_simulation",
+      "id": "stage-3-sweep-analysis",
+      "stage": 3,
+      "stageStatus": "complete",
+      "title": "Stage 3 perturbation sweep sensitivity analysis"
+    },
+    {
+      "evidenceLevel": "synthetic_calibration_simulation",
+      "id": "stage-4-calibration-analysis",
+      "stage": 4,
+      "stageStatus": "complete",
+      "title": "Stage 4 synthetic calibration sweep analysis"
+    },
+    {
+      "evidenceLevel": "synthetic_calibration_simulation",
+      "id": "stage-4-calibration-sweep",
+      "stage": 4,
+      "stageStatus": "complete",
+      "title": "Stage 4 synthetic calibration sensitivity sweep"
+    }
+  ],
+  "title": "v0.1.0 release-candidate readiness audit",
+  "verificationCommands": [
+    "make check",
+    "jq empty reports/future-work/hrm-neural-mapping/release-readiness-v0.1.0.json",
+    "sha256sum -c reports/future-work/hrm-neural-mapping/ARTIFACTS.sha256",
+    "python3 scripts/check_artifact_hash_coverage.py",
+    "python3 scripts/check_no_local_paths.py",
+    "python3 scripts/check_claim_boundary.py",
+    "git diff --check"
+  ]
+}

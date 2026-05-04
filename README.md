@@ -99,6 +99,9 @@ python3 -m unittest discover -s tests -v
 jq empty docs/future-work/evidence-ledger.json
 jq empty reports/future-work/hrm-neural-mapping/validation-ladder-summary.json
 sha256sum -c reports/future-work/hrm-neural-mapping/ARTIFACTS.sha256
+python3 scripts/check_artifact_hash_coverage.py
+python3 scripts/check_no_local_paths.py
+python3 scripts/check_claim_boundary.py
 git diff --check
 ```
 
@@ -144,6 +147,8 @@ Key files:
 - `model-weight-import-demo.json`
 - `model-weight-eligibility-analysis.json`
 - `rectangular-matrix-support.json`
+- `release-readiness-v0.1.0.json`
+- `release-readiness-v0.1.0.md`
 - `review-pack-summary.json`
 - `review-pack.md`
 - `review-pack-metrics.csv`
@@ -373,6 +378,30 @@ calibration improvement, blocked hardware gates, limitations, and a reviewer
 checklist. It does not add new physics, does not change any report metric, and
 does not unblock Stage 5, Stage 6, or Stage 7.
 
+## Release Readiness
+
+The release-candidate readiness artifacts are:
+
+- `release-readiness-v0.1.0.json`
+- `release-readiness-v0.1.0.md`
+
+They audit documentation, report indexing, artifact hashes, local-path hygiene,
+claim-boundary enforcement, and the blocked state of Stage 5, Stage 6, and
+Stage 7. They are stabilization artifacts only. They do not add a simulation
+capability, do not provide foundry or measured evidence, and do not claim
+hardware validation.
+
+The `make check` target runs the release-readiness guard set:
+
+- report generation
+- unit tests
+- JSON validation
+- SHA-256 hash validation
+- generated-report hash coverage
+- local-path hygiene
+- claim-boundary guard
+- whitespace check
+
 ## Rectangular Matrix Support
 
 The supplemental report `rectangular-matrix-support.json` extends the
@@ -478,49 +507,21 @@ Completed alpha milestones:
 - `v0.1.0-alpha.1`: public simulation-gated baseline.
 - `v0.1.0-alpha.2`: deterministic Stage 3 perturbation sweeps and sensitivity analysis.
 - `v0.1.0-alpha.3`: deterministic Stage 4 synthetic calibration sweeps and analysis.
-
-Completed post-alpha.3 main work:
-
-- foundry-calibrated device-model schema documented and enforced by Stage 5 gate acceptance criteria.
-- foundry-calibrated manifest validation hardened with artifact, hash, source-date, evidence-class, provenance, uncertainty, and claim-boundary checks.
-- measured-transfer-matrix fixture schema documented and enforced by Stage 6 gate acceptance criteria.
-- hardware benchmark acceptance schema documented and enforced by Stage 7 gate acceptance criteria.
-- measured-transfer-matrix manifest validation hardened with artifact, hash, date, convention, and provenance checks.
-- hardware benchmark manifest validation hardened with artifact, hash, dependency, metric, characterization, and provenance checks.
-
-Completed post-alpha.4 main work:
-
-- rectangular matrix support added as a supplemental simulation report for tall, wide, and rank-deficient neural layer shapes.
-
-Completed post-alpha.5 main work:
-
-- complex/unitary support added as a supplemental simulation report for unitary-like, general complex, and phase-dominant cases.
-
-Completed post-alpha.6 main work:
-
-- matrix-family benchmark and analysis reports added for identity, dynamic-range, low-rank, rank-deficient, ill-conditioned, sparse-like, dense, rectangular, complex phase-dominant, and unitary-like deterministic cases.
-
-Completed post-alpha.7 main work:
-
-- multi-layer toy inference reports added for a 4-to-6-to-3 tiny MLP and a 4-to-8-to-4 projection chain, with classical ReLU boundaries and layer-wise/cumulative error reporting.
-
-Completed post-alpha.8 main work:
-
-- model-weight manifest import and eligibility analysis added with repo-relative artifact paths, SHA-256 validation, dtype/shape checks, and simulation-only mapping plans.
-
-Completed post-alpha.9 main work:
-
-- scaling and larger-layer benchmark reports added for square, rectangular, low-rank, rank-deficient, dense, and complex phase-dominant deterministic cases up to 16x16 and 8x16/16x8.
-
-Completed post-alpha.10 main work:
-
-- simulation-only review pack added with summary JSON, Markdown, metrics CSV, stage table, limitations, reviewer checklist, and hash-covered artifacts.
+- `v0.1.0-alpha.4`: Stage 5/6/7 hardware evidence gate hardening.
+- `v0.1.0-alpha.5`: rectangular matrix support snapshot.
+- `v0.1.0-alpha.6`: complex/unitary factor simulation snapshot.
+- `v0.1.0-alpha.7`: matrix-family benchmark suite.
+- `v0.1.0-alpha.8`: multi-layer toy inference pipeline.
+- `v0.1.0-alpha.9`: model-weight manifest import and eligibility analysis.
+- `v0.1.0-alpha.10`: scaling and larger-layer benchmark suite.
+- `v0.1.0-alpha.11`: simulation-only review pack and reviewer-facing metrics.
+- `v0.1.0-alpha.12`: release-candidate hardening, report audit, claim-boundary guard, and v0.1.0 readiness reports.
 
 Near-term:
 
-- keep CI green for report generation, JSON validation, hashes, and tests
-- complex SVD pipeline
-- release-candidate hardening
+- keep CI green for report generation, JSON validation, hashes, tests, local-path hygiene, and claim-boundary checks
+- review `v0.1.0-alpha.12` as the stabilization candidate
+- prepare `v0.1.0-rc.1` only after review confirms the simulation-only boundary remains intact
 
 Later, only when evidence exists:
 

@@ -1,4 +1,4 @@
-.PHONY: demo ladder test json hash hash-coverage-check local-path-check check
+.PHONY: demo ladder test json hash hash-coverage-check local-path-check claim-boundary-check check
 
 demo:
 	python3 scripts/run_hrm_neural_mapping_demo.py
@@ -22,6 +22,7 @@ json:
 	jq empty reports/future-work/hrm-neural-mapping/model-weight-import-demo.json
 	jq empty reports/future-work/hrm-neural-mapping/model-weight-eligibility-analysis.json
 	jq empty reports/future-work/hrm-neural-mapping/rectangular-matrix-support.json
+	jq empty reports/future-work/hrm-neural-mapping/release-readiness-v0.1.0.json
 	jq empty reports/future-work/hrm-neural-mapping/review-pack-summary.json
 	jq empty reports/future-work/hrm-neural-mapping/scaling-benchmark.json
 	jq empty reports/future-work/hrm-neural-mapping/scaling-analysis.json
@@ -45,5 +46,8 @@ hash-coverage-check:
 local-path-check:
 	python3 scripts/check_no_local_paths.py
 
-check: demo ladder test json hash hash-coverage-check local-path-check
+claim-boundary-check:
+	python3 scripts/check_claim_boundary.py
+
+check: demo ladder test json hash hash-coverage-check local-path-check claim-boundary-check
 	git diff --check

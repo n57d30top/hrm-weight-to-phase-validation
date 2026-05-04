@@ -20,6 +20,10 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e .
 
+      - name: Run make check
+        run: |
+          make check
+
       - name: Generate reports
         run: |
           python3 scripts/run_hrm_neural_mapping_demo.py
@@ -43,6 +47,7 @@ jobs:
           jq empty reports/future-work/hrm-neural-mapping/model-weight-import-demo.json
           jq empty reports/future-work/hrm-neural-mapping/model-weight-eligibility-analysis.json
           jq empty reports/future-work/hrm-neural-mapping/rectangular-matrix-support.json
+          jq empty reports/future-work/hrm-neural-mapping/release-readiness-v0.1.0.json
           jq empty reports/future-work/hrm-neural-mapping/review-pack-summary.json
           jq empty reports/future-work/hrm-neural-mapping/scaling-benchmark.json
           jq empty reports/future-work/hrm-neural-mapping/scaling-analysis.json
@@ -68,6 +73,10 @@ jobs:
       - name: Local path hygiene
         run: |
           make local-path-check
+
+      - name: Claim boundary guard
+        run: |
+          make claim-boundary-check
 
       - name: Whitespace check
         run: |
